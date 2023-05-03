@@ -16,9 +16,9 @@ public partial class MainForm : Form
      
     private void InitSocket()
     {
-        server = new TcpListener(IPAddress.Any, 9999);
+        server = new TcpListener(IPAddress.Any, 9999);  // 서버에서 9999포트 열어둠
         client = default(TcpClient);
-        server.Start();
+        server.Start();  // 9999포트 열어둔 쓰레드 시작
         DisplayText(">> Server Started");
  
         while(true)
@@ -26,13 +26,13 @@ public partial class MainForm : Form
             try
             { 
                 counter++;
-                client = server.AcceptTcpClient();
+                client = server.AcceptTcpClient();  // 클라이언트 연결 대기
                 DisplayText(">> Accept connection from client");
  
-                handleClient h_client = new handleClient();
-                h_client.OnReceived += new handleClient.MessageDisplayHandler(DisplayText);
-                h_client.OnCalculated += new handleClient.CalculateClientCounter(CalculateCounter);
-                h_client.startClient(client, counter);
+                handleClient h_client = new handleClient();  // 클라이언트 인스턴스 생성
+                h_client.OnReceived += new handleClient.MessageDisplayHandler(DisplayText);  // 이벤트 등록
+                h_client.OnCalculated += new handleClient.CalculateClientCounter(CalculateCounter);  // 이벤트 등록
+                h_client.startClient(client, counter);  // 이 동작을 통해 클라이언트 쓰레드가 만들어짐
             }
             catch (SocketException se)
             {
