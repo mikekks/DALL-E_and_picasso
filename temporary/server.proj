@@ -52,9 +52,9 @@ public partial class MainForm : Form
  
     private void DisplayText(string text)
     {
-        if (richTextBox1.InvokeRequired)
+        if (richTextBox1.InvokeRequired)   // UI 스레드가 아닌 작업 스레드가 접근할 경우
         {
-            richTextBox1.BeginInvoke(new MethodInvoker(delegate
+            richTextBox1.BeginInvoke(new MethodInvoker(delegate  // BeginInvoke 메소드를 사용하여 UI 스레드로 작업 요청을 보낸다.
             {
                 richTextBox1.AppendText(text + Environment.NewLine);
             }));
