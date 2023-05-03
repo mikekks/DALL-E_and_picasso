@@ -8,7 +8,7 @@ class handleClient
         this.clientSocket = ClientSocket;
         this.clientNo = clientNo;
  
-        Thread t_hanlder = new Thread(doChat);
+        Thread t_hanlder = new Thread(doChat);  // 클라이언트마다 소통할 쓰레드 생성
         t_hanlder.IsBackground = true;
         t_hanlder.Start();
     }
@@ -32,7 +32,7 @@ class handleClient
             while(true)
             {
                 MessageCount++;
-                stream = clientSocket.GetStream();
+                stream = clientSocket.GetStream();  // 클라이언트 스트림 가져오기
                 bytes = stream.Read(buffer, 0, buffer.Length);
                 msg = Encoding.Unicode.GetString(buffer, 0, bytes);
                 msg = msg.Substring(0, msg.IndexOf("$"));
