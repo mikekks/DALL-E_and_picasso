@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\DallE_picasso\bin\Debug\DallE_picasso.exe.config
+C:\Users\User\source\repos\DallE_picasso\bin\Debug\DallE_picasso.exe
+C:\Users\User\source\repos\DallE_picasso\bin\Debug\DallE_picasso.pdb
+C:\Users\User\source\repos\DallE_picasso\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\source\repos\DallE_picasso\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.Form1.resources
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.Properties.Resources.resources
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.CopyComplete
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.exe
+C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.pdb
