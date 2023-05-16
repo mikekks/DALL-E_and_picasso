@@ -1,0 +1,68 @@
+public partial class MainForm : Form
+{
+    TcpClient clientSocket = new TcpClient();
+ 
+    public MainForm()
+    {
+        InitializeComponent();
+ 
+        new Thread(delegate()
+            {
+                InitSocket();
+            }).Start();            
+    }
+ 
+    private void InitSocket()
+    {
+        try
+        {
+            clientSocket.Connect("192.168.0.12", 9999);
+            DisplayText("Client Started");
+            labelStatus.Text = "Client Socket Program - Server Connected ...";
+        }
+        catch (SocketException se)
+        {
+            MessageBox.Show(se.Message, "Error");                
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error");
+        }
+    }
+ 
+    private void btnSend_Click(object sender, EventArgs e)
+    {
+        NetworkStream stream = clientSocket.GetStream();
+        byte[] sbuffer = Encoding.Unicode.GetBytes(richTextBox2.Text + "$");
+        stream.Write(sbuffer, 0, sbuffer.Length);
+        stream.Flush();
+ 
+        byte[] rbuffer = new byte[1024];
+        stream.Read(rbuffer, 0, rbuffer.Length);
+        string msg = Encoding.Unicode.GetString(rbuffer);
+        msg = "Data from Server : " + msg;
+        DisplayText(msg);
+ 
+        richTextBox2.Text = "";
+        richTextBox2.Focus();
+    }
+ 
+    private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (clientSocket != null)
+            clientSocket.Close();
+    }
+ 
+    private void DisplayText(string text)
+    {
+        if (richTextBox1.InvokeRequired)
+        {
+            richTextBox1.BeginInvoke(new MethodInvoker(delegate
+            {
+                richTextBox1.AppendText(Environment.NewLine + " >> " + text);
+            }));
+        }
+        else
+            richTextBox1.AppendText(Environment.NewLine + " >> " + text);
+    }
+}
