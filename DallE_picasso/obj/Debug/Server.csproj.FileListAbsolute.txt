@@ -12,3 +12,5 @@ C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.CoreCompileInpu
 C:\Users\User\source\repos\DallE_picasso\obj\Debug\Server.csproj.CopyComplete
 C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.exe
 C:\Users\User\source\repos\DallE_picasso\obj\Debug\DallE_picasso.pdb
+C:\Users\광운MOOC센터\Documents\DALL-E_and_picasso\DallE_picasso\obj\Debug\DallE_picasso.exe
+C:\Users\광운MOOC센터\Documents\DALL-E_and_picasso\DallE_picasso\obj\Debug\DallE_picasso.pdb

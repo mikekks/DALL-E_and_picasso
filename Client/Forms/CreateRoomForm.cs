@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DalleLib.Networks;
 using DalleLib.InGame;
+ 
+using MySql.Data.MySqlClient;
+
 
 namespace Client.Forms
 {
@@ -32,6 +35,8 @@ namespace Client.Forms
 
         private void btn_createRoom_Click(object sender, EventArgs e)
         {
+            // 데이터 삽입
+
             metroPanel1.BringToFront();
             Opacity = 0.5;
             metroPanel1.Visible = true;

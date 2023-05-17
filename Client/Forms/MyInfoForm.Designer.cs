@@ -43,26 +43,27 @@
             // lbl_ID
             // 
             this.lbl_ID.AutoSize = true;
-            this.lbl_ID.Location = new System.Drawing.Point(66, 199);
+            this.lbl_ID.Location = new System.Drawing.Point(75, 249);
             this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(32, 19);
+            this.lbl_ID.Size = new System.Drawing.Size(33, 20);
             this.lbl_ID.TabIndex = 0;
             this.lbl_ID.Text = "ID : ";
             // 
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Location = new System.Drawing.Point(36, 230);
+            this.lbl_total.Location = new System.Drawing.Point(41, 288);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(62, 19);
+            this.lbl_total.Size = new System.Drawing.Size(65, 20);
             this.lbl_total.TabIndex = 1;
             this.lbl_total.Text = "플레이 : ";
             // 
             // Tier
             // 
-            this.Tier.Location = new System.Drawing.Point(66, 73);
+            this.Tier.Location = new System.Drawing.Point(75, 91);
+            this.Tier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tier.Name = "Tier";
-            this.Tier.Size = new System.Drawing.Size(129, 110);
+            this.Tier.Size = new System.Drawing.Size(147, 138);
             this.Tier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Tier.TabIndex = 2;
             this.Tier.TabStop = false;
@@ -70,62 +71,62 @@
             // ID
             // 
             this.ID.AutoSize = true;
-            this.ID.Location = new System.Drawing.Point(104, 199);
+            this.ID.Location = new System.Drawing.Point(119, 249);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(65, 19);
+            this.ID.Size = new System.Drawing.Size(69, 20);
             this.ID.TabIndex = 3;
             this.ID.Text = "Song1234";
             // 
             // TryCount
             // 
             this.TryCount.AutoSize = true;
-            this.TryCount.Location = new System.Drawing.Point(104, 230);
+            this.TryCount.Location = new System.Drawing.Point(119, 288);
             this.TryCount.Name = "TryCount";
-            this.TryCount.Size = new System.Drawing.Size(21, 19);
+            this.TryCount.Size = new System.Drawing.Size(22, 20);
             this.TryCount.TabIndex = 4;
             this.TryCount.Text = "10";
             // 
             // Ans
             // 
             this.Ans.AutoSize = true;
-            this.Ans.Location = new System.Drawing.Point(104, 260);
+            this.Ans.Location = new System.Drawing.Point(119, 325);
             this.Ans.Name = "Ans";
-            this.Ans.Size = new System.Drawing.Size(16, 19);
+            this.Ans.Size = new System.Drawing.Size(16, 20);
             this.Ans.TabIndex = 6;
             this.Ans.Text = "7";
             // 
             // lbl_ans
             // 
             this.lbl_ans.AutoSize = true;
-            this.lbl_ans.Location = new System.Drawing.Point(50, 260);
+            this.lbl_ans.Location = new System.Drawing.Point(57, 325);
             this.lbl_ans.Name = "lbl_ans";
-            this.lbl_ans.Size = new System.Drawing.Size(48, 19);
+            this.lbl_ans.Size = new System.Drawing.Size(50, 20);
             this.lbl_ans.TabIndex = 5;
             this.lbl_ans.Text = "정답 : ";
             // 
             // AnsRate
             // 
             this.AnsRate.AutoSize = true;
-            this.AnsRate.Location = new System.Drawing.Point(104, 288);
+            this.AnsRate.Location = new System.Drawing.Point(119, 360);
             this.AnsRate.Name = "AnsRate";
-            this.AnsRate.Size = new System.Drawing.Size(34, 19);
+            this.AnsRate.Size = new System.Drawing.Size(36, 20);
             this.AnsRate.TabIndex = 8;
             this.AnsRate.Text = "70%";
             // 
             // lbl_Pans
             // 
             this.lbl_Pans.AutoSize = true;
-            this.lbl_Pans.Location = new System.Drawing.Point(36, 288);
+            this.lbl_Pans.Location = new System.Drawing.Point(41, 360);
             this.lbl_Pans.Name = "lbl_Pans";
-            this.lbl_Pans.Size = new System.Drawing.Size(62, 19);
+            this.lbl_Pans.Size = new System.Drawing.Size(65, 20);
             this.lbl_Pans.TabIndex = 7;
             this.lbl_Pans.Text = "정답률 : ";
             // 
             // MyInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 327);
+            this.ClientSize = new System.Drawing.Size(303, 409);
             this.Controls.Add(this.AnsRate);
             this.Controls.Add(this.lbl_Pans);
             this.Controls.Add(this.Ans);
@@ -135,7 +136,9 @@
             this.Controls.Add(this.Tier);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.lbl_ID);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MyInfoForm";
+            this.Padding = new System.Windows.Forms.Padding(23, 75, 23, 25);
             this.Text = "내 정보";
             this.Load += new System.EventHandler(this.MyInfoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Tier)).EndInit();
