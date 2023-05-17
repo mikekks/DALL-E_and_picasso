@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fo8YxZFCXs6/l/AO7lQ+Lq6I+tCVxNTw0eQCSjGRbnlNFxN7j4/l1j23QjNBkgGHL4MM/C1oOmASOuwDZFzblA==",
+  "dgSpecHash": "rpWfAG5zfQsxt7yUsUujcTeEmpPUv5bRqHM2CYSTJ1YfY/M6doGD9/OCxU0JxN1uTWaSPf3gZ+xFCh1Q2xUfuQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\DalleE_and_picasso\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
