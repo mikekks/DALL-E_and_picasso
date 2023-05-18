@@ -90,6 +90,8 @@ namespace Client
             InGame inGame = new InGame();
             inGame.ShowDialog();
             Opacity = 1;
+            
+            // 수정해보기
         }
     }
 }
