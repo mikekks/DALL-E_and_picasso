@@ -93,5 +93,37 @@ namespace Client
             
             // 수정해보기
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.clientSocket.Connect("127.0.0.1", Program.port);
+            Program.stream = Program.clientSocket.GetStream();
+
+
+            Program.t_Recieve.Start();
+
+            int id = 12345;
+            string password = "54321";
+            LoginPacket packet = new LoginPacket(id, password);
+
+
+            Program.Send(packet);
+
+            Thread thread = new Thread(loading);
+            thread.IsBackground = true;
+            thread.Start();
+
+            thread.Join();
+
+            if (Program.login == loginType.success)
+            {
+                MetroMessageBox.Show(Owner, "로그인 성공!");
+            }
+            else
+            {
+
+                MessageBox.Show("로그인 실패");
+            }
+        }
     }
 }
