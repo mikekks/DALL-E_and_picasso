@@ -79,7 +79,7 @@ namespace Server.Classes
                     //
                     //
 
-                    user = new User(12345, "54321", "Song min gyu", 100, 70, 30, 70, "Gold");
+                    user = new User(p.user.userId, p.user.password, "Song min gyu", 100, 70, 30, 70, "Gold");
 
                     if (true)  // 로그인 성공 경우
                     {   

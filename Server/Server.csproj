@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DalleLib\DalleLib.csproj" />
     <ProjectReference Include="..\DalleLib\DalleLib.csproj" />
   </ItemGroup>
 

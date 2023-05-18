@@ -15,6 +15,7 @@ using System.Threading;
 using System.Net.Sockets;
 using MetroFramework.Controls;
 using DalleLib;
+using WindowsFormsApp2;
 
 namespace Client
 {
@@ -28,14 +29,13 @@ namespace Client
 
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
-
-
             // 로그인 하는 과정
-            //Hide();
+            Hide();
 
-
-           
+            Login_Form loginForm = new Login_Form();
+            loginForm.ShowDialog();
             
+
             // 로그인 후 정보 갱신 필요.
             //
             //

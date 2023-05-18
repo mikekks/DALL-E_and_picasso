@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj": {}
+    "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {}
   },
   "projects": {
     "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj": {
@@ -22,17 +22,17 @@
     "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\barle\\.nuget\\packages\\",
-        "outputPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\obj\\",
+        "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\barle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -49,9 +49,6 @@
             "projectReferences": {
               "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj": {
                 "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj"
-              },
-              "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj"
               }
             }
           }

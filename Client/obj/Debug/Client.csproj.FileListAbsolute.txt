@@ -37,3 +37,5 @@ C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.Cop
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.exe
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.pdb
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.GameRoom.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Login_Form.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Register_Form.resources

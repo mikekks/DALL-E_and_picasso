@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Client;
+using DalleLib.Networks;
+using MetroFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +22,16 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
+        public void forTest_Connect()
+        {
+            if (!Program.clientSocket.Connected)
+            {
+                Program.clientSocket.Connect("127.0.0.1", Program.port);
+                Program.stream = Program.clientSocket.GetStream();
+                Program.t_Recieve.Start();
+            }
+        }
+
         private void btn_Register_Click(object sender, EventArgs e)
         {
             Register_Form register_Form = new Register_Form();
@@ -30,21 +43,31 @@ namespace WindowsFormsApp2
             string id = txt_ID.Text;
             string pw = txt_PW.Text;
 
-            /* 아이디, 비밀번호 입력 받아서 맞는지 확인
 
-                if (id == 저장된 값)
-                    {
-                         if (pw == 저장된 값)
-                                로그인 성공
-                         else
-                            {                                
-                                MessageBox.Show("로그인에 성공하였습니다.")
-                                메인 화면 실행
-                    }
-                  else
-                     MessageBox.Show("입력된 값이 올바르지 않습니다.")
-            */
+            forTest_Connect();
+            
+            LoginPacket packet = new LoginPacket(Convert.ToInt32(id), pw);
+            Program.MethodList.Add(PacketType.Login, R_Login);
+            Program.Send(packet);
 
+        }
+
+        public void R_Login(Packet packet)
+        {
+            LoginPacket loginPacket = packet as LoginPacket;
+
+            if (loginPacket.success == true)  // 로그인 성공 의미
+            {
+                Program.user = loginPacket.user;
+                Program.roomList = loginPacket.roomList;
+                string init = Program.user.username + "님 안녕하세요!";
+                MessageBox.Show(this, init);
+                Close();
+            }
+            else  // 로그인 실패 의미
+            {
+
+            }
         }
 
         private void btn_Find_Click(object sender, EventArgs e)
@@ -76,7 +99,10 @@ namespace WindowsFormsApp2
        {
             txt_PW.UseSystemPasswordChar = true;
        }
-       
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

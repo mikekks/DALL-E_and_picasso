@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YbWHiF12nuzAu3ozgzspMf9OVK1k6x9T8NAy6VmRHntvCyQfKVRob9kA5ocre1RCb2pe/8aeidVjuHQUaAN6Yw==",
+  "dgSpecHash": "U2hptiIn8D3kNA0PcuD8L4VQFues3gSiKBauV5R4Ajvy3XcBd0CXFVvMW6vcwd6F41Sgawo/qqb9eEuqmefXgQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "'C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj' 프로젝트를 찾을 수 없습니다. 프로젝트 참조가 올바르고 프로젝트 파일이 있는지 확인하세요.",
-      "libraryId": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
