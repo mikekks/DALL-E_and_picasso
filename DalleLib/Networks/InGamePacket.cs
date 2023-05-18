@@ -12,6 +12,7 @@ namespace DalleLib.Networks
         Ready, Answer
     }
 
+    [Serializable]
     public class InGamePacket : Packet
     {
         // ready 인지 ans인지  public User user;

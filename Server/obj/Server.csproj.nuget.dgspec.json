@@ -4,6 +4,21 @@
     "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {}
   },
   "projects": {
+    "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj",
+        "projectName": "DalleLib",
+        "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,6 +47,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj"
+              },
               "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj": {
                 "projectPath": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj"
               }

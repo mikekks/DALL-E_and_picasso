@@ -64,11 +64,11 @@
     <Compile Include="Forms\CreateRoomForm.Designer.cs">
       <DependentUpon>CreateRoomForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InGame.cs">
+    <Compile Include="Forms\GameRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InGame.Designer.cs">
-      <DependentUpon>InGame.cs</DependentUpon>
+    <Compile Include="Forms\GameRoom.Designer.cs">
+      <DependentUpon>GameRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
@@ -93,8 +93,8 @@
     <EmbeddedResource Include="Forms\CreateRoomForm.resx">
       <DependentUpon>CreateRoomForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InGame.resx">
-      <DependentUpon>InGame.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GameRoom.resx">
+      <DependentUpon>GameRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>

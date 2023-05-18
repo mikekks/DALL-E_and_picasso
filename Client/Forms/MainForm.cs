@@ -59,9 +59,12 @@ namespace Client
 
         public void forTest_Connect()
         {
-            Program.clientSocket.Connect("127.0.0.1", Program.port);
-            Program.stream = Program.clientSocket.GetStream();
-            Program.t_Recieve.Start();
+            if (!Program.clientSocket.Connected)
+            {
+                Program.clientSocket.Connect("127.0.0.1", Program.port);
+                Program.stream = Program.clientSocket.GetStream();
+                Program.t_Recieve.Start();
+            }
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -89,15 +92,14 @@ namespace Client
             });
             loadingForm.ShowDialog();
             */
-
+            
             forTest_Connect();
 
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
 
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
-            Room room = new Room(1, 1, "고수만", 3, 0, 0);
-            room.userList.Add(Program.user);
-            RoomPacket roomPacket = new RoomPacket(room, RoomType.Enter);
+            
+            RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
 
             Program.MethodList.Add(PacketType.Room, R_EnterRoom);
             Program.Send(roomPacket);
@@ -121,10 +123,10 @@ namespace Client
                     {
                         
                         Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
-
-                        MetroMessageBox.Show(Owner, "로그인 성공!");
-                        Opacity = 0.5;
-                        InGame inGame = new InGame();
+                        string enter = Program.room.roomName + " 에 들어갑니다.";
+                        MetroMessageBox.Show(Owner, enter);
+                        //Opacity = 0.5;
+                        GameRoom inGame = new GameRoom();
                         inGame.ShowDialog();
                         Opacity = 1;
                         break;
@@ -135,9 +137,38 @@ namespace Client
             }
         }
 
-        public void R_Login()
+        private void button1_Click(object sender, EventArgs e)
         {
 
+            forTest_Connect();
+
+            int id = 12345;
+            string password = "54321";
+            LoginPacket packet = new LoginPacket(id, password);
+
+            Program.MethodList.Add(PacketType.Login, R_Login);
+
+            Program.Send(packet);
+
+
+        }
+
+        public void R_Login(Packet packet)
+        {
+            LoginPacket loginPacket = packet as LoginPacket;
+
+            if(loginPacket.success == true)  // 로그인 성공 의미
+            {
+                Program.user = loginPacket.user;
+                Program.roomList = loginPacket.roomList;
+                string init = Program.user.username + "님 안녕하세요!";
+                MetroMessageBox.Show(Owner, init);
+
+            }
+            else  // 로그인 실패 의미
+            {
+
+            }
         }
 
         private void btn_Myinfo_Click(object sender, EventArgs e)
@@ -155,39 +186,9 @@ namespace Client
             CreateRoomForm createRoomForm = new CreateRoomForm();
             createRoomForm.ShowDialog();
 
-            InGame inGame = new InGame();
+            GameRoom inGame = new GameRoom();
             inGame.ShowDialog();
             Opacity = 1;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            forTest_Connect();
-
-            int id = 12345;
-            string password = "54321";
-            LoginPacket packet = new LoginPacket(id, password);
-           
-            
-            Program.Send(packet);
-
-           
-            MetroMessageBox.Show(Owner, "로그인 성공!");
-           
-
-        }
-
-        public void loading(ref int check)
-        {
-            //Thread.Sleep(50);
-
-            while (check != 1 && check != 2)
-            {
-                Thread.Sleep(1000);
-            }
-
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

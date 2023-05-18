@@ -19,11 +19,13 @@ namespace Server.Classes
 
         public User user;  // 해당 스레드가 어떤 유저랑 통신하는지 결정
        
-        public static Dictionary<string, Room> roomList;
+        public static Dictionary<int, Room> roomList;
         public HandleClient(TcpClient client)
         {
             this.client = client;
             stream = client.GetStream();
+
+            roomList = new Dictionary<int, Room>();
 
             RecvThread = new Thread(Recieve);
             RecvThread.IsBackground = true;
@@ -47,11 +49,15 @@ namespace Server.Classes
                 }
                 catch(SocketException ex)
                 {
+                   
                     Console.WriteLine(ex);
+                    break;
                 }
                 catch(Exception ex)
                 {
+
                     Console.WriteLine(ex);
+                    break;
                 }
 
 
@@ -73,19 +79,28 @@ namespace Server.Classes
                     //
                     //
 
-                    if (true)
-                    {   // 로그인 성공 경우
+                    user = new User(12345, "54321", "Song min gyu", 100, 70, 30, 70, "Gold");
 
-                        // rooms 정보 db에서 불러오기
+                    if (true)  // 로그인 성공 경우
+                    {   
+
+                        // rooms 정보 db에서 불러오기 for문으로 저장
                         //
                         //
 
+                        Room newRoom = new Room(1, 1, "고수만", 3, 1, 0);
+                        newRoom.userList = new List<User>();
+                        newRoom.userList.Add(user);
+                        newRoom.Host = user;
+                        roomList.Add(newRoom.roomID, newRoom);  // for문으로 저장
+                        
                         p = new LoginPacket(true, user, roomList);
                         Send(p);
                     }
-                    else
+                    else  // 로그인 실패 경우
                     {
-                        p.success = false;
+                        p = new LoginPacket(false, user, null);  // ! null로 해도 되나?
+                        Send(p);
                     }
 
 
@@ -109,16 +124,19 @@ namespace Server.Classes
                         // room type으로 반환
                         //
                         Room _room = new Room(1,1,"고수만",3,1,0);
+                        _room.userList = new List<User>();
+                        _room.ReadyList = new Dictionary<int, bool>();
                         
                         if(_room.TotalNum - _room.PartyNum > 0)  // 입장 가능을 의미
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
-                            // 유저 리스트에  p.room.userList[0]] 를 추가시킨다.
+                            // 유저 리스트에  p.room.userList[?] 를 추가시킨다.
                             //
 
                             _room.userList.Add(p.room.userList[0]);
+                            _room.ReadyList.Add(p.room.userList[0].userId, false);
                             _room.PartyNum++;
-
+                            _room.Host = user;
                             RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
                             Send(sendPacket);
 
@@ -137,12 +155,22 @@ namespace Server.Classes
                         // db에서 해당 유저가 레디한 유저인지 파악
                         //
                         //
-
-                        if (true) {  // 방금 레디한 경우
+                        bool test = true;
+                        if (test) {  
+                            // 방금 레디한 경우 
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
                             // 그 후 다시 해당 방의 유저리스트 쿼리
+                            //
+
+                            p.room.ReadyList[p.user.userId] = true;
+                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+                            sendPacket.Type = PacketType.InGame;
+                            sendPacket.respondType = respondType.Ready;
+                            sendPacket.ready = true;
+                            Send(sendPacket);
+                            
                         }
-                        else if (false) { // 예전에 레디한 경우
+                        else if (!test) { // 예전에 레디한 경우
                             // 해당 방의 유저리스트 쿼리
                         }
 

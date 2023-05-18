@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DalleLib.Networks
 {
+    [Serializable]
     public class AnswerPacket : Packet
     {
         // ready 인지 ans인지  public User user;
