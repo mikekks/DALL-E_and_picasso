@@ -1,0 +1,12 @@
+C:\Users\barle\source\repos\gameUI\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\barle\source\repos\gameUI\bin\Debug\WindowsFormsApp2.exe
+C:\Users\barle\source\repos\gameUI\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\barle\source\repos\gameUI\obj\Debug\gameUI.csproj.AssemblyReference.cache
+C:\Users\barle\source\repos\gameUI\obj\Debug\gameUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\barle\source\repos\gameUI\obj\Debug\WindowsFormsApp2.Login_Form.resources
+C:\Users\barle\source\repos\gameUI\obj\Debug\WindowsFormsApp2.Register_Form.resources
+C:\Users\barle\source\repos\gameUI\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\barle\source\repos\gameUI\obj\Debug\gameUI.csproj.GenerateResource.cache
+C:\Users\barle\source\repos\gameUI\obj\Debug\gameUI.csproj.CoreCompileInputs.cache
+C:\Users\barle\source\repos\gameUI\obj\Debug\WindowsFormsApp2.exe
+C:\Users\barle\source\repos\gameUI\obj\Debug\WindowsFormsApp2.pdb
