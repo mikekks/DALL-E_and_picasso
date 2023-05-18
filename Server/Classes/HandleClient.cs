@@ -98,20 +98,54 @@ namespace Server.Classes
                 else if (packet.Type == PacketType.Room)
                 {
                     RoomPacket p = packet as RoomPacket;
+
                     if(p.roomType == RoomType.New)
                     {
 
                     }
-                    else if (p.roomType == RoomType.New)
+                    else if (p.roomType == RoomType.Enter)
                     {
+                        // p.room.roomID로 해당 룸을 DB에서 쿼리
+                        // room type으로 반환
+                        //
+                        Room _room = new Room(1,1,"고수만",3,1,0);
+                        
+                        if(_room.TotalNum - _room.PartyNum > 0)  // 입장 가능을 의미
+                        {
+                            // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
+                            // 유저 리스트에  p.room.userList[0]] 를 추가시킨다.
+                            //
 
+                            _room.userList.Add(p.room.userList[0]);
+                            _room.PartyNum++;
+
+                            RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
+                            Send(sendPacket);
+
+                        }
+                        else  // 입장 불가를 의미
+                        {
+
+                        }
                     }
                 }
                 else if (packet.Type == PacketType.InGame)
                 {
                     InGamePacket p = packet as InGamePacket;
-                    if(p.respondType == respondType.Ready)
+                    if(p.respondType == respondType.Ready)  // Ready를 보냈을 경우 모든 유저의 레디리스트 갱신 필요
                     {
+                        // db에서 해당 유저가 레디한 유저인지 파악
+                        //
+                        //
+
+                        if (true) {  // 방금 레디한 경우
+                            // db에 해당 방의 해당 유저를 레디 상태로 수정
+                            // 그 후 다시 해당 방의 유저리스트 쿼리
+                        }
+                        else if (false) { // 예전에 레디한 경우
+                            // 해당 방의 유저리스트 쿼리
+                        }
+
 
                     }
                     else if (p.respondType == respondType.Answer)
