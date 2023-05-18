@@ -1,48 +1,32 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "DalleLib/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/DalleLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DalleLib.dll": {}
-        }
-      }
-    }
+    "net7.0": {}
   },
-  "libraries": {
-    "DalleLib/1.0.0": {
-      "type": "project",
-      "path": "../../DalleLib/DalleLib.csproj",
-      "msbuildProject": "../../DalleLib/DalleLib.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
     "net7.0": [
-      "DalleLib >= 1.0.0"
+      "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\barle\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\obj\\",
+      "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\barle\\.nuget\\packages\\",
+      "outputPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\barle\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -57,8 +41,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj"
+            "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj": {
+              "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj"
             }
           }
         }
@@ -91,5 +75,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "'C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj' 프로젝트를 찾을 수 없습니다. 프로젝트 참조가 올바르고 프로젝트 파일이 있는지 확인하세요.",
+      "libraryId": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

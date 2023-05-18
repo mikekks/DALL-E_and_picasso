@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {}
+    "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj": {
+    "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\obj\\",
+        "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\barle\\.nuget\\packages\\",
+        "outputPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀플\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\barle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj"
+              "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj": {
+                "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj"
               }
             }
           }
@@ -65,21 +65,6 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
-      }
-    },
-    "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj",
-        "projectName": "DalleLib",
-        "projectPath": "C:\\Users\\User\\source\\repos\\DalleLib\\DalleLib.csproj",
-        "frameworks": {
-          "net472": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net472": {}
       }
     }
   }
