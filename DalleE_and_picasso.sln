@@ -5,9 +5,9 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{F04D7B28-0167-4F6B-94AB-AB73AEF76D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\Client\Client.csproj", "{B86F04D5-1502-4409-853D-CF934D15757F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{B86F04D5-1502-4409-853D-CF934D15757F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalleLib", "..\DalleLib\DalleLib.csproj", "{51FBEED0-F4E4-4B07-B74E-F24560DD1747}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalleLib", "DalleLib\DalleLib.csproj", "{51FBEED0-F4E4-4B07-B74E-F24560DD1747}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

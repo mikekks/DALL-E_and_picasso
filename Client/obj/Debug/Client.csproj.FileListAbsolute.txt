@@ -18,3 +18,4 @@ C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.MyInfoForm.resources
 C:\Users\User\source\repos\Client\bin\Debug\DalleLib.dll
 C:\Users\User\source\repos\Client\bin\Debug\DalleLib.pdb
 C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.CreateRoomForm.resources
+C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.LoadingForm.resources

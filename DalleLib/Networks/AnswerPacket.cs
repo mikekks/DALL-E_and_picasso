@@ -14,7 +14,7 @@ namespace DalleLib.Networks
         public Room room;
         public AnswerPacket(User user, Room room)
         {
-            Type = PacketType.Answer;
+            //Type = PacketType.Answer;
             this.user = user;
             this.room = room;
         }

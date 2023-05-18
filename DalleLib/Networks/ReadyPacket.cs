@@ -14,7 +14,7 @@ namespace DalleLib.Networks
         public Room room;
         public ReadyPacket(User user, Room room)
         {
-            Type = PacketType.Ready;
+           // Type = PacketType.Ready;
             this.user = user;
             this.room = room;
         }  

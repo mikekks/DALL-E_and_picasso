@@ -12,6 +12,11 @@ using System.Text;
 
 namespace Client
 {
+    public enum loginType
+    {
+        nope, success, fail
+    }
+
     internal static class Program
     {
 
@@ -24,7 +29,10 @@ namespace Client
         public static Room room; // 유저가 현재 있는 방
 
         public static Dictionary<string, Room> roomList;  // 유저가 보는 방리스트
+        public static bool isHost;
 
+        public static Dictionary<PacketType, Action<Packet>> MethodList;
+        
         public static object LOCK = new object();
 
         /// <summary>
@@ -34,7 +42,9 @@ namespace Client
         static void Main()
         {
             clientSocket = new TcpClient();
+
             t_Recieve = new Thread(Recieve);
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -49,6 +59,7 @@ namespace Client
         {
             byte[] readBuffer = null;
             byte[] Length_buffer = new byte[4];
+
 
             while (clientSocket.Connected)
             {
@@ -76,17 +87,36 @@ namespace Client
 
                 Packet packet = Objpacket as Packet;
 
+                MethodList[packet.Type].Invoke(packet);
+
                 //  packet.Type에 따라 처리 작업 필요.
-                if(packet.Type == PacketType.Login)
+                /*
+                if (packet.Type == PacketType.Login)
+                {
+                    LoginPacket p = packet as LoginPacket;
+
+                    MethodList[PacketType.Login].Invoke(p);
+                    
+                    
+                }
+                else if (packet.Type == PacketType.Register)
                 {
 
-                }else if (packet.Type == PacketType.Register)
-                {
-
-                }else if(packet.Type == PacketType.Ready)
+                }
+                else if(packet.Type == PacketType.InGame)
                 {
                     
                 }
+                else if (packet.Type == PacketType.Room)
+                {
+                    RoomPacket p = packet as RoomPacket;
+
+                    MethodList[PacketType.Login].Invoke(p);
+                    
+                   
+                    
+                }
+                */
             }
 
         }

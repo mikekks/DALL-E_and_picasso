@@ -11,9 +11,9 @@ namespace DalleLib.Networks
     public class LoginPacket : Packet
     {
         public bool success = false;
-        User user;
-
-        public List<Room> rooms;
+        public User user;
+        public Dictionary<string, Room> roomList;
+        //public List<Room> rooms;
         
         public LoginPacket(int userId, string password)
         {
@@ -21,13 +21,13 @@ namespace DalleLib.Networks
             user = new User(userId, password);
         }
 
-        public LoginPacket(bool success, User user, List<Room> rooms)
+        public LoginPacket(bool success, User user, Dictionary<string, Room> roomList)
         {
             Type = PacketType.Login;
 
             this.success = success;
             this.user = user;
-            this.rooms = rooms;
+            this.roomList = roomList;
         }
     }
 }

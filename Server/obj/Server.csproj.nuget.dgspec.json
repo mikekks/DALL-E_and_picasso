@@ -11,7 +11,7 @@
         "projectName": "Server",
         "projectPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\DALL-E_and_picasso\\Server\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\DALL-E_and_picasso\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

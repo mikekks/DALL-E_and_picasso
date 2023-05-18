@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace DalleLib.InGame
 {
-    public enum RoomType
-    {
-        New, Enter
-    }
+    
     [Serializable]
     public class Room 
     {
         public int roomID;
         public int level;
         public string roomName;
+        public int TotalNum;  // 들어올 수 있는 총 인원
         public int PartyNum;  // 참여인원
         public int ReadyNum;  // Ready한 인원
 
-        public RoomType roomType;
         public List<User> userList;
 
         public string Question;
@@ -34,11 +31,12 @@ namespace DalleLib.InGame
             this.roomName = roomName;
         }
 
-        public Room(int roomID, int level, string roomName, int PartyNum, int ReadyNum)
+        public Room(int roomID, int level, string roomName, int TotalNum, int PartyNum, int ReadyNum)
         {
             this.roomID = roomID;
             this.level = level;
             this.roomName = roomName;
+            this.TotalNum = TotalNum;
             this.PartyNum = PartyNum;
             this.ReadyNum = ReadyNum;
         }
