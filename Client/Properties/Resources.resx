@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="room_icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Source\room_icon2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dalle2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\dalle2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Van" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Source\Van.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,16 +127,28 @@
   <data name="Tier" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Source\Tier.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tier_Gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\Tier_Gold.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Source\img.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dalle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Source\dalle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dalle2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Source\dalle2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="room_icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\room_icon2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tier_Gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Source\Tier_Gold.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pwimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\pwimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="userimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\userimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="userimage2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\userimage2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="토마토로봇" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Source\토마토로봇.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
