@@ -20,7 +20,7 @@ namespace Server
             /// 데이터베이스 접속
             /// 
             ///
-            
+
             server = new TcpListener(IPAddress.Any, port);
             
             server.Start();

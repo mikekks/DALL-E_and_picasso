@@ -15,3 +15,10 @@ C:\Users\User\source\repos\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.csproj
 C:\Users\User\source\repos\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.csproj.CopyComplete
 C:\Users\User\source\repos\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.dll
 C:\Users\User\source\repos\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.pdb
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\bin\Debug\DalleLib.dll
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\bin\Debug\DalleLib.pdb
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.csproj.AssemblyReference.cache
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.csproj.CoreCompileInputs.cache
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.csproj.CopyComplete
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.dll
+C:\Users\kwctl\Desktop\DALL-E_and_picasso\DalleLib\obj\Debug\DalleLib.pdb
