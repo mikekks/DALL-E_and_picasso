@@ -9,7 +9,7 @@ namespace DalleLib.Networks
 {
     public enum respondType
     {
-        Ready, Start, Answer
+        Ready, Start, Answer, End
     }
 
     [Serializable]
@@ -21,6 +21,7 @@ namespace DalleLib.Networks
 
         public respondType respondType;
         public bool ready;
+        public int correct;
 
         public string Answer;
 

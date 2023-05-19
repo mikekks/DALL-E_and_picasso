@@ -18,7 +18,9 @@ namespace Server.Classes
         public Thread RecvThread;
 
         public User user;  // 해당 스레드가 어떤 유저랑 통신하는지 결정
-       
+
+        public List<string> AnswerList;
+
         public static Dictionary<int, Room> roomList;
         public HandleClient(TcpClient client)
         {
@@ -26,6 +28,7 @@ namespace Server.Classes
             stream = client.GetStream();
 
             roomList = new Dictionary<int, Room>();
+            
 
             RecvThread = new Thread(Recieve);
             RecvThread.IsBackground = true;
@@ -88,7 +91,7 @@ namespace Server.Classes
                         //
                         //
 
-                        Room newRoom = new Room(1, 1, "고수만", 3, 1, 0);
+                        Room newRoom = new Room(1, 3, "고수만", 3, 1, 0);
                         newRoom.userList = new List<User>();
                         newRoom.userList.Add(user);
                         newRoom.Host = user;
@@ -123,7 +126,7 @@ namespace Server.Classes
                         // p.room.roomID로 해당 룸을 DB에서 쿼리
                         // room type으로 반환
                         //
-                        Room _room = new Room(1,1,"고수만",3,1,0);
+                        Room _room = new Room(1,3,"고수만",3,1,0);
                         _room.userList = new List<User>();
                         _room.ReadyList = new Dictionary<int, bool>();
                         
@@ -207,7 +210,40 @@ namespace Server.Classes
                     }
                     else if (p.respondType == respondType.Answer)
                     {
+                        string tmpAns = p.Answer;
 
+                        if(AnswerList == null)
+                            AnswerList = new List<string>();
+                        // DB에서 해당 룸( p.room.roomID ) 에 
+                        // 매핑되는 문제의 정답 단어 불러오기
+                        //
+
+                        if (AnswerList.Count < 3)
+                        {  // ! 여기는 일단 하드코딩
+                            AnswerList.Add("Apple");
+                            AnswerList.Add("Banana");
+                            AnswerList.Add("Candy");
+                        }
+                        
+                        InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+
+                        sendPacket.Type = PacketType.InGame;
+                        sendPacket.respondType = respondType.Answer;
+                        sendPacket.Answer = tmpAns;
+
+                        int check = 0;
+                        int idx;
+
+                        for(idx=1; idx<=AnswerList.Count; idx++) 
+                        {
+                            if (AnswerList[idx-1] == tmpAns)  // 정답인 경우
+                            {
+                                check = idx;
+                            }
+                        }
+                        sendPacket.correct = check;                    
+
+                        Send(sendPacket);
                     }
 
                 }

@@ -15,6 +15,8 @@ using DalleLib.Networks;
 using DalleLib.InGame;
 using DalleLib;
 using MetroFramework;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using MetroFramework.Controls;
 
 namespace Client
 {
@@ -30,6 +32,8 @@ namespace Client
 
         System.Timers.Timer timer = new System.Timers.Timer();
 
+        public MetroTile[] metroTiles = null;
+        
         public GameRoom()
         {
             InitializeComponent();
@@ -60,6 +64,14 @@ namespace Client
             }
             rdy_list.Text += Environment.NewLine + "Lee ju song";
 
+            // 필요한 정답 칸 계산해서 생성
+            metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
+            for (int i=5; i>=Program.room.level; i--)
+            {
+                metroTiles[i].Enabled = false;
+                metroTiles[i].Text = "X";
+            }
+
 
             // 방장인지 확인하고, 방장이면 Start 버튼 활성화
             if (Program.room.Host.userId == Program.user.userId)
@@ -72,6 +84,7 @@ namespace Client
             }
         }
 
+        /*
         private void InitSocket()
         {
             try
@@ -88,6 +101,7 @@ namespace Client
                 MessageBox.Show(ex.Message, "Error");
             }
         }
+        */
 
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -128,8 +142,8 @@ namespace Client
  
             ingamePacket.ready = Ready;
             Program.Send(ingamePacket);
-            timer.Close();
-            timer.Dispose();
+            //timer.Close();
+            //timer.Dispose();
             
         }
 
@@ -143,7 +157,7 @@ namespace Client
             Thread t_hanlder = new Thread(doReady);
             t_hanlder.IsBackground = true;
             t_hanlder.Start();
-           
+            timer.Start();
         }
 
         private void doReady()
@@ -156,7 +170,7 @@ namespace Client
             ingamePacket.ready = Ready;
 
             Program.Send(ingamePacket);
- 
+            
             /*  서버에 처리하기 전에 그냥 처리해줌
             if (rdy_list.InvokeRequired)
             {
@@ -183,54 +197,84 @@ namespace Client
         {
             InGamePacket p = packet as InGamePacket;
 
-            if(p.respondType == respondType.Ready)
+            if (p.respondType == respondType.Ready)
             {
                 Program.room = p.room;
-                foreach (User player in Program.room.userList)  // 레디리스트 갱신
+
+                if (InvokeRequired)
                 {
-                    rdy_list.Clear();
-                    rdy_list.Text += Environment.NewLine + player.username;
-                    if (p.room.ReadyList[player.userId])
+                    this.Invoke(new Action(() => { R_PlayGame(packet); }));
+                }
+                else
+                {
+                    foreach (User player in Program.room.userList)  // 레디리스트 갱신
                     {
-                        rdy_list.Text += " : Ready!";
+                        rdy_list.Clear();
+                        rdy_list.Text += Environment.NewLine + player.username;
+                        if (p.room.ReadyList[player.userId])
+                        {
+                            rdy_list.Text += " : Ready!";
+                        }
                     }
                 }
+   
             }
             else if(p.respondType == respondType.Start)  // 무조건 게임 시작해도 됨을 의미
             {
-                string url = p.room.Question;
-                picBox.Load(url);
-                Start = true;
-                timer.Stop();   // ! 여기서 타이머 stop한다.
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { R_PlayGame(packet); }));
+                }
+                else
+                {
+                    string url = p.room.Question;
+                    picBox.Load(url);
+                    Start = true;
+                    timer.Stop();   // ! 여기서 타이머 stop한다.
+
+                    GameTimer.Start();
+                }
             }
             else if (p.respondType == respondType.Answer)
             {
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { R_PlayGame(packet); }));
+                }
+                else
+                {
+                   if(p.correct != 0)  // 정답 맞춘 경우
+                    {
+                        metroTiles[p.correct - 1].Text = p.Answer;
+                    }
+                    else  // 정답 틀린 경우
+                    {
 
+                    }
+                }
             }
         }
  
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            NetworkStream stream = clientSocket.GetStream();
-            byte[] sbuffer = Encoding.Unicode.GetBytes(tbAnswer.Text + "$");  // 여기만 다름
-            stream.Write(sbuffer, 0, sbuffer.Length);
-            stream.Flush();
+            if (!Program.MethodList.ContainsKey(PacketType.InGame))
+                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
 
-            byte[] rbuffer = new byte[1024];
-            stream.Read(rbuffer, 0, rbuffer.Length);
-            string msg = Encoding.Unicode.GetString(rbuffer);
-            msg = "Data from Server : " + msg;
-            //DisplayText(msg);
+
+            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
+            ingamePacket.respondType = respondType.Answer;
+
+            ingamePacket.ready = Ready;
+            ingamePacket.Answer = tbAnswer.Text;
+
+            Program.Send(ingamePacket);
 
             tbAnswer.Text = "";
             tbAnswer.Focus();
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -238,32 +282,9 @@ namespace Client
                 clientSocket.Close();
         }
 
-        private void DisplayText(string text)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                richTextBox1.BeginInvoke(new MethodInvoker(delegate
-                {
-                    richTextBox1.AppendText(Environment.NewLine + " >> " + text);
-                }));
-            }
-            else
-                richTextBox1.AppendText(Environment.NewLine + " >> " + text);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            timer.Start();
-        }
-
-        private void btn_exit_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void metroButton5_Click(object sender, EventArgs e)
-        {
-
+           
         }
 
         private void btn_Exit_Click_1(object sender, EventArgs e)
@@ -272,11 +293,6 @@ namespace Client
         }
 
         private void rdy_list_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton1_Click(object sender, EventArgs e)
         {
 
         }
@@ -318,6 +334,22 @@ namespace Client
             else  // 모두 준비가 안돼서 시작 불가능
             {
 
+            }
+        }
+
+        private void GameTimer_Tick(object sender, EventArgs e)
+        {
+            int curTime = int.Parse(timeLimit.Text);
+            if(curTime > 0)
+            {
+                curTime--;
+                timeLimit.Text = curTime.ToString();
+            }
+            else
+            {
+                GameTimer.Enabled = false;
+                // 게임이 종료됨을 서버에게 알림
+                
             }
         }
     }

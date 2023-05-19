@@ -32,8 +32,11 @@ namespace Client
             // 로그인 하는 과정
             Hide();
 
-            Login_Form loginForm = new Login_Form();
-            loginForm.ShowDialog();
+            if (Program.user == null)
+            {
+                Login_Form loginForm = new Login_Form();
+                loginForm.ShowDialog();
+            }
             
 
             // 로그인 후 정보 갱신 필요.
