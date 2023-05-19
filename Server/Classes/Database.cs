@@ -14,17 +14,19 @@ using MySql.Data.MySqlClient;
 
 namespace Server.Classes
 {
-    public class Database
+    static class Database
     {
-        string _server = "localhost";
-        int _port = 3306;
-        string _database = "kwubuild";
-        string _id = "root";
-        string _pw = "00000000";
-        string _connectionAddress = "";
 
-        public void connectDB()
+        public static void connectDB()
         {
+            Console.WriteLine("접근 중");
+
+            string _server = "localhost";
+            int _port = 3306;
+            string _database = "kwubuild";
+            string _id = "root";
+            string _pw = "00000000";
+            string _connectionAddress = "";
 
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
 
@@ -36,7 +38,6 @@ namespace Server.Classes
                     string selectQuery = string.Format("SELECT * from Users");
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
-
 
                     while (table.Read())
                     {

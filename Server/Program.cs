@@ -18,7 +18,8 @@ namespace Server
         static void Main(string[] args)
         {
             /// 데이터베이스 접속
-            /// 
+            Console.WriteLine("접속");
+            Database.connectDB();
             ///
 
             server = new TcpListener(IPAddress.Any, port);
