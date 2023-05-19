@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.rdy_list = new System.Windows.Forms.RichTextBox();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.btn_Send = new MetroFramework.Controls.MetroButton();
@@ -76,11 +74,6 @@
             this.richTextBox2.Size = new System.Drawing.Size(182, 154);
             this.richTextBox2.TabIndex = 8;
             this.richTextBox2.Text = "";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // rdy_list
             // 
@@ -151,6 +144,7 @@
             this.btn_Start.TabIndex = 17;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseSelectable = true;
+            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
             // GameRoom
             // 
@@ -169,6 +163,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.picBox);
             this.Name = "GameRoom";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameRoom_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
@@ -183,7 +178,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox rdy_list;
         private MetroFramework.Controls.MetroButton btn_Send;
         private MetroFramework.Controls.MetroButton btn_Ready;

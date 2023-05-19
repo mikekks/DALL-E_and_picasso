@@ -122,13 +122,24 @@ namespace Client
                     if (user.userId == Program.user.userId)
                     {
                         
-                        Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
-                        string enter = Program.room.roomName + " 에 들어갑니다.";
-                        MetroMessageBox.Show(Owner, enter);
-                        //Opacity = 0.5;
-                        GameRoom inGame = new GameRoom();
-                        inGame.ShowDialog();
-                        Opacity = 1;
+                        
+                        if (InvokeRequired)
+                        {
+                            this.Invoke(new Action(() => { R_EnterRoom(packet); }));
+                        }
+                        else
+                        {
+                            Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
+                            string enter = Program.room.roomName + " 에 들어갑니다.";
+                            MetroMessageBox.Show(Owner, enter);
+                            //Opacity = 0.5;
+                            GameRoom inGame = new GameRoom();
+                            Hide();
+                            inGame.Show();
+                        }
+                        
+                        
+                        
                         break;
                     }
                     
@@ -225,6 +236,11 @@ namespace Client
             spinner.Show();
             spinner.Parent = metroPanel;
             */
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

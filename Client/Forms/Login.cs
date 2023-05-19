@@ -17,6 +17,8 @@ namespace WindowsFormsApp2
 {
     public partial class Login_Form : Form
     {
+        public delegate void EndForm();
+
         public Login_Form()
         {
             InitializeComponent();
@@ -61,13 +63,18 @@ namespace WindowsFormsApp2
                 Program.user = loginPacket.user;
                 Program.roomList = loginPacket.roomList;
                 string init = Program.user.username + "님 안녕하세요!";
-                MessageBox.Show(this, init);
-                Close();
+                MessageBox.Show(this.Parent, init);
+                this.Invoke(new EndForm(tmp));
             }
             else  // 로그인 실패 의미
             {
 
             }
+        }
+        
+        public void tmp()
+        {
+            Close();
         }
 
         private void btn_Find_Click(object sender, EventArgs e)

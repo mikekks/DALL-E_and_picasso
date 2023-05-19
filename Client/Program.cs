@@ -46,7 +46,7 @@ namespace Client
             MethodList = new Dictionary<PacketType, Action<Packet>>();
 
             t_Recieve = new Thread(Recieve);
-            
+            t_Recieve.Priority = ThreadPriority.Highest;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -88,7 +88,7 @@ namespace Client
                 Objpacket = Packet.Deserialize(readBuffer);
 
                 Packet packet = Objpacket as Packet;
-
+                
                 MethodList[packet.Type].Invoke(packet);
 
                 //  packet.Type에 따라 처리 작업 필요.

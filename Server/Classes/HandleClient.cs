@@ -156,8 +156,8 @@ namespace Server.Classes
                         //
                         //
                         bool test = true;
-                        if (test) {  
-                            // 방금 레디한 경우 
+                        if (p.ready && test)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
+                        { 
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
                             // 그 후 다시 해당 방의 유저리스트 쿼리
                             //
@@ -170,16 +170,46 @@ namespace Server.Classes
                             Send(sendPacket);
                             
                         }
-                        else if (!test) { // 예전에 레디한 경우
+                        else { // 예전에 레디한 경우 or 레디하지 않은 경우
                             // 해당 방의 유저리스트 쿼리
                         }
 
+
+                    }
+                    else if (p.respondType == respondType.Start)
+                    {
+                        // DB에서 방장인지 확인(이 부분은 보류), 모두 레디했는지 확인  : p.room.roomID, p.user.userId 사용
+                        //
+                        //
+
+                        bool test = true;
+                        if (test)  // 두 경우 모두 통과한 경우
+                        {
+                            // 일단 현재 구현은 단일 라운드로 진행
+                            string img = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
+                            // 식별번호?, Dalle image, 정답 단어, 해당 room 저장
+                            //
+                            //
+
+                            p.room.Question = img;
+                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+
+                            sendPacket.Type = PacketType.InGame;
+                            sendPacket.respondType = respondType.Start;  // 오직 여기서만 Start 패킷 보내야 함
+                            sendPacket.ready = true;
+                            Send(sendPacket);
+                        }
+                        else  // 하나라도 통과 안된 경우
+                        {
+
+                        }
 
                     }
                     else if (p.respondType == respondType.Answer)
                     {
 
                     }
+
                 }
 
             }

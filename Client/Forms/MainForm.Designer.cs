@@ -354,6 +354,7 @@
             this.Name = "MainForm";
             this.Text = "Dall-E n Picasso";
             this.TransparencyKey = System.Drawing.Color.LemonChiffon;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.Tab1.ResumeLayout(false);
