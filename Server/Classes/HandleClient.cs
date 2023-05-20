@@ -122,7 +122,52 @@ namespace Server.Classes
                 }
                 else if (packet.Type == PacketType.Register)
                 {
+                    RegisterPacket p = packet as RegisterPacket;
+                    
+                    if(p.registerType == RegisterType.duplicate)
+                    {
+                        // DB에서 해당 아이디(p.id) 중복도 검사
+                        //
+                        //
+                        bool test = true;
+                        RegisterPacket sendPacket = new RegisterPacket(p.id, false);
+                        if (test)  // 중복도 검사 통과
+                        {
+                            sendPacket.duplicate = true; 
+                            
+                        }
+                        else  // 중복되는 아이디 있음
+                        {
+                            sendPacket.duplicate = false;
+                        }
 
+                        sendPacket.Type = PacketType.Register;
+                        sendPacket.registerType = RegisterType.duplicate;
+                        Send(sendPacket);
+
+                    }
+                    else if(p.registerType == RegisterType.create)
+                    {
+                        //  db에 해당 유저의 정보(p에 다 들어있음) 저장
+                        //
+                        //
+
+                        bool test = true;  // 테스트를 위함
+                        RegisterPacket sendPacket;
+                        if (test)  // 회원가입 성공
+                        {
+                            sendPacket = new RegisterPacket(p.id, true);
+                        }
+                        else  // 회원가입 실패
+                        {
+                            sendPacket = new RegisterPacket(p.id, false);
+                        }
+
+                        sendPacket.Type = PacketType.Register;
+                        sendPacket.registerType = RegisterType.create;
+                        Send(sendPacket);
+
+                    }
                 }
                 else if (packet.Type == PacketType.Room)
                 {
