@@ -33,7 +33,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.rdy_list = new System.Windows.Forms.RichTextBox();
-            this.picBox = new System.Windows.Forms.PictureBox();
             this.btn_Send = new MetroFramework.Controls.MetroButton();
             this.btn_Ready = new MetroFramework.Controls.MetroButton();
             this.btn_Exit = new MetroFramework.Controls.MetroButton();
@@ -48,6 +47,7 @@
             this.Answer4 = new MetroFramework.Controls.MetroTile();
             this.Answer5 = new MetroFramework.Controls.MetroTile();
             this.Answer6 = new MetroFramework.Controls.MetroTile();
+            this.picBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,16 +84,6 @@
             this.rdy_list.TabIndex = 10;
             this.rdy_list.Text = "";
             this.rdy_list.TextChanged += new System.EventHandler(this.rdy_list_TextChanged);
-            // 
-            // picBox
-            // 
-            this.picBox.Location = new System.Drawing.Point(207, 63);
-            this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(366, 209);
-            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBox.TabIndex = 0;
-            this.picBox.TabStop = false;
-            this.picBox.WaitOnLoad = true;
             // 
             // btn_Send
             // 
@@ -161,7 +151,7 @@
             this.timeLimit.Name = "timeLimit";
             this.timeLimit.Size = new System.Drawing.Size(31, 19);
             this.timeLimit.TabIndex = 19;
-            this.timeLimit.Text = "30";
+            this.timeLimit.Text = "10";
             // 
             // label3
             // 
@@ -243,6 +233,16 @@
             this.Answer6.Text = "뭘까요?";
             this.Answer6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer6.UseSelectable = true;
+            // 
+            // picBox
+            // 
+            this.picBox.Location = new System.Drawing.Point(207, 63);
+            this.picBox.Name = "picBox";
+            this.picBox.Size = new System.Drawing.Size(366, 209);
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox.TabIndex = 0;
+            this.picBox.TabStop = false;
+            this.picBox.WaitOnLoad = true;
             // 
             // GameRoom
             // 

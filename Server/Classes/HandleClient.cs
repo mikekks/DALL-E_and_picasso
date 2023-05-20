@@ -22,6 +22,17 @@ namespace Server.Classes
         public List<string> AnswerList;
 
         public static Dictionary<int, Room> roomList;
+
+
+        ////////////// 테스트를 위한 임시 변수들 //////////////
+        
+        int Round = 2;  // 남은 라운드 의미
+        bool flipflop = true;
+        public static int readyChk = 0;
+
+        ////////////// 테스트를 위한 임시 변수들 //////////////
+
+
         public HandleClient(TcpClient client)
         {
             this.client = client;
@@ -158,7 +169,9 @@ namespace Server.Classes
                         // db에서 해당 유저가 레디한 유저인지 파악
                         //
                         //
-                        bool test = true;
+                        bool test = true;  // 테스트를 위한 변수
+                        readyChk++;  // 테스트를 위한 변수
+
                         if (p.ready && test)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
                         { 
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
@@ -186,7 +199,7 @@ namespace Server.Classes
                         //
 
                         bool test = true;
-                        if (test)  // 두 경우 모두 통과한 경우
+                        if (test && readyChk == 2)  // 두 경우 모두 통과한 경우
                         {
                             // 일단 현재 구현은 단일 라운드로 진행
                             string img = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
@@ -245,7 +258,63 @@ namespace Server.Classes
 
                         Send(sendPacket);
                     }
+                    else if (p.respondType == respondType.NextGame)  // 현재 라운드 종료, 다음 라운드 진행
+                    {
+                        // 해당 게임의 모든 라운드가 끝났는지 확인, 일단 5라운드 상수로 지정
+                        //
+                        //
+                        if (Round == 0)  // 해당 게임의 모든 라운드가 끝남을 의미
+                        {
+                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+                            sendPacket.Type = PacketType.InGame;
+                            sendPacket.respondType = respondType.End;
 
+                            // DB에서 해당 게임의 결과 가져오기
+                            //
+                            //
+
+                            Send(sendPacket);
+                        }
+                        else
+                        {
+                            Round--;  // 테스트 코드
+
+                            // 방장인지 확인 : 방장쪽의 패킷에서 보내면 문제 변경하는거로
+                            //
+                            //
+
+                            // Dall-e와 통신 or Dall-e DB 접근 -> 달리 이미지랑 단어 조합 받아오기
+                            //
+                            //
+                            string newQuestion = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
+                            string newQuestion2 = "https://i.ytimg.com/vi/K0TW-zcbEuY/mqdefault.jpg";
+                            // 이미지뿐만 아니라 단어도 필요
+
+                            // DB에서 해당 방(p.room.roomID)의 문제 변경
+                            //
+                            //
+
+                            if (flipflop)
+                            {
+                                flipflop = false;
+                                p.room.Question = newQuestion;
+                            }
+                            else
+                            {
+                                flipflop = true;
+                                p.room.Question = newQuestion2;
+                            }
+
+                            
+                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+
+                            sendPacket.Type = PacketType.InGame;
+                            sendPacket.respondType = respondType.Start;  // 다시 시작을 의미
+                            sendPacket.ready = true;
+                            Send(sendPacket);
+                        }
+
+                    }
                 }
 
             }

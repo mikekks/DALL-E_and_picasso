@@ -207,15 +207,7 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Thread.Sleep(5000);
-
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-
+ 
             /*
             MetroPanel metroPanel = new MetroPanel();
             metroPanel.BringToFront();
