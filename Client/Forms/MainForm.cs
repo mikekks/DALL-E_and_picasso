@@ -36,8 +36,14 @@ namespace Client
             {
                 Login_Form loginForm = new Login_Form();
                 loginForm.ShowDialog();
+
+                if (Program.user == null)
+                {
+                    this.Close();
+                }
             }
             
+
 
             // 로그인 후 정보 갱신 필요.
             //
