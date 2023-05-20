@@ -205,10 +205,20 @@ namespace Client
             Opacity = 0.5;
             CreateRoomForm createRoomForm = new CreateRoomForm();
             createRoomForm.ShowDialog();
-
-            GameRoom inGame = new GameRoom();
-            inGame.ShowDialog();
             Opacity = 1;
+
+            if (Program.room == null)  // 나가기 한 경우
+            {
+                // ! 업데이트를 시켜줘야 하나?
+            }
+            else  // 만든 경우
+            {
+                GameRoom gameRoom = new GameRoom();
+                gameRoom.ShowDialog();
+               
+            }
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

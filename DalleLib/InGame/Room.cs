@@ -10,14 +10,14 @@ namespace DalleLib.InGame
     [Serializable]
     public class Room 
     {
+        public bool create;
+
         public int roomID;
         public int level;
         public string roomName;
         public int TotalNum;  // 들어올 수 있는 총 인원
         public int PartyNum;  // 참여인원
-        public int ReadyNum;  // Ready한 인원
-        
-        
+        public int ReadyNum;  // Ready한 인원    
         
         public User Host;
         public List<User> userList;

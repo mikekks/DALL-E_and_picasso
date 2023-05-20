@@ -75,6 +75,7 @@ namespace Client
 
 
             // 방장인지 확인하고, 방장이면 Start 버튼 활성화
+            /*
             if (Program.room.Host.userId == Program.user.userId)
             {
                 btn_Start.Enabled = true;
@@ -83,6 +84,7 @@ namespace Client
             {
                 btn_Start.Enabled = false;
             }
+            */
         }
 
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

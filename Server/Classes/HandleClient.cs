@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using DalleLib;
@@ -169,15 +170,95 @@ namespace Server.Classes
 
                     }
                 }
-                else if (packet.Type == PacketType.Room)
+                else if (packet.Type == PacketType.RoomCreate)
                 {
                     RoomPacket p = packet as RoomPacket;
 
+                    if (p.roomType == RoomType.New)
+                    {
+                        // db에서 요청하는 방과 중복되는게 있는지 확인
+                        // 
+                        //
+
+                        // db에 해당 방 생성
+                        //
+                        //
+
+                        bool test = true;  // 테스트를 위함
+
+                        if (test)  // 새로운 방 생성 성공
+                        {
+                            Room room = new Room(p.room.roomID, p.room.level, p.room.roomName, p.room.TotalNum, 1, 0);
+                            room.Host = p.user;
+
+                            RoomPacket sendPacket = new RoomPacket(room, RoomType.New);
+                            sendPacket.Type = PacketType.RoomCreate;
+                            room.userList = new List<User> { p.user };
+                            room.ReadyList = new Dictionary<int, bool>
+                            {
+                                 { p.user.userId, false }
+                            };
+                            sendPacket.userList = room.userList;
+                            sendPacket.ReadyList = room.ReadyList;
+                            sendPacket.room.Host = p.user;
+
+                            sendPacket.roomType = p.roomType;
+                            sendPacket.room.create = true;
+
+                            Send(sendPacket);
+
+                        }
+                        else  // 방 생성 실패
+                        {
+                            RoomPacket sendPacket = new RoomPacket(null, RoomType.New);
+                            sendPacket.Type = PacketType.RoomCreate;
+                            sendPacket.roomType = p.roomType;
+                            Send(sendPacket);
+                        }
+                    }
+                }
+
+                else if (packet.Type == PacketType.Room)
+                {
+                    RoomPacket p = packet as RoomPacket;
+                    /*
                     if(p.roomType == RoomType.New)
                     {
+                        // db에서 요청하는 방과 중복되는게 있는지 확인
+                        // 
+                        //
 
+                        // db에 해당 방 생성
+                        //
+                        //
+
+                        bool test = true;  // 테스트를 위함
+
+                        if (test)  // 새로운 방 생성 성공
+                        {
+                            Room room = new Room(p.room.roomID, p.room.level, p.room.roomName, p.room.TotalNum, 1, 0);
+                            room.Host = p.user;
+
+                            RoomPacket sendPacket = new RoomPacket(room, RoomType.New);
+                            sendPacket.Type = PacketType.Room;
+                            sendPacket.userList = p.userList;
+                            sendPacket.ReadyList = p.ReadyList;
+                            sendPacket.roomType = p.roomType;
+                            sendPacket.room.create = true;
+
+                            Send(sendPacket);
+
+                        }
+                        else  // 방 생성 실패
+                        {
+                            RoomPacket sendPacket = new RoomPacket(null, RoomType.New);
+                            sendPacket.Type = PacketType.Room;
+                            sendPacket.roomType = p.roomType;
+                            Send(sendPacket);
+                        }
                     }
-                    else if (p.roomType == RoomType.Enter)
+                    */
+                    if (p.roomType == RoomType.Enter)
                     {
                         // p.room.roomID로 해당 룸을 DB에서 쿼리
                         // room type으로 반환

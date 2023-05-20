@@ -95,8 +95,11 @@ namespace WindowsFormsApp2
 
         private void btn_Check_Click(object sender, EventArgs e)
         {
+            if (!Program.MethodList.ContainsKey(PacketType.Register))
+                Program.MethodList.Add(PacketType.Register, R_Register);
+
             // 비밀번호 확인
-            if(tb_pwd.Text != tb_pwd_Check.Text)
+            if (tb_pwd.Text != tb_pwd_Check.Text)
             {
                 MetroMessageBox.Show(Owner, "비밀번호가 서로 다릅니다.");
                 return;

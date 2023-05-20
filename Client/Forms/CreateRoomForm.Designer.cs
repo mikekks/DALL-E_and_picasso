@@ -39,9 +39,6 @@
             this.cmb_PartyCnt = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
-            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_createRoom
@@ -80,8 +77,7 @@
             this.txt_roonName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_roonName.CustomButton.UseSelectable = true;
             this.txt_roonName.CustomButton.Visible = false;
-            this.txt_roonName.Lines = new string[] {
-        "방 제목을 입력하시오"};
+            this.txt_roonName.Lines = new string[0];
             this.txt_roonName.Location = new System.Drawing.Point(144, 86);
             this.txt_roonName.MaxLength = 32767;
             this.txt_roonName.Name = "txt_roonName";
@@ -93,7 +89,6 @@
             this.txt_roonName.ShortcutsEnabled = true;
             this.txt_roonName.Size = new System.Drawing.Size(288, 23);
             this.txt_roonName.TabIndex = 2;
-            this.txt_roonName.Text = "방 제목을 입력하시오";
             this.txt_roonName.UseSelectable = true;
             this.txt_roonName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_roonName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -179,8 +174,6 @@
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.metroLabel5);
-            this.metroPanel1.Controls.Add(this.metroProgressSpinner1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
@@ -192,24 +185,6 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             this.metroPanel1.Visible = false;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(163, 176);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(142, 19);
-            this.metroLabel5.TabIndex = 3;
-            this.metroLabel5.Text = "잠시만 기다려주세요.";
-            // 
-            // metroProgressSpinner1
-            // 
-            this.metroProgressSpinner1.Location = new System.Drawing.Point(149, 26);
-            this.metroProgressSpinner1.Maximum = 100;
-            this.metroProgressSpinner1.Name = "metroProgressSpinner1";
-            this.metroProgressSpinner1.Size = new System.Drawing.Size(169, 118);
-            this.metroProgressSpinner1.TabIndex = 2;
-            this.metroProgressSpinner1.UseSelectable = true;
             // 
             // CreateRoomForm
             // 
@@ -230,8 +205,6 @@
             this.Name = "CreateRoomForm";
             this.Text = "방 만들기";
             this.Load += new System.EventHandler(this.CreateRoomForm_Load);
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +223,5 @@
         private MetroFramework.Controls.MetroComboBox cmb_PartyCnt;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
     }
 }
