@@ -154,7 +154,43 @@ namespace Server.Classes
                 return false;
             }
         }
+        
+        // 4. 방 리스트 불러오는 함수
+        public static List<Rooms> getRoomList()
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Rooms";
 
+            List<Rooms> rooms = new List<Rooms>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        rooms.Add(new Rooms(
+                                    rdr.GetString("roomId"),
+                                    rdr.GetString("userId"),
+                                    rdr.GetInt32("capacity")));
+                    }
+
+
+                    Console.WriteLine("방 리스트 불러오기 성공");
+                    Console.WriteLine(rooms.Count);
+                    return rooms;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("방 리스트 불러오기 실패");
+                return null;
+            }
+        }
 
 
     }

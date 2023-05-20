@@ -32,6 +32,9 @@ namespace Server
                 // 3. 방 만들기 함수
                 Rooms createNewRoomTestRoom = new Rooms(roomId:"RoomOfGoldUser", userId: "myUserId4", capacity: 5);
                 Console.WriteLine(Database.createNewRoom(createNewRoomTestRoom));
+
+                // 4. 방 리스트 불러오기 함수
+                Console.WriteLine(Database.getRoomList());
             }
             ///
 
