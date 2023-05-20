@@ -19,7 +19,7 @@ namespace Server
         {
             /// 데이터베이스 접속
             Console.WriteLine("접속");
-            Database.connectDB();
+            Console.WriteLine(Database.connectDB().Count);
             ///
 
             server = new TcpListener(IPAddress.Any, port);

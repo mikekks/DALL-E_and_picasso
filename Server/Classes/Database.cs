@@ -9,8 +9,8 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
-
-
+using Server.Classes.Instances;
+using DalleLib;
 
 namespace Server.Classes
 {
@@ -19,47 +19,39 @@ namespace Server.Classes
 
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test1236";
+        public static string _database = "test1251";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
 
         public static MySqlConnection mysql = new MySqlConnection(string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw));
 
-        public static Boolean connectDB()
+        public static List<Users> connectDB()
         {
             Console.WriteLine("접근 중");
 
-
-            try
-            {
-
                 mysql.Open();
-                    // string selectQuery = string.Format("SELECT * from Users");
-                    // MySqlCommand command = new MySqlCommand(selectQuery, mysql);
-                    // MySqlDataReader table = command.ExecuteReader();
 
+                string query = $"SELECT * FROM Users";
 
-                string query = string.Format("SELECT password FROM Users"); // userId가 test인 
-                MySqlCommand command = new MySqlCommand(query, mysql);
-                MySqlDataReader table = command.ExecuteReader();
+                List<Users> users = new List<Users>();
 
-
-                while (table.Read())
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
-                    Console.WriteLine("1");
+                Console.WriteLine("add");
 
-                    Console.WriteLine(table["password"]);
+                while (rdr.Read())
+                {
+                    users.Add(new Users(
+                                rdr.GetString("userId"),
+                                rdr.GetString("password"),
+                                rdr.GetString("email"),
+                                rdr.GetString("answer")));
+                    }
                 }
 
-                table.Close();
-                return true;
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine("실패");
-                return false;
-            }
+            Console.WriteLine(users[0].userId);
+                return users;
 
         }
 
