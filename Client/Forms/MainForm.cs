@@ -92,25 +92,17 @@ namespace Client
 
         private void Room2_Click(object sender, EventArgs e)
         {
-            // 로딩창 구현 필요
-            /*
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-            */
             
             forTest_Connect();
 
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
-
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
             
             RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
 
-            Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+            if (!Program.MethodList.ContainsKey(PacketType.Room))
+                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+
             Program.Send(roomPacket);
         }
 
@@ -213,8 +205,10 @@ namespace Client
             }
             else  // 만든 경우
             {
+
                 GameRoom gameRoom = new GameRoom();
-                gameRoom.ShowDialog();
+                Hide();
+                gameRoom.Show();
                
             }
 

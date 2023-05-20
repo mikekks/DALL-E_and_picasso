@@ -318,7 +318,7 @@ namespace Client
             MainForm mainForm = new MainForm();
             mainForm.Show();
 
-            System.Windows.Forms.Application.Exit();
+            //System.Windows.Forms.Application.Exit();
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
