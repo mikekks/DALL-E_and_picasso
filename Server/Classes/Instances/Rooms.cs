@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Server.Classes.Instances
 {
-    internal class Rooms
+    public class Rooms
     {
+        public string roomId, userId;
+        public int capacity;
+
+        public Rooms(string roomId, string userId,
+            int capacity)
+        {
+            this.roomId = roomId;
+            this.userId = userId;
+            this.capacity = capacity;
+        }
     }
 }

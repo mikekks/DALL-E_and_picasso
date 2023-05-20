@@ -47,6 +47,12 @@ namespace Server.Classes
             }
         }
 
+        // 함수의 Return 타입으로 나오는 Users와 윈폼의 Users 인스턴스가 다름. 
+        // 테이블 조합 결과 담은 인스턴스를 조합하여 윈폼 인스턴스에 대입하는 법
+        // 테이블을 윈폼 인스턴스에 맞게 재구성하는 법
+        // 윈폼 인스턴스를 테이블에 맞게 재구성하는 법
+
+        // 1. 로그인 하는 함수 
         public static List<Users> login(string userId, string password)
         {
             // 로그인 유저 있으면 true 없으면 false
@@ -89,6 +95,8 @@ namespace Server.Classes
                 return null;
             }
         }
+
+        // 2. 회원가입하는 함수
         public static bool signUp(Users users)
         {
             if (mysql.State != ConnectionState.Open)
@@ -100,7 +108,6 @@ namespace Server.Classes
 
             try
             {
-
                 cmd.Parameters.AddWithValue("@userId", users.userId);
                 cmd.Parameters.AddWithValue("@password", users.password);
                 cmd.Parameters.AddWithValue("@email", users.email);
@@ -118,6 +125,36 @@ namespace Server.Classes
                 return false;
             }
         }
+
+        // 3. 방 만들기 함수
+        public static bool createNewRoom(Rooms rooms)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Rooms VALUES (@roomId, @userId, @capacity)", mysql);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@roomId", rooms.roomId);
+                cmd.Parameters.AddWithValue("@userId", rooms.userId);
+                cmd.Parameters.AddWithValue("@capacity", rooms.capacity);
+
+                Console.WriteLine("방 만들기 성공");
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch
+            {
+                Console.WriteLine("방 만들기 실패");
+                return false;
+            }
+        }
+
 
 
     }

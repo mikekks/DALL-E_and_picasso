@@ -21,11 +21,17 @@ namespace Server
             /// 데이터베이스 접속
             if(Database.connect()) // bool 값으로 리턴되는 connectDB 함수 입니다. DB접속이 완료되면 true를 리턴합니다.
             {
-                Users signUpTestUser = new Users(userId: "myUserId3",password: "myPassword3", email: "myEmail@example.com", answer: "myAnswer");
+                // 2. 회원가입하는 함수
+                Users signUpTestUser = new Users(userId: "myUserId4",password: "myPasswor43", email: "myEmail@example.com", answer: "myAnswer");
                 Database.signUp(signUpTestUser);
 
-                Console.WriteLine(Database.login(userId: "myUserId3", password: "myPassword3"));
+                // 1. 로그인하는 함수
+                Console.WriteLine(Database.login(userId: "myUserId4", password: "myPassword4"));
                 // DB에 로그인하는 함수 입니다. 파라미터로 받은 userId의 비밀번호가 해당 유저의 올바른 password라면, 해당 User의 인스턴스를 반환합니다.
+
+                // 3. 방 만들기 함수
+                Rooms createNewRoomTestRoom = new Rooms(roomId:"RoomOfGoldUser", userId: "myUserId4", capacity: 5);
+                Console.WriteLine(Database.createNewRoom(createNewRoomTestRoom));
             }
             ///
 
