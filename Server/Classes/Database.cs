@@ -275,12 +275,11 @@ namespace Server.Classes
 
             try
             {
-                /*
+                
                 MySqlCommand deleteCmd = new MySqlCommand(
                     "DELETE FROM Records WHERE Records.userId = @userId", mysql);
-                deleteCmd.Parameters.AddWithValue("@userId", userId);
+                deleteCmd.Parameters.AddWithValue("@userId", records.userId);
                 deleteCmd.ExecuteNonQuery();
-                */
 
                 recordQuery.Parameters.AddWithValue("@userId", records.userId);
                 recordQuery.Parameters.AddWithValue("@tryCount", records.tryCount);
