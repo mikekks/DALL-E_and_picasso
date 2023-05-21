@@ -12,6 +12,7 @@ using MySql.Data.MySqlClient;
 using Server.Classes.Instances;
 using DalleLib;
 using System.Xml.Linq;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Server.Classes
 {
@@ -92,6 +93,7 @@ namespace Server.Classes
             catch
             {
                 Console.WriteLine("로그인 실패");
+                // userId 혹은 password 미일치
                 return null;
             }
         }
@@ -122,6 +124,7 @@ namespace Server.Classes
             catch
             {
                 Console.WriteLine("회원가입 실패");
+                // 동일한 userId 존재합니다. (PK)
                 return false;
             }
         }
@@ -151,6 +154,7 @@ namespace Server.Classes
             catch
             {
                 Console.WriteLine("방 만들기 실패");
+                // 동일한 roomId가 존재합니다. (PK)
                 return false;
             }
         }
@@ -192,6 +196,111 @@ namespace Server.Classes
             }
         }
 
+        // 8. 해당 문제애 대한 답(키워드 3개)을 반환하는 함수
+        public static List<Dalle> getDalleKeywords(string questionId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Dalle WHERE Dalle.questionId = '{questionId}'";
+
+            List<Dalle> dalle = new List<Dalle>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        dalle.Add(new Dalle(
+                                    rdr.GetString("questionId"),
+                                    rdr.GetString("imageUrl"),
+                                    rdr.GetString("keyword_1"),
+                                    rdr.GetString("keyword_2"),
+                                    rdr.GetString("keyword_3")));
+                    }
+
+
+                    Console.WriteLine("정답 키워드 불러오기 성공");
+                    Console.WriteLine(dalle.Count);
+                    return dalle;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("정답 키워드 불러오기 실패");
+                return null;
+            }
+        }
+        // 9-1 정답 확인 함수 
+        public static bool checkRightAnswer(string questionId, string answer)
+        {
+            List<Dalle> rightDalleAnswer = Database.getDalleKeywords(questionId: questionId);
+
+            if (rightDalleAnswer[0].keyword_1 == answer)
+            {
+                Console.WriteLine("1번 키워드에 대한 정답");
+                return true;
+            }
+
+            if (rightDalleAnswer[0].keyword_2 == answer)
+            {
+                Console.WriteLine("2번 키워드에 대한 정답");
+                return true;
+            }
+
+            if (rightDalleAnswer[0].keyword_3 == answer)
+            {
+                Console.WriteLine("3번 키워드에 대한 정답");
+                return true;
+            }
+
+            Console.WriteLine("올바른 키워드가 아닙니다.");
+            return false;
+        }
+
+        // 9-2 유저의 게임기록을 저장하는 함수
+        public static bool recordUserGame(Records records)
+        {
+            // 기존 기록 있으면 지워야 함
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            MySqlCommand recordQuery = new MySqlCommand(
+                "INSERT INTO Records VALUES (@userId, @tryCount, @correctCount, @failCount, @percent)", mysql);
+
+            try
+            {
+                /*
+                MySqlCommand deleteCmd = new MySqlCommand(
+                    "DELETE FROM Records WHERE Records.userId = @userId", mysql);
+                deleteCmd.Parameters.AddWithValue("@userId", userId);
+                deleteCmd.ExecuteNonQuery();
+                */
+
+                recordQuery.Parameters.AddWithValue("@userId", records.userId);
+                recordQuery.Parameters.AddWithValue("@tryCount", records.tryCount);
+                recordQuery.Parameters.AddWithValue("@correctCount", records.correctCount);
+                recordQuery.Parameters.AddWithValue("@failCount", records.failCount);
+                recordQuery.Parameters.AddWithValue("@percent", null);
+
+
+                Console.WriteLine("게임기록 저장 성공");
+                recordQuery.ExecuteNonQuery();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("게임기록 저장 실패: " + ex.Message);
+
+                return false;
+            }
+        }
 
     }
 }

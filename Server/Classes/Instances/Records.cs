@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Server.Classes.Instances
 {
-    internal class Records
+    public class Records
     {
+        public string userId;
+        public int tryCount, correctCount, failCount;
+
+        public Records(string userId,
+            int tryCount, int correctCount, int failCount)
+        {
+            this.userId = userId;
+            this.tryCount = tryCount;
+            this.correctCount = correctCount;
+            this.failCount = failCount;
+        }
     }
 }
