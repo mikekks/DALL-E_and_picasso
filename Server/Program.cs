@@ -5,7 +5,7 @@ using DalleLib;
 using DalleLib.InGame;
 using DalleLib.Networks;
 using Server.Classes;
-using Server.Classes.Instances;
+using Server.Classes.Tables;
 
 
 namespace Server

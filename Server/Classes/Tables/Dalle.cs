@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Classes.Instances
+namespace Server.Classes.Tables
 {
     public class Dalle
     {
-        public string questionId, imageUrl, keyword_1, keyword_2, keyword_3;
-        public Dalle(string questionId, string imageUrl,
-            string keyword_1, string keyword_2, string keyword_3)
+        public int questionId;
+        public string imageUrl, keyword_1, keyword_2, keyword_3;
+
+        public Dalle(int questionId,
+            string imageUrl, string keyword_1, string keyword_2, string keyword_3)
         {
             this.questionId = questionId;
             this.imageUrl = imageUrl;

@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
-using Server.Classes.Instances;
+using Server.Classes.Tables;
 using DalleLib;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
@@ -21,7 +21,7 @@ namespace Server.Classes
 
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test05221225";
+        public static string _database = "test05220103";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
