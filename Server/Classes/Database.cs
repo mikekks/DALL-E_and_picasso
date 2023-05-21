@@ -21,7 +21,7 @@ namespace Server.Classes
 
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test1251";
+        public static string _database = "test05221225";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -41,20 +41,50 @@ namespace Server.Classes
                     return true;
                 }
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                Console.WriteLine("DB연결 실패");
+                Console.WriteLine("DB연결 실패" + ex);
                 return true;
             }
         }
 
-        // 함수의 Return 타입으로 나오는 Users와 윈폼의 Users 인스턴스가 다름. 
-        // 테이블 조합 결과 담은 인스턴스를 조합하여 윈폼 인스턴스에 대입하는 법
-        // 테이블을 윈폼 인스턴스에 맞게 재구성하는 법
-        // 윈폼 인스턴스를 테이블에 맞게 재구성하는 법
+        // 1. 회원가입하는 함수
+        public static bool signUp(string userId, string password, string findQuestion, string answer, string regDate)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Users VALUES (@userId, @roomId, @password, @findQuestion, @answer, @ready, @Tier, @regDate)", mysql);
 
+            try
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@roomId", null);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@findQuestion", findQuestion);
+                cmd.Parameters.AddWithValue("@answer", answer);
+                cmd.Parameters.AddWithValue("@ready", null);
+                cmd.Parameters.AddWithValue("@Tier", null);
+                cmd.Parameters.AddWithValue("@regDate", regDate);
+
+                Console.WriteLine("회원가입 성공");
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("회원가입 실패"+ ex);
+                // 동일한 userId 존재합니다. (PK)
+                return false;
+            }
+        }
+        /*
         // 1. 로그인 하는 함수 
-        public static List<Users> login(string userId, string password)
+        public static Users login(string userId, string password)
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
@@ -95,37 +125,6 @@ namespace Server.Classes
                 Console.WriteLine("로그인 실패");
                 // userId 혹은 password 미일치
                 return null;
-            }
-        }
-
-        // 2. 회원가입하는 함수
-        public static bool signUp(Users users)
-        {
-            if (mysql.State != ConnectionState.Open)
-            {
-                mysql.Open();
-            }
-            MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Users VALUES (@userId, @password, @email, @answer)", mysql);
-
-            try
-            {
-                cmd.Parameters.AddWithValue("@userId", users.userId);
-                cmd.Parameters.AddWithValue("@password", users.password);
-                cmd.Parameters.AddWithValue("@email", users.email);
-                cmd.Parameters.AddWithValue("@answer", users.answer);
-
-                Console.WriteLine("회원가입 성공");
-                cmd.ExecuteNonQuery();
-
-                return true;
-
-            }
-            catch
-            {
-                Console.WriteLine("회원가입 실패");
-                // 동일한 userId 존재합니다. (PK)
-                return false;
             }
         }
 
@@ -275,7 +274,7 @@ namespace Server.Classes
 
             try
             {
-                
+                // 동일한 userId 있을 시 지우고 시작
                 MySqlCommand deleteCmd = new MySqlCommand(
                     "DELETE FROM Records WHERE Records.userId = @userId", mysql);
                 deleteCmd.Parameters.AddWithValue("@userId", records.userId);
@@ -300,6 +299,7 @@ namespace Server.Classes
                 return false;
             }
         }
+        */
 
     }
 }
