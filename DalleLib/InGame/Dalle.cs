@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Classes.Tables
+namespace DalleLib.InGame
 {
-    public class Dalle
+    public class Dalle  // level 3밖에 안됨 수정 필요
     {
         public int questionId;
         public string imageUrl, keyword_1, keyword_2, keyword_3;
