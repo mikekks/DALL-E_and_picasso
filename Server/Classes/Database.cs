@@ -244,7 +244,75 @@ namespace Server.Classes
             }
         }
 
-        // 특정 방 가져오기
+       
+
+        // 5. 방 진입여부 확인하는 함수
+        public static bool checkEnterRoom(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
+
+            List<Rooms> rooms = new List<Rooms>();
+
+            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+            {
+
+                if (rdr.Read() && rdr.GetInt32("canEnterRoom") > 0)
+                {
+                    Console.WriteLine("방 진입하기 성공");
+                    return true;
+                }
+
+            Console.WriteLine("방 진입하기 실패");
+            return false;
+            }
+        }
+
+
+        // 6. 방 진입하는 함수 (Roooms 테이블)
+        public static bool enterRoom_Rooms(string roomId, string userId)
+        {
+            if (Database.checkEnterRoom(roomId) == true) // 방 진입이 가능한지 확인
+            {
+                if (mysql.State != ConnectionState.Open)
+                {
+                    mysql.Open();
+                }
+
+                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
+                // 해당 방의 현재 인원 수 + 1 
+
+                string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
+                // 해당 방의 인원수 업데이트
+
+                try
+                {
+                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                    {
+                        rdr.Close();
+
+                        Console.WriteLine("방 진입하기 성공");
+                        Database.enterRoom_Users(roomId, userId);
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("방 진입하기 실패" + ex);
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("인원이 다 차서 들어올 수 없음");
+                return false;
+            }
+        }
+
+        // 특정 방 가져오기 in 6번함수
         public static List<Rooms> getSpecificRooms(string roomId)
         {
             // 로그인 유저 있으면 true 없으면 false
@@ -283,73 +351,7 @@ namespace Server.Classes
             }
         }
 
-        // 6. 방 진입여부 확인하는 함수
-        public static bool checkEnterRoom(string roomId)
-        {
-            if (mysql.State != ConnectionState.Open)
-            {
-                mysql.Open();
-            }
-            string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
-
-            List<Rooms> rooms = new List<Rooms>();
-
-            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
-            {
-
-                if (rdr.Read() && rdr.GetInt32("canEnterRoom") > 0)
-                {
-                    Console.WriteLine("방 진입하기 성공");
-                    return true;
-                }
-
-            Console.WriteLine("방 진입하기 실패");
-            return false;
-            }
-        }
-
-
-        // 6, 방 진입하는 함수 (Roooms 테이블)
-        public static bool enterRoom_Rooms(string roomId, string userId)
-        {
-            if (Database.checkEnterRoom(roomId) == true) // 방 진입이 가능한지 확인
-            {
-                if (mysql.State != ConnectionState.Open)
-                {
-                    mysql.Open();
-                }
-
-                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
-                // 해당 방의 현재 인원 수 + 1 
-
-                string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
-                // 해당 방의 인원수 업데이트
-                
-                try
-                {
-                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
-                    {
-
-                        Console.WriteLine("UPDATE 성공");
-
-                        // Database.enterRoom_Users(roomId: roomId, userId: userId);
-
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("방 진입하기 실패" + ex);
-                    return false;
-                }
-             } else
-            {
-                Console.WriteLine("인원이 다 차서 들어올 수 없음");
-                return false;
-            }
-        }
-
-        // 클라이언트의 방 진입 (Users 테이블)
+        // 클라이언트 자신이 진입한 방을 업데이트 in 6번함수 (Users 테이블) 
         public static bool enterRoom_Users(string roomId, string userId)
         {
 
@@ -364,6 +366,7 @@ namespace Server.Classes
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
                     Console.WriteLine("유저가 진입한 방 업데이트 성공");
+
                     return true;
                 }
             }
@@ -373,6 +376,10 @@ namespace Server.Classes
                 return false;
             }
         }
+
+
+        // ----
+
 
         // 3. 본인 기록 가져오는 함수
         public static Records getRecords(string userId)
