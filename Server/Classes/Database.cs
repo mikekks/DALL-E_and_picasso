@@ -312,7 +312,7 @@ namespace Server.Classes
             }
         }
 
-        // 특정 방 가져오기 in 6번함수
+        // 특정 방 가져오기 in 6번 함수
         public static List<Rooms> getSpecificRooms(string roomId)
         {
             // 로그인 유저 있으면 true 없으면 false
@@ -351,7 +351,7 @@ namespace Server.Classes
             }
         }
 
-        // 클라이언트 자신이 진입한 방을 업데이트 in 6번함수 (Users 테이블) 
+        // 클라이언트 자신이 진입한 방을 업데이트 in 6번 함수 (Users 테이블) 
         public static bool enterRoom_Users(string roomId, string userId)
         {
 
@@ -376,7 +376,6 @@ namespace Server.Classes
                 return false;
             }
         }
-
 
         // ----
 

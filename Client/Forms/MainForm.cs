@@ -32,9 +32,18 @@ namespace Client
             // 로그인 하는 과정
             Hide();
 
-            Login_Form loginForm = new Login_Form();
-            loginForm.ShowDialog();
+            if (Program.user == null)
+            {
+                Login_Form loginForm = new Login_Form();
+                loginForm.ShowDialog();
+
+                if (Program.user == null)
+                {
+                    this.Close();
+                }
+            }
             
+
 
             // 로그인 후 정보 갱신 필요.
             //
@@ -83,25 +92,17 @@ namespace Client
 
         private void Room2_Click(object sender, EventArgs e)
         {
-            // 로딩창 구현 필요
-            /*
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-            */
             
             forTest_Connect();
 
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
-
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
             
             RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
 
-            Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+            if (!Program.MethodList.ContainsKey(PacketType.Room))
+                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+
             Program.Send(roomPacket);
         }
 
@@ -196,23 +197,27 @@ namespace Client
             Opacity = 0.5;
             CreateRoomForm createRoomForm = new CreateRoomForm();
             createRoomForm.ShowDialog();
-
-            GameRoom inGame = new GameRoom();
-            inGame.ShowDialog();
             Opacity = 1;
+
+            if (Program.room == null)  // 나가기 한 경우
+            {
+                // ! 업데이트를 시켜줘야 하나?
+            }
+            else  // 만든 경우
+            {
+
+                GameRoom gameRoom = new GameRoom();
+                Hide();
+                gameRoom.Show();
+               
+            }
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Thread.Sleep(5000);
-
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-
+ 
             /*
             MetroPanel metroPanel = new MetroPanel();
             metroPanel.BringToFront();
