@@ -171,6 +171,39 @@ namespace Server.Classes
             }
         }
 
+        // 4-1. 방 만드는 함수
+        public static bool makeNewRoom(string roomId, string userId, int questionId, int maxUserNum, int level)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Rooms VALUES (@roomId, @userId, @questionId, @nowPlaying, @currentUserNum, @maxUserNum, @level)", mysql);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@questionId", questionId);
+                cmd.Parameters.AddWithValue("@nowPlaying", 0);
+                cmd.Parameters.AddWithValue("@currentUserNum", 0);
+                cmd.Parameters.AddWithValue("@maxUserNum", maxUserNum);
+                cmd.Parameters.AddWithValue("@level", level);
+
+                Console.WriteLine("방 만들기 성공");
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("방 만들기 실패" + ex);
+                return false;
+            }
+        }
+
         // 3. 본인 기록 가져오는 함수
         public static Records getRecords(string userId)
         {
