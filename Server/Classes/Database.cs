@@ -204,6 +204,45 @@ namespace Server.Classes
             }
         }
 
+        // 4-2 방 리스트 가져오기
+        public static List<Rooms> getRoomsList()
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Rooms";
+
+            List<Rooms> rooms = new List<Rooms>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        rooms.Add(new Rooms(
+                                    rdr.GetString("roomId"),
+                                    rdr.GetString("userId"),
+                                    rdr.GetInt32("questionId"),
+                                    rdr.GetBoolean("nowPlaying"),
+                                    rdr.GetInt32("currentUserNum"),
+                                    rdr.GetInt32("maxUserNum"),
+                                    rdr.GetInt32("level")));
+                    }
+                }
+                Console.WriteLine("방 리스트 가져오기 성공");
+                return rooms;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("방 리스트 가져오기 실패" + ex);
+                return null;
+            }
+        }
+
         // 3. 본인 기록 가져오는 함수
         public static Records getRecords(string userId)
         {
