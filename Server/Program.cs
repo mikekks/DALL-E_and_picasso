@@ -47,6 +47,9 @@ namespace Server
                 Console.WriteLine("5. 방 진입여부 확인하는 함수");
                 Console.WriteLine(Database.checkEnterRoom(roomId: "뉴비"));
 
+                // 6. 방 진입하는 함수
+                Console.WriteLine("6. 방 진입하는 함수");
+                Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "tets1"));
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함

@@ -14,6 +14,7 @@ using DalleLib;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
 using DalleLib.InGame;
+using Org.BouncyCastle.Security;
 
 namespace Server.Classes
 {
@@ -243,7 +244,46 @@ namespace Server.Classes
             }
         }
 
-        // 5. 방 진입여부 확인하는 함수
+        // 특정 방 가져오기
+        public static List<Rooms> getSpecificRooms(string roomId)
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Rooms WHERE Rooms.roomId = '{roomId}'";
+
+            List<Rooms> rooms = new List<Rooms>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        rooms.Add(new Rooms(
+                                    rdr.GetString("roomId"),
+                                    rdr.GetString("userId"),
+                                    rdr.GetInt32("questionId"),
+                                    rdr.GetBoolean("nowPlaying"),
+                                    rdr.GetInt32("currentUserNum"),
+                                    rdr.GetInt32("maxUserNum"),
+                                    rdr.GetInt32("level")));
+                    }
+                }
+                Console.WriteLine("특정 방 가져오기 성공");
+                return rooms;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("방 리스트 가져오기 실패" + ex);
+                return null;
+            }
+        }
+
+        // 6. 방 진입여부 확인하는 함수
         public static bool checkEnterRoom(string roomId)
         {
             if (mysql.State != ConnectionState.Open)
@@ -253,7 +293,6 @@ namespace Server.Classes
             string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
 
             List<Rooms> rooms = new List<Rooms>();
-
 
             using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
             {
@@ -266,6 +305,72 @@ namespace Server.Classes
 
             Console.WriteLine("방 진입하기 실패");
             return false;
+            }
+        }
+
+
+        // 6, 방 진입하는 함수 (Roooms 테이블)
+        public static bool enterRoom_Rooms(string roomId, string userId)
+        {
+            if (Database.checkEnterRoom(roomId) == true) // 방 진입이 가능한지 확인
+            {
+                if (mysql.State != ConnectionState.Open)
+                {
+                    mysql.Open();
+                }
+
+                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
+                // 해당 방의 현재 인원 수 + 1 
+
+                string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
+                // 해당 방의 인원수 업데이트
+                
+                try
+                {
+                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                    {
+
+                        Console.WriteLine("UPDATE 성공");
+
+                        // Database.enterRoom_Users(roomId: roomId, userId: userId);
+
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("방 진입하기 실패" + ex);
+                    return false;
+                }
+             } else
+            {
+                Console.WriteLine("인원이 다 차서 들어올 수 없음");
+                return false;
+            }
+        }
+
+        // 클라이언트의 방 진입 (Users 테이블)
+        public static bool enterRoom_Users(string roomId, string userId)
+        {
+
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"UPDATE Users SET roomId = '{roomId}' WHERE userId = '{userId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("유저가 진입한 방 업데이트 성공");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("유저가 진입한 방 업데이트 실패" + ex);
+                return false;
             }
         }
 
