@@ -243,6 +243,32 @@ namespace Server.Classes
             }
         }
 
+        // 5. 방 진입여부 확인하는 함수
+        public static bool checkEnterRoom(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
+
+            List<Rooms> rooms = new List<Rooms>();
+
+
+            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+            {
+
+                if (rdr.Read() && rdr.GetInt32("canEnterRoom") > 0)
+                {
+                    Console.WriteLine("방 진입하기 성공");
+                    return true;
+                }
+
+            Console.WriteLine("방 진입하기 실패");
+            return false;
+            }
+        }
+
         // 3. 본인 기록 가져오는 함수
         public static Records getRecords(string userId)
         {

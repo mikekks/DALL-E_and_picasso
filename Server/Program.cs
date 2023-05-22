@@ -41,7 +41,12 @@ namespace Server
                 
                 // 4-2 방 리스트 불러오는 함수
                 Console.WriteLine("4-2 방 리스트 불러오는 함수");
-                Console.WriteLine(Database.getRoomsList().Count);
+                Console.WriteLine(Database.getRoomsList());
+
+                // 5. 방 진입여부 확인하는 함수
+                Console.WriteLine("5. 방 진입여부 확인하는 함수");
+                Console.WriteLine(Database.checkEnterRoom(roomId: "뉴비"));
+
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
