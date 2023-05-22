@@ -138,6 +138,38 @@ namespace Server.Classes
                 return null;
             }
         }
+        
+        // 10. 문제 만드는 함수
+        public static bool makeDalleQuestion(int questionId, string imageUrl, string keyword_1, string keyword_2, string keyword_3)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Dalle VALUES (@questionId, @imageUrl, @keyword_1, @keyword_2, @keyword_3)", mysql);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@questionId", questionId);
+                cmd.Parameters.AddWithValue("@imageUrl", imageUrl);
+                cmd.Parameters.AddWithValue("@keyword_1", keyword_1);
+                cmd.Parameters.AddWithValue("@keyword_2", keyword_2);
+                cmd.Parameters.AddWithValue("@keyword_3", keyword_3);
+
+                Console.WriteLine("문제 만들기 성공");
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("문제 만들기 실패" + ex);
+                // 동일한 roomId가 존재합니다. (PK)
+                return false;
+            }
+        }
 
         // 3. 본인 기록 가져오는 함수
         public static Records getRecords(string userId)

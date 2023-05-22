@@ -30,11 +30,16 @@ namespace Server
                 Console.WriteLine(Database.login(userId: "test1", password: "test1Pw"));
                 // DB에 로그인하는 함수 입니다. 파라미터로 받은 userId의 비밀번호가 해당 유저의 올바른 password라면, 해당 User의 인스턴스를 반환합니다.
 
+                // 10. 문제 만드는 함수
+                Console.WriteLine("10. 문제 만드는 함수");
+                Console.WriteLine(Database.makeDalleQuestion(questionId: 8, imageUrl: "testUrl", keyword_1: "Potato", keyword_2: "Mouse", keyword_3: "Rain" ));
+
                 // 3. 본인기록 가져오는 함수
+                // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
                 Console.WriteLine("3. 본인기록 가져오는 함수");
                 Console.WriteLine(Database.getRecords(userId: "test1"));
 
-
+                // 방 만들기, 방 가져오기
             }
             ///
 
