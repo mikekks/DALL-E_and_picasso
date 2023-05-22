@@ -8,42 +8,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using DalleLib.Networks;
+using MetroFramework;
 
 namespace Client.Forms
 {
     public partial class LoadingForm : MetroFramework.Forms.MetroForm
     {
-        public Action Func { get; set; }
-
+        public int TotalTime = 5;
+        delegate void LoadingEnd();
         public LoadingForm()
         {
             InitializeComponent();
-            this.Shown += new EventHandler(LoadingForm_Load);
+           
         }
-
-        
 
         private void LoadingForm_Load(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() =>
-            {
-                if (this.InvokeRequired) {
-                    Func.Invoke();
-                    this.Invoke((Action)(() =>
-                    {
-                        Console.WriteLine("HI!");
-                        this.Close();
-                    }));
-                }
-                
-            });
-            thread.Start();
+            
         }
 
         private void LoadingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            
+        }
+
+        private void loadingTimer_Tick(object sender, EventArgs e)
+        {
+                
+            if (TotalTime > 0)
+            {
+                loadingTime.Text = TotalTime.ToString();
+                TotalTime--;
+            }
+            else if (TotalTime == 0)
+            {
+                loadingTime.Text = "게임 시작!";
+                TotalTime--;
+            }
+            else
+            {
+                loadingTimer.Enabled = false;
+                this.Invoke(new LoadingEnd(formClose));
+            }
+           
+        }
+
+        public void formClose()
+        {
+            this.Close();
         }
     }
 }

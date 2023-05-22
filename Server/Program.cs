@@ -50,14 +50,15 @@ namespace Server
                 // 6. 방 진입하는 함수
                 Console.WriteLine("6. 방 진입하는 함수");
                 Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "test1"));
+                // roomId로 진입하려는 방 검색하는 함수 포함
+                // userId로 유저가 어떤 방에 들어갔는지 업데이트 하는 함수 포함
+
 
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
                 Console.WriteLine("3. 본인기록 가져오는 함수");
                 Console.WriteLine(Database.getRecords(userId: "test1"));
-
-
 
 
             }

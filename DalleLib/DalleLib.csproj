@@ -56,7 +56,6 @@
     <Compile Include="InGame\Room.cs" />
     <Compile Include="InGame\User.cs" />
     <Compile Include="Networks\InGamePacket.cs" />
-    <Compile Include="Networks\AnswerPacket.cs" />
     <Compile Include="Networks\ReadyPacket.cs" />
     <Compile Include="Networks\RoomPacket.cs" />
     <Compile Include="Networks\LogoutPacket.cs" />
