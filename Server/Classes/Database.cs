@@ -19,10 +19,11 @@ namespace Server.Classes
 {
     static class Database
     {
-
+        // 외래키 제약 조건 : 종속하는 테이블의 PK가 먼저 만들어 지지 않으면 행 추가 x 
+        //  ex. Records 테이블에 행 추가하려면 userId(Users) -> questionId(Dalle) -> roomId(Rooms)의 PK들끼리 종속관계 성립해야 함
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test05220103";
+        public static string _database = "test05220103"; 
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -117,7 +118,7 @@ namespace Server.Classes
                                     tier,
                                     rdr.GetString("regDate")));
                     }
-                }
+                } 
 
                 if (users[0].password == password) // userId를 갖고 있는 사람
                 {
@@ -133,6 +134,43 @@ namespace Server.Classes
             catch(Exception ex)
             {
                 Console.WriteLine("로그인 실패" + ex);
+                // userId 혹은 password 미일치
+                return null;
+            }
+        }
+
+        // 3. 본인 기록 가져오는 함수
+        public static Records getRecords(string userId)
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Records WHERE Records.userId = '{userId}'";
+
+            List<Records> records = new List<Records>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    { 
+                        records.Add(new Records(
+                                    rdr.GetString("userId"),
+                                    rdr.GetString("roomId"),
+                                    rdr.GetInt32("tryCount"),
+                                    rdr.GetInt32("correctCount")));
+                    }
+                }
+
+                return records[0];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("본인기록 가져오기 실패" + ex);
                 // userId 혹은 password 미일치
                 return null;
             }
