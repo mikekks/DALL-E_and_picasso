@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Classes.Instances
+namespace Server.Classes.Tables
 {
     public class Records
     {
-        public string userId;
-        public int tryCount, correctCount, failCount;
+        public string userId, roomId;
+        public int tryCount, correctCount;
 
         public Records(string userId,
-            int tryCount, int correctCount, int failCount)
+            string roomId, int tryCount, int correctCount)
         {
             this.userId = userId;
+            this.roomId = roomId;
             this.tryCount = tryCount;
             this.correctCount = correctCount;
-            this.failCount = failCount;
         }
     }
 }
