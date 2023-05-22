@@ -28,7 +28,7 @@ namespace Client
         public static User user; // 로그인한 유저에 대한 정보
         public static Room room; // 유저가 현재 있는 방
 
-        public static Dictionary<string, Room> roomList;  // 유저가 보는 방리스트
+        public static Dictionary<int, Room> roomList;  // 유저가 보는 방리스트
         public static bool isHost;
 
         public static Dictionary<PacketType, Action<Packet>> MethodList;
@@ -43,8 +43,10 @@ namespace Client
         {
             clientSocket = new TcpClient();
 
+            MethodList = new Dictionary<PacketType, Action<Packet>>();
+
             t_Recieve = new Thread(Recieve);
-            
+            t_Recieve.Priority = ThreadPriority.Highest;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -86,7 +88,7 @@ namespace Client
                 Objpacket = Packet.Deserialize(readBuffer);
 
                 Packet packet = Objpacket as Packet;
-
+                
                 MethodList[packet.Type].Invoke(packet);
 
                 //  packet.Type에 따라 처리 작업 필요.

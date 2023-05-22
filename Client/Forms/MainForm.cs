@@ -15,6 +15,7 @@ using System.Threading;
 using System.Net.Sockets;
 using MetroFramework.Controls;
 using DalleLib;
+using WindowsFormsApp2;
 
 namespace Client
 {
@@ -28,14 +29,22 @@ namespace Client
 
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
-
-
             // 로그인 하는 과정
-            //Hide();
+            Hide();
 
+            if (Program.user == null)
+            {
+                Login_Form loginForm = new Login_Form();
+                loginForm.ShowDialog();
 
-           
+                if (Program.user == null)
+                {
+                    this.Close();
+                }
+            }
             
+
+
             // 로그인 후 정보 갱신 필요.
             //
             //
@@ -59,9 +68,12 @@ namespace Client
 
         public void forTest_Connect()
         {
-            Program.clientSocket.Connect("127.0.0.1", Program.port);
-            Program.stream = Program.clientSocket.GetStream();
-            Program.t_Recieve.Start();
+            if (!Program.clientSocket.Connected)
+            {
+                Program.clientSocket.Connect("127.0.0.1", Program.port);
+                Program.stream = Program.clientSocket.GetStream();
+                Program.t_Recieve.Start();
+            }
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -80,26 +92,17 @@ namespace Client
 
         private void Room2_Click(object sender, EventArgs e)
         {
-            // 로딩창 구현 필요
-            /*
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-            */
-
+            
             forTest_Connect();
 
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
-
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
-            Room room = new Room(1, 1, "고수만", 3, 0, 0);
-            room.userList.Add(Program.user);
-            RoomPacket roomPacket = new RoomPacket(room, RoomType.Enter);
+            
+            RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
 
-            Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+            if (!Program.MethodList.ContainsKey(PacketType.Room))
+                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+
             Program.Send(roomPacket);
         }
 
@@ -120,13 +123,24 @@ namespace Client
                     if (user.userId == Program.user.userId)
                     {
                         
-                        Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
-
-                        MetroMessageBox.Show(Owner, "로그인 성공!");
-                        Opacity = 0.5;
-                        InGame inGame = new InGame();
-                        inGame.ShowDialog();
-                        Opacity = 1;
+                        
+                        if (InvokeRequired)
+                        {
+                            this.Invoke(new Action(() => { R_EnterRoom(packet); }));
+                        }
+                        else
+                        {
+                            Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
+                            string enter = Program.room.roomName + " 에 들어갑니다.";
+                            MetroMessageBox.Show(Owner, enter);
+                            //Opacity = 0.5;
+                            GameRoom inGame = new GameRoom();
+                            Hide();
+                            inGame.Show();
+                        }
+                        
+                        
+                        
                         break;
                     }
                     
@@ -135,9 +149,38 @@ namespace Client
             }
         }
 
-        public void R_Login()
+        private void button1_Click(object sender, EventArgs e)
         {
 
+            forTest_Connect();
+
+            int id = 12345;
+            string password = "54321";
+            LoginPacket packet = new LoginPacket(id, password);
+
+            Program.MethodList.Add(PacketType.Login, R_Login);
+
+            Program.Send(packet);
+
+
+        }
+
+        public void R_Login(Packet packet)
+        {
+            LoginPacket loginPacket = packet as LoginPacket;
+
+            if(loginPacket.success == true)  // 로그인 성공 의미
+            {
+                Program.user = loginPacket.user;
+                Program.roomList = loginPacket.roomList;
+                string init = Program.user.username + "님 안녕하세요!";
+                MetroMessageBox.Show(Owner, init);
+
+            }
+            else  // 로그인 실패 의미
+            {
+
+            }
         }
 
         private void btn_Myinfo_Click(object sender, EventArgs e)
@@ -154,37 +197,19 @@ namespace Client
             Opacity = 0.5;
             CreateRoomForm createRoomForm = new CreateRoomForm();
             createRoomForm.ShowDialog();
-
-            InGame inGame = new InGame();
-            inGame.ShowDialog();
             Opacity = 1;
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            forTest_Connect();
-
-            int id = 12345;
-            string password = "54321";
-            LoginPacket packet = new LoginPacket(id, password);
-           
-            
-            Program.Send(packet);
-
-           
-            MetroMessageBox.Show(Owner, "로그인 성공!");
-           
-
-        }
-
-        public void loading(ref int check)
-        {
-            //Thread.Sleep(50);
-
-            while (check != 1 && check != 2)
+            if (Program.room == null)  // 나가기 한 경우
             {
-                Thread.Sleep(1000);
+                // ! 업데이트를 시켜줘야 하나?
+            }
+            else  // 만든 경우
+            {
+
+                GameRoom gameRoom = new GameRoom();
+                Hide();
+                gameRoom.Show();
+               
             }
 
             
@@ -192,15 +217,7 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Func = (() =>
-            {
-                Thread.Sleep(5000);
-
-                Console.WriteLine("TEST!!");
-            });
-            loadingForm.ShowDialog();
-
+ 
             /*
             MetroPanel metroPanel = new MetroPanel();
             metroPanel.BringToFront();
@@ -224,6 +241,16 @@ namespace Client
             spinner.Show();
             spinner.Parent = metroPanel;
             */
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

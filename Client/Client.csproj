@@ -37,13 +37,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\DallE_picasso\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\DallE_picasso\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\DallE_picasso\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,11 +64,17 @@
     <Compile Include="Forms\CreateRoomForm.Designer.cs">
       <DependentUpon>CreateRoomForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InGame.cs">
+    <Compile Include="Forms\GameResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InGame.Designer.cs">
-      <DependentUpon>InGame.cs</DependentUpon>
+    <Compile Include="Forms\GameResultForm.Designer.cs">
+      <DependentUpon>GameResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameRoom.Designer.cs">
+      <DependentUpon>GameRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
@@ -105,8 +111,11 @@
     <EmbeddedResource Include="Forms\CreateRoomForm.resx">
       <DependentUpon>CreateRoomForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InGame.resx">
-      <DependentUpon>InGame.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GameResultForm.resx">
+      <DependentUpon>GameResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameRoom.resx">
+      <DependentUpon>GameRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>

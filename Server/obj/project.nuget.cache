@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sJncSclUyX2ei5HfcxSZ63OMkeoChrYwZT8nUtwTGWkVAakVeIscsMm8bG4YA2gOUoEyVOCpl5oG3p1E8jbe5w==",
+  "dgSpecHash": "k2NQgt+N2Vmja62a1pR3nF3BJEikWGYoKxdVYJs5eeo0m/ytsfcMv4p7RS/ISYEEfLHelmMn6hJxK5A1z5Wl8w==",
   "success": false,
-  "projectFilePath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\팀 프로젝트\\Server\\Server.csproj",
+  "projectFilePath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": [
     {
