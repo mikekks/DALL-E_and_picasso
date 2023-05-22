@@ -15,11 +15,10 @@ namespace Server.Classes.Tables
         public string answer;
         public bool ready;
         public string Tier;
-        public int maxUserNum;
         public string regDate; // 테이블이 Date 타입이라 formmater로 YYYY-MM-DD 형식으로 바꿔줘야함
 
         public Users(string userId,
-            string roomId, string password, string findQuestion, string answer, bool ready, string Tier, int maxUserNum, string regDate)
+            string roomId, string password, string findQuestion, string answer, bool ready, string Tier, string regDate)
         {
             this.userId = userId;
             this.roomId = roomId;
@@ -29,7 +28,6 @@ namespace Server.Classes.Tables
             this.ready = ready;
             this.Tier = Tier;
             this.ready = ready;
-            this.maxUserNum = maxUserNum;
             this.regDate = regDate;
         }
     }

@@ -13,6 +13,7 @@ using Server.Classes.Tables;
 using DalleLib;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
+using DalleLib.InGame;
 
 namespace Server.Classes
 {
@@ -82,6 +83,61 @@ namespace Server.Classes
                 return false;
             }
         }
+
+        // 2. 로그인하는 함수
+        public static Users login(string userId, string password)
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Users WHERE Users.userId = '{userId}'";
+
+            List<Users> users = new List<Users>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                
+                    while (rdr.Read())
+                    {
+                        string roomId = rdr.IsDBNull(rdr.GetOrdinal("roomId")) ? string.Empty : rdr.GetString("roomId");
+                        bool ready = !rdr.IsDBNull(rdr.GetOrdinal("ready")) && rdr.GetBoolean("ready");
+                        string tier = rdr.IsDBNull(rdr.GetOrdinal("Tier")) ? string.Empty : rdr.GetString("Tier");
+
+                        users.Add(new Users(
+                                    rdr.GetString("userId"),
+                                    roomId,
+                                    rdr.GetString("password"),
+                                    rdr.GetString("findQuestion"),
+                                    rdr.GetString("answer"),
+                                    ready,
+                                    tier,
+                                    rdr.GetString("regDate")));
+                    }
+                }
+
+                if (users[0].password == password) // userId를 갖고 있는 사람
+                {
+                    Console.WriteLine("로그인 성공");
+                    Console.WriteLine(users[0].userId);
+                    return users[0];
+                }
+
+                Console.WriteLine(users.Count);
+                return null;
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("로그인 실패" + ex);
+                // userId 혹은 password 미일치
+                return null;
+            }
+        }
+
         /*
         // 1. 로그인 하는 함수 
         public static Users login(string userId, string password)
