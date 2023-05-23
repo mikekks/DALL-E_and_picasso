@@ -1,5 +1,22 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "k2NQgt+N2Vmja62a1pR3nF3BJEikWGYoKxdVYJs5eeo0m/ytsfcMv4p7RS/ISYEEfLHelmMn6hJxK5A1z5Wl8w==",
+  "success": false,
+  "projectFilePath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "'C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj' 프로젝트를 찾을 수 없습니다. 프로젝트 참조가 올바르고 프로젝트 파일이 있는지 확인하세요.",
+      "libraryId": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+=======
   "dgSpecHash": "ShRd55PGjtZNOmUoRvXisLVpObD/hNNhWywDFAXcOMQZ6Kha/65NZnfxin1NeKWXOzyAFTbC5tDPdeUQLr8T5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\Server\\Server.csproj",
@@ -36,4 +53,5 @@
     "C:\\Users\\kwctl\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
+>>>>>>> develop
 }

@@ -1,6 +1,19 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj": {}
+  },
+  "projects": {
+    "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj",
+        "projectName": "Server",
+        "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\barle\\.nuget\\packages\\",
+        "outputPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\브랜치\\Server\\obj\\",
+=======
     "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\Server\\Server.csproj": {}
   },
   "projects": {
@@ -27,9 +40,15 @@
         "projectPath": "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\kwctl\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\Server\\obj\\",
+>>>>>>> develop
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
+          "C:\\Users\\barle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
           "C:\\Users\\kwctl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> develop
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,8 +62,13 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+<<<<<<< HEAD
+              "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj": {
+                "projectPath": "C:\\광운대학교\\3학년 1학기\\응용 소프트웨어 실습\\DalleLib\\DalleLib.csproj"
+=======
               "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj": {
                 "projectPath": "C:\\Users\\kwctl\\Desktop\\DALL-E_and_picasso\\DalleLib\\DalleLib.csproj"
+>>>>>>> develop
               }
             }
           }
