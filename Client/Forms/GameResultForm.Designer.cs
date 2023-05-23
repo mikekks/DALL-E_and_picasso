@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.profilepic1 = new System.Windows.Forms.PictureBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -1051,10 +1052,39 @@
             this.pictureBox6.TabIndex = 3;
             this.pictureBox6.TabStop = false;
             // 
+=======
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.SuspendLayout();
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(170, 102);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(457, 158);
+            this.metroTile1.TabIndex = 1;
+            this.metroTile1.Text = "결과표입니다. \r\n아직 어떻게 디자인 할지는 정해진거 없습니다";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile1.UseSelectable = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(349, 287);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 2;
+            this.metroButton1.Text = "확인";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+>>>>>>> develop
             // GameResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.metroPanel3);
             this.Controls.Add(this.metroPanel4);
@@ -1086,11 +1116,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+=======
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.metroTile1);
+            this.Name = "GameResultForm";
+            this.Text = "결과표";
+            this.Load += new System.EventHandler(this.GameResultForm_Load);
+>>>>>>> develop
             this.ResumeLayout(false);
 
         }
 
         #endregion
+<<<<<<< HEAD
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.PictureBox profilepic1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
@@ -1164,5 +1203,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel38;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
+=======
+
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroButton metroButton1;
+>>>>>>> develop
     }
 }

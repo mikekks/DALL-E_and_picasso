@@ -7,6 +7,7 @@ using DalleLib.InGame;
 
 namespace DalleLib.Networks
 {
+    [Serializable]
     public class ReadyPacket : Packet
     {
         // 어떤 방에서 누가 레디를 했는지

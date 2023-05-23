@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DalleLib\DalleLib.csproj" />
+    <ProjectReference Include="..\DalleLib\DalleLib.csproj" />
   </ItemGroup>
 
 </Project>

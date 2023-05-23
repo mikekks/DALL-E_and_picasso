@@ -40,6 +40,7 @@ C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.GameRoom.r
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Login_Form.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Register_Form.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.GameResultForm.resources
+<<<<<<< HEAD
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.exe.config
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.exe
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.pdb
@@ -61,3 +62,5 @@ C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\o
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.CopyComplete
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.exe
 C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.pdb
+=======
+>>>>>>> develop

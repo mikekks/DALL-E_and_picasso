@@ -39,11 +39,14 @@
             this.cmb_PartyCnt = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+<<<<<<< HEAD
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+=======
+>>>>>>> develop
             this.SuspendLayout();
             // 
             // btn_createRoom
@@ -93,7 +96,11 @@
             this.txt_roonName.CustomButton.UseSelectable = true;
             this.txt_roonName.CustomButton.Visible = false;
             this.txt_roonName.Lines = new string[0];
+<<<<<<< HEAD
             this.txt_roonName.Location = new System.Drawing.Point(130, 26);
+=======
+            this.txt_roonName.Location = new System.Drawing.Point(144, 86);
+>>>>>>> develop
             this.txt_roonName.MaxLength = 32767;
             this.txt_roonName.Name = "txt_roonName";
             this.txt_roonName.PasswordChar = '\0';
@@ -209,6 +216,7 @@
             // 
             // metroPanel1
             // 
+<<<<<<< HEAD
             this.metroPanel1.BackColor = System.Drawing.Color.White;
             this.metroPanel1.Controls.Add(this.cmb_PartyCnt);
             this.metroPanel1.Controls.Add(this.txt_level);
@@ -218,6 +226,8 @@
             this.metroPanel1.Controls.Add(this.btn_Cancel);
             this.metroPanel1.Controls.Add(this.btn_createRoom);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+=======
+>>>>>>> develop
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
@@ -231,6 +241,7 @@
             this.metroPanel1.VerticalScrollbarSize = 10;
             this.metroPanel1.Visible = false;
             // 
+<<<<<<< HEAD
             // metroPanel2
             // 
             this.metroPanel2.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -274,6 +285,8 @@
             this.metroButton2.Text = "만들기";
             this.metroButton2.UseSelectable = true;
             // 
+=======
+>>>>>>> develop
             // CreateRoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -285,9 +298,12 @@
             this.Text = "방 만들기";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Load += new System.EventHandler(this.CreateRoomForm_Load);
+<<<<<<< HEAD
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
+=======
+>>>>>>> develop
             this.ResumeLayout(false);
 
         }
@@ -303,9 +319,12 @@
         private MetroFramework.Controls.MetroComboBox cmb_PartyCnt;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+<<<<<<< HEAD
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton btn_createRoom;
+=======
+>>>>>>> develop
     }
 }
