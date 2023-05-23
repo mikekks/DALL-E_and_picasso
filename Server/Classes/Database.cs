@@ -9,7 +9,6 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
-using Server.Classes.Tables;
 using DalleLib;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
@@ -87,7 +86,7 @@ namespace Server.Classes
         }
 
         // 2. 로그인하는 함수
-        public static Users login(string userId, string password)
+        public static User login(string userId, string password)
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
@@ -96,7 +95,7 @@ namespace Server.Classes
             }
             string query = $"SELECT * FROM Users WHERE Users.userId = '{userId}'";
 
-            List<Users> users = new List<Users>();
+            List<User> users = new List<User>();
 
             try
             {
@@ -108,8 +107,8 @@ namespace Server.Classes
                         string roomId = rdr.IsDBNull(rdr.GetOrdinal("roomId")) ? string.Empty : rdr.GetString("roomId");
                         bool ready = !rdr.IsDBNull(rdr.GetOrdinal("ready")) && rdr.GetBoolean("ready");
                         string tier = rdr.IsDBNull(rdr.GetOrdinal("Tier")) ? string.Empty : rdr.GetString("Tier");
-
-                        users.Add(new Users(
+                        
+                        users.Add(new User(
                                     rdr.GetString("userId"),
                                     roomId,
                                     rdr.GetString("password"),
@@ -117,7 +116,7 @@ namespace Server.Classes
                                     rdr.GetString("answer"),
                                     ready,
                                     tier,
-                                    rdr.GetString("regDate")));
+                                    rdr.GetDateTime("regDate")));
                     }
                 } 
 
@@ -206,7 +205,7 @@ namespace Server.Classes
         }
 
         // 4-2 방 리스트 가져오기
-        public static List<Rooms> getRoomsList()
+        public static List<Room> getRoomsList()
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
@@ -215,7 +214,7 @@ namespace Server.Classes
             }
             string query = $"SELECT * FROM Rooms";
 
-            List<Rooms> rooms = new List<Rooms>();
+            List<Room> rooms = new List<Room>();
 
             try
             {
@@ -224,7 +223,7 @@ namespace Server.Classes
 
                     while (rdr.Read())
                     {
-                        rooms.Add(new Rooms(
+                        rooms.Add(new Room(
                                     rdr.GetString("roomId"),
                                     rdr.GetString("userId"),
                                     rdr.GetInt32("questionId"),
@@ -255,7 +254,7 @@ namespace Server.Classes
             }
             string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
 
-            List<Rooms> rooms = new List<Rooms>();
+            List<Room> rooms = new List<Room>();
 
             using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
             {
@@ -282,7 +281,7 @@ namespace Server.Classes
                     mysql.Open();
                 }
 
-                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
+                int currentUserNum = getSpecificRooms(roomId)[0].currentNum;
                 // 해당 방의 현재 인원 수 + 1 
 
                 string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
@@ -313,7 +312,7 @@ namespace Server.Classes
         }
 
         // 특정 방 가져오기 in 6번함수
-        public static List<Rooms> getSpecificRooms(string roomId)
+        public static List<Room> getSpecificRooms(string roomId)
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
@@ -322,7 +321,7 @@ namespace Server.Classes
             }
             string query = $"SELECT * FROM Rooms WHERE Rooms.roomId = '{roomId}'";
 
-            List<Rooms> rooms = new List<Rooms>();
+            List<Room> rooms = new List<Room>();
 
             try
             {
@@ -331,7 +330,7 @@ namespace Server.Classes
 
                     while (rdr.Read())
                     {
-                        rooms.Add(new Rooms(
+                        rooms.Add(new Room(
                                     rdr.GetString("roomId"),
                                     rdr.GetString("userId"),
                                     rdr.GetInt32("questionId"),

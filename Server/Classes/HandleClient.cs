@@ -22,7 +22,7 @@ namespace Server.Classes
 
         public List<string> AnswerList;
 
-        public static Dictionary<int, Room> roomList;
+        public static Dictionary<string, Room> roomList;
 
 
         ////////////// 테스트를 위한 임시 변수들 //////////////
@@ -39,7 +39,7 @@ namespace Server.Classes
             this.client = client;
             stream = client.GetStream();
 
-            roomList = new Dictionary<int, Room>();
+            roomList = new Dictionary<string, Room>();
             
 
             RecvThread = new Thread(Recieve);
@@ -103,11 +103,11 @@ namespace Server.Classes
                         //
                         //
 
-                        Room newRoom = new Room(1, 3, "고수만", 3, 1, 0);
+                        Room newRoom = new Room("1", 3, "고수만", 3, 1, 0);
                         newRoom.userList = new List<User>();
                         newRoom.userList.Add(user);
                         newRoom.Host = user;
-                        roomList.Add(newRoom.roomID, newRoom);  // for문으로 저장
+                        roomList.Add(newRoom.roomId, newRoom);  // for문으로 저장
                         
                         p = new LoginPacket(true, user, roomList);
                         Send(p);
@@ -188,13 +188,13 @@ namespace Server.Classes
 
                         if (test)  // 새로운 방 생성 성공
                         {
-                            Room room = new Room(p.room.roomID, p.room.level, p.room.roomName, p.room.TotalNum, 1, 0);
+                            Room room = new Room(p.room.roomId, p.room.level, p.room.roomName, p.room.totalNum, 1, 0);
                             room.Host = p.user;
 
                             RoomPacket sendPacket = new RoomPacket(room, RoomType.New);
                             sendPacket.Type = PacketType.RoomCreate;
                             room.userList = new List<User> { p.user };
-                            room.ReadyList = new Dictionary<int, bool>
+                            room.ReadyList = new Dictionary<string, bool>
                             {
                                  { p.user.userId, false }
                             };
@@ -263,11 +263,11 @@ namespace Server.Classes
                         // p.room.roomID로 해당 룸을 DB에서 쿼리
                         // room type으로 반환
                         //
-                        Room _room = new Room(1,3,"고수만",3,1,0);
+                        Room _room = new Room("1",3,"고수만",3,1,0);
                         _room.userList = new List<User>();
-                        _room.ReadyList = new Dictionary<int, bool>();
+                        _room.ReadyList = new Dictionary<string, bool>();
                         
-                        if(_room.TotalNum - _room.PartyNum > 0)  // 입장 가능을 의미
+                        if(_room.totalNum - _room.currentNum > 0)  // 입장 가능을 의미
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
                             // 유저 리스트에  p.room.userList[?] 를 추가시킨다.
@@ -275,7 +275,7 @@ namespace Server.Classes
 
                             _room.userList.Add(p.room.userList[0]);
                             _room.ReadyList.Add(p.room.userList[0].userId, false);
-                            _room.PartyNum++;
+                            _room.currentNum++;
                             _room.Host = user;
                             RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
                             Send(sendPacket);

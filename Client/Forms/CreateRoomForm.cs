@@ -44,14 +44,14 @@ namespace Client.Forms
             if (!Program.MethodList.ContainsKey(PacketType.RoomCreate))
                 Program.MethodList.Add(PacketType.RoomCreate, R_CreateRoom);
 
-            int roomId;
+            string roomId;
             if (Program.roomList == null)
             {
-                roomId = 1;
+                roomId = "1";
             }
             else
             {
-                roomId = Program.roomList.Count;  // room 관련 데이터 이미 갖고 있음
+                roomId = "1";//Program.roomList.Count;  // room 관련 데이터 이미 갖고 있음
             }
             
             int level = Convert.ToInt32(txt_level.Value);
@@ -68,7 +68,7 @@ namespace Client.Forms
             roomPacket.user = Program.user;
 
             room.userList = new List<DalleLib.User> { roomPacket.user };
-            room.ReadyList = new Dictionary<int, bool>
+            room.ReadyList = new Dictionary<string, bool>
             {
                 { Program.user.userId, false }
             };
@@ -89,7 +89,7 @@ namespace Client.Forms
             {
                 if (p.room != null)  // 방 만들기 성공의 경우 -> Program.room 지정
                 {
-                    Program.room = new Room(p.room.roomID, p.room.level, p.room.roomName, p.room.TotalNum, 1, 0);
+                    Program.room = new Room(p.room.roomId, p.room.level, p.room.roomName, p.room.totalNum, 1, 0);
                     Program.room.userList = p.room.userList;
                     Program.room.ReadyList = p.room.ReadyList;
                     MetroMessageBox.Show(Owner, "방만들기 성공");

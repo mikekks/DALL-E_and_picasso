@@ -23,7 +23,7 @@ namespace DalleLib.InGame
         
         public User Host;
         public List<User> userList;
-        public Dictionary<int, bool> ReadyList; // bool은 ready의미
+        public Dictionary<string, bool> ReadyList; // bool은 ready의미
 
         public string Question;
         public string Answer;

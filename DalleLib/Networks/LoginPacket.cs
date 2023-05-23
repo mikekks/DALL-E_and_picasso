@@ -12,16 +12,16 @@ namespace DalleLib.Networks
     {
         public bool success = false;
         public User user;
-        public Dictionary<int, Room> roomList;
+        public Dictionary<string, Room> roomList;
         //public List<Room> rooms;
         
-        public LoginPacket(int userId, string password)
+        public LoginPacket(string userId, string password)
         {
             Type = PacketType.Login;
             user = new User(userId, password);
         }
 
-        public LoginPacket(bool success, User user, Dictionary<int, Room> roomList)
+        public LoginPacket(bool success, User user, Dictionary<string, Room> roomList)
         {
             Type = PacketType.Login;
 

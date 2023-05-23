@@ -22,7 +22,7 @@ namespace Client.Forms
 
         private void MyInfoForm_Load(object sender, EventArgs e)
         {
-            Program.user = new User(123,"123");
+            Program.user = new User("123","123");
             Program.user.Tier = "Gold";
             ID.Text = Program.user.userId.ToString();
             TryCount.Text = Program.user.TryCount.ToString();

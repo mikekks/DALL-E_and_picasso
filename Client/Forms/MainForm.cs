@@ -98,7 +98,7 @@ namespace Client
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
             
-            RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
+            RoomPacket roomPacket = new RoomPacket(Program.roomList["1"], RoomType.Enter);
 
             if (!Program.MethodList.ContainsKey(PacketType.Room))
                 Program.MethodList.Add(PacketType.Room, R_EnterRoom);
@@ -154,7 +154,7 @@ namespace Client
 
             forTest_Connect();
 
-            int id = 12345;
+            string id = "12345";
             string password = "54321";
             LoginPacket packet = new LoginPacket(id, password);
 

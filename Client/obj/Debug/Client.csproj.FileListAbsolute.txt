@@ -1,66 +1,24 @@
-C:\Users\User\source\repos\Client\bin\Debug\Client.exe.config
-C:\Users\User\source\repos\Client\bin\Debug\Client.exe
-C:\Users\User\source\repos\Client\bin\Debug\Client.pdb
-C:\Users\User\source\repos\Client\obj\Debug\Client.csproj.AssemblyReference.cache
-C:\Users\User\source\repos\Client\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
-C:\Users\User\source\repos\Client\obj\Debug\Client.Properties.Resources.resources
-C:\Users\User\source\repos\Client\obj\Debug\Client.csproj.GenerateResource.cache
-C:\Users\User\source\repos\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\Client\obj\Debug\Client.exe
-C:\Users\User\source\repos\Client\obj\Debug\Client.pdb
-C:\Users\User\source\repos\Client\obj\Debug\Client.MainForm.resources
-C:\Users\User\source\repos\Client\bin\Debug\MetroFramework.Design.dll
-C:\Users\User\source\repos\Client\bin\Debug\MetroFramework.dll
-C:\Users\User\source\repos\Client\bin\Debug\MetroFramework.Fonts.dll
-C:\Users\User\source\repos\Client\obj\Debug\Client.InGame.resources
-C:\Users\User\source\repos\Client\obj\Debug\Client.csproj.CopyComplete
-C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.MyInfoForm.resources
-C:\Users\User\source\repos\Client\bin\Debug\DalleLib.dll
-C:\Users\User\source\repos\Client\bin\Debug\DalleLib.pdb
-C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.CreateRoomForm.resources
-C:\Users\User\source\repos\Client\obj\Debug\Client.Forms.LoadingForm.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\Client.exe.config
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\Client.exe
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\Client.pdb
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\DalleLib.dll
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\MetroFramework.Design.dll
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\MetroFramework.dll
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\bin\Debug\DalleLib.pdb
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.AssemblyReference.cache
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.CreateRoomForm.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.GameResultForm.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.GameRoom.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.LoadingForm.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Login_Form.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.MainForm.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.MyInfoForm.resources
+C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Register_Form.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Properties.Resources.resources
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.GenerateResource.cache
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.exe
 C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.pdb
-C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.GameRoom.resources
-C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Login_Form.resources
-C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\WindowsFormsApp2.Register_Form.resources
-C:\Users\User\source\repos\DALL-E_and_picasso\Client\obj\Debug\Client.Forms.GameResultForm.resources
-<<<<<<< HEAD
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.exe.config
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.exe
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\Client.pdb
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\DalleLib.dll
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\bin\Debug\DalleLib.pdb
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.AssemblyReference.cache
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.Forms.CreateRoomForm.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.Forms.GameResultForm.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.GameRoom.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.Forms.LoadingForm.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\WindowsFormsApp2.Login_Form.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.MainForm.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.Forms.MyInfoForm.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\WindowsFormsApp2.Register_Form.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.Properties.Resources.resources
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.GenerateResource.cache
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.csproj.CopyComplete
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.exe
-C:\광운대학교\3학년 1학기\응용 소프트웨어 실습\팀플\Client\obj\Debug\Client.pdb
-=======
->>>>>>> develop

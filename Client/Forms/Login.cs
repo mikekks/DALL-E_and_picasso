@@ -48,7 +48,7 @@ namespace WindowsFormsApp2
 
             forTest_Connect();
             
-            LoginPacket packet = new LoginPacket(Convert.ToInt32(id), pw);
+            LoginPacket packet = new LoginPacket(id, pw);
             Program.MethodList.Add(PacketType.Login, R_Login);
             Program.Send(packet);
 

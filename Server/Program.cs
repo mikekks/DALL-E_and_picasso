@@ -5,7 +5,6 @@ using DalleLib;
 using DalleLib.InGame;
 using DalleLib.Networks;
 using Server.Classes;
-using Server.Classes.Tables;
 using static System.Net.Mime.MediaTypeNames;
 
 
@@ -19,8 +18,9 @@ namespace Server
 
         static void Main(string[] args)
         {
+            /*
             /// 데이터베이스 접속
-            if(Database.connect()) // bool 값으로 리턴되는 connectDB 함수 입니다. DB접속이 완료되면 true를 리턴합니다.
+            if (Database.connect()) // bool 값으로 리턴되는 connectDB 함수 입니다. DB접속이 완료되면 true를 리턴합니다.
             {
                 // 1. 회원가입하는 함수
                 //Console.WriteLine("1.회원가입하는 함수");
@@ -61,6 +61,7 @@ namespace Server
 
 
             }
+            */
             ///
 
             server = new TcpListener(IPAddress.Any, port);
