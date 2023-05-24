@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
+// using Server.Classes.Tables;
 using DalleLib;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
@@ -23,13 +24,13 @@ namespace Server.Classes
         //  ex. Records 테이블에 행 추가하려면 userId(Users) -> questionId(Dalle) -> roomId(Rooms)의 PK들끼리 종속관계 성립해야 함
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test05220103"; 
+        public static string _database = "test05220103";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
 
         public static MySqlConnection mysql = new MySqlConnection(string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw));
-        
+
         public static Boolean connect()
         {
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
@@ -77,9 +78,9 @@ namespace Server.Classes
                 return true;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("회원가입 실패"+ ex);
+                Console.WriteLine("회원가입 실패" + ex);
                 // 동일한 userId 존재합니다. (PK)
                 return false;
             }
@@ -101,13 +102,13 @@ namespace Server.Classes
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
-                
+
                     while (rdr.Read())
                     {
                         string roomId = rdr.IsDBNull(rdr.GetOrdinal("roomId")) ? string.Empty : rdr.GetString("roomId");
                         bool ready = !rdr.IsDBNull(rdr.GetOrdinal("ready")) && rdr.GetBoolean("ready");
                         string tier = rdr.IsDBNull(rdr.GetOrdinal("Tier")) ? string.Empty : rdr.GetString("Tier");
-                        
+
                         users.Add(new User(
                                     rdr.GetString("userId"),
                                     roomId,
@@ -116,9 +117,9 @@ namespace Server.Classes
                                     rdr.GetString("answer"),
                                     ready,
                                     tier,
-                                    rdr.GetDateTime("regDate")));
+                                    rdr.GetString("regDate")));
                     }
-                } 
+                }
 
                 if (users[0].password == password) // userId를 갖고 있는 사람
                 {
@@ -131,14 +132,14 @@ namespace Server.Classes
                 return null;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("로그인 실패" + ex);
                 // userId 혹은 password 미일치
                 return null;
             }
         }
-        
+
         // 10. 문제 만드는 함수
         public static bool makeDalleQuestion(int questionId, string imageUrl, string keyword_1, string keyword_2, string keyword_3)
         {
@@ -243,7 +244,7 @@ namespace Server.Classes
             }
         }
 
-       
+
 
         // 5. 방 진입여부 확인하는 함수
         public static bool checkEnterRoom(string roomId)
@@ -265,8 +266,8 @@ namespace Server.Classes
                     return true;
                 }
 
-            Console.WriteLine("방 진입하기 실패");
-            return false;
+                Console.WriteLine("방 진입하기 실패");
+                return false;
             }
         }
 
@@ -281,7 +282,7 @@ namespace Server.Classes
                     mysql.Open();
                 }
 
-                int currentUserNum = getSpecificRooms(roomId)[0].currentNum;
+                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
                 // 해당 방의 현재 인원 수 + 1 
 
                 string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
@@ -377,7 +378,365 @@ namespace Server.Classes
         }
 
 
-        // ----
+        // 7. 레디하는 함수
+        public static bool ready(string userId, string roomId)
+        {
+
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"UPDATE Users SET ready = true WHERE userId = '{userId}' && roomId = '{roomId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("레디 성공");
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("레디 실패" + ex);
+                return false;
+            }
+        }
+
+
+        // 7-1. 레디 취소하는 함수
+        public static bool readyCancel(string userId, string roomId)
+        {
+
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"UPDATE Users SET ready = false WHERE userId = '{userId}' && roomId = '{roomId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("레디 취소");
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("레디 실패" + ex);
+                return false;
+            }
+        }
+
+        // 8. 레디 확인 
+        public static bool checkUsersReady(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT userId, ready FROM Users WHERE roomId = '{roomId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        if (rdr.GetInt32("ready") == 1)
+                        {
+                            Console.WriteLine("ready 확인 성공");
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} 유저가 레디하지 않음", rdr.GetString("userId"));
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        // 9. 게임 실행하는 함수
+        public static bool startGame(string roomId)
+        {
+            if (Database.checkUsersReady(roomId) == true)
+            {
+                if (mysql.State != ConnectionState.Open)
+                {
+                    mysql.Open();
+                }
+
+                string query = $"UPDATE Rooms SET nowPlaying = true WHERE roomId = '{roomId}'";
+                try
+                {
+                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                    {
+                        Console.WriteLine("게임 실행");
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("게임을 실행할 수 없음" + ex);
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("누군가 레디를 하지 않음");
+                return false;
+            }
+        }
+
+        // 9-1 게임 실행하게 되면 레코드 테이블에 유저 등록
+        public static bool registerRecordTable(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Records VALUES (@userId, @roomId, @tryCount, @correctCount)", mysql);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+                cmd.Parameters.AddWithValue("@tryCount", 0);
+                cmd.Parameters.AddWithValue("@correctCount", 0);
+
+                Console.WriteLine("레코드 테이블에 유저 등록 성공");
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("레코드 테이블에 유저 등록 실패" + ex);
+                return false;
+            }
+        }
+
+        // 11. 정답 확인하는 함수 
+        public static bool checkAnswer(string userId, string roomId, int questionId, string userAnswer)
+        {
+            Console.WriteLine(Database.getTryCount(userId: "test1", roomId: "뉴비"));
+            Console.WriteLine(Database.getCorrectCount(userId: "test1", roomId: "뉴비"));
+
+            Database.updateTryCount(userId, roomId);
+
+            if (userAnswer == Database.getKeyword(questionId)[0].keyword_1)
+            {
+                Console.WriteLine("1번 키워드 정답 !");
+                Database.updateCorrectCount(userId, roomId);
+                return true;
+            }
+            else if (userAnswer == Database.getKeyword(questionId)[0].keyword_2)
+            {
+                Console.WriteLine("2번 키워드 정답 !");
+                Database.updateCorrectCount(userId, roomId);
+                return true;
+            }
+            else if (userAnswer == Database.getKeyword(questionId)[0].keyword_3)
+            {
+                Console.WriteLine("3번 키워드 정답 !");
+                Database.updateCorrectCount(userId, roomId);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("오답 입니다.");
+                return false;
+            }
+        }
+
+        // tryCount 업데이트 하는 함수 in 11번함수
+        public static bool updateTryCount(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            int tryCount = Database.getTryCount(userId, roomId) + 1;
+            string query = $"UPDATE Records SET tryCount = {tryCount} WHERE userId = '{userId}' && roomId = '{roomId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("tryCount 업데이트 성공");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("tryCount 업데이트 실패" + ex);
+                return false;
+            }
+        }
+
+        // correctCount 업데이트 하는 함수 in 11번함수
+        public static bool updateCorrectCount(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            int correctCount = Database.getCorrectCount(userId, roomId) + 1;
+            string query = $"UPDATE Records SET correctCount = {correctCount} WHERE userId = '{userId}' && roomId = '{roomId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("correctCount 업데이트 성공");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("correctCount 업데이트 실패" + ex);
+                return false;
+            }
+        }
+
+        // user의 tryCount 가져오기 in 11번함수
+        public static int getTryCount(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT * FROM Records WHERE userId = '{userId}' && roomId = '{roomId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        return rdr.GetInt32("tryCount");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 999;
+            }
+            return 999;
+        }
+
+        // user의 correctCount 가져오기 in 11번함수
+        public static int getCorrectCount(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT * FROM Records WHERE userId = '{userId}' && roomId = '{roomId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        return rdr.GetInt32("correctCount");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 999;
+            }
+            return 999;
+        }
+
+        // 달리 키워드 가져오기 in 11번함수
+        public static List<Dalle> getKeyword(int quetionId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Dalle WHERE questionId = {quetionId}";
+
+            List<Dalle> dalle = new List<Dalle>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("달리 키워드 가져오기 성공");
+                    while (rdr.Read())
+                    {
+                        dalle.Add(new Dalle(
+                                    rdr.GetInt32("questionId"),
+                                    rdr.GetString("imageUrl"),
+                                    rdr.GetString("keyword_1"),
+                                    rdr.GetString("keyword_2"),
+                                    rdr.GetString("keyword_3")));
+                    }
+                }
+
+                return dalle;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("달리 키워드 가져오기 실패" + ex);
+                return null;
+            }
+        }
+
+        // 12. 방금 게임에 대한 기록 가져오는 함수
+        public static Records getRecordLastGame(string userId, string roomId)
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Records WHERE userId = '{userId}' && roomId = '{roomId}'";
+
+            List<Records> records = new List<Records>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("방금 게임 기록 가져오기 성공");
+                    while (rdr.Read())
+                    {
+                        records.Add(new Records(
+                                    rdr.GetString("userId"),
+                                    rdr.GetString("roomId"),
+                                    rdr.GetInt32("tryCount"),
+                                    rdr.GetInt32("correctCount")));
+                    }
+                }
+
+                return records[0];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("방금 게임 가져오기 실패" + ex);
+                // userId 혹은 password 미일치
+                return null;
+            }
+        }
 
 
         // 3. 본인 기록 가져오는 함수
@@ -398,7 +757,7 @@ namespace Server.Classes
                 {
 
                     while (rdr.Read())
-                    { 
+                    {
                         records.Add(new Records(
                                     rdr.GetString("userId"),
                                     rdr.GetString("roomId"),

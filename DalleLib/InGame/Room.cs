@@ -31,7 +31,19 @@ namespace DalleLib.InGame
         public bool nowPlaying;
 
         // public Chat lastChat;
-        
+
+        // 제가 가져온 변수 부분입니다. 혼동 되지 않게 그대로 가져온 후 기존에 있는 변수는 주석 처리하였습니다.
+        ///
+        //public string roomId;
+        public string userId;
+        //public int questionId;
+        //public bool nowPlaying;
+        public int currentUserNum;
+        public int maxUserNum;
+        //public int level;
+        ///
+
+
         public Room(string roomId, int level, string roomName)
         {
             this.roomId = roomId;
@@ -48,7 +60,7 @@ namespace DalleLib.InGame
             this.currentNum = currentNum;
             this.readyNum = ReadyNum;
         }
-
+        /*
         public Room(string roomId,
             string hostId, int questionId, bool nowPlaying, int CurrentNum, int TotalNum, int level)
         {
@@ -58,6 +70,18 @@ namespace DalleLib.InGame
             this.nowPlaying = nowPlaying;
             this.currentNum = CurrentNum;
             this.totalNum = TotalNum;
+            this.level = level;
+        }
+        */
+        public Room(string roomId,
+            string userId, int questionId, bool nowPlaying, int currentUserNum, int maxUserNum, int level)
+        {
+            this.userId = userId;
+            this.roomId = roomId;
+            this.questionId = questionId;
+            this.nowPlaying = nowPlaying;
+            this.currentUserNum = currentUserNum;
+            this.maxUserNum = maxUserNum;
             this.level = level;
         }
     }
