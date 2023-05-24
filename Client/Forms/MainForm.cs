@@ -31,7 +31,7 @@ namespace Client
         {
             // 로그인 하는 과정
 
-            /*  테스트를 위한 주석
+            
             Hide();
 
             if (Program.user == null)
@@ -44,7 +44,7 @@ namespace Client
                     this.Close();
                 }
             }
-            */
+            
 
 
             // 로그인 후 정보 갱신 필요.
