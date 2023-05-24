@@ -14,6 +14,7 @@ namespace Server.Classes
 {
     public class HandleClient
     {
+        public static int questionId = 1;
         public TcpClient client;
         NetworkStream stream;
         public Thread RecvThread;
@@ -22,7 +23,7 @@ namespace Server.Classes
 
         public List<string> AnswerList;
 
-        public static Dictionary<string, Room> roomList;
+        public static List<Room> roomList;
 
 
         ////////////// 테스트를 위한 임시 변수들 //////////////
@@ -39,9 +40,8 @@ namespace Server.Classes
             this.client = client;
             stream = client.GetStream();
 
-            roomList = new Dictionary<string, Room>();
+            roomList = new List<Room>();
             
-
             RecvThread = new Thread(Recieve);
             RecvThread.IsBackground = true;
             RecvThread.Start();
@@ -91,24 +91,22 @@ namespace Server.Classes
                     LoginPacket p = packet as LoginPacket;
 
                     // db에 해당 정보 보내기
-                    //
-                    //
-
-                    user = new User(p.user.userId, p.user.password, "Song min gyu", 100, 70, 30, 70, "Gold");
-
-                    if (true)  // 로그인 성공 경우
-                    {   
+                    user = Database.login(userId: p.user.userId, password: p.user.password);
+              
+                    if (user != null)  // 로그인 성공 경우
+                    {
 
                         // rooms 정보 db에서 불러오기 for문으로 저장
-                        //
-                        //
+                        roomList = Database.getRoomsList();
 
+                        /*
                         Room newRoom = new Room("1", 3, "고수만", 3, 1, 0);
                         newRoom.userList = new List<User>();
                         newRoom.userList.Add(user);
                         newRoom.Host = user;
                         roomList.Add(newRoom.roomId, newRoom);  // for문으로 저장
-                        
+                        */
+
                         p = new LoginPacket(true, user, roomList);
                         Send(p);
                     }
@@ -150,12 +148,10 @@ namespace Server.Classes
                     else if(p.registerType == RegisterType.create)
                     {
                         //  db에 해당 유저의 정보(p에 다 들어있음) 저장
-                        //
-                        //
+                        bool suc = Database.signUp(userId: p.id, password: p.password, findQuestion: p.recovery_A, answer: p.recovery_A, regDate: "2023-05-22");
 
-                        bool test = true;  // 테스트를 위함
                         RegisterPacket sendPacket;
-                        if (test)  // 회원가입 성공
+                        if (suc)  // 회원가입 성공
                         {
                             sendPacket = new RegisterPacket(p.id, true);
                         }
@@ -180,14 +176,14 @@ namespace Server.Classes
                         // 
                         //
 
+
                         // db에 해당 방 생성
-                        //
-                        //
+                        bool suc = Database.makeNewRoom(roomId: p.room.roomId, userId: p.room.hostId, questionId: questionId, maxUserNum: p.room.totalNum, level: p.room.level);
+                        questionId++;  // question id 카운터 느낌
 
-                        bool test = true;  // 테스트를 위함
-
-                        if (test)  // 새로운 방 생성 성공
+                        if (suc)  // 새로운 방 생성 성공 -> 해당 방 바로 입장
                         {
+                            Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
                             Room room = new Room(p.room.roomId, p.room.level, p.room.roomName, p.room.totalNum, 1, 0);
                             room.Host = p.user;
 
@@ -224,38 +220,7 @@ namespace Server.Classes
                     /*
                     if(p.roomType == RoomType.New)
                     {
-                        // db에서 요청하는 방과 중복되는게 있는지 확인
-                        // 
-                        //
-
-                        // db에 해당 방 생성
-                        //
-                        //
-
-                        bool test = true;  // 테스트를 위함
-
-                        if (test)  // 새로운 방 생성 성공
-                        {
-                            Room room = new Room(p.room.roomID, p.room.level, p.room.roomName, p.room.TotalNum, 1, 0);
-                            room.Host = p.user;
-
-                            RoomPacket sendPacket = new RoomPacket(room, RoomType.New);
-                            sendPacket.Type = PacketType.Room;
-                            sendPacket.userList = p.userList;
-                            sendPacket.ReadyList = p.ReadyList;
-                            sendPacket.roomType = p.roomType;
-                            sendPacket.room.create = true;
-
-                            Send(sendPacket);
-
-                        }
-                        else  // 방 생성 실패
-                        {
-                            RoomPacket sendPacket = new RoomPacket(null, RoomType.New);
-                            sendPacket.Type = PacketType.Room;
-                            sendPacket.roomType = p.roomType;
-                            Send(sendPacket);
-                        }
+                      
                     }
                     */
                     if (p.roomType == RoomType.Enter)
@@ -263,15 +228,18 @@ namespace Server.Classes
                         // p.room.roomID로 해당 룸을 DB에서 쿼리
                         // room type으로 반환
                         //
+                        
+
                         Room _room = new Room("1",3,"고수만",3,1,0);
                         _room.userList = new List<User>();
                         _room.ReadyList = new Dictionary<string, bool>();
-                        
-                        if(_room.totalNum - _room.currentNum > 0)  // 입장 가능을 의미
+                       
+                        if (Database.checkEnterRoom(roomId: p.room.roomId))  // 입장 가능을 의미
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
                             // 유저 리스트에  p.room.userList[?] 를 추가시킨다.
                             //
+                            Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
 
                             _room.userList.Add(p.room.userList[0]);
                             _room.ReadyList.Add(p.room.userList[0].userId, false);
@@ -295,12 +263,14 @@ namespace Server.Classes
                         // db에서 해당 유저가 레디한 유저인지 파악
                         //
                         //
-                        bool test = true;  // 테스트를 위한 변수
+                        bool test = true;  // 테스트를 위한 변수, 이미 레디한 유저인지 파악
                         readyChk++;  // 테스트를 위한 변수
 
                         if (p.ready && test)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
-                        { 
+                        {
+
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
+                            Database.ready(userId: p.user.userId, roomId: p.room.roomId);
                             // 그 후 다시 해당 방의 유저리스트 쿼리
                             //
 
@@ -313,7 +283,7 @@ namespace Server.Classes
                             
                         }
                         else { // 예전에 레디한 경우 or 레디하지 않은 경우
-                            // 해당 방의 유저리스트 쿼리
+                            Database.checkUsersReady(roomId: p.room.roomId);
                         }
 
 
@@ -324,10 +294,18 @@ namespace Server.Classes
                         //
                         //
 
+                        Database.checkUsersReady(roomId: p.room.roomId);
+                        // 어떤 레디리스트 반환되면 for문으로 싹 확인 하자
+
                         bool test = true;
                         if (test && readyChk == 2)  // 두 경우 모두 통과한 경우
                         {
-                            // 일단 현재 구현은 단일 라운드로 진행
+
+                            Database.startGame(roomId: p.room.roomId);
+
+                            // 게임 실행하게 되면 레코드 테이블에 유저 등록
+                            Database.registerRecordTable(userId: p.user.userId, roomId: p.room.roomId);
+
                             string img = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
                             // 식별번호?, Dalle image, 정답 단어, 해당 room 저장
                             //
@@ -356,6 +334,8 @@ namespace Server.Classes
                         // DB에서 해당 룸( p.room.roomID ) 에 
                         // 매핑되는 문제의 정답 단어 불러오기
                         //
+
+                        Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, questionId: p.room.questionId, userAnswer: p.Answer);
 
                         if (AnswerList.Count < 3)
                         {  // ! 여기는 일단 하드코딩
@@ -398,6 +378,7 @@ namespace Server.Classes
                             // DB에서 해당 게임의 결과 가져오기
                             //
                             //
+                            Database.getRecordLastGame(userId: "test1", roomId: "뉴비");
 
                             Send(sendPacket);
                         }

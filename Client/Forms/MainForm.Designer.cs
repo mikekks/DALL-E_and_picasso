@@ -31,15 +31,14 @@
             this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.Tab1 = new MetroFramework.Controls.MetroTabPage();
-            this.Room3 = new MetroFramework.Controls.MetroTile();
-            this.metroScrollBar1 = new MetroFramework.Controls.MetroScrollBar();
-            this.Room2 = new MetroFramework.Controls.MetroTile();
-            this.Room1 = new MetroFramework.Controls.MetroTile();
             this.Tab2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.Tab3 = new MetroFramework.Controls.MetroTabPage();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btn_CreateRoom = new MetroFramework.Controls.MetroButton();
             this.btn_Myinfo = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
@@ -49,12 +48,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_reset = new MetroFramework.Controls.MetroButton();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Room2 = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
-            this.Tab1.SuspendLayout();
             this.Tab2.SuspendLayout();
             this.Tab3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,6 +74,9 @@
             this.metroTabControl1.Controls.Add(this.Tab1);
             this.metroTabControl1.Controls.Add(this.Tab2);
             this.metroTabControl1.Controls.Add(this.Tab3);
+            this.metroTabControl1.Controls.Add(this.tabPage1);
+            this.metroTabControl1.Controls.Add(this.tabPage2);
+            this.metroTabControl1.Controls.Add(this.tabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(183, 33);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
@@ -86,11 +87,9 @@
             // 
             // Tab1
             // 
+            this.Tab1.AutoScroll = true;
             this.Tab1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Tab1.Controls.Add(this.Room3);
-            this.Tab1.Controls.Add(this.metroScrollBar1);
-            this.Tab1.Controls.Add(this.Room2);
-            this.Tab1.Controls.Add(this.Room1);
+            this.Tab1.HorizontalScrollbar = true;
             this.Tab1.HorizontalScrollbarBarColor = true;
             this.Tab1.HorizontalScrollbarHighlightOnWheel = false;
             this.Tab1.HorizontalScrollbarSize = 10;
@@ -99,77 +98,11 @@
             this.Tab1.Size = new System.Drawing.Size(487, 220);
             this.Tab1.TabIndex = 0;
             this.Tab1.Text = "★";
+            this.Tab1.VerticalScrollbar = true;
             this.Tab1.VerticalScrollbarBarColor = true;
             this.Tab1.VerticalScrollbarHighlightOnWheel = false;
             this.Tab1.VerticalScrollbarSize = 10;
-            // 
-            // Room3
-            // 
-            this.Room3.ActiveControl = null;
-            this.Room3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Room3.ForeColor = System.Drawing.Color.White;
-            this.Room3.Location = new System.Drawing.Point(10, 160);
-            this.Room3.Name = "Room3";
-            this.Room3.Size = new System.Drawing.Size(438, 65);
-            this.Room3.TabIndex = 4;
-            this.Room3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room3.TileImage = global::Client.Properties.Resources.Van;
-            this.Room3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.Room3.UseCustomBackColor = true;
-            this.Room3.UseSelectable = true;
-            this.Room3.UseTileImage = true;
-            // 
-            // metroScrollBar1
-            // 
-            this.metroScrollBar1.LargeChange = 10;
-            this.metroScrollBar1.Location = new System.Drawing.Point(459, 10);
-            this.metroScrollBar1.Maximum = 100;
-            this.metroScrollBar1.Minimum = 0;
-            this.metroScrollBar1.MouseWheelBarPartitions = 10;
-            this.metroScrollBar1.Name = "metroScrollBar1";
-            this.metroScrollBar1.Orientation = MetroFramework.Controls.MetroScrollOrientation.Vertical;
-            this.metroScrollBar1.ScrollbarSize = 10;
-            this.metroScrollBar1.Size = new System.Drawing.Size(10, 200);
-            this.metroScrollBar1.TabIndex = 3;
-            this.metroScrollBar1.UseSelectable = true;
-            // 
-            // Room2
-            // 
-            this.Room2.ActiveControl = null;
-            this.Room2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Room2.ForeColor = System.Drawing.Color.White;
-            this.Room2.Location = new System.Drawing.Point(10, 88);
-            this.Room2.Name = "Room2";
-            this.Room2.Size = new System.Drawing.Size(438, 65);
-            this.Room2.TabIndex = 2;
-            this.Room2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room2.TileImage = global::Client.Properties.Resources.room_icon2;
-            this.Room2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.Room2.UseCustomBackColor = true;
-            this.Room2.UseSelectable = true;
-            this.Room2.UseTileImage = true;
-            this.Room2.Click += new System.EventHandler(this.Room2_Click);
-            // 
-            // Room1
-            // 
-            this.Room1.ActiveControl = null;
-            this.Room1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Room1.ForeColor = System.Drawing.Color.White;
-            this.Room1.Location = new System.Drawing.Point(10, 16);
-            this.Room1.Name = "Room1";
-            this.Room1.Size = new System.Drawing.Size(438, 65);
-            this.Room1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Room1.TabIndex = 0;
-            this.Room1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room1.TileImage = global::Client.Properties.Resources.dalle2;
-            this.Room1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.Room1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.Room1.UseCustomBackColor = true;
-            this.Room1.UseSelectable = true;
-            this.Room1.UseTileImage = true;
-            this.Room1.Click += new System.EventHandler(this.Room1_Click);
+            this.Tab1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Tab1_Scroll);
             // 
             // Tab2
             // 
@@ -243,6 +176,31 @@
             this.metroTile3.UseCustomBackColor = true;
             this.metroTile3.UseCustomForeColor = true;
             this.metroTile3.UseSelectable = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(487, 220);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "★★★★";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(487, 220);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "★★★★★";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.tabPage3.Location = new System.Drawing.Point(4, 38);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(487, 220);
+            this.tabPage3.TabIndex = 5;
+            this.tabPage3.Text = "★★★★★★";
             // 
             // btn_CreateRoom
             // 
@@ -357,16 +315,6 @@
             this.btn_reset.UseCustomForeColor = true;
             this.btn_reset.UseSelectable = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(497, 301);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 37);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "간의 로그인";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(581, 301);
@@ -405,6 +353,24 @@
             this.panel1.Size = new System.Drawing.Size(164, 305);
             this.panel1.TabIndex = 17;
             // 
+            // Room2
+            // 
+            this.Room2.ActiveControl = null;
+            this.Room2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.Room2.ForeColor = System.Drawing.Color.White;
+            this.Room2.Location = new System.Drawing.Point(405, 319);
+            this.Room2.Name = "Room2";
+            this.Room2.Size = new System.Drawing.Size(108, 65);
+            this.Room2.TabIndex = 2;
+            this.Room2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Room2.TileImage = global::Client.Properties.Resources.room_icon2;
+            this.Room2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Room2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Room2.UseCustomBackColor = true;
+            this.Room2.UseSelectable = true;
+            this.Room2.UseTileImage = true;
+            this.Room2.Click += new System.EventHandler(this.Room2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -412,8 +378,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(694, 387);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_reset);
+            this.Controls.Add(this.Room2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btn_Myinfo);
             this.Controls.Add(this.metroButton2);
@@ -432,7 +398,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.metroTabControl1.ResumeLayout(false);
-            this.Tab1.ResumeLayout(false);
             this.Tab2.ResumeLayout(false);
             this.Tab3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -445,16 +410,12 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroTile Room1;
         private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
-        private MetroFramework.Controls.MetroTile Room2;
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage Tab1;
         private MetroFramework.Controls.MetroTabPage Tab2;
         private MetroFramework.Controls.MetroTabPage Tab3;
         private MetroFramework.Controls.MetroButton btn_CreateRoom;
-        private MetroFramework.Controls.MetroScrollBar metroScrollBar1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile3;
@@ -465,11 +426,13 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTile Room3;
         private MetroFramework.Controls.MetroButton btn_reset;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private MetroFramework.Controls.MetroTile Room2;
     }
 }

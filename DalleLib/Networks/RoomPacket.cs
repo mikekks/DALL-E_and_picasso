@@ -15,9 +15,9 @@ namespace DalleLib.Networks
     [Serializable]
     public class RoomPacket : Packet
     {
-        public Room room;
+        public Room room;  // 생성하려는 방 또는 입장하려는 방 객체
         public RoomType roomType;
-        public User user; // 방장의미
+        public User user; // 방에 입장하려는 유저 객체, 또는 방 생성하려는 유저 객체
         public List<User> userList;
         public Dictionary<string, bool> ReadyList; // bool은 ready의미
         // Quest

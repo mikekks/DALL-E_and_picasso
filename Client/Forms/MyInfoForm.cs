@@ -22,12 +22,17 @@ namespace Client.Forms
 
         private void MyInfoForm_Load(object sender, EventArgs e)
         {
+            // 아래 두 줄은 테스트 코드
             Program.user = new User("123","123");
             Program.user.Tier = "Gold";
+
+
             ID.Text = Program.user.userId.ToString();
             TryCount.Text = Program.user.TryCount.ToString();
             Ans.Text = Program.user.AnsCount.ToString();
-            AnsRate.Text = Program.user.AnsRate.ToString();
+
+            double _AnsRate = Program.user.AnsCount / Program.user.TryCount;
+            AnsRate.Text = _AnsRate.ToString();
 
             string tier = Program.user.Tier;
             if(tier == "Bronze")

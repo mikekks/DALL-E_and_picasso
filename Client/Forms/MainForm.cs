@@ -30,6 +30,8 @@ namespace Client
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
             // 로그인 하는 과정
+
+            /*  테스트를 위한 주석
             Hide();
 
             if (Program.user == null)
@@ -42,7 +44,7 @@ namespace Client
                     this.Close();
                 }
             }
-            
+            */
 
 
             // 로그인 후 정보 갱신 필요.
@@ -51,19 +53,58 @@ namespace Client
 
             // 방 리스트 불러오기
 
+           
+
+
+            ////////////////////////// 테스트 코드
+            Room room = new Room("123", "1234", 1, "뉴비들만오셈", false, 1, 4, 3);
+            Room room2 = new Room("123", "1234", 1, "너 오면 바로 고", false, 1, 4, 3);
+            Room room3 = new Room("123", "1234", 1, "고수들 환영", false, 1, 4, 3);
+            Room room4 = new Room("123", "1234", 1, "이거까지 나오나?", false, 1, 4, 3);
+            Program.roomList = new List<Room>();
+            Program.roomList.Add(room);
+            Program.roomList.Add(room2);
+            Program.roomList.Add(room3);
+            Program.roomList.Add(room4);
+            ////////////////////////// 테스트 코드
+
+            MetroTile[] roomTile = new MetroTile[Program.roomList.Count + 1];
+            int y = 10;
+            for (int i=0; i<Program.roomList.Count; i++)
+            {
+                MetroTile _roomTile = new MetroTile();
+                _roomTile.Width = 438;
+                _roomTile.Height = 65;
+                _roomTile.Location = new Point(5, y);
+                _roomTile.TileImage = Properties.Resources.Van;
+                _roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
+                _roomTile.UseTileImage = true;
+                y += 70;
+
+                MetroLabel _roomName = new MetroLabel();
+                _roomName.Text = Program.roomList[i].roomName;
+                _roomName.Location = new Point(105, 20);
+                _roomName.Size = new Size(150, 20);
+                _roomTile.Controls.Add(_roomName);
+                
+                MetroLabel _People = new MetroLabel();
+                _People.Text = "현재 인원 : " + Program.roomList[i].currentNum.ToString() + " / " + Program.roomList[i].totalNum.ToString();
+                _People.Location = new Point(300, 20);
+                _People.Size = new Size(200, 20);
+                _roomTile.Controls.Add(_People);
+
+                _roomTile.Click += new EventHandler(Room_Click);
+                _roomTile.Tag = Program.roomList[i];
+                roomTile[i] = _roomTile;
+                Tab1.Controls.Add(roomTile[i]);
+
+            }
+            
+
 
             // 내 간단 정보 불러오기
-            Room1.Text = "                     ";
-            Room1.Text += "너만오면 고";
-            Room1.Text += "       | 참여인원 3/3 ";
 
-            Room2.Text = "                     ";
-            Room2.Text += "고수만       ";
-            Room2.Text += "       | 참여인원 2/3 ";
 
-            Room3.Text = "                     ";
-            Room3.Text += "아무나오세요";
-            Room3.Text += "       | 참여인원 1/3 ";
         }
 
         public void forTest_Connect()
@@ -85,9 +126,25 @@ namespace Client
             Opacity = 100;
         }
 
-        private void Room1_Click(object sender, EventArgs e)
+        
+
+        public void Room_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(Owner, "참여인원이 다 찼습니다");
+
+            forTest_Connect();
+
+            MetroTile btnRoom = sender as MetroTile;
+            Room EnterRoom = (Room)btnRoom.Tag;
+
+            // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
+            // int roomID, int level, string roomName, int PartyNum, int ReadyNum
+
+            RoomPacket roomPacket = new RoomPacket(EnterRoom, RoomType.Enter);
+
+            if (!Program.MethodList.ContainsKey(PacketType.Room))
+                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
+
+            Program.Send(roomPacket);
         }
 
         private void Room2_Click(object sender, EventArgs e)
@@ -98,7 +155,7 @@ namespace Client
             // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
             
-            RoomPacket roomPacket = new RoomPacket(Program.roomList["1"], RoomType.Enter);
+            RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
 
             if (!Program.MethodList.ContainsKey(PacketType.Room))
                 Program.MethodList.Add(PacketType.Room, R_EnterRoom);
@@ -251,6 +308,11 @@ namespace Client
         private void metroButton2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Tab1_Scroll(object sender, ScrollEventArgs e)
+        {
+            
         }
     }
 }

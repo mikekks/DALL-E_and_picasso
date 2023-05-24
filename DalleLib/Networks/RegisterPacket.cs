@@ -24,6 +24,7 @@ namespace DalleLib.Networks
         public string nickName;
         public string recovery_Q;
         public string recovery_A;
+        public DateTime regDate;
 
         public RegisterPacket(string id)  // 중복도 검사를 위함
         {
