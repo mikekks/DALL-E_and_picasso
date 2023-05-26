@@ -71,13 +71,19 @@ namespace Server
                 // Console.WriteLine("8-1 특정 유저가 레디했는 지 가져오는 함수");
                 // Console.WriteLine(Database.checkSpecificUserReady(userId: "test2"));
 
+                // 8-2. List 타입으로 user의 ready 정보 가져오는 함수
+                Console.WriteLine("8-2. List 타입으로 user의 ready 정보 가져오는 함수");
+                Console.WriteLine(Database.checkUserReady(userId: "test2")[0].userId); // test2 출력
+                Console.WriteLine(Database.checkUserReady(userId: "test2")[0].ready); // true or false 출력
+
+
                 // [UPDATE] 9. 게임 실행하는 함수 (안에 8번함수로 분기처리)
                 // Console.WriteLine("9. 게임 실행하는 함수");
                 // Console.WriteLine(Database.startGame(roomId: "뉴비"));
 
                 // 9-1. nowPlaying이 true면 true를 반환
-                Console.WriteLine("9-1. nowPlaying이 true면 true를 반환");
-                Console.WriteLine(Database.checkNowPlaying(roomId: "뉴비"));
+                // Console.WriteLine("9-1. nowPlaying이 true면 true를 반환");
+                // Console.WriteLine(Database.checkNowPlaying(roomId: "뉴비"));
 
                 // [INSERT] 9-2. 게임 실행하게 되면 레코드 테이블에 유저 등록
                 // Console.WriteLine("9-2. 게임 실행하게 되면 레코드 테이블에 유저 등록");
@@ -89,12 +95,24 @@ namespace Server
                 // Console.WriteLine(Database.checkAnswer(userId: "test1", roomId: "뉴비", questionId: 8, userAnswer: "Potato"));
 
                 // 12. 방금 게임에 대한 기록 가져오는 함수
-                // Console.WriteLine(Database.getRecordLastGame(userId: "test1", roomId: "뉴비"));
+                Console.WriteLine("12. 방금 게임에 대한 기록 가져오는 함수");
+                Console.WriteLine(Database.getRecordLastGame(userId: "test1", roomId: "뉴비"));
+
+                // 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수
+                Console.WriteLine(" 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수");
+                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].userId);  
+                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].roomId);
+                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].tryCount);
+                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].correctCount);
+                // 0번 인덱스 유저의 모든 컬럼값을 각각 가져옵니다. 
+
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
                 // Console.WriteLine("3.본인기록 가져오는 함수");
                 // Console.WriteLine(Database.getRecords(userId: "test1"));
+
+
             }
 
 

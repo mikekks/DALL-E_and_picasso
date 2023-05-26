@@ -56,5 +56,11 @@ namespace DalleLib
             this.ready = ready;
             this.regDate = regDate;
         }
+
+        public User(string userId, bool ready)
+        {
+            this.userId = userId;
+            this.ready = ready;
+        }
     }
 }

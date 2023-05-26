@@ -501,6 +501,37 @@ namespace Server.Classes
             }
         }
 
+        // 8-2 List 타입으로 user의 ready 정보 가져오는 함수 
+        public static List<User> checkUserReady(string userId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT userId, ready FROM Users WHERE userId = '{userId}'";
+
+            List<User> users = new List<User>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        users.Add(new User(
+                                   rdr.GetString("userId"),
+                                   rdr.GetBoolean("ready")));
+                    }
+                    return users;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         // 9. 게임 실행하는 함수
         public static bool startGame(string roomId)
@@ -556,7 +587,7 @@ namespace Server.Classes
                         }
                         else
                         {
-                            Console.WriteLine("{0} 방 현재 대기 중", roomId);
+                            Console.WriteLine("{0} 방 현재 게임 안하는 중", roomId);
                             return false;
                         }
                     }
@@ -808,6 +839,43 @@ namespace Server.Classes
                 return null;
             }
         }
+        // 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수
+        public static List<Records> getRecordEveryone(string roomId)
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT * FROM Records WHERE roomId =  '{roomId}'";
+
+            List<Records> records = new List<Records>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("모든 사람의 결과 가져오기 성공");
+                    while (rdr.Read())
+                    {
+                        records.Add(new Records(
+                                    rdr.GetString("userId"),
+                                    rdr.GetString("roomId"),
+                                    rdr.GetInt32("tryCount"),
+                                    rdr.GetInt32("correctCount")));
+                    }
+                }
+
+                return records;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("모든 사람의 결과 가져오기 성공" + ex);
+                return null;
+            }
+        }
+
+
 
 
         // 3. 본인 기록 가져오는 함수
