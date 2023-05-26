@@ -24,7 +24,7 @@ namespace Server.Classes
         //  ex. Records 테이블에 행 추가하려면 userId(Users) -> questionId(Dalle) -> roomId(Rooms)의 PK들끼리 종속관계 성립해야 함
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test05220103";
+        public static string _database = "test05261217";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -52,22 +52,22 @@ namespace Server.Classes
         }
 
         // 1. 회원가입하는 함수
-        public static bool signUp(string userId, string password, string findQuestion, string answer, string regDate)
+        public static bool signUp(string userId, string password, string recovery_Q, string recovery_A, DateTime regDate)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
             MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Users VALUES (@userId, @roomId, @password, @findQuestion, @answer, @ready, @Tier, @regDate)", mysql);
+                "INSERT INTO Users VALUES (@userId, @roomId, @password, @recovery_Q, @recovery_A, @ready, @Tier, @regDate)", mysql);
 
             try
             {
                 cmd.Parameters.AddWithValue("@userId", userId);
                 cmd.Parameters.AddWithValue("@roomId", null);
                 cmd.Parameters.AddWithValue("@password", password);
-                cmd.Parameters.AddWithValue("@findQuestion", findQuestion);
-                cmd.Parameters.AddWithValue("@answer", answer);
+                cmd.Parameters.AddWithValue("@recovery_Q", recovery_Q);
+                cmd.Parameters.AddWithValue("@recovery_A", recovery_A);
                 cmd.Parameters.AddWithValue("@ready", null);
                 cmd.Parameters.AddWithValue("@Tier", null);
                 cmd.Parameters.AddWithValue("@regDate", regDate);
@@ -113,11 +113,11 @@ namespace Server.Classes
                                     rdr.GetString("userId"),
                                     roomId,
                                     rdr.GetString("password"),
-                                    rdr.GetString("findQuestion"),
-                                    rdr.GetString("answer"),
+                                    rdr.GetString("recovery_Q"),
+                                    rdr.GetString("recovery_A"),
                                     ready,
                                     tier,
-                                    rdr.GetString("regDate")));
+                                    rdr.GetDateTime("regDate")));
                     }
                 }
 
@@ -173,14 +173,14 @@ namespace Server.Classes
         }
 
         // 4-1. 방 만드는 함수
-        public static bool makeNewRoom(string roomId, string userId, int questionId, int maxUserNum, int level)
+        public static bool makeNewRoom(string roomId, string userId, int questionId, int totalNum, int level)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
             MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Rooms VALUES (@roomId, @userId, @questionId, @nowPlaying, @currentUserNum, @maxUserNum, @level)", mysql);
+                "INSERT INTO Rooms VALUES (@roomId, @userId, @questionId, @nowPlaying, @currentNum, @totalNum, @level)", mysql);
 
             try
             {
@@ -188,8 +188,8 @@ namespace Server.Classes
                 cmd.Parameters.AddWithValue("@userId", userId);
                 cmd.Parameters.AddWithValue("@questionId", questionId);
                 cmd.Parameters.AddWithValue("@nowPlaying", 0);
-                cmd.Parameters.AddWithValue("@currentUserNum", 0);
-                cmd.Parameters.AddWithValue("@maxUserNum", maxUserNum);
+                cmd.Parameters.AddWithValue("@currentNum", 0);
+                cmd.Parameters.AddWithValue("@totalNum", totalNum);
                 cmd.Parameters.AddWithValue("@level", level);
 
                 Console.WriteLine("방 만들기 성공");
@@ -229,8 +229,8 @@ namespace Server.Classes
                                     rdr.GetString("userId"),
                                     rdr.GetInt32("questionId"),
                                     rdr.GetBoolean("nowPlaying"),
-                                    rdr.GetInt32("currentUserNum"),
-                                    rdr.GetInt32("maxUserNum"),
+                                    rdr.GetInt32("currentNum"),
+                                    rdr.GetInt32("totalNum"),
                                     rdr.GetInt32("level")));
                     }
                 }
@@ -244,8 +244,6 @@ namespace Server.Classes
             }
         }
 
-
-
         // 5. 방 진입여부 확인하는 함수
         public static bool checkEnterRoom(string roomId)
         {
@@ -253,7 +251,7 @@ namespace Server.Classes
             {
                 mysql.Open();
             }
-            string query = $"SELECT maxUserNum - currentUserNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
+            string query = $"SELECT totalNum - currentNum AS canEnterRoom FROM Rooms WHERE roomId = '{roomId}'";
 
             List<Room> rooms = new List<Room>();
 
@@ -272,7 +270,7 @@ namespace Server.Classes
         }
 
 
-        // 6. 방 진입하는 함수 (Roooms 테이블)
+        // 6번함수 원본 -- 레거시
         public static bool enterRoom_Rooms(string roomId, string userId)
         {
             if (Database.checkEnterRoom(roomId) == true) // 방 진입이 가능한지 확인
@@ -282,10 +280,10 @@ namespace Server.Classes
                     mysql.Open();
                 }
 
-                int currentUserNum = getSpecificRooms(roomId)[0].currentUserNum;
+                int currentNum = getSpecificRooms(roomId)[0].currentNum;
                 // 해당 방의 현재 인원 수 + 1 
 
-                string query = $"UPDATE Rooms SET currentUserNum = {currentUserNum + 1} WHERE roomId = '{roomId}'";
+                string query = $"UPDATE Rooms SET currentNum = {currentNum + 1} WHERE roomId = '{roomId}'";
                 // 해당 방의 인원수 업데이트
 
                 try
@@ -312,7 +310,7 @@ namespace Server.Classes
             }
         }
 
-        // 특정 방 가져오기 in 6번함수
+        // 6. 방 진입하는 함수
         public static List<Room> getSpecificRooms(string roomId)
         {
             // 로그인 유저 있으면 true 없으면 false
@@ -336,8 +334,8 @@ namespace Server.Classes
                                     rdr.GetString("userId"),
                                     rdr.GetInt32("questionId"),
                                     rdr.GetBoolean("nowPlaying"),
-                                    rdr.GetInt32("currentUserNum"),
-                                    rdr.GetInt32("maxUserNum"),
+                                    rdr.GetInt32("currentNum"),
+                                    rdr.GetInt32("totalNum"),
                                     rdr.GetInt32("level")));
                     }
                 }
@@ -431,7 +429,7 @@ namespace Server.Classes
             }
         }
 
-        // 8. 레디 확인 
+        // 8. 해당 방 참가자의 전체 레디 확인
         public static bool checkUsersReady(string roomId)
         {
             if (mysql.State != ConnectionState.Open)
@@ -465,6 +463,43 @@ namespace Server.Classes
                 return false;
             }
         }
+
+        // 8-1 특정 유저가 레디했는 지 가져오는 함수
+
+        public static bool checkSpecificUserReady(string userId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT userId, ready FROM Users WHERE userId = '{userId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        if (rdr.GetInt32("ready") == 1)
+                        {
+                            Console.WriteLine("{0} 레디 완료", userId);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}는 레디 안함.", userId);
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
 
         // 9. 게임 실행하는 함수
         public static bool startGame(string roomId)

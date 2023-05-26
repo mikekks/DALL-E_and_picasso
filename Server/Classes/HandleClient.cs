@@ -148,7 +148,7 @@ namespace Server.Classes
                     else if(p.registerType == RegisterType.create)
                     {
                         //  db에 해당 유저의 정보(p에 다 들어있음) 저장
-                        bool suc = Database.signUp(userId: p.id, password: p.password, findQuestion: p.recovery_A, answer: p.recovery_A, regDate: "2023-05-22");
+                        bool suc = Database.signUp(userId: p.id, password: p.password, recovery_Q: p.recovery_A, recovery_A: p.recovery_A, regDate: DateTime.Now);
 
                         RegisterPacket sendPacket;
                         if (suc)  // 회원가입 성공
@@ -178,7 +178,7 @@ namespace Server.Classes
 
 
                         // db에 해당 방 생성
-                        bool suc = Database.makeNewRoom(roomId: p.room.roomId, userId: p.room.hostId, questionId: questionId, maxUserNum: p.room.totalNum, level: p.room.level);
+                        bool suc = Database.makeNewRoom(roomId: p.room.roomId, userId: p.room.userId, questionId: questionId, totalNum: p.room.totalNum, level: p.room.level);
                         questionId++;  // question id 카운터 느낌
 
                         if (suc)  // 새로운 방 생성 성공 -> 해당 방 바로 입장

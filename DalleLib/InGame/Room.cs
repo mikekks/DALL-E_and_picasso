@@ -13,7 +13,8 @@ namespace DalleLib.InGame
         public bool create;
 
         public string roomId;
-        public string hostId;
+        // public string hostId;
+        public string userId;
         public int questionId;
         public int level;
         public string roomName;
@@ -50,13 +51,13 @@ namespace DalleLib.InGame
             this.readyNum = ReadyNum;
         }
 
+        // hostId -> userId로 변경, roomName 삭제(roomId가 곧 방 제목이므로)
         public Room(string roomId,
-            string hostId, int questionId, string roomName, bool nowPlaying, int currentNum, int totalNum, int level)
+            string userId, int questionId, bool nowPlaying, int currentNum, int totalNum, int level)
         {
-            this.hostId = hostId;
             this.roomId = roomId;
+            this.userId = userId;
             this.questionId = questionId;
-            this.roomName = roomName;
             this.nowPlaying = nowPlaying;
             this.currentNum = currentNum;
             this.totalNum = totalNum;
