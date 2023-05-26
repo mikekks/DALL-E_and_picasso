@@ -23,29 +23,38 @@ namespace Client.Forms
         private void MyInfoForm_Load(object sender, EventArgs e)
         {
             // 아래 두 줄은 테스트 코드
-            Program.user = new User("123","123");
-            Program.user.Tier = "Gold";
-
 
             ID.Text = Program.user.userId.ToString();
-            TryCount.Text = Program.user.TryCount.ToString();
-            Ans.Text = Program.user.AnsCount.ToString();
 
-            double _AnsRate = Program.user.AnsCount / Program.user.TryCount;
+            double _AnsRate;
+            if (Program.user.TryCount == 0)
+            {
+                TryCount.Text = "0";
+                Ans.Text = "0";
+                _AnsRate = 0;
+            }
+            else
+            {
+                TryCount.Text = Program.user.TryCount.ToString();
+                Ans.Text = Program.user.AnsCount.ToString();
+                _AnsRate = Program.user.AnsCount / Program.user.TryCount;
+            }
+            
             AnsRate.Text = _AnsRate.ToString();
+            AnsRate.Text += " %";
 
             string tier = Program.user.Tier;
             if(tier == "Bronze")
             {
-
+                Tier.Image = Properties.Resources.Tier_Bronze;
             }
             else if (tier == "Sliver")
             {
-
+                Tier.Image = Properties.Resources.Tier_Silver;
             }
             else if (tier == "Gold")
             {
-                Tier.Image = global::Client.Properties.Resources.Tier_Gold;
+                Tier.Image = Properties.Resources.Tier_Gold;
             }
 
            

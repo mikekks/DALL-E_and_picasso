@@ -36,16 +36,14 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.cmb_Thema = new MetroFramework.Controls.MetroComboBox();
-            this.cmb_PartyCnt = new MetroFramework.Controls.MetroComboBox();
+            this.cmb_TotalCnt = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
-
             this.SuspendLayout();
             // 
             // btn_createRoom
@@ -95,9 +93,7 @@
             this.txt_roonName.CustomButton.UseSelectable = true;
             this.txt_roonName.CustomButton.Visible = false;
             this.txt_roonName.Lines = new string[0];
-
             this.txt_roonName.Location = new System.Drawing.Point(130, 26);
-
             this.txt_roonName.MaxLength = 32767;
             this.txt_roonName.Name = "txt_roonName";
             this.txt_roonName.PasswordChar = '\0';
@@ -182,20 +178,20 @@
             this.cmb_Thema.TabIndex = 7;
             this.cmb_Thema.UseSelectable = true;
             // 
-            // cmb_PartyCnt
+            // cmb_TotalCnt
             // 
-            this.cmb_PartyCnt.FormattingEnabled = true;
-            this.cmb_PartyCnt.ItemHeight = 23;
-            this.cmb_PartyCnt.Items.AddRange(new object[] {
+            this.cmb_TotalCnt.FormattingEnabled = true;
+            this.cmb_TotalCnt.ItemHeight = 23;
+            this.cmb_TotalCnt.Items.AddRange(new object[] {
             "2",
             "3",
             "4",
             "5"});
-            this.cmb_PartyCnt.Location = new System.Drawing.Point(130, 160);
-            this.cmb_PartyCnt.Name = "cmb_PartyCnt";
-            this.cmb_PartyCnt.Size = new System.Drawing.Size(175, 29);
-            this.cmb_PartyCnt.TabIndex = 8;
-            this.cmb_PartyCnt.UseSelectable = true;
+            this.cmb_TotalCnt.Location = new System.Drawing.Point(130, 160);
+            this.cmb_TotalCnt.Name = "cmb_TotalCnt";
+            this.cmb_TotalCnt.Size = new System.Drawing.Size(175, 29);
+            this.cmb_TotalCnt.TabIndex = 8;
+            this.cmb_TotalCnt.UseSelectable = true;
             // 
             // metroLabel4
             // 
@@ -213,17 +209,15 @@
             // 
             // metroPanel1
             // 
-
             this.metroPanel1.BackColor = System.Drawing.Color.White;
-            this.metroPanel1.Controls.Add(this.cmb_PartyCnt);
+            this.metroPanel1.Controls.Add(this.txt_roonName);
+            this.metroPanel1.Controls.Add(this.cmb_TotalCnt);
             this.metroPanel1.Controls.Add(this.txt_level);
             this.metroPanel1.Controls.Add(this.cmb_Thema);
-            this.metroPanel1.Controls.Add(this.metroPanel2);
-            this.metroPanel1.Controls.Add(this.txt_roonName);
             this.metroPanel1.Controls.Add(this.btn_Cancel);
             this.metroPanel1.Controls.Add(this.btn_createRoom);
+            this.metroPanel1.Controls.Add(this.metroPanel2);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
@@ -235,18 +229,16 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            this.metroPanel1.Visible = false;
             // 
-
             // metroPanel2
             // 
             this.metroPanel2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.metroPanel2.Controls.Add(this.metroLabel4);
-            this.metroPanel2.Controls.Add(this.metroButton1);
             this.metroPanel2.Controls.Add(this.metroLabel3);
-            this.metroPanel2.Controls.Add(this.metroButton2);
             this.metroPanel2.Controls.Add(this.metroLabel2);
             this.metroPanel2.Controls.Add(this.metroLabel1);
+            this.metroPanel2.Controls.Add(this.metroButton1);
+            this.metroPanel2.Controls.Add(this.metroButton2);
             this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
@@ -259,7 +251,6 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
-            this.metroPanel2.Visible = false;
             // 
             // metroButton1
             // 
@@ -292,11 +283,9 @@
             this.Text = "방 만들기";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Load += new System.EventHandler(this.CreateRoomForm_Load);
-
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
-
             this.ResumeLayout(false);
 
         }
@@ -309,7 +298,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox cmb_Thema;
-        private MetroFramework.Controls.MetroComboBox cmb_PartyCnt;
+        private MetroFramework.Controls.MetroComboBox cmb_TotalCnt;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroPanel metroPanel1;
 
@@ -317,6 +306,5 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton btn_createRoom;
-
     }
 }

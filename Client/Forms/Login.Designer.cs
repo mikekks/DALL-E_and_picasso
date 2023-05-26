@@ -174,7 +174,7 @@
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::Client.Properties.Resources.토마토로봇;
+            this.pictureBox1.Image = global::Client.Properties.Resources.메인사진_달리사진;
             this.pictureBox1.Location = new System.Drawing.Point(60, 51);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 190);

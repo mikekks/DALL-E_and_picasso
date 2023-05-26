@@ -8,14 +8,12 @@ namespace DalleLib.InGame
 {
     public class Records
     {
-        public string userId, roomId;
+        public string userId;
         public int tryCount, correctCount;
 
-        public Records(string userId,
-            string roomId, int tryCount, int correctCount)
+        public Records(string userId, int tryCount, int correctCount)
         {
             this.userId = userId;
-            this.roomId = roomId;
             this.tryCount = tryCount;
             this.correctCount = correctCount;
         }

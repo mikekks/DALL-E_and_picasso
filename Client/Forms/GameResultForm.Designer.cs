@@ -137,7 +137,7 @@
             // profilepic1
             // 
             this.profilepic1.BackColor = System.Drawing.Color.White;
-            this.profilepic1.Image = global::Client.Properties.Resources.userimage;
+            //this.profilepic1.Image = global::Client.Properties.Resources.userimage;
             this.profilepic1.Location = new System.Drawing.Point(84, 3);
             this.profilepic1.Name = "profilepic1";
             this.profilepic1.Size = new System.Drawing.Size(75, 75);
@@ -182,7 +182,7 @@
             // Tier1
             // 
             this.Tier1.BackColor = System.Drawing.Color.White;
-            this.Tier1.Image = global::Client.Properties.Resources.Tier;
+           // this.Tier1.Image = global::Client.Properties.Resources.Tier;
             this.Tier1.Location = new System.Drawing.Point(161, 48);
             this.Tier1.Name = "Tier1";
             this.Tier1.Size = new System.Drawing.Size(30, 30);
@@ -575,7 +575,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Client.Properties.Resources.Tier;
+            //this.pictureBox2.Image = global::Client.Properties.Resources.Tier;
             this.pictureBox2.Location = new System.Drawing.Point(161, 48);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
@@ -585,7 +585,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Client.Properties.Resources.userimage;
+            //this.pictureBox3.Image = global::Client.Properties.Resources.userimage;
             this.pictureBox3.Location = new System.Drawing.Point(84, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(75, 75);
@@ -787,7 +787,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::Client.Properties.Resources.Tier;
+            //this.pictureBox8.Image = global::Client.Properties.Resources.Tier;
             this.pictureBox8.Location = new System.Drawing.Point(161, 48);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(30, 30);
@@ -797,7 +797,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::Client.Properties.Resources.userimage;
+            //this.pictureBox9.Image = global::Client.Properties.Resources.userimage;
             this.pictureBox9.Location = new System.Drawing.Point(84, 3);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(75, 75);
@@ -1033,7 +1033,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Client.Properties.Resources.Tier;
+            //this.pictureBox5.Image = global::Client.Properties.Resources.Tier;
             this.pictureBox5.Location = new System.Drawing.Point(161, 48);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(30, 30);
@@ -1044,7 +1044,7 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.Image = global::Client.Properties.Resources.userimage;
+            //this.pictureBox6.Image = global::Client.Properties.Resources.userimage;
             this.pictureBox6.Location = new System.Drawing.Point(84, 3);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(75, 75);

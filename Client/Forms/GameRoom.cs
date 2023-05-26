@@ -50,23 +50,20 @@ namespace Client
         {
             // 해당 방에 대한 쿼리, 로딩 필요
             
-            Text = Program.room.roomName;  // 방의 제목을 의미
-            picBox.Load("https://static.designboom.com/wp-content/uploads/2022/06/dalle-2-ai-system-designboom-01.jpg");
+            Text = Program.room.roomId;  // 방의 제목을 의미
+           // picBox.Load("https://static.designboom.com/wp-content/uploads/2022/06/dalle-2-ai-system-designboom-01.jpg");
             
             // 레디 타이머 설정
             timer.Interval = 300;
             timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-            
+
 
             // 방 들어가기 전에 Room이 갱신됨
-            foreach (User player in Program.room.userList)
-            {
-                rdy_list.Text += Environment.NewLine + player.username;
-            }
-            rdy_list.Text += Environment.NewLine + "Lee ju song";
+            ResetReadyList();
 
-            // 필요한 정답 칸 계산해서 생성
-            metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
+
+             // 필요한 정답 칸 계산해서 생성
+             metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
             for (int i=5; i>=Program.room.level; i--)
             {
                 metroTiles[i].Enabled = false;
@@ -105,17 +102,15 @@ namespace Client
             foreach (User player in Program.room.userList)
             {
 
-                if (!Program.room.ReadyList[player.userId])  // 모두 준비되지 않음.
+                if (player.ready == false)  // 모두 준비되지 않음.
                 {
                     CanStart = false;
-                    //MetroMessageBox.Show(this, "모두 준비가 되지 않았습니다.");
-                    Console.WriteLine("Not Yet {0}\n", forTest);
+                    //Console.WriteLine("Not Yet {0}\n", forTest);
                 }
             }
 
-            forTest++;
 
-            if (CanStart || forTest > 2)  // 모두 준비가 돼서 시작 가능, try의 느낌
+            if (CanStart)  // 모두 준비가 돼서 시작 가능, try의 느낌
             {
                 ingamePacket.respondType = respondType.Start;
             }
@@ -129,6 +124,21 @@ namespace Client
             //timer.Close();
             //timer.Dispose();
             
+        }
+
+        public void ResetReadyList()
+        {
+            foreach (User player in Program.room.userList)
+            {
+                rdy_list.Clear();
+                rdy_list.Text += Environment.NewLine + player.userId;
+                if (player.ready == true)
+                {
+                    rdy_list.ForeColor = Color.Red;
+                    rdy_list.Text += "     ready!";
+                    rdy_list.ForeColor = Color.Black;
+                }
+            }
         }
 
         private void btn_Ready_Click(object sender, EventArgs e)
@@ -147,8 +157,7 @@ namespace Client
 
         private void doReady()
         {
-            //NetworkStream stream = Program.stream;
-            // NetworkStream stream = clientSocket.GetStream();  ! 로그인단에서 구현필요.
+           
             InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 레디 했는지 안했는지를 전달
             ingamePacket.respondType = respondType.Ready;
 
@@ -192,15 +201,7 @@ namespace Client
                 }
                 else
                 {
-                    foreach (User player in Program.room.userList)  // 레디리스트 갱신
-                    {
-                        rdy_list.Clear();
-                        rdy_list.Text += Environment.NewLine + player.username;
-                        if (p.room.ReadyList[player.userId])
-                        {
-                            rdy_list.Text += " : Ready!";
-                        }
-                    }
+                    ResetReadyList();
                 }
    
             }
@@ -329,7 +330,7 @@ namespace Client
             foreach (User player in Program.room.userList)
             {
                 
-                if (!Program.room.ReadyList[player.userId])  // 예외처리
+                if (player.ready == false)  // 예외처리
                 {
                     CanStart = false;
                     MetroMessageBox.Show(this, "모두 준비가 되지 않았습니다.");

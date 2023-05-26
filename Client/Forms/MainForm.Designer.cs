@@ -43,20 +43,19 @@
             this.btn_Myinfo = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.UserId = new MetroFramework.Controls.MetroLabel();
+            this.UserTier = new MetroFramework.Controls.MetroLabel();
+            this.TierPic = new System.Windows.Forms.PictureBox();
+            this.ProfilePic = new System.Windows.Forms.PictureBox();
             this.btn_reset = new MetroFramework.Controls.MetroButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Room2 = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.Tab2.SuspendLayout();
             this.Tab3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,51 +254,52 @@
             this.metroLabel1.Size = new System.Drawing.Size(0, 0);
             this.metroLabel1.TabIndex = 8;
             // 
-            // metroLabel2
+            // UserId
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.ForeColor = System.Drawing.Color.White;
-            this.metroLabel2.Location = new System.Drawing.Point(62, 151);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(40, 19);
-            this.metroLabel2.TabIndex = 9;
-            this.metroLabel2.Text = "Song";
-            this.metroLabel2.UseCustomBackColor = true;
-            this.metroLabel2.UseCustomForeColor = true;
+            this.UserId.AutoSize = true;
+            this.UserId.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.UserId.ForeColor = System.Drawing.Color.White;
+            this.UserId.Location = new System.Drawing.Point(62, 151);
+            this.UserId.Name = "UserId";
+            this.UserId.Size = new System.Drawing.Size(40, 19);
+            this.UserId.TabIndex = 9;
+            this.UserId.Text = "Song";
+            this.UserId.UseCustomBackColor = true;
+            this.UserId.UseCustomForeColor = true;
             // 
-            // metroLabel3
+            // UserTier
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.ForeColor = System.Drawing.Color.White;
-            this.metroLabel3.Location = new System.Drawing.Point(60, 286);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(50, 19);
-            this.metroLabel3.TabIndex = 12;
-            this.metroLabel3.Text = "Gold 3";
-            this.metroLabel3.UseCustomBackColor = true;
-            this.metroLabel3.UseCustomForeColor = true;
+            this.UserTier.AutoSize = true;
+            this.UserTier.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.UserTier.ForeColor = System.Drawing.Color.White;
+            this.UserTier.Location = new System.Drawing.Point(59, 285);
+            this.UserTier.Name = "UserTier";
+            this.UserTier.Size = new System.Drawing.Size(50, 19);
+            this.UserTier.TabIndex = 12;
+            this.UserTier.Text = "Gold 3";
+            this.UserTier.UseCustomBackColor = true;
+            this.UserTier.UseCustomForeColor = true;
             // 
-            // pictureBox2
+            // TierPic
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(6, 173);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(151, 110);
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.TierPic.BackColor = System.Drawing.Color.White;
+            this.TierPic.InitialImage = null;
+            this.TierPic.Location = new System.Drawing.Point(6, 173);
+            this.TierPic.Name = "TierPic";
+            this.TierPic.Size = new System.Drawing.Size(151, 110);
+            this.TierPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.TierPic.TabIndex = 10;
+            this.TierPic.TabStop = false;
             // 
-            // pictureBox1
+            // ProfilePic
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.InitialImage = global::Client.Properties.Resources.dalle2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 109);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.ProfilePic.BackColor = System.Drawing.Color.White;
+            this.ProfilePic.Location = new System.Drawing.Point(6, 41);
+            this.ProfilePic.Name = "ProfilePic";
+            this.ProfilePic.Size = new System.Drawing.Size(151, 109);
+            this.ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePic.TabIndex = 7;
+            this.ProfilePic.TabStop = false;
             // 
             // btn_reset
             // 
@@ -314,16 +314,7 @@
             this.btn_reset.UseCustomBackColor = true;
             this.btn_reset.UseCustomForeColor = true;
             this.btn_reset.UseSelectable = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(581, 301);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // metroLabel4
             // 
@@ -344,10 +335,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel1.Controls.Add(this.metroLabel4);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.metroLabel3);
-            this.panel1.Controls.Add(this.metroLabel2);
+            this.panel1.Controls.Add(this.ProfilePic);
+            this.panel1.Controls.Add(this.TierPic);
+            this.panel1.Controls.Add(this.UserTier);
+            this.panel1.Controls.Add(this.UserId);
             this.panel1.Location = new System.Drawing.Point(17, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(164, 305);
@@ -363,7 +354,6 @@
             this.Room2.Size = new System.Drawing.Size(108, 65);
             this.Room2.TabIndex = 2;
             this.Room2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room2.TileImage = global::Client.Properties.Resources.room_icon2;
             this.Room2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Room2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.Room2.UseCustomBackColor = true;
@@ -377,7 +367,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(694, 387);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.Room2);
             this.Controls.Add(this.metroLabel1);
@@ -400,8 +389,8 @@
             this.metroTabControl1.ResumeLayout(false);
             this.Tab2.ResumeLayout(false);
             this.Tab3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -421,13 +410,12 @@
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroButton btn_Myinfo;
         private MetroFramework.Controls.MetroButton metroButton2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox ProfilePic;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel UserId;
+        private System.Windows.Forms.PictureBox TierPic;
+        private MetroFramework.Controls.MetroLabel UserTier;
         private MetroFramework.Controls.MetroButton btn_reset;
-        private System.Windows.Forms.Button button2;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tabPage1;

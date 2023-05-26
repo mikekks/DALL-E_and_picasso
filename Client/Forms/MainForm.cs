@@ -21,7 +21,7 @@ namespace Client
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
-
+        MetroTile[] roomTile = new MetroTile[1000];
         public MainForm()
         {
             InitializeComponent();
@@ -44,18 +44,34 @@ namespace Client
                     this.Close();
                 }
             }
-            
 
+            //MainPic.Load("");
 
             // 로그인 후 정보 갱신 필요.
-            //
-            //
+            UserId.Text = Program.user.userId;
+            UserTier.Text = Program.user.Tier;
+
+            ProfilePic.Image = Properties.Resources.dalle2;
+
+            if(Program.user.Tier == "Bronze")
+            {
+                TierPic.Image = Properties.Resources.Tier_Bronze;
+            }
+            else if (Program.user.Tier == "Sliver")
+            {
+                TierPic.Image = Properties.Resources.Tier_Silver;
+            }
+            else
+            {
+                TierPic.Image = Properties.Resources.Tier_Gold;
+            }
+
+
+
 
             // 방 리스트 불러오기
 
-           
-
-
+            /*
             ////////////////////////// 테스트 코드
             Room room = new Room("뉴비들만오셈", "1234", 1, false, 1, 4, 3);
             Room room2 = new Room("너 오면 바로 고", "1234", 1, false, 1, 4, 3);
@@ -67,10 +83,20 @@ namespace Client
             Program.roomList.Add(room3);
             Program.roomList.Add(room4);
             ////////////////////////// 테스트 코드
+            */
 
-            MetroTile[] roomTile = new MetroTile[Program.roomList.Count + 1];
+            viewRoomList();
+
+
+
+        }
+
+        public void viewRoomList()
+        {
+            Tab1.Controls.Clear();
+
             int y = 10;
-            for (int i=0; i<Program.roomList.Count; i++)
+            for (int i = 0; i < Program.roomList.Count; i++)
             {
                 MetroTile _roomTile = new MetroTile();
                 _roomTile.Width = 438;
@@ -82,11 +108,11 @@ namespace Client
                 y += 70;
 
                 MetroLabel _roomName = new MetroLabel();
-                _roomName.Text = Program.roomList[i].roomName;
+                _roomName.Text = Program.roomList[i].roomId;
                 _roomName.Location = new Point(105, 20);
                 _roomName.Size = new Size(150, 20);
                 _roomTile.Controls.Add(_roomName);
-                
+
                 MetroLabel _People = new MetroLabel();
                 _People.Text = "현재 인원 : " + Program.roomList[i].currentNum.ToString() + " / " + Program.roomList[i].totalNum.ToString();
                 _People.Location = new Point(300, 20);
@@ -97,14 +123,8 @@ namespace Client
                 _roomTile.Tag = Program.roomList[i];
                 roomTile[i] = _roomTile;
                 Tab1.Controls.Add(roomTile[i]);
-
+                
             }
-            
-
-
-            // 내 간단 정보 불러오기
-
-
         }
 
         public void forTest_Connect()
@@ -140,6 +160,7 @@ namespace Client
             // int roomID, int level, string roomName, int PartyNum, int ReadyNum
 
             RoomPacket roomPacket = new RoomPacket(EnterRoom, RoomType.Enter);
+            roomPacket.user = Program.user;
 
             if (!Program.MethodList.ContainsKey(PacketType.Room))
                 Program.MethodList.Add(PacketType.Room, R_EnterRoom);
@@ -180,7 +201,6 @@ namespace Client
                     if (user.userId == Program.user.userId)
                     {
                         
-                        
                         if (InvokeRequired)
                         {
                             this.Invoke(new Action(() => { R_EnterRoom(packet); }));
@@ -188,7 +208,7 @@ namespace Client
                         else
                         {
                             Program.room = roomPacket.room;  // 현재 들어가 있는 방을 의미
-                            string enter = Program.room.roomName + " 에 들어갑니다.";
+                            string enter = Program.room.roomId + " 에 들어갑니다.";
                             MetroMessageBox.Show(Owner, enter);
                             //Opacity = 0.5;
                             GameRoom inGame = new GameRoom();
@@ -313,6 +333,33 @@ namespace Client
         private void Tab1_Scroll(object sender, ScrollEventArgs e)
         {
             
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            if (!Program.MethodList.ContainsKey(PacketType.Setting))
+                Program.MethodList.Add(PacketType.Setting, R_Setting);
+
+            SettingPacket packet = new SettingPacket(Program.user.userId, Program.user.password);
+            Program.Send(packet);
+        }
+
+        public void R_Setting(Packet packet)
+        {
+            SettingPacket p = packet as SettingPacket;
+
+            Program.roomList = p.roomList;
+
+
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(() => { R_Setting(packet); }));
+            }
+            else
+            {
+                viewRoomList();
+            }
+
         }
     }
 }

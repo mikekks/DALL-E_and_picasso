@@ -49,7 +49,10 @@ namespace WindowsFormsApp2
             forTest_Connect();
             
             LoginPacket packet = new LoginPacket(id, pw);
-            Program.MethodList.Add(PacketType.Login, R_Login);
+
+            if(!Program.MethodList.ContainsKey(PacketType.Login))
+                Program.MethodList.Add(PacketType.Login, R_Login);
+
             Program.Send(packet);
 
         }
@@ -62,7 +65,7 @@ namespace WindowsFormsApp2
             {
                 Program.user = loginPacket.user;
                 Program.roomList = loginPacket.roomList;
-                string init = Program.user.username + "님 안녕하세요!";
+                string init = Program.user.userId + "님 안녕하세요!";
                 MessageBox.Show(this.Parent, init);
                 this.Invoke(new EndForm(tmp));
             }

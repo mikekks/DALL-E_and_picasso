@@ -10,7 +10,7 @@ namespace DalleLib.Networks
 {
     public enum PacketType
     {
-        Header, Close,
+        Header, Close, Setting,
         Login, DuplicateLogin, Logout, Register,
         InGame, Chat, Room, RoomCreate
     }

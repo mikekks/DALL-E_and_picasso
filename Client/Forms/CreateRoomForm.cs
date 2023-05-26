@@ -44,22 +44,14 @@ namespace Client.Forms
             if (!Program.MethodList.ContainsKey(PacketType.RoomCreate))
                 Program.MethodList.Add(PacketType.RoomCreate, R_CreateRoom);
 
-            string roomId;
-            if (Program.roomList == null)
-            {
-                roomId = "1";
-            }
-            else
-            {
-                roomId = "1";//Program.roomList.Count;  // room 관련 데이터 이미 갖고 있음
-            }
+            string roomId = txt_roonName.Text;
             
             int level = Convert.ToInt32(txt_level.Value);
-            int TotalNum = Convert.ToInt32(txt_level.Value);
+            int TotalNum = Convert.ToInt32(cmb_TotalCnt.Text);
+            
             string roomName = txt_roonName.Text;
 
-            Room room = new Room(roomId, level, roomName, TotalNum, 1, 0);
-
+            Room room = new Room(roomId, Program.user.userId, false, 1, TotalNum, level, 5);
             // 이제 패킷으로 만들어서 서버에 보내야 한다.
             // 사용자는 기다려야 함
 
@@ -68,13 +60,7 @@ namespace Client.Forms
             roomPacket.user = Program.user;
 
             room.userList = new List<DalleLib.User> { roomPacket.user };
-            room.ReadyList = new Dictionary<string, bool>
-            {
-                { Program.user.userId, false }
-            };
             roomPacket.userList = room.userList;
-            roomPacket.ReadyList = room.ReadyList;
-
             roomPacket.roomType = RoomType.New;
 
             Program.Send(roomPacket);
@@ -89,9 +75,9 @@ namespace Client.Forms
             {
                 if (p.room != null)  // 방 만들기 성공의 경우 -> Program.room 지정
                 {
-                    Program.room = new Room(p.room.roomId, p.room.level, p.room.roomName, p.room.totalNum, 1, 0);
+                    Program.room = new Room(p.room.roomId, p.user.userId, false, 1, p.room.totalNum, p.room.level, 5);
+
                     Program.room.userList = p.room.userList;
-                    Program.room.ReadyList = p.room.ReadyList;
                     MetroMessageBox.Show(Owner, "방만들기 성공");
                     Close();
                 }

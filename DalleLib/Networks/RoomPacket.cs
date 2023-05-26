@@ -19,8 +19,6 @@ namespace DalleLib.Networks
         public RoomType roomType;
         public User user; // 방에 입장하려는 유저 객체, 또는 방 생성하려는 유저 객체
         public List<User> userList;
-        public Dictionary<string, bool> ReadyList; // bool은 ready의미
-        // Quest
 
         public RoomPacket(Room room, RoomType roomType) // 어떤 방에 들어갈 때 사용하는 패킷
         {

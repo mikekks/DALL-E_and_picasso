@@ -123,9 +123,29 @@ namespace Client.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        public static System.Drawing.Bitmap Tier_Bronze {
+            get {
+                object obj = ResourceManager.GetObject("Tier_Bronze", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         public static System.Drawing.Bitmap Tier_Gold {
             get {
                 object obj = ResourceManager.GetObject("Tier_Gold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap Tier_Silver {
+            get {
+                object obj = ResourceManager.GetObject("Tier_Silver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +176,16 @@ namespace Client.Properties {
         public static System.Drawing.Bitmap Van {
             get {
                 object obj = ResourceManager.GetObject("Van", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 메인사진_달리사진 {
+            get {
+                object obj = ResourceManager.GetObject("메인사진_달리사진", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

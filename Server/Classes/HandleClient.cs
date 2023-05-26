@@ -14,14 +14,13 @@ namespace Server.Classes
 {
     public class HandleClient
     {
-        public static int questionId = 1;
         public TcpClient client;
         NetworkStream stream;
         public Thread RecvThread;
 
         public User user;  // 해당 스레드가 어떤 유저랑 통신하는지 결정
 
-        public List<string> AnswerList;
+        public int[] AnswerList = new int[7];
 
         public static List<Room> roomList;
 
@@ -99,14 +98,6 @@ namespace Server.Classes
                         // rooms 정보 db에서 불러오기 for문으로 저장
                         roomList = Database.getRoomsList();
 
-                        /*
-                        Room newRoom = new Room("1", 3, "고수만", 3, 1, 0);
-                        newRoom.userList = new List<User>();
-                        newRoom.userList.Add(user);
-                        newRoom.Host = user;
-                        roomList.Add(newRoom.roomId, newRoom);  // for문으로 저장
-                        */
-
                         p = new LoginPacket(true, user, roomList);
                         Send(p);
                     }
@@ -119,6 +110,15 @@ namespace Server.Classes
 
 
                 }
+                else if (packet.Type == PacketType.Setting)
+                {
+                    SettingPacket p = packet as SettingPacket;
+                    roomList = Database.getRoomsList();
+
+                    p.roomList = roomList;
+                    Send(p);
+
+                }
                 else if (packet.Type == PacketType.Register)
                 {
                     RegisterPacket p = packet as RegisterPacket;
@@ -128,8 +128,10 @@ namespace Server.Classes
                         // DB에서 해당 아이디(p.id) 중복도 검사
                         //
                         //
-                        bool test = true;
+
+                        bool test = true;  // 테스트 코드
                         RegisterPacket sendPacket = new RegisterPacket(p.id, false);
+
                         if (test)  // 중복도 검사 통과
                         {
                             sendPacket.duplicate = true; 
@@ -147,7 +149,7 @@ namespace Server.Classes
                     }
                     else if(p.registerType == RegisterType.create)
                     {
-                        //  db에 해당 유저의 정보(p에 다 들어있음) 저장
+                        //  db에 해당 유저의 정보 저장
                         bool suc = Database.signUp(userId: p.id, password: p.password, recovery_Q: p.recovery_A, recovery_A: p.recovery_A, regDate: DateTime.Now);
 
                         RegisterPacket sendPacket;
@@ -178,29 +180,26 @@ namespace Server.Classes
 
 
                         // db에 해당 방 생성
-                        bool suc = Database.makeNewRoom(roomId: p.room.roomId, userId: p.room.userId, questionId: questionId, totalNum: p.room.totalNum, level: p.room.level);
-                        questionId++;  // question id 카운터 느낌
+                        bool suc = Database.makeNewRoom(roomId: p.room.roomId, userId: p.room.userId, totalNum: p.room.totalNum, level: p.room.level);
+                        
 
                         if (suc)  // 새로운 방 생성 성공 -> 해당 방 바로 입장
                         {
                             Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
-                            Room room = new Room(p.room.roomId, p.room.level, p.room.roomName, p.room.totalNum, 1, 0);
+                            
+                            Room room = new Room(p.room.roomId, p.user.userId, false, 1, p.room.totalNum, p.room.level, 5);
                             room.Host = p.user;
 
                             RoomPacket sendPacket = new RoomPacket(room, RoomType.New);
                             sendPacket.Type = PacketType.RoomCreate;
                             room.userList = new List<User> { p.user };
-                            room.ReadyList = new Dictionary<string, bool>
-                            {
-                                 { p.user.userId, false }
-                            };
                             sendPacket.userList = room.userList;
-                            sendPacket.ReadyList = room.ReadyList;
                             sendPacket.room.Host = p.user;
 
                             sendPacket.roomType = p.roomType;
                             sendPacket.room.create = true;
 
+                            Console.WriteLine("방 생성 성공");
                             Send(sendPacket);
 
                         }
@@ -225,26 +224,17 @@ namespace Server.Classes
                     */
                     if (p.roomType == RoomType.Enter)
                     {
-                        // p.room.roomID로 해당 룸을 DB에서 쿼리
-                        // room type으로 반환
-                        //
-                        
-
-                        Room _room = new Room("1",3,"고수만",3,1,0);
-                        _room.userList = new List<User>();
-                        _room.ReadyList = new Dictionary<string, bool>();
                        
                         if (Database.checkEnterRoom(roomId: p.room.roomId))  // 입장 가능을 의미
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
-                            // 유저 리스트에  p.room.userList[?] 를 추가시킨다.
-                            //
-                            Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
+                            Room _room = Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
 
-                            _room.userList.Add(p.room.userList[0]);
-                            _room.ReadyList.Add(p.room.userList[0].userId, false);
-                            _room.currentNum++;
-                            _room.Host = user;
+                            // 유저 리스트에  p.room.userList 를 추가시킨다.
+                            _room.userList = Database.getReadyList(roomId: p.room.roomId);
+
+
+                            //_room.currentNum++;
                             RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
                             Send(sendPacket);
 
@@ -261,20 +251,17 @@ namespace Server.Classes
                     if(p.respondType == respondType.Ready)  // Ready를 보냈을 경우 모든 유저의 레디리스트 갱신 필요
                     {
                         // db에서 해당 유저가 레디한 유저인지 파악
-                        //
-                        //
-                        bool test = true;  // 테스트를 위한 변수, 이미 레디한 유저인지 파악
-                        readyChk++;  // 테스트를 위한 변수
+                        bool suc = Database.checkSpecificUserReady(p.user.userId);
 
-                        if (p.ready && test)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
+                        if (p.ready && !suc)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
                         {
 
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
                             Database.ready(userId: p.user.userId, roomId: p.room.roomId);
-                            // 그 후 다시 해당 방의 유저리스트 쿼리
-                            //
 
-                            p.room.ReadyList[p.user.userId] = true;
+                            // 그 후 다시 해당 방의 유저리스트 쿼리
+                            p.room.userList = Database.getReadyList(roomId: p.room.roomId);
+
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);
                             sendPacket.Type = PacketType.InGame;
                             sendPacket.respondType = respondType.Ready;
@@ -291,23 +278,19 @@ namespace Server.Classes
                     else if (p.respondType == respondType.Start)
                     {
                         // DB에서 방장인지 확인(이 부분은 보류), 모두 레디했는지 확인  : p.room.roomID, p.user.userId 사용
-                        //
-                        //
-
-                        Database.checkUsersReady(roomId: p.room.roomId);
-                        // 어떤 레디리스트 반환되면 for문으로 싹 확인 하자
-
-                        bool test = true;
-                        if (test && readyChk == 2)  // 두 경우 모두 통과한 경우
+                        bool suc = Database.checkUsersReady(roomId: p.room.roomId);
+                        
+                        if (suc) 
                         {
 
                             Database.startGame(roomId: p.room.roomId);
 
                             // 게임 실행하게 되면 레코드 테이블에 유저 등록
+                            // ! 계속 업데이트 하는 거 조심해야함
                             Database.registerRecordTable(userId: p.user.userId, roomId: p.room.roomId);
 
                             string img = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
-                            // 식별번호?, Dalle image, 정답 단어, 해당 room 저장
+                            // Dalle roomid가 식별번호 되야 할듯 해당 room 저장
                             //
                             //
 
@@ -319,7 +302,7 @@ namespace Server.Classes
                             sendPacket.ready = true;
                             Send(sendPacket);
                         }
-                        else  // 하나라도 통과 안된 경우
+                        else
                         {
 
                         }
@@ -329,38 +312,23 @@ namespace Server.Classes
                     {
                         string tmpAns = p.Answer;
 
-                        if(AnswerList == null)
-                            AnswerList = new List<string>();
+
                         // DB에서 해당 룸( p.room.roomID ) 에 
                         // 매핑되는 문제의 정답 단어 불러오기
                         //
 
-                        Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, questionId: p.room.questionId, userAnswer: p.Answer);
+                        int idx = Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, userAnswer: p.Answer);
 
-                        if (AnswerList.Count < 3)
-                        {  // ! 여기는 일단 하드코딩
-                            AnswerList.Add("Apple");
-                            AnswerList.Add("Banana");
-                            AnswerList.Add("Candy");
-                        }
-                        
+                        //Database.getKeyword(p.room.roomId);
+  
                         InGamePacket sendPacket = new InGamePacket(p.user, p.room);
 
                         sendPacket.Type = PacketType.InGame;
                         sendPacket.respondType = respondType.Answer;
                         sendPacket.Answer = tmpAns;
+                        AnswerList[idx] = 1;  // 중복정답 커버
 
-                        int check = 0;
-                        int idx;
-
-                        for(idx=1; idx<=AnswerList.Count; idx++) 
-                        {
-                            if (AnswerList[idx-1] == tmpAns)  // 정답인 경우
-                            {
-                                check = idx;
-                            }
-                        }
-                        sendPacket.correct = check;                    
+                        sendPacket.correct = idx;                    
 
                         Send(sendPacket);
                     }
@@ -378,7 +346,8 @@ namespace Server.Classes
                             // DB에서 해당 게임의 결과 가져오기
                             //
                             //
-                            Database.getRecordLastGame(userId: "test1", roomId: "뉴비");
+                            List<Records> records = Database.getRecordEveryone( roomId: p.room.roomId);
+                            sendPacket.records = records;
 
                             Send(sendPacket);
                         }

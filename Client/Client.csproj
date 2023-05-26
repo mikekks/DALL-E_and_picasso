@@ -172,9 +172,6 @@
     <None Include="Source\Van.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source\Tier_Gold.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DalleLib\DalleLib.csproj">
       <Project>{51fbeed0-f4e4-4b07-b74e-f24560dd1747}</Project>
       <Name>DalleLib</Name>
@@ -194,6 +191,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\토마토로봇.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tier_Gold.bmp" />
+    <None Include="Resources\Tier_Gold.png" />
+    <None Include="Resources\Tier_Silver.png" />
+    <None Include="Resources\Tier_Bronze.png" />
+    <None Include="Resources\메인사진_달리사진.png" />
+    <Content Include="Source\Tier_Bronze.png" />
+    <Content Include="Source\Tier_Gold.png" />
+    <Content Include="Source\Tier_Silver2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

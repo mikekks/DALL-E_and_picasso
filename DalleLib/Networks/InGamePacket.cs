@@ -25,6 +25,8 @@ namespace DalleLib.Networks
 
         public string Answer;
 
+        public List<Records> records;
+
         public InGamePacket(User user, Room room)  // ready 
         {
             Type = PacketType.InGame;
@@ -35,7 +37,7 @@ namespace DalleLib.Networks
         }
 
 
-
+        
         
     }
 }
