@@ -270,7 +270,7 @@ namespace Server.Classes
         }
 
 
-        // 6번함수 원본 -- 레거시
+        // 6. 방 진입시 getSpecificRooms가 호출되며 room타입 반환
         public static bool enterRoom_Rooms(string roomId, string userId)
         {
             if (Database.checkEnterRoom(roomId) == true) // 방 진입이 가능한지 확인
@@ -280,7 +280,7 @@ namespace Server.Classes
                     mysql.Open();
                 }
 
-                int currentNum = getSpecificRooms(roomId)[0].currentNum;
+                int currentNum = getSpecificRooms(roomId).currentNum;
                 // 해당 방의 현재 인원 수 + 1 
 
                 string query = $"UPDATE Rooms SET currentNum = {currentNum + 1} WHERE roomId = '{roomId}'";
@@ -294,6 +294,7 @@ namespace Server.Classes
 
                         Console.WriteLine("방 진입하기 성공");
                         Database.enterRoom_Users(roomId, userId);
+                        Database.getSpecificRooms(roomId);
                         return true;
                     }
                 }
@@ -310,8 +311,8 @@ namespace Server.Classes
             }
         }
 
-        // 6. 방 진입하는 함수
-        public static List<Room> getSpecificRooms(string roomId)
+        // 6. 방 진입하는 함수 - room 타입 반환
+        public static Room getSpecificRooms(string roomId)
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
@@ -340,7 +341,7 @@ namespace Server.Classes
                     }
                 }
                 Console.WriteLine("특정 방 가져오기 성공");
-                return rooms;
+                return rooms[0];
             }
             catch (Exception ex)
             {
@@ -533,7 +534,42 @@ namespace Server.Classes
             }
         }
 
-        // 9-1 게임 실행하게 되면 레코드 테이블에 유저 등록
+        // 9-1 nowPlaying이 true면 true를 반환
+        public static bool checkNowPlaying(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT roomId, nowPlaying FROM Rooms";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        if (rdr.GetBoolean("nowPlaying") == true)
+                        {
+                            Console.WriteLine("{0} 방 현재 게임 중", roomId);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} 방 현재 대기 중", roomId);
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        // 9-2 게임 실행하게 되면 레코드 테이블에 유저 등록
         public static bool registerRecordTable(string userId, string roomId)
         {
             if (mysql.State != ConnectionState.Open)

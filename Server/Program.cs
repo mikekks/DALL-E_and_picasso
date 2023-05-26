@@ -21,9 +21,13 @@ namespace Server
             /// 데이터베이스 접속
             if (Database.connect()) // bool 값으로 리턴되는 connectDB 함수 입니다. DB접속이 완료되면 true를 리턴합니다.
             {
+
+                // 호스트 순서 1 -> 2 -> 10 -> 4-1 -> 4-2 -> 6 -> 7 or 7-1 -> 8 -> 9 -> 9-1 -> 11 -> 12 -> 3
+                // 참가자 순서 1 -> 2 -> 5 -> 6 -> 7 or 7-1 -> 9-1 -> 11 -> 12 -> 3
+
                 // [INSERT] 1. 회원가입하는 함수
                 // Console.WriteLine("1.회원가입하는 함수");
-                // Database.signUp(userId:"test3",password:"test3Pw", recovery_Q:"가장 기억에 남는 장소는?", recovery_A: "집",regDate: DateTime.Now);
+                // Database.signUp(userId:"test5",password:"test4Pw", recovery_Q:"가장 기억에 남는 장소는?", recovery_A: "집",regDate: DateTime.Now);
                 // Users Table의 PK가 userId이므로 이미 존재하는 userId 넣을 시 오류 발생
 
                 // 2. 로그인하는 함수
@@ -47,9 +51,9 @@ namespace Server
                 // Console.WriteLine("5. 방 진입여부 확인하는 함수");
                 // Console.WriteLine(Database.checkEnterRoom(roomId: "뉴비"));
 
-                // [UPDATE] 6. 방 진입하는 함수
+                // [UPDATE] 6. 방 진입하는 함수(진입시 getSpecificRooms가 호출되며 room타입 반환)
                 // Console.WriteLine("6. 방 진입하는 함수");
-                // Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "test3"));
+                //Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "test4"));
 
                 // [UPDATE] 7. 레디하는 함수
                 // Console.WriteLine("7. 레디하는 함수");
@@ -71,8 +75,12 @@ namespace Server
                 // Console.WriteLine("9. 게임 실행하는 함수");
                 // Console.WriteLine(Database.startGame(roomId: "뉴비"));
 
-                // [INSERT] 9-1. 게임 실행하게 되면 레코드 테이블에 유저 등록
-                // Console.WriteLine("9-1. 게임 실행하게 되면 레코드 테이블에 유저 등록");
+                // 9-1. nowPlaying이 true면 true를 반환
+                Console.WriteLine("9-1. nowPlaying이 true면 true를 반환");
+                Console.WriteLine(Database.checkNowPlaying(roomId: "뉴비"));
+
+                // [INSERT] 9-2. 게임 실행하게 되면 레코드 테이블에 유저 등록
+                // Console.WriteLine("9-2. 게임 실행하게 되면 레코드 테이블에 유저 등록");
                 // Console.WriteLine(Database.registerRecordTable(userId: "test1", roomId: "뉴비"));
                 // Console.WriteLine(Database.registerRecordTable(userId: "test2", roomId: "뉴비"));
                 // Console.WriteLine(Database.registerRecordTable(userId: "test3", roomId: "뉴비"));
@@ -82,10 +90,6 @@ namespace Server
 
                 // 12. 방금 게임에 대한 기록 가져오는 함수
                 // Console.WriteLine(Database.getRecordLastGame(userId: "test1", roomId: "뉴비"));
-
-                // 호스트 순서 1 -> 2 -> 10 -> 4-1 -> 4-2 -> 6 -> 7 or 7-1 -> 8 -> 9 -> 9-1 -> 11 -> 12
-                // 참가자 순서 1 -> 2 -> 5 -> 6 -> 7 or 7-1 -> 9-1 -> 11 -> 12
-
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
