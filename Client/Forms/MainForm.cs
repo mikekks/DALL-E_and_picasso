@@ -57,10 +57,10 @@ namespace Client
 
 
             ////////////////////////// 테스트 코드
-            Room room = new Room("123", "1234", 1, "뉴비들만오셈", false, 1, 4, 3);
-            Room room2 = new Room("123", "1234", 1, "너 오면 바로 고", false, 1, 4, 3);
-            Room room3 = new Room("123", "1234", 1, "고수들 환영", false, 1, 4, 3);
-            Room room4 = new Room("123", "1234", 1, "이거까지 나오나?", false, 1, 4, 3);
+            Room room = new Room("뉴비들만오셈", "1234", 1, false, 1, 4, 3);
+            Room room2 = new Room("너 오면 바로 고", "1234", 1, false, 1, 4, 3);
+            Room room3 = new Room("고수들 환영", "1234", 1, false, 1, 4, 3);
+            Room room4 = new Room("이거까지 나오나?", "1234", 1, false, 1, 4, 3);
             Program.roomList = new List<Room>();
             Program.roomList.Add(room);
             Program.roomList.Add(room2);

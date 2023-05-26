@@ -533,6 +533,37 @@ namespace Server.Classes
             }
         }
 
+        // 8-3 현재 레디한 전체 유저리스트 가져오기
+        public static List<User> getReadyStatus(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT Users.userId, ready FROM Rooms JOIN Users ON Rooms.roomId = Users.roomId WHERE Rooms.roomId  = '{roomId}'";
+
+            List<User> users = new List<User>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        users.Add(new User(
+                                   rdr.GetString("userId"),
+                                   rdr.GetBoolean("ready")));
+                    }
+                    return users;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         // 9. 게임 실행하는 함수
         public static bool startGame(string roomId)
         {
@@ -867,6 +898,42 @@ namespace Server.Classes
                 }
 
                 return records;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("모든 사람의 결과 가져오기 성공" + ex);
+                return null;
+            }
+        }
+
+        // 12-2. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수 (vol.2)
+        public static List<User> getRecordEveryone_vol2()
+        {
+            // 로그인 유저 있으면 true 없으면 false
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT Records.roomId, Records.userId, tryCount, correctCount FROM Rooms JOIN Records ON Rooms.roomId = Records.roomId";
+
+            List<User> user = new List<User>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("모든 사람의 결과 가져오기 성공");
+                    while (rdr.Read())
+                    {
+                        user.Add(new User(
+                                    rdr.GetString("userId"),
+                                    rdr.GetString("roomId"),
+                                    rdr.GetInt32("tryCount"),
+                                    rdr.GetInt32("correctCount")));
+                    }
+                }
+
+                return user;
             }
             catch (Exception ex)
             {

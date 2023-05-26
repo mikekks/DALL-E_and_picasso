@@ -27,7 +27,7 @@ namespace Server
 
                 // [INSERT] 1. 회원가입하는 함수
                 // Console.WriteLine("1.회원가입하는 함수");
-                // Database.signUp(userId:"test5",password:"test4Pw", recovery_Q:"가장 기억에 남는 장소는?", recovery_A: "집",regDate: DateTime.Now);
+                Database.signUp(userId:"test5",password:"test5Pw", recovery_Q:"가장 기억에 남는 장소는?", recovery_A: "집",regDate: DateTime.Now);
                 // Users Table의 PK가 userId이므로 이미 존재하는 userId 넣을 시 오류 발생
 
                 // 2. 로그인하는 함수
@@ -53,15 +53,15 @@ namespace Server
 
                 // [UPDATE] 6. 방 진입하는 함수(진입시 getSpecificRooms가 호출되며 room타입 반환)
                 // Console.WriteLine("6. 방 진입하는 함수");
-                //Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "test4"));
+                // Console.WriteLine(Database.enterRoom_Rooms(roomId: "뉴비", userId: "test3"));
 
                 // [UPDATE] 7. 레디하는 함수
                 // Console.WriteLine("7. 레디하는 함수");
-                // Console.WriteLine(Database.ready(userId: "test2", roomId: "뉴비"));
+                // Console.WriteLine(Database.ready(userId: "test1", roomId: "뉴비"));
 
                 // 7-1 레디 취소하는 함수
                 // Console.WriteLine("7-1 레디 취소하는 함수");
-                // Console.WriteLine(Database.readyCancel(userId: "test2", roomId: "뉴비"));
+                // Console.WriteLine(Database.readyCancel(userId: "test1", roomId: "뉴비"));
 
                 // 8. 해당 방 참가자의 전체 레디 확인
                 // Console.WriteLine("8. 해당 방 참가자의 전체 레디 확인");
@@ -72,10 +72,13 @@ namespace Server
                 // Console.WriteLine(Database.checkSpecificUserReady(userId: "test2"));
 
                 // 8-2. List 타입으로 user의 ready 정보 가져오는 함수
-                Console.WriteLine("8-2. List 타입으로 user의 ready 정보 가져오는 함수");
-                Console.WriteLine(Database.checkUserReady(userId: "test2")[0].userId); // test2 출력
-                Console.WriteLine(Database.checkUserReady(userId: "test2")[0].ready); // true or false 출력
+                // Console.WriteLine("8-2. List 타입으로 user의 ready 정보 가져오는 함수");
+                // Console.WriteLine(Database.checkUserReady(userId: "test2")[0].userId); // test2 출력
+                // Console.WriteLine(Database.checkUserReady(userId: "test2")[0].ready); // true or false 출력
 
+                // 8-3. 현재 레디한 전체 유저리스트 가져오기 - ready가 null이면 오류 발생(true, false 중 하나는 있어야 함)
+                // Console.WriteLine("8-3. 현재 레디한 전체 유저리스트 가져오기");
+                // Console.WriteLine(Database.getReadyStatus(roomId: "뉴비")[0].userId);
 
                 // [UPDATE] 9. 게임 실행하는 함수 (안에 8번함수로 분기처리)
                 // Console.WriteLine("9. 게임 실행하는 함수");
@@ -92,20 +95,23 @@ namespace Server
                 // Console.WriteLine(Database.registerRecordTable(userId: "test3", roomId: "뉴비"));
 
                 // [UPDATE] 11. 문제 맞추기 함수
-                // Console.WriteLine(Database.checkAnswer(userId: "test1", roomId: "뉴비", questionId: 8, userAnswer: "Potato"));
+                // Console.WriteLine(Database.checkAnswer(userId: "test3", roomId: "뉴비", questionId: 8, userAnswer: "Potato"));
 
                 // 12. 방금 게임에 대한 기록 가져오는 함수
-                Console.WriteLine("12. 방금 게임에 대한 기록 가져오는 함수");
-                Console.WriteLine(Database.getRecordLastGame(userId: "test1", roomId: "뉴비"));
+                // Console.WriteLine("12. 방금 게임에 대한 기록 가져오는 함수");
+                // Console.WriteLine(Database.getRecordLastGame(userId: "test1", roomId: "뉴비"));
 
                 // 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수
-                Console.WriteLine(" 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수");
-                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].userId);  
-                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].roomId);
-                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].tryCount);
-                Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].correctCount);
+                // Console.WriteLine(" 12-1. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수");
+                // Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].userId);  
+                // Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].roomId);
+                // Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].tryCount);
+                // Console.WriteLine(Database.getRecordEveryone(roomId: "뉴비")[0].correctCount);
                 // 0번 인덱스 유저의 모든 컬럼값을 각각 가져옵니다. 
 
+                // 12-2. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수 (vol.2)
+                // Console.WriteLine(" 12-2. 방금 게임에 대한 모든 사람의 결과를 확인하는 함수 (vol.2)");
+                // Console.WriteLine(Database.getRecordEveryone_vol2()[0].TryCount);  
 
                 // 3. 본인기록 가져오는 함수
                 // Dalle 테이블 -> Rooms 테이블 미리 생성 되어야 함
@@ -114,6 +120,7 @@ namespace Server
 
 
             }
+            
 
 
             server = new TcpListener(IPAddress.Any, port);

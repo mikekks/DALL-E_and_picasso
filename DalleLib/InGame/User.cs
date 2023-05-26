@@ -57,10 +57,20 @@ namespace DalleLib
             this.regDate = regDate;
         }
 
+        // 8-3 생성자
         public User(string userId, bool ready)
         {
             this.userId = userId;
             this.ready = ready;
+        }
+
+        // 12-2 생성자
+        public User(string roomId, string userId, int TryCount, int AnsCount)
+        {
+            this.roomId = roomId;
+            this.userId = userId;
+            this.TryCount = TryCount;
+            this.AnsCount = AnsCount;
         }
     }
 }
