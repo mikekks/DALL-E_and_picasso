@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using MetroFramework.Controls;
 using DalleLib;
 using WindowsFormsApp2;
+using System.Timers;
 
 namespace Client
 {
@@ -41,7 +42,12 @@ namespace Client
 
                 if (Program.user == null)
                 {
-                    this.Close();
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() => { this.Close(); }));
+                    }
+
+                    
                 }
             }
 
@@ -66,28 +72,8 @@ namespace Client
                 TierPic.Image = Properties.Resources.Tier_Gold;
             }
 
-
-
-
             // 방 리스트 불러오기
-
-            /*
-            ////////////////////////// 테스트 코드
-            Room room = new Room("뉴비들만오셈", "1234", 1, false, 1, 4, 3);
-            Room room2 = new Room("너 오면 바로 고", "1234", 1, false, 1, 4, 3);
-            Room room3 = new Room("고수들 환영", "1234", 1, false, 1, 4, 3);
-            Room room4 = new Room("이거까지 나오나?", "1234", 1, false, 1, 4, 3);
-            Program.roomList = new List<Room>();
-            Program.roomList.Add(room);
-            Program.roomList.Add(room2);
-            Program.roomList.Add(room3);
-            Program.roomList.Add(room4);
-            ////////////////////////// 테스트 코드
-            */
-
             viewRoomList();
-
-
 
         }
 

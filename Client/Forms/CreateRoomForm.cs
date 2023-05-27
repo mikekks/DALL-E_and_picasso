@@ -79,12 +79,20 @@ namespace Client.Forms
 
                     Program.room.userList = p.room.userList;
                     MetroMessageBox.Show(Owner, "방만들기 성공");
-                    Close();
+  
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() => { this.Close(); }));
+                    }
                 }
                 else  // 방 만들기 실패의 경우
                 {
                     MetroMessageBox.Show(Owner, "방을 생성할 수 없습니다. 다시 시도하세요");
-                    Close();
+
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() => { this.Close(); }));
+                    }
                 }
 
             }

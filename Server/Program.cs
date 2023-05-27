@@ -15,6 +15,7 @@ namespace Server
         static ushort port = 9999;
         static TcpListener server = null;
         public TcpClient Client_Socket = null;
+        public static int[] AnsList_note = new int[7];
 
         static void Main(string[] args)
         {

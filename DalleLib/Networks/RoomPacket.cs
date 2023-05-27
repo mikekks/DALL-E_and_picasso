@@ -9,7 +9,7 @@ namespace DalleLib.Networks
 {
     public enum RoomType
     {
-        New, Enter
+        New, Enter, Exit
     }
 
     [Serializable]

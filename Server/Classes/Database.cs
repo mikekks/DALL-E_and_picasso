@@ -24,7 +24,7 @@ namespace Server.Classes
         //  ex. Records 테이블에 행 추가하려면 userId(Users) -> questionId(Dalle) -> roomId(Rooms)의 PK들끼리 종속관계 성립해야 함
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test3";
+        public static string _database = "test10";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -228,7 +228,7 @@ namespace Server.Classes
                 mysql.Open();
             }
             MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Rooms VALUES (@roomId, @userId, @nowPlaying, @currentNum, @totalNum, @level)", mysql);
+                "INSERT INTO Rooms VALUES (@roomId, @userId, @nowPlaying, @currentNum, @totalNum, @level, @Round)", mysql);
 
             try
             {
@@ -238,8 +238,7 @@ namespace Server.Classes
                 cmd.Parameters.AddWithValue("@currentNum", 0);
                 cmd.Parameters.AddWithValue("@totalNum", totalNum);
                 cmd.Parameters.AddWithValue("@level", level);
-
-                Console.WriteLine("방 만들기 성공");
+                cmd.Parameters.AddWithValue("@Round", 1);
                 cmd.ExecuteNonQuery();
 
                 return true;
@@ -380,11 +379,35 @@ namespace Server.Classes
             }
         }
 
+        public static bool exitRoom_Users(string roomId, string userId)
+        {
+
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"UPDATE Users SET roomId = null WHERE userId = '{userId}'";
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                  
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+              
+                return false;
+            }
+        }
+
 
 
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
-        
+
         // 7. 레디하는 함수
         public static bool ready(string userId, string roomId)
         {
@@ -629,24 +652,27 @@ namespace Server.Classes
         ////////////////////////////////////////////////////////////////////////////////
 
         // 9. 문제 만드는 함수
-        public static bool makeQuestion(int roomId, string imageUrl, string keyword_1, string keyword_2, string keyword_3)
+        public static bool makeQuestion(string roomId, int QId, string imageUrl, List<string> keyword)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
             MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Dalle VALUES (@roomId, @imageUrl, @keyword_1, @keyword_2, @keyword_3)", mysql);
+                "INSERT INTO Dalle VALUES (@roomId, @QId, @imageUrl, @keyword_1, @keyword_2, @keyword_3, @keyword_4, @keyword_5, @keyword_6)", mysql);
 
             try
             {
                 cmd.Parameters.AddWithValue("@roomId", roomId);
+                cmd.Parameters.AddWithValue("@QId", QId);
                 cmd.Parameters.AddWithValue("@imageUrl", imageUrl);
-                cmd.Parameters.AddWithValue("@keyword_1", keyword_1);
-                cmd.Parameters.AddWithValue("@keyword_2", keyword_2);
-                cmd.Parameters.AddWithValue("@keyword_3", keyword_3);
+                cmd.Parameters.AddWithValue("@keyword_1", keyword[0]);
+                cmd.Parameters.AddWithValue("@keyword_2", keyword[1]);
+                cmd.Parameters.AddWithValue("@keyword_3", keyword[2]);
+                cmd.Parameters.AddWithValue("@keyword_4", keyword[3]);
+                cmd.Parameters.AddWithValue("@keyword_5", keyword[4]);
+                cmd.Parameters.AddWithValue("@keyword_6", keyword[5]);
 
-                Console.WriteLine("문제 만들기 성공");
                 cmd.ExecuteNonQuery();
 
                 return true;
@@ -660,23 +686,104 @@ namespace Server.Classes
             }
         }
 
-        // 10. 정답 확인
-        public static int checkAnswer(string userId, string roomId, string userAnswer)
+        public static bool CheckQuestion(string roomId)
         {
-            int idx = 0;
-            updateTryCount(userId, roomId);
-            Dalle dalle = getKeyword(roomId);
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT QId FROM Dalle WHERE roomId = '{roomId}' && QId = 5";
+            int _QId = 0;
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                   
+                    while (rdr.Read())
+                    {
+                        _QId = rdr.GetInt32("QId");
+                    }
+                }
+
+                if(_QId == 5)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }  
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        public static string getQuestion(string roomId, int round)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT imageUrl FROM Dalle WHERE roomId = '{roomId}' && QId = {round}";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        return rdr.GetString("imageUrl");
+                    }
+                }
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        // 10. 정답 확인
+        public static int checkAnswer(string userId, string roomId, int round, string userAnswer)
+        {
+
+            int idx = 1;
+            int check = 0;
+
+            Dalle dalle = getKeyword(roomId, round);
 
             foreach (string _keyword in dalle.keywords)
             {
                 if (userAnswer == _keyword)
                 {
-                    idx++;
-                    updateCorrectCount(userId, roomId);
-                    return idx;
+                    check = idx;
                 }
+                idx++;
             }
-            return idx;
+
+            if (check != 0 && Program.AnsList_note[check] != 1)  // 새로 + 맞춘 경우
+            {
+                updateTryCount(userId, roomId);
+                updateCorrectCount(userId, roomId);
+                Program.AnsList_note[check] = 1;
+            }
+            else if (check != 0) // 이미 맞춘 경우
+            {
+                check = 0;
+            }
+            else  // 못맞춘 경우
+            {
+                updateTryCount(userId, roomId);
+            }
+            return check;
             
         }
 
@@ -834,13 +941,13 @@ namespace Server.Classes
         }
 
         // 달리 키워드 가져오기
-        public static Dalle getKeyword(string roomId)
+        public static Dalle getKeyword(string roomId, int QId)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
-            string query = $"SELECT * FROM Dalle WHERE roomId = {roomId}";
+            string query = $"SELECT * FROM Dalle WHERE roomId = '{roomId}' && QId = {QId}";
 
             Dalle dalle = null;
             List<string> _keywords = new List<string>();
@@ -860,7 +967,7 @@ namespace Server.Classes
                         _keywords.Add(rdr.GetString("keyword_6"));
 
                         dalle = (new Dalle(
-                                    rdr.GetInt32("questionId"),
+                                    rdr.GetInt32("QId"),
                                     rdr.GetString("imageUrl"),
                                     _keywords));
                     }

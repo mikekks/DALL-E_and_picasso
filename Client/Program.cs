@@ -32,7 +32,9 @@ namespace Client
         public static bool isHost;
 
         public static Dictionary<PacketType, Action<Packet>> MethodList;
-        
+
+        public static List<Records> records;
+
         public static object LOCK = new object();
 
         /// <summary>

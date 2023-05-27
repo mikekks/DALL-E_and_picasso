@@ -105,7 +105,6 @@ namespace Client
                 if (player.ready == false)  // 모두 준비되지 않음.
                 {
                     CanStart = false;
-                    //Console.WriteLine("Not Yet {0}\n", forTest);
                 }
             }
 
@@ -120,6 +119,10 @@ namespace Client
             }
  
             ingamePacket.ready = Ready;
+
+            if (timer.Enabled)  // ! 여기서 타이머 stop한다.
+                timer.Stop();
+
             Program.Send(ingamePacket);
             //timer.Close();
             //timer.Dispose();
@@ -131,6 +134,7 @@ namespace Client
             foreach (User player in Program.room.userList)
             {
                 rdy_list.Clear();
+                rdy_list.Text += "--------Ready List--------";
                 rdy_list.Text += Environment.NewLine + player.userId;
                 if (player.ready == true)
                 {
@@ -165,26 +169,6 @@ namespace Client
 
             Program.Send(ingamePacket);
             
-            /*  서버에 처리하기 전에 그냥 처리해줌
-            if (rdy_list.InvokeRequired)
-            {
-                rdy_list.BeginInvoke(new MethodInvoker(delegate
-                {  
-                    rdy_list.Clear();  // 수정필요
-                    foreach (User player in Program.room.userList)
-                    {
-                        
-                        rdy_list.Text += Environment.NewLine + player.username;
-                        if (Ready || Program.room.ReadyList[player.userId] == true)
-                        {
-                            rdy_list.Text += " : Ready!";
-                        }
-                    }
-                    
-                }));
-            }
-            */
-            
         }
 
         public void R_PlayGame(Packet packet)
@@ -201,6 +185,8 @@ namespace Client
                 }
                 else
                 {
+                    if (!timer.Enabled)  // ! 여기서 타이머 stop한다.
+                        timer.Start();
                     ResetReadyList();
                 }
    
@@ -244,7 +230,7 @@ namespace Client
                     }
                     else  // 정답 틀린 경우
                     {
-
+                        MetroMessageBox.Show(Owner, "틀렸습니다");
                     }
                 }
             }
@@ -256,13 +242,23 @@ namespace Client
                 }
                 else
                 {
+                    Program.records = p.records;
+
                     GameResultForm gameResultForm = new GameResultForm();
                     gameResultForm.ShowDialog();
 
                     // 초기화된 방으로 업데이트 필요
                     Program.room = p.room;
 
-                    // 내 정보도 업데이트
+                    // 내 정보도 업데이트, 레디 해제
+                    InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
+                    ingamePacket.respondType = respondType.End;
+
+                    ingamePacket.Answer = tbAnswer.Text;
+
+                    Program.Send(ingamePacket);
+
+
                     Program.user = p.user;
                     btn_Ready.Enabled = true;
                 }
@@ -275,7 +271,6 @@ namespace Client
         {
             if (!Program.MethodList.ContainsKey(PacketType.InGame))
                 Program.MethodList.Add(PacketType.InGame, R_PlayGame);
-
 
             InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
             ingamePacket.respondType = respondType.Answer;
@@ -293,8 +288,15 @@ namespace Client
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // ready 풀기?
+            RoomPacket roomPacket = new RoomPacket(Program.room, RoomType.Exit);
+            
+            Program.Send(roomPacket);
+
             if (clientSocket != null)
                 clientSocket.Close();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -365,7 +367,7 @@ namespace Client
                 GameTimer.Enabled = false;
                 Start = false;  // 로딩창 다시 띄우기 위해서
 
-                //MetroMessageBox.Show(Owner, "현재 라운드가 종료되었습니다");
+                
                 timeLimit.Text = "10";
                 // 게임이 종료됨을 서버에게 알림
                 InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달

@@ -20,16 +20,12 @@ namespace Server.Classes
 
         public User user;  // 해당 스레드가 어떤 유저랑 통신하는지 결정
 
-        public int[] AnswerList = new int[7];
+       
 
         public static List<Room> roomList;
-
-
+        public static List<string> AnsList;
+        int curRound;
         ////////////// 테스트를 위한 임시 변수들 //////////////
-        
-        int Round = 2;  // 남은 라운드 의미
-        bool flipflop = true;
-        public static int readyChk = 0;
 
         ////////////// 테스트를 위한 임시 변수들 //////////////
 
@@ -195,6 +191,7 @@ namespace Server.Classes
                             room.userList = new List<User> { p.user };
                             sendPacket.userList = room.userList;
                             sendPacket.room.Host = p.user;
+                            sendPacket.user = p.user;
 
                             sendPacket.roomType = p.roomType;
                             sendPacket.room.create = true;
@@ -228,13 +225,11 @@ namespace Server.Classes
                         if (Database.checkEnterRoom(roomId: p.room.roomId))  // 입장 가능을 의미
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
+                            // 유저 리스트에  p.room.userList 를 추가시킨다.
                             Room _room = Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
 
-                            // 유저 리스트에  p.room.userList 를 추가시킨다.
                             _room.userList = Database.getReadyList(roomId: p.room.roomId);
 
-
-                            //_room.currentNum++;
                             RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
                             Send(sendPacket);
 
@@ -243,6 +238,10 @@ namespace Server.Classes
                         {
 
                         }
+                    }
+                    else if(p.roomType == RoomType.Exit)  // 방 나가기
+                    {
+                        Database.exitRoom_Users(p.room.roomId, p.user.userId);
                     }
                 }
                 else if (packet.Type == PacketType.InGame)
@@ -255,48 +254,65 @@ namespace Server.Classes
 
                         if (p.ready && !suc)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
                         {
-
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
                             Database.ready(userId: p.user.userId, roomId: p.room.roomId);
-
-                            // 그 후 다시 해당 방의 유저리스트 쿼리
-                            p.room.userList = Database.getReadyList(roomId: p.room.roomId);
-
-                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
-                            sendPacket.Type = PacketType.InGame;
-                            sendPacket.respondType = respondType.Ready;
-                            sendPacket.ready = true;
-                            Send(sendPacket);
-                            
                         }
-                        else { // 예전에 레디한 경우 or 레디하지 않은 경우
-                            Database.checkUsersReady(roomId: p.room.roomId);
-                        }
+                        
+                        // 그 후 다시 해당 방의 유저리스트 쿼리
+                        p.room.userList = Database.getReadyList(roomId: p.room.roomId);
 
+                        InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+                        sendPacket.Type = PacketType.InGame;
+                        sendPacket.respondType = respondType.Ready;
+                        sendPacket.ready = true;
+                        Send(sendPacket);
 
                     }
                     else if (p.respondType == respondType.Start)
                     {
-                        // DB에서 방장인지 확인(이 부분은 보류), 모두 레디했는지 확인  : p.room.roomID, p.user.userId 사용
+                        // DB에서 모두 레디했는지 확인
                         bool suc = Database.checkUsersReady(roomId: p.room.roomId);
                         
                         if (suc) 
                         {
-
                             Database.startGame(roomId: p.room.roomId);
+
+                            List<string> img = new List<string>();
+                            
+
+                            // 테스트를 위한 코드
+                            string img1 = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
+                            string img2 = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
+                            string img3 = "https://i.ytimg.com/vi/K0TW-zcbEuY/mqdefault.jpg";
+                            string img4 = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
+                            string img5 = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
+                            img.Add(img1);
+                            img.Add(img2);
+                            img.Add(img3);
+                            img.Add(img4);
+                            img.Add(img5);
+
+
+                            // 이미 만든 경우 확인
+                            if (!Database.CheckQuestion(p.room.roomId) && p.room.userId == p.user.userId)
+                            {
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    // ! 단어 조합 필요
+                                    AnsList = new List<string> { "apple", "banna", "candy", "", "", "" };
+                                    Database.makeQuestion(p.room.roomId, i, img[i-1], AnsList);
+                                }
+                            }
+
 
                             // 게임 실행하게 되면 레코드 테이블에 유저 등록
                             // ! 계속 업데이트 하는 거 조심해야함
                             Database.registerRecordTable(userId: p.user.userId, roomId: p.room.roomId);
 
-                            string img = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
-                            // Dalle roomid가 식별번호 되야 할듯 해당 room 저장
-                            //
-                            //
 
-                            p.room.Question = img;
+                            p.room.Question = img[0];
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);
-
+                            curRound = 1;
                             sendPacket.Type = PacketType.InGame;
                             sendPacket.respondType = respondType.Start;  // 오직 여기서만 Start 패킷 보내야 함
                             sendPacket.ready = true;
@@ -312,22 +328,15 @@ namespace Server.Classes
                     {
                         string tmpAns = p.Answer;
 
-
-                        // DB에서 해당 룸( p.room.roomID ) 에 
-                        // 매핑되는 문제의 정답 단어 불러오기
-                        //
-
-                        int idx = Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, userAnswer: p.Answer);
-
-                        //Database.getKeyword(p.room.roomId);
-  
+                        // DB에 해당 룸에 라운드에 정답 물어보기
+                        int idx = Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, round: curRound, userAnswer: p.Answer);
+                        
+                        
                         InGamePacket sendPacket = new InGamePacket(p.user, p.room);
 
                         sendPacket.Type = PacketType.InGame;
                         sendPacket.respondType = respondType.Answer;
                         sendPacket.Answer = tmpAns;
-                        AnswerList[idx] = 1;  // 중복정답 커버
-
                         sendPacket.correct = idx;                    
 
                         Send(sendPacket);
@@ -337,15 +346,24 @@ namespace Server.Classes
                         // 해당 게임의 모든 라운드가 끝났는지 확인, 일단 5라운드 상수로 지정
                         //
                         //
-                        if (Round == 0)  // 해당 게임의 모든 라운드가 끝남을 의미
+                        for(int i=0; i<7; i++)  // 중복정답 체크한거 초기화
+                        {
+                            Program.AnsList_note[i] = 0;
+                        }
+
+                        curRound++;
+                        int tmpRound = Database.getRound(p.room.roomId);
+
+                        if(curRound != tmpRound)
+                            Database.updateRound(p.room.roomId);
+
+                        if (curRound == 6)  // 해당 게임의 모든 라운드가 끝남을 의미
                         {
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);
                             sendPacket.Type = PacketType.InGame;
                             sendPacket.respondType = respondType.End;
 
                             // DB에서 해당 게임의 결과 가져오기
-                            //
-                            //
                             List<Records> records = Database.getRecordEveryone( roomId: p.room.roomId);
                             sendPacket.records = records;
 
@@ -353,43 +371,26 @@ namespace Server.Classes
                         }
                         else
                         {
-                            Round--;  // 테스트 코드
-
-                            // 방장인지 확인 : 방장쪽의 패킷에서 보내면 문제 변경하는거로
-                            //
-                            //
 
                             // Dall-e와 통신 or Dall-e DB 접근 -> 달리 이미지랑 단어 조합 받아오기
                             //
                             //
-                            string newQuestion = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
-                            string newQuestion2 = "https://i.ytimg.com/vi/K0TW-zcbEuY/mqdefault.jpg";
-                            // 이미지뿐만 아니라 단어도 필요
 
-                            // DB에서 해당 방(p.room.roomID)의 문제 변경
-                            //
-                            //
-
-                            if (flipflop)
-                            {
-                                flipflop = false;
-                                p.room.Question = newQuestion;
-                            }
-                            else
-                            {
-                                flipflop = true;
-                                p.room.Question = newQuestion2;
-                            }
-
-                            
+                            // 현재 라운드에 맞는 문제 찾기
+                            string img = Database.getQuestion(p.room.roomId, curRound);
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);
 
                             sendPacket.Type = PacketType.InGame;
+                            sendPacket.room.Question = img;
                             sendPacket.respondType = respondType.Start;  // 다시 시작을 의미
                             sendPacket.ready = true;
                             Send(sendPacket);
                         }
 
+                    }
+                    else if (p.respondType == respondType.End)
+                    {
+                        Database.readyCancel(p.user.userId, p.room.roomId);
                     }
                 }
 

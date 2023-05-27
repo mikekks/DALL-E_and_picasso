@@ -23,6 +23,7 @@ namespace DalleLib.Networks
         public bool ready;
         public int correct;
 
+        public int Round;
         public string Answer;
 
         public List<Records> records;

@@ -183,6 +183,7 @@
             this.cmb_TotalCnt.FormattingEnabled = true;
             this.cmb_TotalCnt.ItemHeight = 23;
             this.cmb_TotalCnt.Items.AddRange(new object[] {
+            "1",
             "2",
             "3",
             "4",

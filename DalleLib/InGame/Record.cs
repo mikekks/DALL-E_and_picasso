@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DalleLib.InGame
 {
+    [Serializable]
     public class Records
     {
         public string userId;

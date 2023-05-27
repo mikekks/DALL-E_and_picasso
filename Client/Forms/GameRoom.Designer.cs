@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tbAnswer = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.rdy_list = new System.Windows.Forms.RichTextBox();
             this.btn_Send = new MetroFramework.Controls.MetroButton();
@@ -48,7 +47,6 @@
             this.Answer5 = new MetroFramework.Controls.MetroTile();
             this.Answer6 = new MetroFramework.Controls.MetroTile();
             this.picBox = new System.Windows.Forms.PictureBox();
-
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,33 +54,17 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-
             this.SuspendLayout();
             // 
             // tbAnswer
             // 
-
             this.tbAnswer.Location = new System.Drawing.Point(6, 250);
-
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(141, 21);
             this.tbAnswer.TabIndex = 1;
             // 
-            // button1
-            // 
-
-            this.button1.Location = new System.Drawing.Point(15, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 25);
-
-            this.button1.TabIndex = 7;
-            this.button1.Text = "테스트버튼";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // richTextBox2
             // 
-
             this.richTextBox2.Location = new System.Drawing.Point(6, 13);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(198, 231);
@@ -94,18 +76,15 @@
             this.rdy_list.Location = new System.Drawing.Point(7, 34);
             this.rdy_list.Name = "rdy_list";
             this.rdy_list.Size = new System.Drawing.Size(178, 242);
-
             this.rdy_list.TabIndex = 10;
             this.rdy_list.Text = "";
             this.rdy_list.TextChanged += new System.EventHandler(this.rdy_list_TextChanged);
             // 
             // btn_Send
             // 
-
             this.btn_Send.Location = new System.Drawing.Point(153, 249);
             this.btn_Send.Name = "btn_Send";
             this.btn_Send.Size = new System.Drawing.Size(51, 23);
-
             this.btn_Send.TabIndex = 13;
             this.btn_Send.Text = "Send";
             this.btn_Send.UseSelectable = true;
@@ -113,11 +92,9 @@
             // 
             // btn_Ready
             // 
-
-            this.btn_Ready.Location = new System.Drawing.Point(115, 20);
+            this.btn_Ready.Location = new System.Drawing.Point(17, 20);
             this.btn_Ready.Name = "btn_Ready";
-            this.btn_Ready.Size = new System.Drawing.Size(80, 25);
-
+            this.btn_Ready.Size = new System.Drawing.Size(178, 25);
             this.btn_Ready.TabIndex = 14;
             this.btn_Ready.Text = "Ready";
             this.btn_Ready.UseSelectable = true;
@@ -126,11 +103,9 @@
             // btn_Exit
             // 
             this.btn_Exit.ForeColor = System.Drawing.Color.CornflowerBlue;
-
             this.btn_Exit.Location = new System.Drawing.Point(115, 60);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(80, 25);
-
             this.btn_Exit.TabIndex = 16;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseSelectable = true;
@@ -138,8 +113,7 @@
             // 
             // btn_Start
             // 
-
-            this.btn_Start.Location = new System.Drawing.Point(15, 20);
+            this.btn_Start.Location = new System.Drawing.Point(17, 60);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(80, 25);
             this.btn_Start.TabIndex = 17;
@@ -156,9 +130,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-
             this.label1.Location = new System.Drawing.Point(609, 26);
-
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 19);
             this.label1.TabIndex = 18;
@@ -170,9 +142,7 @@
             this.timeLimit.BackColor = System.Drawing.Color.Lavender;
             this.timeLimit.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.timeLimit.ForeColor = System.Drawing.Color.IndianRed;
-
             this.timeLimit.Location = new System.Drawing.Point(724, 26);
-
             this.timeLimit.Name = "timeLimit";
             this.timeLimit.Size = new System.Drawing.Size(31, 19);
             this.timeLimit.TabIndex = 19;
@@ -182,9 +152,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 14.25F);
-
             this.label3.Location = new System.Drawing.Point(761, 26);
-
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 19);
             this.label3.TabIndex = 20;
@@ -193,9 +161,7 @@
             // Answer1
             // 
             this.Answer1.ActiveControl = null;
-
             this.Answer1.Location = new System.Drawing.Point(26, 271);
-
             this.Answer1.Name = "Answer1";
             this.Answer1.Size = new System.Drawing.Size(95, 47);
             this.Answer1.Style = MetroFramework.MetroColorStyle.Orange;
@@ -207,9 +173,7 @@
             // Answer2
             // 
             this.Answer2.ActiveControl = null;
-
             this.Answer2.Location = new System.Drawing.Point(152, 271);
-
             this.Answer2.Name = "Answer2";
             this.Answer2.Size = new System.Drawing.Size(95, 47);
             this.Answer2.TabIndex = 22;
@@ -220,9 +184,7 @@
             // Answer3
             // 
             this.Answer3.ActiveControl = null;
-
             this.Answer3.Location = new System.Drawing.Point(278, 271);
-
             this.Answer3.Name = "Answer3";
             this.Answer3.Size = new System.Drawing.Size(95, 47);
             this.Answer3.Style = MetroFramework.MetroColorStyle.Pink;
@@ -234,9 +196,7 @@
             // Answer4
             // 
             this.Answer4.ActiveControl = null;
-
             this.Answer4.Location = new System.Drawing.Point(26, 331);
-
             this.Answer4.Name = "Answer4";
             this.Answer4.Size = new System.Drawing.Size(95, 47);
             this.Answer4.Style = MetroFramework.MetroColorStyle.Green;
@@ -248,9 +208,7 @@
             // Answer5
             // 
             this.Answer5.ActiveControl = null;
-
             this.Answer5.Location = new System.Drawing.Point(152, 331);
-
             this.Answer5.Name = "Answer5";
             this.Answer5.Size = new System.Drawing.Size(95, 47);
             this.Answer5.Style = MetroFramework.MetroColorStyle.Purple;
@@ -262,9 +220,7 @@
             // Answer6
             // 
             this.Answer6.ActiveControl = null;
-
             this.Answer6.Location = new System.Drawing.Point(278, 331);
-
             this.Answer6.Name = "Answer6";
             this.Answer6.Size = new System.Drawing.Size(95, 47);
             this.Answer6.Style = MetroFramework.MetroColorStyle.Silver;
@@ -275,17 +231,14 @@
             // 
             // picBox
             // 
-
             this.picBox.Location = new System.Drawing.Point(6, 13);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(387, 242);
-
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox.TabIndex = 0;
             this.picBox.TabStop = false;
             this.picBox.WaitOnLoad = true;
             // 
-
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Answer4);
@@ -317,14 +270,12 @@
             this.groupBox3.Controls.Add(this.btn_Start);
             this.groupBox3.Controls.Add(this.btn_Ready);
             this.groupBox3.Controls.Add(this.btn_Exit);
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Location = new System.Drawing.Point(596, 322);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(210, 93);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             // 
-
             // GameRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -348,7 +299,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,7 +308,6 @@
 
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.TextBox tbAnswer;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox rdy_list;
         private MetroFramework.Controls.MetroButton btn_Send;
