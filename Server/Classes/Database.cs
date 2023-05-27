@@ -28,13 +28,13 @@ namespace Server.Classes
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
-
+        
         public static MySqlConnection mysql = new MySqlConnection(string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw));
 
         public static Boolean connect()
         {
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
-
+            
             try
             {
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))

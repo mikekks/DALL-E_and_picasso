@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using DalleLib;
 using DalleLib.InGame;
 using DalleLib.Networks;
+using MySql.Data.MySqlClient;
+
 
 namespace Server.Classes
 {
@@ -25,6 +27,8 @@ namespace Server.Classes
         public static List<Room> roomList;
         public static List<string> AnsList;
         int curRound;
+
+         
         ////////////// 테스트를 위한 임시 변수들 //////////////
 
         ////////////// 테스트를 위한 임시 변수들 //////////////
