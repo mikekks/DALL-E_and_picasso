@@ -91,12 +91,21 @@ namespace Server.Classes
 
                     // db에 해당 정보 보내기
                     user = Database.login(userId: p.user.userId, password: p.user.password);
-              
+
                     if (user != null)  // 로그인 성공 경우
                     {
 
                         // rooms 정보 db에서 불러오기 for문으로 저장
                         roomList = Database.getRoomsList();
+
+                        // 유저 정보 불러오기
+                        User _user = Database.getRecords(p.user.userId);    
+                        if(_user != null)
+                        {
+                            user.TryCount = _user.TryCount;
+                            user.AnsCount = _user.AnsCount;
+                        }
+                        
 
                         p = new LoginPacket(true, user, roomList);
                         Send(p);
@@ -106,8 +115,6 @@ namespace Server.Classes
                         p = new LoginPacket(false, user, null);  // ! null로 해도 되나?
                         Send(p);
                     }
-
-
 
                 }
                 else if (packet.Type == PacketType.Setting)
@@ -185,7 +192,7 @@ namespace Server.Classes
 
                         if (suc)  // 새로운 방 생성 성공 -> 해당 방 바로 입장
                         {
-                            Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
+                            Database.EnterOrExit_Room(roomId: p.room.roomId, userId: p.user.userId, 1);
                             
                             Room room = new Room(p.room.roomId, p.user.userId, false, 1, p.room.totalNum, p.room.level, 5);
                             room.Host = p.user;
@@ -230,7 +237,7 @@ namespace Server.Classes
                         {
                             // p.room.roomID로 해당 룸을 DB에서 쿼리해서 PartyNum 1 증가(수정)시킨다.
                             // 유저 리스트에  p.room.userList 를 추가시킨다.
-                            Room _room = Database.enterRoom_Rooms(roomId: p.room.roomId, userId: p.user.userId);
+                            Room _room = Database.EnterOrExit_Room(roomId: p.room.roomId, userId: p.user.userId, 1);
 
                             _room.userList = Database.getReadyList(roomId: p.room.roomId);
 
@@ -243,9 +250,30 @@ namespace Server.Classes
 
                         }
                     }
-                    else if(p.roomType == RoomType.Exit)  // 방 나가기
+                    else if(p.roomType == RoomType.Exit) 
                     {
-                        Database.exitRoom_Users(p.room.roomId, p.user.userId);
+
+                        // 레디 false 만들어주기
+                        Database.readyCancel(p.room.roomId, p.user.userId);
+
+
+                        // 방 나가기
+                        Database.MapRoom(null, p.user.userId);
+
+                        
+                        if (Database.getSpecificRooms(p.room.roomId).currentNum == 1)
+                        {
+                            // 만약 방에 혼자였다면, 방을 아예 삭제
+                            Database.InableRoom(p.room.roomId);
+                        }
+                        else
+                        {
+                            // 만약 방에 다른 사람이 있었다면, curNum 1 감소
+                            Database.EnterOrExit_Room(p.room.roomId, p.user.userId, -1);
+                        }
+
+
+
                     }
                 }
                 else if (packet.Type == PacketType.InGame)
@@ -259,7 +287,11 @@ namespace Server.Classes
                         if (p.ready && !suc)  // 방금 레디한 경우 : db에는 ready x,  하지만 패킷에는 Ready = true
                         {
                             // db에 해당 방의 해당 유저를 레디 상태로 수정
-                            Database.ready(userId: p.user.userId, roomId: p.room.roomId);
+                            Database.ready(p.user.userId, p.room.roomId);
+                        }
+                        else if(suc && !p.ready)  // 레디 취소의 경우
+                        {
+                            Database.readyCancel(p.user.userId, p.room.roomId);
                         }
                         
                         // 그 후 다시 해당 방의 유저리스트 쿼리
@@ -310,8 +342,9 @@ namespace Server.Classes
 
 
                             // 게임 실행하게 되면 레코드 테이블에 유저 등록
-                            // ! 계속 업데이트 하는 거 조심해야함
-                            Database.registerRecordTable(userId: p.user.userId, roomId: p.room.roomId);
+                            // 이미 등록되어있는지 확인
+                            if (!Database.registerRecordCheck(p.user.userId, p.room.roomId))
+                                Database.registerRecordTable(userId: p.user.userId, roomId: p.room.roomId);
 
 
                             p.room.Question = img[0];
@@ -363,6 +396,12 @@ namespace Server.Classes
 
                         if (curRound == 6)  // 해당 게임의 모든 라운드가 끝남을 의미
                         {
+                            // init round 필요
+                            Database.initRound(p.room.roomId);
+
+                            // now playing 수정
+                            Database.initNowPlaying(p.room.roomId);
+
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);
                             sendPacket.Type = PacketType.InGame;
                             sendPacket.respondType = respondType.End;
@@ -370,6 +409,15 @@ namespace Server.Classes
                             // DB에서 해당 게임의 결과 가져오기
                             List<Records> records = Database.getRecordEveryone( roomId: p.room.roomId);
                             sendPacket.records = records;
+
+                            // 유저 정보 업데이트
+                            sendPacket.user = Database.getRecords(p.user.userId);
+                            
+                            
+
+                            // 유저 레디 해제
+                            Database.readyCancel(p.user.userId, p.room.roomId);
+                            p.user.ready = false;
 
                             Send(sendPacket);
                         }

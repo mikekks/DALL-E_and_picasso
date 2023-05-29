@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tbAnswer = new System.Windows.Forms.TextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.log = new System.Windows.Forms.RichTextBox();
             this.rdy_list = new System.Windows.Forms.RichTextBox();
             this.btn_Send = new MetroFramework.Controls.MetroButton();
             this.btn_Ready = new MetroFramework.Controls.MetroButton();
@@ -63,13 +63,13 @@
             this.tbAnswer.Size = new System.Drawing.Size(141, 21);
             this.tbAnswer.TabIndex = 1;
             // 
-            // richTextBox2
+            // log
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(6, 13);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(198, 231);
-            this.richTextBox2.TabIndex = 8;
-            this.richTextBox2.Text = "";
+            this.log.Location = new System.Drawing.Point(6, 13);
+            this.log.Name = "log";
+            this.log.Size = new System.Drawing.Size(198, 231);
+            this.log.TabIndex = 8;
+            this.log.Text = "";
             // 
             // rdy_list
             // 
@@ -78,7 +78,6 @@
             this.rdy_list.Size = new System.Drawing.Size(178, 242);
             this.rdy_list.TabIndex = 10;
             this.rdy_list.Text = "";
-            this.rdy_list.TextChanged += new System.EventHandler(this.rdy_list_TextChanged);
             // 
             // btn_Send
             // 
@@ -256,7 +255,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.richTextBox2);
+            this.groupBox2.Controls.Add(this.log);
             this.groupBox2.Controls.Add(this.tbAnswer);
             this.groupBox2.Controls.Add(this.btn_Send);
             this.groupBox2.Location = new System.Drawing.Point(596, 45);
@@ -308,7 +307,7 @@
 
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.TextBox tbAnswer;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox log;
         private System.Windows.Forms.RichTextBox rdy_list;
         private MetroFramework.Controls.MetroButton btn_Send;
         private MetroFramework.Controls.MetroButton btn_Ready;

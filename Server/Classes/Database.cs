@@ -20,11 +20,10 @@ namespace Server.Classes
 {
     static class Database
     {
-        // 외래키 제약 조건 : 종속하는 테이블의 PK가 먼저 만들어 지지 않으면 행 추가 x 
-        //  ex. Records 테이블에 행 추가하려면 userId(Users) -> questionId(Dalle) -> roomId(Rooms)의 PK들끼리 종속관계 성립해야 함
+       
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test10";
+        public static string _database = "test13";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -97,7 +96,7 @@ namespace Server.Classes
             {
                 mysql.Open();
             }
-            string query = $"SELECT * FROM Users WHERE Users.userId = '{userId}'";
+            string query = $"SELECT * FROM Users WHERE userId = '{userId}'";
 
             List<User> users = new List<User>();
 
@@ -143,16 +142,16 @@ namespace Server.Classes
         }
 
         // 2-2. 내 기록 가져오기
-        public static Records getRecords(string userId)
+        public static User getRecords(string userId)
         {
             // 로그인 유저 있으면 true 없으면 false
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
-            string query = $"SELECT {userId}, SUM(tryCount) as tryCount, SUM(correctCount) as correctCount FROM Records WHERE Records.userId = '{userId}'";
+            string query = $"SELECT userId, SUM(tryCount) as tryCount, SUM(correctCount) as correctCount FROM Records WHERE userId = '{userId}'";
 
-            Records record = null;
+            User user = null;
 
             try
             {
@@ -161,14 +160,15 @@ namespace Server.Classes
 
                     while (rdr.Read())
                     {
-                        record = (new Records(
+                        user = (new User(
                                     rdr.GetString("userId"),
                                     rdr.GetInt32("tryCount"),
                                     rdr.GetInt32("correctCount")));
+                        return user;
                     }
                 }
 
-                return record;
+                return null;
             }
             catch (Exception ex)
             {
@@ -200,14 +200,17 @@ namespace Server.Classes
 
                     while (rdr.Read())
                     {
-                        rooms.Add(new Room(
-                                    rdr.GetString("roomId"),
-                                    rdr.GetString("userId"),
-                                    rdr.GetBoolean("nowPlaying"),
-                                    rdr.GetInt32("currentNum"),
-                                    rdr.GetInt32("totalNum"),
-                                    rdr.GetInt32("level"),
-                                    rdr.GetInt32("Round")));
+                        if (rdr.GetInt32("Round") != 0)
+                        {
+                            rooms.Add(new Room(
+                                        rdr.GetString("roomId"),
+                                        rdr.GetString("userId"),
+                                        rdr.GetBoolean("nowPlaying"),
+                                        rdr.GetInt32("currentNum"),
+                                        rdr.GetInt32("totalNum"),
+                                        rdr.GetInt32("level"),
+                                        rdr.GetInt32("Round")));
+                        }
                     }
                 }
                 Console.WriteLine("방 리스트 가져오기 성공");
@@ -252,44 +255,58 @@ namespace Server.Classes
         }
 
         // 6. 방 진입 시도, room타입 반환
-        public static Room enterRoom_Rooms(string roomId, string userId)
+        public static Room EnterOrExit_Room(string roomId, string userId, int InOut)
         {
-            if (checkEnterRoom(roomId) == true) 
+            int currentNum = getSpecificRooms(roomId).currentNum;
+            string query = $"UPDATE Rooms SET currentNum = {currentNum + InOut} WHERE roomId = '{roomId}'";
+
+            if (mysql.State != ConnectionState.Open)
             {
-                if (mysql.State != ConnectionState.Open)
+                mysql.Open();
+            }
+
+            if (InOut == 1)
+            {
+                if (checkEnterRoom(roomId) == true)
                 {
-                    mysql.Open();
-                }
-
-                // 해당 방의 현재 인원 수
-                int currentNum = getSpecificRooms(roomId).currentNum;
-
-                // 해당 방의 인원수 +1
-                string query = $"UPDATE Rooms SET currentNum = {currentNum + 1} WHERE roomId = '{roomId}'";
-
-
-                try
-                {
-                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                    try
                     {
-                        rdr.Close();
+                        using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                        {
+                            rdr.Close();
 
-                        Console.WriteLine("방 진입하기 성공");
-                        enterRoom_Users(roomId, userId);
-                        Room _room = getSpecificRooms(roomId);
-                        return _room;
+                            Console.WriteLine("방 진입하기 성공");
+                            MapRoom(roomId, userId);
+                            Room _room = getSpecificRooms(roomId);
+                            return _room;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("방 진입하기 실패" + ex);
+                        return null;
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("방 진입하기 실패" + ex);
+                    Console.WriteLine("인원이 다 차서 들어올 수 없음");
                     return null;
                 }
             }
             else
             {
-                Console.WriteLine("인원이 다 차서 들어올 수 없음");
-                return null;
+                try
+                {
+                    using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                    {
+                        rdr.Close();
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
             }
         }
 
@@ -322,7 +339,7 @@ namespace Server.Classes
             {
                 mysql.Open();
             }
-            string query = $"SELECT * FROM Rooms WHERE Rooms.roomId = '{roomId}'";
+            string query = $"SELECT * FROM Rooms WHERE roomId = '{roomId}'";
 
             Room _room = null;
 
@@ -354,7 +371,7 @@ namespace Server.Classes
         }
 
         // User 테이블에 해당 유저 room 매핑
-        public static bool enterRoom_Users(string roomId, string userId)
+        public static bool MapRoom(string roomId, string userId)
         {
 
             if (mysql.State != ConnectionState.Open)
@@ -362,24 +379,32 @@ namespace Server.Classes
                 mysql.Open();
             }
 
-            string query = $"UPDATE Users SET roomId = '{roomId}' WHERE userId = '{userId}'";
+            string query;
+            if (roomId != null)
+            {
+                query = $"UPDATE Users SET roomId = '{roomId}' WHERE userId = '{userId}'";
+            }
+            else
+            {
+                query = $"UPDATE Users SET roomId = NULL WHERE userId = '{userId}'";
+            }
+
+            
             try
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
-                    Console.WriteLine("유저가 진입한 방 업데이트 성공");
-
+                    Console.WriteLine("성공12");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("유저가 진입한 방 업데이트 실패" + ex);
                 return false;
             }
         }
 
-        public static bool exitRoom_Users(string roomId, string userId)
+        public static bool InableRoom(string roomId)
         {
 
             if (mysql.State != ConnectionState.Open)
@@ -387,23 +412,20 @@ namespace Server.Classes
                 mysql.Open();
             }
 
-            string query = $"UPDATE Users SET roomId = null WHERE userId = '{userId}'";
+            string query = $"UPDATE Rooms SET Round = 0 WHERE roomId = '{roomId}'";
             try
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
-                  
+                    Console.WriteLine("방 무효화");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-              
                 return false;
             }
         }
-
-
 
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -441,7 +463,7 @@ namespace Server.Classes
                 mysql.Open();
             }
 
-            string query = $"UPDATE Users SET ready = false WHERE userId = '{userId}' && roomId = '{roomId}'";
+            string query = $"UPDATE Users SET ready = false WHERE userId = '{userId}'";
             try
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
@@ -644,6 +666,37 @@ namespace Server.Classes
             catch (Exception ex)
             {
                 Console.WriteLine("레코드 테이블에 유저 등록 실패" + ex);
+                return false;
+            }
+        }
+
+        // 해당 방에 이미 등록된 경우(리방인 경우) 체크
+        public static bool registerRecordCheck(string userId, string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT userId FROM Records WHERE roomId = '{roomId}' && WHERE userId = '{userId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        if (rdr.GetString("userId") == userId)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
                 return false;
             }
         }
@@ -884,6 +937,30 @@ namespace Server.Classes
             return 0;
         }
 
+        public static bool initRound(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+          
+            string query = $"UPDATE Rooms SET Round = 1 WHERE roomId = '{roomId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
         // user의 tryCount 가져오기
         public static int getTryCount(string userId, string roomId)
         {
@@ -1020,8 +1097,30 @@ namespace Server.Classes
             }
         }
 
+        public static bool initNowPlaying(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
 
-       
+            string query = $"UPDATE Rooms SET nowPlaying = false WHERE roomId = '{roomId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
 
     }
 }

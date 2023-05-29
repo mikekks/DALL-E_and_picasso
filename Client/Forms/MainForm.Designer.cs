@@ -32,13 +32,10 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.Tab1 = new MetroFramework.Controls.MetroTabPage();
             this.Tab2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.Tab3 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Tab4 = new System.Windows.Forms.TabPage();
+            this.Tab5 = new System.Windows.Forms.TabPage();
+            this.Tab6 = new System.Windows.Forms.TabPage();
             this.btn_CreateRoom = new MetroFramework.Controls.MetroButton();
             this.btn_Myinfo = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
@@ -50,10 +47,7 @@
             this.btn_reset = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Room2 = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
-            this.Tab2.SuspendLayout();
-            this.Tab3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,9 +67,9 @@
             this.metroTabControl1.Controls.Add(this.Tab1);
             this.metroTabControl1.Controls.Add(this.Tab2);
             this.metroTabControl1.Controls.Add(this.Tab3);
-            this.metroTabControl1.Controls.Add(this.tabPage1);
-            this.metroTabControl1.Controls.Add(this.tabPage2);
-            this.metroTabControl1.Controls.Add(this.tabPage3);
+            this.metroTabControl1.Controls.Add(this.Tab4);
+            this.metroTabControl1.Controls.Add(this.Tab5);
+            this.metroTabControl1.Controls.Add(this.Tab6);
             this.metroTabControl1.Location = new System.Drawing.Point(183, 33);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
@@ -105,8 +99,8 @@
             // 
             // Tab2
             // 
-            this.Tab2.Controls.Add(this.metroTile2);
-            this.Tab2.Controls.Add(this.metroTile1);
+            this.Tab2.AutoScroll = true;
+            this.Tab2.HorizontalScrollbar = true;
             this.Tab2.HorizontalScrollbarBarColor = true;
             this.Tab2.HorizontalScrollbarHighlightOnWheel = false;
             this.Tab2.HorizontalScrollbarSize = 10;
@@ -115,41 +109,15 @@
             this.Tab2.Size = new System.Drawing.Size(487, 220);
             this.Tab2.TabIndex = 1;
             this.Tab2.Text = "★★";
+            this.Tab2.VerticalScrollbar = true;
             this.Tab2.VerticalScrollbarBarColor = true;
             this.Tab2.VerticalScrollbarHighlightOnWheel = false;
             this.Tab2.VerticalScrollbarSize = 10;
             // 
-            // metroTile2
-            // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.metroTile2.ForeColor = System.Drawing.Color.White;
-            this.metroTile2.Location = new System.Drawing.Point(3, 80);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(455, 64);
-            this.metroTile2.TabIndex = 3;
-            this.metroTile2.Text = "metroTile2";
-            this.metroTile2.UseCustomBackColor = true;
-            this.metroTile2.UseCustomForeColor = true;
-            this.metroTile2.UseSelectable = true;
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.metroTile1.ForeColor = System.Drawing.Color.White;
-            this.metroTile1.Location = new System.Drawing.Point(3, 12);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(455, 62);
-            this.metroTile1.TabIndex = 2;
-            this.metroTile1.Text = "metroTile1";
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseCustomForeColor = true;
-            this.metroTile1.UseSelectable = true;
-            // 
             // Tab3
             // 
-            this.Tab3.Controls.Add(this.metroTile3);
+            this.Tab3.AutoScroll = true;
+            this.Tab3.HorizontalScrollbar = true;
             this.Tab3.HorizontalScrollbarBarColor = true;
             this.Tab3.HorizontalScrollbarHighlightOnWheel = false;
             this.Tab3.HorizontalScrollbarSize = 10;
@@ -158,48 +126,38 @@
             this.Tab3.Size = new System.Drawing.Size(487, 220);
             this.Tab3.TabIndex = 2;
             this.Tab3.Text = "★★★";
+            this.Tab3.VerticalScrollbar = true;
             this.Tab3.VerticalScrollbarBarColor = true;
             this.Tab3.VerticalScrollbarHighlightOnWheel = false;
             this.Tab3.VerticalScrollbarSize = 10;
             // 
-            // metroTile3
+            // Tab4
             // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.metroTile3.ForeColor = System.Drawing.Color.White;
-            this.metroTile3.Location = new System.Drawing.Point(3, 17);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(455, 60);
-            this.metroTile3.TabIndex = 2;
-            this.metroTile3.Text = "metroTile3";
-            this.metroTile3.UseCustomBackColor = true;
-            this.metroTile3.UseCustomForeColor = true;
-            this.metroTile3.UseSelectable = true;
+            this.Tab4.AutoScroll = true;
+            this.Tab4.Location = new System.Drawing.Point(4, 38);
+            this.Tab4.Name = "Tab4";
+            this.Tab4.Size = new System.Drawing.Size(487, 220);
+            this.Tab4.TabIndex = 3;
+            this.Tab4.Text = "★★★★";
             // 
-            // tabPage1
+            // Tab5
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 38);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(487, 220);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "★★★★";
+            this.Tab5.AutoScroll = true;
+            this.Tab5.Location = new System.Drawing.Point(4, 38);
+            this.Tab5.Name = "Tab5";
+            this.Tab5.Size = new System.Drawing.Size(487, 220);
+            this.Tab5.TabIndex = 4;
+            this.Tab5.Text = "★★★★★";
             // 
-            // tabPage2
+            // Tab6
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 38);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(487, 220);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "★★★★★";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tabPage3.Location = new System.Drawing.Point(4, 38);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(487, 220);
-            this.tabPage3.TabIndex = 5;
-            this.tabPage3.Text = "★★★★★★";
+            this.Tab6.AutoScroll = true;
+            this.Tab6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Tab6.Location = new System.Drawing.Point(4, 38);
+            this.Tab6.Name = "Tab6";
+            this.Tab6.Size = new System.Drawing.Size(487, 220);
+            this.Tab6.TabIndex = 5;
+            this.Tab6.Text = "★★★★★★";
             // 
             // btn_CreateRoom
             // 
@@ -344,23 +302,6 @@
             this.panel1.Size = new System.Drawing.Size(164, 305);
             this.panel1.TabIndex = 17;
             // 
-            // Room2
-            // 
-            this.Room2.ActiveControl = null;
-            this.Room2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Room2.ForeColor = System.Drawing.Color.White;
-            this.Room2.Location = new System.Drawing.Point(405, 319);
-            this.Room2.Name = "Room2";
-            this.Room2.Size = new System.Drawing.Size(108, 65);
-            this.Room2.TabIndex = 2;
-            this.Room2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Room2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.Room2.UseCustomBackColor = true;
-            this.Room2.UseSelectable = true;
-            this.Room2.UseTileImage = true;
-            this.Room2.Click += new System.EventHandler(this.Room2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -368,7 +309,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(694, 387);
             this.Controls.Add(this.btn_reset);
-            this.Controls.Add(this.Room2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btn_Myinfo);
             this.Controls.Add(this.metroButton2);
@@ -387,8 +327,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.metroTabControl1.ResumeLayout(false);
-            this.Tab2.ResumeLayout(false);
-            this.Tab3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TierPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -405,9 +343,6 @@
         private MetroFramework.Controls.MetroTabPage Tab2;
         private MetroFramework.Controls.MetroTabPage Tab3;
         private MetroFramework.Controls.MetroButton btn_CreateRoom;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroButton btn_Myinfo;
         private MetroFramework.Controls.MetroButton metroButton2;
         private System.Windows.Forms.PictureBox ProfilePic;
@@ -418,9 +353,8 @@
         private MetroFramework.Controls.MetroButton btn_reset;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private MetroFramework.Controls.MetroTile Room2;
+        private System.Windows.Forms.TabPage Tab4;
+        private System.Windows.Forms.TabPage Tab5;
+        private System.Windows.Forms.TabPage Tab6;
     }
 }

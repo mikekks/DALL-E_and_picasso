@@ -31,18 +31,6 @@ namespace DalleLib
             this.password = password;
         }
 
-        public User(string userId, string password, string username, 
-            int TryCount, int AnsCount, int WrgCount, int AnsRate, string tier)  // server+db -> user
-        {
-            this.userId=userId;
-            this.password = password;
-            this.username = username;
-            this.TryCount = TryCount;
-            this.AnsCount = AnsCount;
-            this.Tier = tier;
-        }
-        
-        // 아래 있는 걸로 통일하기
         public User(string userId, string roomId, string password, string recovery_Q, 
             string recovery_A, bool ready, string Tier, DateTime regDate)
         {
@@ -55,6 +43,12 @@ namespace DalleLib
             this.Tier = Tier;
             this.ready = ready;
             this.regDate = regDate;
+        }
+        public User(string userId, int TryCount, int AnsCount)
+        {
+            this.userId = userId;
+            this.TryCount = TryCount;
+            this.AnsCount = AnsCount;
         }
 
         // 8-3 생성자

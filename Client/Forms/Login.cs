@@ -66,7 +66,7 @@ namespace WindowsFormsApp2
                 Program.user = loginPacket.user;
                 Program.roomList = loginPacket.roomList;
                 string init = Program.user.userId + "님 안녕하세요!";
-                MessageBox.Show(this.Parent, init);
+                MetroMessageBox.Show(this, init);
                 this.Invoke(new EndForm(tmp));
             }
             else  // 로그인 실패 의미

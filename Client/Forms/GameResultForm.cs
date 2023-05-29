@@ -44,6 +44,7 @@ namespace Client.Forms
 
                 PictureBox _rank = new PictureBox();
                 _rank.SizeMode = PictureBoxSizeMode.Zoom;
+                _rank.Size = new Size(95, 70);
                 if (i == 0)
                 {
                     _userTile.BackColor = Color.Gold;
@@ -139,14 +140,16 @@ namespace Client.Forms
                 _userTile.Controls.Add(_WrgCount);
 
                 MetroLabel _Rate = new MetroLabel();
-                int _try = Program.records[i].tryCount;
+                double _try = Program.records[i].tryCount;
+                double _cor = Program.records[i].correctCount;
                 if (_try == 0)
                 {
                     _Rate.Text = "0 %";
                 }
                 else
                 {
-                    _Rate.Text = (Program.records[i].correctCount / Program.records[i].tryCount * 100).ToString() + " %";
+                    double _rate = Math.Round(_cor / _try * 100);
+                    _Rate.Text = _rate.ToString() + " %";
                 }
                 _Rate.Location = new Point(420, 27);
                 _Rate.Size = new Size(100, 70);

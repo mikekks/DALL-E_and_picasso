@@ -32,7 +32,7 @@ namespace Client
         {
             // 로그인 하는 과정
 
-            
+           
             Hide();
 
             if (Program.user == null)
@@ -108,7 +108,10 @@ namespace Client
                 _roomTile.Click += new EventHandler(Room_Click);
                 _roomTile.Tag = Program.roomList[i];
                 roomTile[i] = _roomTile;
-                Tab1.Controls.Add(roomTile[i]);
+
+                int _level = Program.roomList[i].level - 1;
+
+                metroTabControl1.TabPages[_level].Controls.Add(roomTile[i]);
                 
             }
         }
