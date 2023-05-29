@@ -79,7 +79,11 @@ namespace Client
 
         public void viewRoomList()
         {
-            Tab1.Controls.Clear();
+
+            for(int i=0; i<6; i++)
+            {
+                metroTabControl1.TabPages[i].Controls.Clear();
+            }
 
             int y = 10;
             for (int i = 0; i < Program.roomList.Count; i++)

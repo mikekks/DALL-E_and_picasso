@@ -29,7 +29,7 @@ namespace DalleLib.InGame
 
         public bool nowPlaying;
 
-        // public Chat lastChat;
+        public string Chat;
         
 
         public Room(string roomId, int level)

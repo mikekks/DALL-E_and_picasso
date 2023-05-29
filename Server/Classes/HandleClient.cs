@@ -25,7 +25,8 @@ namespace Server.Classes
        
 
         public static List<Room> roomList;
-        public static List<string> AnsList;
+        public static List<List<string>> AnsList;
+        public List<string> SendAnsList;
         int curRound;
 
          
@@ -316,6 +317,7 @@ namespace Server.Classes
                             List<string> img = new List<string>();
                             
 
+                            // 쓰레드로 돌려야 할거 같다.
                             // 테스트를 위한 코드
                             string img1 = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
                             string img2 = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
@@ -327,7 +329,8 @@ namespace Server.Classes
                             img.Add(img3);
                             img.Add(img4);
                             img.Add(img5);
-
+                            AnsList = new List<List<string>>(10);
+                            SendAnsList = new List<string> { "0", "0" , "0" , "0" , "0" , "0", "0" };
 
                             // 이미 만든 경우 확인
                             if (!Database.CheckQuestion(p.room.roomId) && p.room.userId == p.user.userId)
@@ -335,8 +338,9 @@ namespace Server.Classes
                                 for (int i = 1; i <= 5; i++)
                                 {
                                     // ! 단어 조합 필요
-                                    AnsList = new List<string> { "apple", "banna", "candy", "", "", "" };
-                                    Database.makeQuestion(p.room.roomId, i, img[i-1], AnsList);
+                                    List<string> tmp = new List<string> { "apple", "banna", "candy", "qq", "ww", "ee" };
+                                    AnsList.Add(tmp);
+                                    Database.makeQuestion(p.room.roomId, i, img[i-1], AnsList[i-1]);
                                 }
                             }
 
@@ -363,18 +367,47 @@ namespace Server.Classes
                     }
                     else if (p.respondType == respondType.Answer)
                     {
-                        string tmpAns = p.Answer;
+                      
+                            string tmpAns = p.Answer;
 
-                        // DB에 해당 룸에 라운드에 정답 물어보기
-                        int idx = Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, round: curRound, userAnswer: p.Answer);
+                            // DB에 해당 룸에 라운드에 정답 물어보기
+                            int idx = Database.checkAnswer(userId: p.user.userId, roomId: p.room.roomId, round: curRound, userAnswer: p.Answer);
+
+
+                            InGamePacket sendPacket = new InGamePacket(p.user, p.room);
+
+                            sendPacket.Type = PacketType.InGame;
+                            sendPacket.respondType = respondType.Answer;
+                            sendPacket.Answer = tmpAns;
+                            sendPacket.correct = idx;
+
+                            Send(sendPacket);
                         
                         
+                       
+                    }
+                    else if (p.respondType == respondType.Check)
+                    {
+                        Dalle curRoundAns = Database.getKeyword(p.room.roomId, curRound);
+                        int i = 0;
+
+                        foreach (string keyword in curRoundAns.keywords)
+                        {
+                            if (keyword == "CHECK")
+                            {
+                                SendAnsList.Add(AnsList[curRound - 1][i]);
+                            }
+                            else
+                            {
+                                SendAnsList.Add("0");
+                            }
+                            i++;
+                        }
                         InGamePacket sendPacket = new InGamePacket(p.user, p.room);
 
                         sendPacket.Type = PacketType.InGame;
-                        sendPacket.respondType = respondType.Answer;
-                        sendPacket.Answer = tmpAns;
-                        sendPacket.correct = idx;                    
+                        sendPacket.respondType = respondType.Check;
+                        sendPacket.SendAnsList = SendAnsList;
 
                         Send(sendPacket);
                     }
@@ -428,6 +461,8 @@ namespace Server.Classes
                             //
                             //
 
+
+                            SendAnsList.Clear();
                             // 현재 라운드에 맞는 문제 찾기
                             string img = Database.getQuestion(p.room.roomId, curRound);
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);

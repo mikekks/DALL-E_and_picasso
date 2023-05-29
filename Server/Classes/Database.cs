@@ -23,7 +23,7 @@ namespace Server.Classes
        
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test13";
+        public static string _database = "test15";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -274,8 +274,6 @@ namespace Server.Classes
                         using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                         {
                             rdr.Close();
-
-                            Console.WriteLine("방 진입하기 성공");
                             MapRoom(roomId, userId);
                             Room _room = getSpecificRooms(roomId);
                             return _room;
@@ -818,13 +816,16 @@ namespace Server.Classes
             {
                 if (userAnswer == _keyword)
                 {
-                    check = idx;
+                    check = checkKeyword(roomId, round, idx);
+                   
                 }
                 idx++;
             }
 
-            if (check != 0 && Program.AnsList_note[check] != 1)  // 새로 + 맞춘 경우
+            if (check != 0)  // 새로 + 맞춘 경우
             {
+
+
                 updateTryCount(userId, roomId);
                 updateCorrectCount(userId, roomId);
                 Program.AnsList_note[check] = 1;
@@ -1034,7 +1035,6 @@ namespace Server.Classes
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
-                    Console.WriteLine("달리 키워드 가져오기 성공");
                     while (rdr.Read())
                     {
                         _keywords.Add(rdr.GetString("keyword_1"));
@@ -1048,17 +1048,41 @@ namespace Server.Classes
                                     rdr.GetInt32("QId"),
                                     rdr.GetString("imageUrl"),
                                     _keywords));
+                        return dalle;
                     }
+                    
                 }
                 return dalle;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("달리 키워드 가져오기 실패" + ex);
                 return null;
             }
         }
 
+        public static int checkKeyword(string roomId, int round, int idx)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string keyword = "keyword_" + idx.ToString();
+            string query = $"UPDATE Dalle SET {keyword} = 'CHECK' WHERE roomId = '{roomId}' && QId = {round}";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    return idx;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return 0;
+            }
+        }
 
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
