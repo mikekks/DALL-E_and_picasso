@@ -382,6 +382,7 @@ namespace Server.Classes
             string query;
             if (roomId != null)
             {
+
                 query = $"UPDATE Users SET roomId = '{roomId}' WHERE userId = '{userId}'";
             }
             else
