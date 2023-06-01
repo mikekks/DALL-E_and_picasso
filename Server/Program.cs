@@ -17,8 +17,15 @@ namespace Server
         public TcpClient Client_Socket = null;
         public static int[] AnsList_note = new int[7];
 
+        public static List<HandleClient> unloginClientList;
+        public static Dictionary<string, HandleClient> clientList;
+
         static void Main(string[] args)
         {
+
+            unloginClientList = new List<HandleClient>();
+            clientList = new Dictionary<string, HandleClient>();
+
             /// 데이터베이스 접속
             if (Database.connect()) 
             {
@@ -43,5 +50,24 @@ namespace Server
 
             }
         }
+
+        public static bool loginClient(HandleClient client)
+        {
+            if(client.user.userId == null)
+            {
+                Console.WriteLine("id가 0 오류");
+                return false;
+            }
+
+            if(clientList.ContainsKey(client.user.userId))
+            {
+                Console.WriteLine("이미 clientList에 존재 ");
+                return false;
+            }
+
+            clientList.Add(client.user.userId, client);
+            unloginClientList.Remove(client);
+            return true;
+        } 
     }
 }

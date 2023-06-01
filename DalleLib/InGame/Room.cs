@@ -13,8 +13,7 @@ namespace DalleLib.InGame
         public bool create;
 
         public string roomId;
-        // public string hostId;
-        public string userId;
+        public string userId;  // 방장 의미
         public int level;
         public int totalNum;  // 들어올 수 있는 총 인원
         public int currentNum;  // 참여인원

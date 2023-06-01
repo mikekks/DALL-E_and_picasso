@@ -20,7 +20,9 @@ namespace DalleLib.Networks
         public Room room;
 
         public respondType respondType;
-        public bool ready;
+        public bool ready;  // 유저 -> 서버 패킷에서만 사용
+        public bool start;
+        public bool IsHost;
         public int correct;
 
         public int Round;

@@ -93,34 +93,6 @@ namespace Client
                 
                 MethodList[packet.Type].Invoke(packet);
 
-                //  packet.Type에 따라 처리 작업 필요.
-                /*
-                if (packet.Type == PacketType.Login)
-                {
-                    LoginPacket p = packet as LoginPacket;
-
-                    MethodList[PacketType.Login].Invoke(p);
-                    
-                    
-                }
-                else if (packet.Type == PacketType.Register)
-                {
-
-                }
-                else if(packet.Type == PacketType.InGame)
-                {
-                    
-                }
-                else if (packet.Type == PacketType.Room)
-                {
-                    RoomPacket p = packet as RoomPacket;
-
-                    MethodList[PacketType.Login].Invoke(p);
-                    
-                   
-                    
-                }
-                */
             }
 
         }

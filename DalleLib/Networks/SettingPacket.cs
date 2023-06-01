@@ -22,6 +22,7 @@ namespace DalleLib.Networks
         {
             this.user = user;
             this.roomList = roomList;
+            Type = PacketType.Setting;
         }
     }
 }

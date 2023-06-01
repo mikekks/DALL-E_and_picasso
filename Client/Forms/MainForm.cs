@@ -31,8 +31,12 @@ namespace Client
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
             // 로그인 하는 과정
+            if (!Program.MethodList.ContainsKey(PacketType.Room))
+                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
 
-           
+            if (!Program.MethodList.ContainsKey(PacketType.Setting))
+                Program.MethodList.Add(PacketType.Setting, R_Setting);
+
             Hide();
 
             if (Program.user == null)
@@ -51,7 +55,10 @@ namespace Client
                 }
             }
 
+
             //MainPic.Load("");
+
+            viewRoomList();
 
             // 로그인 후 정보 갱신 필요.
             UserId.Text = Program.user.userId;
@@ -72,12 +79,11 @@ namespace Client
                 TierPic.Image = Properties.Resources.Tier_Gold;
             }
 
-            // 방 리스트 불러오기
-            viewRoomList();
 
         }
 
-        public void viewRoomList()
+
+        public void viewRoomList() // 방 리스트 불러오기
         {
 
             for(int i=0; i<6; i++)
@@ -120,6 +126,15 @@ namespace Client
             }
         }
 
+        public void R_resetRoomList(Packet packet)
+        {
+            LoginPacket resetRoomPacket = packet as LoginPacket;
+
+            Program.roomList = resetRoomPacket.roomList;
+
+           
+        }
+
         public void forTest_Connect()
         {
             if (!Program.clientSocket.Connected)
@@ -154,25 +169,6 @@ namespace Client
 
             RoomPacket roomPacket = new RoomPacket(EnterRoom, RoomType.Enter);
             roomPacket.user = Program.user;
-
-            if (!Program.MethodList.ContainsKey(PacketType.Room))
-                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
-
-            Program.Send(roomPacket);
-        }
-
-        private void Room2_Click(object sender, EventArgs e)
-        {
-            
-            forTest_Connect();
-
-            // 해당 방에 들어갈 수 있는지 패킷을 보내야 함
-            // int roomID, int level, string roomName, int PartyNum, int ReadyNum
-            
-            RoomPacket roomPacket = new RoomPacket(Program.roomList[1], RoomType.Enter);
-
-            if (!Program.MethodList.ContainsKey(PacketType.Room))
-                Program.MethodList.Add(PacketType.Room, R_EnterRoom);
 
             Program.Send(roomPacket);
         }
@@ -228,30 +224,45 @@ namespace Client
             string password = "54321";
             LoginPacket packet = new LoginPacket(id, password);
 
-            Program.MethodList.Add(PacketType.Login, R_Login);
-
             Program.Send(packet);
 
 
         }
 
+        /*
         public void R_Login(Packet packet)
         {
             LoginPacket loginPacket = packet as LoginPacket;
 
             if(loginPacket.success == true)  // 로그인 성공 의미
             {
-                Program.user = loginPacket.user;
                 Program.roomList = loginPacket.roomList;
-                string init = Program.user.username + "님 안녕하세요!";
-                MetroMessageBox.Show(Owner, init);
 
+                if (loginPacket.reset == false)
+                {
+                    Program.user = loginPacket.user;
+                    string init = Program.user.username + "님 안녕하세요!";
+                    MetroMessageBox.Show(Owner, init);
+                }
+
+                
+                
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { viewRoomList(); }));
+                }
+                else
+                {
+                    viewRoomList();
+                }
+                
             }
             else  // 로그인 실패 의미
             {
 
             }
         }
+        */
 
         private void btn_Myinfo_Click(object sender, EventArgs e)
         {
@@ -330,8 +341,6 @@ namespace Client
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
-            if (!Program.MethodList.ContainsKey(PacketType.Setting))
-                Program.MethodList.Add(PacketType.Setting, R_Setting);
 
             SettingPacket packet = new SettingPacket(Program.user.userId, Program.user.password);
             Program.Send(packet);

@@ -32,14 +32,7 @@ namespace Client.Forms
 
         private void btn_createRoom_Click(object sender, EventArgs e)
         {
-            // UI 부분
-            /*
-            metroPanel1.BringToFront();
-            Opacity = 0.5;
-            metroPanel1.Visible = true;
-            
-            Opacity = 1;
-            */
+
 
             if (!Program.MethodList.ContainsKey(PacketType.RoomCreate))
                 Program.MethodList.Add(PacketType.RoomCreate, R_CreateRoom);

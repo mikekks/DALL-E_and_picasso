@@ -23,7 +23,7 @@ namespace Server.Classes
        
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test15";
+        public static string _database = "test17";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";

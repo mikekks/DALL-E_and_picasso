@@ -23,8 +23,8 @@ namespace Client
 {
     public partial class GameRoom : MetroFramework.Forms.MetroForm
     {
-        delegate void TimerEventFiredDelegate();
-        delegate void TimerEventFiredDelegate_Ans();
+        //delegate void TimerEventFiredDelegate();
+        //delegate void TimerEventFiredDelegate_Ans();
 
         TcpClient clientSocket = new TcpClient();
         public bool Ready = false;
@@ -32,37 +32,35 @@ namespace Client
 
         public int forTest = 0;
 
-        System.Timers.Timer timer = new System.Timers.Timer();
-        System.Timers.Timer Anstimer = new System.Timers.Timer();
+        //System.Timers.Timer timer = new System.Timers.Timer();
+        //System.Timers.Timer Anstimer = new System.Timers.Timer();
 
         public MetroTile[] metroTiles = null;
         
         public GameRoom()
         {
             InitializeComponent();
-            /*
-            new Thread(delegate ()
-            {
-                InitSocket();
-            }).Start();
-            */
+ 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            if (!Program.MethodList.ContainsKey(PacketType.InGame))
+                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
+
             Text = Program.room.roomId;  // 방의 제목
            // picBox.Load("https://static.designboom.com/wp-content/uploads/2022/06/dalle-2-ai-system-designboom-01.jpg");
             
             // 레디 타이머 설정
-            timer.Interval = 500;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+            //timer.Interval = 500;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
 
-            Anstimer.Interval = 500;
-            Anstimer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed_Ans);
+            //Anstimer.Interval = 500;
+            //Anstimer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed_Ans);
 
             // 방 들어가기 전에 Room이 갱신됨
-
+            
             ResetReadyList();
 
 
@@ -75,9 +73,7 @@ namespace Client
             }
 
             // 레디 타이머 시작
-            timer.Start();
-
-          
+            
         }
         public void ResetReadyList()
         {
@@ -97,6 +93,7 @@ namespace Client
             }
         }
 
+        /*
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             // UI Thread 처리
@@ -108,13 +105,13 @@ namespace Client
             // UI Thread 처리
             BeginInvoke(new TimerEventFiredDelegate_Ans(Ans_Check));
         }
+        */
 
 
-
+        /*
         public void Ready_Check()
         {
-            if(!Program.MethodList.ContainsKey(PacketType.InGame))
-                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
+          
 
             bool CanStart = true;
             int curNum = Program.room.userList.Count;
@@ -150,6 +147,7 @@ namespace Client
             //timer.Dispose();
             
         }
+       
 
         public void Ans_Check()
         {
@@ -166,7 +164,7 @@ namespace Client
             Program.Send(ingamePacket);
 
         }
-
+         */
         public void R_PlayGame(Packet packet)
         {
             InGamePacket p = packet as InGamePacket;
@@ -181,8 +179,6 @@ namespace Client
                 }
                 else
                 {
-                    if (!timer.Enabled)  // ! 여기서 타이머 stop한다.
-                        timer.Start();
                     ResetReadyList();
                 }
    
@@ -195,28 +191,40 @@ namespace Client
                 }
                 else
                 {
-                    // 로딩화면 
-                    if (!Start)  // 처음 게임시작에만 띄움
+                    Console.WriteLine("start 패킷 도착");
+
+                    if (!p.IsHost)
                     {
-                        LoadingForm loadingForm = new LoadingForm();
-                        loadingForm.ShowDialog();
+                        MetroMessageBox.Show(Owner, "방장이 아닙니다");
+                        return;
                     }
 
-                   
+                    if (!p.start)
+                    {
+                        MetroMessageBox.Show(Owner, "모두 준비되지 않았습니다");
+                        return;
+                    }
+
+                    Program.room.round = p.room.round;
+
+                    // 로딩 화면
+                    LoadingForm loadingForm = new LoadingForm();
+                    loadingForm.ShowDialog();
+                    
                     for (int i = 0; i < Program.room.level; i++)
                     {
                         metroTiles[i].Text = "뭘까요?";
                     }
 
+                    Console.WriteLine("start 패킷 도착2");
+
                     string url = p.room.Question;
                     picBox.Load(url);
                     Start = true;
-
-                    if(timer.Enabled)  // ! 여기서 타이머 stop한다.
-                        timer.Stop();   
+                    btn_Ready.Enabled = false;
 
                     GameTimer.Start();
-                    Anstimer.Start();
+ 
                 }
             }
             else if (p.respondType == respondType.Answer)
@@ -229,6 +237,8 @@ namespace Client
                 {
                    if(p.correct != 0)  // 정답 맞춘 경우
                     {
+                        string tmp = p.user.userId.ToString() + " 가 정답을 맞췄습니다";
+                        MetroMessageBox.Show(Owner, tmp);
                         metroTiles[p.correct - 1].Text = p.Answer;
                     }
                     else  // 정답 틀린 경우
@@ -236,25 +246,6 @@ namespace Client
                         MetroMessageBox.Show(Owner, "틀렸습니다");
                     }
                 }
-            }
-            else if (p.respondType == respondType.Check)
-            {
-                if (InvokeRequired)
-                {
-                    this.Invoke(new Action(() => { R_PlayGame(packet); }));
-                }
-                else
-                {
-                    for (int i = 0; i < Program.room.level; i++)
-                    {
-                        if (p.SendAnsList[i] != "0")
-                        {
-                            metroTiles[i].Text = p.SendAnsList[i];
-                        }
-                        
-                    }
-                }
-               
             }
             else if (p.respondType == respondType.End)  // 해당 게임 종료를 의미
             {
@@ -280,9 +271,6 @@ namespace Client
                     Program.user.ready = p.user.ready;
 
 
-                    // 레디 타이머 다시 시작
-                    if(!timer.Enabled)
-                        timer.Start();
 
                     /*
                     InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
@@ -300,15 +288,6 @@ namespace Client
         private void btn_Ready_Click(object sender, EventArgs e)
         {
             Ready = true;
-            btn_Ready.Enabled = false;
-
-            if (!Program.MethodList.ContainsKey(PacketType.InGame))
-                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
-
-            //Thread t_hanlder = new Thread(doReady);
-            //t_hanlder.IsBackground = true;
-            //t_hanlder.Start();
-            //timer.Start();
 
             InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 레디 했는지 안했는지를 전달
             ingamePacket.respondType = respondType.Ready;
@@ -318,13 +297,10 @@ namespace Client
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            if (!Program.MethodList.ContainsKey(PacketType.InGame))
-                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
 
             InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
             ingamePacket.respondType = respondType.Answer;
 
-            ingamePacket.ready = Ready;
             ingamePacket.Answer = tbAnswer.Text;
 
             Program.Send(ingamePacket);
@@ -341,8 +317,6 @@ namespace Client
 
         private void GameRoom_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(timer.Enabled)
-                timer.Stop();
 
             if (GameTimer.Enabled)
                 GameTimer.Stop();
@@ -374,6 +348,7 @@ namespace Client
                 {
                     CanStart = false;
                     MetroMessageBox.Show(this, "모두 준비가 되지 않았습니다.");
+                    return;
                 }
             }
 
@@ -385,10 +360,6 @@ namespace Client
                 ingamePacket.ready = Ready;
 
                 Program.Send(ingamePacket);
-            }
-            else  // 모두 준비가 안돼서 시작 불가능
-            {
-
             }
         }
 
@@ -406,12 +377,18 @@ namespace Client
                 Start = false;  // 로딩창 다시 띄우기 위해서
 
                 timeLimit.Text = "10";
-                // 게임이 종료됨을 서버에게 알림
+
+                // 현재 라운드가 종료됨을 서버에게 알림
                 InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
 
                 ingamePacket.Type = PacketType.InGame;
                 ingamePacket.respondType = respondType.NextGame;
-                Program.Send(ingamePacket);
+
+                Console.WriteLine("다음 라운드 진행");
+
+                // 방장이 다음 문제 요구
+                if(Program.room.userId == Program.user.userId)
+                    Program.Send(ingamePacket);
             }
         }
     }
