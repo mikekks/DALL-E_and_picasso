@@ -99,70 +99,7 @@ namespace Client
             // UI Thread 처리
             BeginInvoke(new TimerEventFiredDelegate(Ready_Check));
         }
-
-        void timer_Elapsed_Ans(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            // UI Thread 처리
-            BeginInvoke(new TimerEventFiredDelegate_Ans(Ans_Check));
-        }
-        */
-
-
-        /*
-        public void Ready_Check()
-        {
-          
-
-            bool CanStart = true;
-            int curNum = Program.room.userList.Count;
-
-            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
-            ingamePacket.Type = PacketType.InGame;
-            foreach (User player in Program.room.userList)
-            {
-
-                if (player.ready == false)  // 모두 준비되지 않음.
-                {
-                    CanStart = false;
-                }
-            }
-
-            // 2명이상 -> 시작가능
-            if (CanStart  && curNum >= 2)  // 모두 준비가 돼서 시작 가능, try의 느낌
-            {
-                ingamePacket.respondType = respondType.Start;
-            }
-            else  // 모두 준비가 안돼서 시작 불가능
-            {
-                ingamePacket.respondType = respondType.Ready;
-            }
- 
-            ingamePacket.ready = Ready;
-
-            if (timer.Enabled)  // ! 여기서 타이머 stop한다.
-                timer.Stop();
-
-            Program.Send(ingamePacket);
-            //timer.Close();
-            //timer.Dispose();
-            
-        }
        
-
-        public void Ans_Check()
-        {
-            if (!Program.MethodList.ContainsKey(PacketType.InGame))
-                Program.MethodList.Add(PacketType.InGame, R_PlayGame);
-
-            bool CanStart = true;
-            int curNum = Program.room.userList.Count;
-
-            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
-            ingamePacket.Type = PacketType.InGame;
-            ingamePacket.respondType = respondType.Check;
-
-            Program.Send(ingamePacket);
-
         }
          */
         public void R_PlayGame(Packet packet)
@@ -182,6 +119,11 @@ namespace Client
                     ResetReadyList();
                 }
    
+            }
+            else if (p.respondType == respondType.Loading)
+            {
+                LoadingForm loadingForm = new LoadingForm(10);
+                loadingForm.ShowDialog();
             }
             else if(p.respondType == respondType.Start)  // 무조건 게임 시작해도 됨을 의미
             {
@@ -208,7 +150,7 @@ namespace Client
                     Program.room.round = p.room.round;
 
                     // 로딩 화면
-                    LoadingForm loadingForm = new LoadingForm();
+                    LoadingForm loadingForm = new LoadingForm(5);
                     loadingForm.ShowDialog();
                     
                     for (int i = 0; i < Program.room.level; i++)

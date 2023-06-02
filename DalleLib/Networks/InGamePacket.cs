@@ -9,7 +9,7 @@ namespace DalleLib.Networks
 {
     public enum respondType
     {
-        Ready, Start, Check, Answer, NextGame, End
+        Ready, Start, Check, Loading, Answer, NextGame, End
     }
 
     [Serializable]

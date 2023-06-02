@@ -48,7 +48,7 @@ namespace Server.Classes
         }
 
         // core
-        public void Recieve()
+        public async void Recieve()
         {
             byte[] Length = new byte[4];
             byte[] RecvData = null;
@@ -359,50 +359,52 @@ namespace Server.Classes
                             {
                                 Database.startGame(roomId: p.room.roomId);
 
-                                List<string> img = new List<string>();
-
-
-                                // 쓰레드로 돌려야 할거 같다.
-                                // 테스트를 위한 코드
-                                string img1 = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
-                                string img2 = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
-                                string img3 = "https://i.ytimg.com/vi/K0TW-zcbEuY/mqdefault.jpg";
-                                string img4 = "https://pbs.twimg.com/media/Fb_Sec8WQAIbCZV?format=jpg&name=medium";
-                                string img5 = "https://i.ytimg.com/vi/HUNFD3ktkQ4/maxresdefault.jpg";
-                                img.Add(img1);
-                                img.Add(img2);
-                                img.Add(img3);
-                                img.Add(img4);
-                                img.Add(img5);
-                                AnsList = new List<List<string>>(10);
-                                SendAnsList = new List<string> { "0", "0", "0", "0", "0", "0", "0" };
-
-                                // 이미 만든 경우 확인
-                                if (!Database.CheckQuestion(p.room.roomId) && p.room.userId == p.user.userId)
+                                InGamePacket startPacket = new InGamePacket(user: p.user, room: _room);
+                                startPacket.respondType = respondType.Loading;
+                                foreach(User player in p.room.userList)
                                 {
-                                    for (int i = 1; i <= 5; i++)
+                                    Program.clientList[player.userId].Send(startPacket);
+                                }
+                                
+                                List<string> promptList = new List<string>(new string[7]);
+
+                                Dall_E dall_E = new Dall_E();
+                                AnsList = dall_E.CreateWords(p.room.level);
+                                
+                                
+                                for(int i=0; i<5; i++)
+                                {
+                                    for(int j=0; j<p.room.level; j++)
                                     {
-                                        // ! 단어 조합 필요
-                                        List<string> tmp = new List<string> { "apple", "banna", "candy", "qq", "ww", "ee" };
-                                        AnsList.Add(tmp);
-                                        Database.makeQuestion(p.room.roomId, i, img[i - 1], AnsList[i - 1]);
+                                        promptList[i] += AnsList[i][j];
+                                        promptList[i] += " ";
                                     }
                                 }
 
+                                // 달리 이미지 생성
+                                Dictionary<int, string> imgList = new Dictionary<int, string>();
+                                imgList = await dall_E.CreateImgList(promptList);
+
+                                
+
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    Database.makeQuestion(p.room.roomId, i, imgList[i - 1], AnsList[i - 1], p.room.level);
+                                }
+                               
 
                                 // 게임 실행하게 되면 레코드 테이블에 유저 등록
                                 // 이미 등록되어있는지 확인
-
                                 foreach(User curUser in p.room.userList)
                                 {
                                     if (!Database.registerRecordCheck(curUser.userId, p.room.roomId))
                                         Database.registerRecordTable(curUser.userId, p.room.roomId);
                                 }
 
-                               
 
+                                Console.WriteLine("THIS!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-                                p.room.Question = img[0];
+                                p.room.Question = imgList[0];
                                 InGamePacket sendPacket = new InGamePacket(p.user, p.room);
 
                                
@@ -501,7 +503,7 @@ namespace Server.Classes
                             //
 
 
-                            SendAnsList.Clear();
+                            //SendAnsList.Clear();
                             // 현재 라운드에 맞는 문제 찾기
                             string img = Database.getQuestion(p.room.roomId, p.room.round);
                             InGamePacket sendPacket = new InGamePacket(p.user, p.room);

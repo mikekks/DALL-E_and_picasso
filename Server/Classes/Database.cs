@@ -23,7 +23,7 @@ namespace Server.Classes
        
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test17";
+        public static string _database = "test18";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -704,7 +704,7 @@ namespace Server.Classes
         ////////////////////////////////////////////////////////////////////////////////
 
         // 9. 문제 만드는 함수
-        public static bool makeQuestion(string roomId, int QId, string imageUrl, List<string> keyword)
+        public static bool makeQuestion(string roomId, int QId, string imageUrl, List<string> keyword, int level)
         {
             if (mysql.State != ConnectionState.Open)
             {
@@ -718,6 +718,7 @@ namespace Server.Classes
                 cmd.Parameters.AddWithValue("@roomId", roomId);
                 cmd.Parameters.AddWithValue("@QId", QId);
                 cmd.Parameters.AddWithValue("@imageUrl", imageUrl);
+
                 cmd.Parameters.AddWithValue("@keyword_1", keyword[0]);
                 cmd.Parameters.AddWithValue("@keyword_2", keyword[1]);
                 cmd.Parameters.AddWithValue("@keyword_3", keyword[2]);
