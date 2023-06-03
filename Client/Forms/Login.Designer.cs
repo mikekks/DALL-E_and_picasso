@@ -58,11 +58,12 @@
             // 
             this.btn_Find.FlatAppearance.BorderSize = 0;
             this.btn_Find.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Find.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Find.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Find.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Find.Location = new System.Drawing.Point(293, 372);
+            this.btn_Find.Location = new System.Drawing.Point(244, 465);
+            this.btn_Find.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Find.Name = "btn_Find";
-            this.btn_Find.Size = new System.Drawing.Size(186, 35);
+            this.btn_Find.Size = new System.Drawing.Size(304, 44);
             this.btn_Find.TabIndex = 29;
             this.btn_Find.Text = "Forget ID / Password?";
             this.btn_Find.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -75,11 +76,12 @@
             this.btn_Register.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Register.FlatAppearance.BorderSize = 0;
             this.btn_Register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Register.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Register.ForeColor = System.Drawing.Color.White;
-            this.btn_Register.Location = new System.Drawing.Point(293, 331);
+            this.btn_Register.Location = new System.Drawing.Point(335, 414);
+            this.btn_Register.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Register.Name = "btn_Register";
-            this.btn_Register.Size = new System.Drawing.Size(90, 35);
+            this.btn_Register.Size = new System.Drawing.Size(103, 44);
             this.btn_Register.TabIndex = 28;
             this.btn_Register.Text = "Join";
             this.btn_Register.UseVisualStyleBackColor = false;
@@ -91,11 +93,12 @@
             this.btn_Login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Login.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Login.ForeColor = System.Drawing.Color.White;
-            this.btn_Login.Location = new System.Drawing.Point(389, 331);
+            this.btn_Login.Location = new System.Drawing.Point(445, 414);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(90, 35);
+            this.btn_Login.Size = new System.Drawing.Size(103, 44);
             this.btn_Login.TabIndex = 27;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = false;
@@ -104,11 +107,12 @@
             // txt_PW
             // 
             this.txt_PW.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_PW.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_PW.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_PW.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.txt_PW.Location = new System.Drawing.Point(49, 8);
+            this.txt_PW.Location = new System.Drawing.Point(56, 10);
+            this.txt_PW.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_PW.Name = "txt_PW";
-            this.txt_PW.Size = new System.Drawing.Size(408, 29);
+            this.txt_PW.Size = new System.Drawing.Size(466, 34);
             this.txt_PW.TabIndex = 26;
             this.txt_PW.UseSystemPasswordChar = true;
             this.txt_PW.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
@@ -117,11 +121,12 @@
             // txt_ID
             // 
             this.txt_ID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_ID.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ID.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.txt_ID.Location = new System.Drawing.Point(49, 8);
+            this.txt_ID.Location = new System.Drawing.Point(56, 10);
+            this.txt_ID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_ID.Name = "txt_ID";
-            this.txt_ID.Size = new System.Drawing.Size(408, 29);
+            this.txt_ID.Size = new System.Drawing.Size(466, 34);
             this.txt_ID.TabIndex = 25;
             // 
             // panel1
@@ -133,40 +138,41 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 500);
+            this.panel1.Size = new System.Drawing.Size(343, 625);
             this.panel1.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(164, 476);
+            this.label4.Location = new System.Drawing.Point(187, 595);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 24);
+            this.label4.Size = new System.Drawing.Size(264, 29);
             this.label4.TabIndex = 4;
             this.label4.Text = "Develop by Team Build";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(32, 265);
+            this.label1.Location = new System.Drawing.Point(37, 331);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 40);
+            this.label1.Size = new System.Drawing.Size(246, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome To";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Agency FB", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(30, 302);
+            this.label2.Location = new System.Drawing.Point(34, 378);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 51);
+            this.label2.Size = new System.Drawing.Size(515, 63);
             this.label2.TabIndex = 2;
             this.label2.Text = "DALL - E & PICCASO";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -175,9 +181,10 @@
             // 
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = global::Client.Properties.Resources.메인사진_달리사진;
-            this.pictureBox1.Location = new System.Drawing.Point(60, 51);
+            this.pictureBox1.Location = new System.Drawing.Point(69, 64);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 190);
+            this.pictureBox1.Size = new System.Drawing.Size(206, 238);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -192,9 +199,10 @@
             this.panel2.Controls.Add(this.btn_Login);
             this.panel2.Controls.Add(this.btn_Cancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(300, 0);
+            this.panel2.Location = new System.Drawing.Point(343, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(500, 500);
+            this.panel2.Size = new System.Drawing.Size(571, 625);
             this.panel2.TabIndex = 0;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -203,17 +211,19 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.txt_PW);
-            this.panel4.Location = new System.Drawing.Point(19, 272);
+            this.panel4.Location = new System.Drawing.Point(22, 340);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(460, 44);
+            this.panel4.Size = new System.Drawing.Size(526, 55);
             this.panel4.TabIndex = 7;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Client.Properties.Resources.pwimage;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 38);
+            this.pictureBox3.Size = new System.Drawing.Size(46, 48);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
@@ -223,17 +233,19 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.txt_ID);
-            this.panel3.Location = new System.Drawing.Point(19, 222);
+            this.panel3.Location = new System.Drawing.Point(22, 278);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(460, 44);
+            this.panel3.Size = new System.Drawing.Size(526, 55);
             this.panel3.TabIndex = 6;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Client.Properties.Resources.userimage;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 38);
+            this.pictureBox2.Size = new System.Drawing.Size(46, 48);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 30;
             this.pictureBox2.TabStop = false;
@@ -241,11 +253,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Agency FB", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label3.Location = new System.Drawing.Point(29, 117);
+            this.label3.Location = new System.Drawing.Point(33, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(314, 73);
+            this.label3.Size = new System.Drawing.Size(556, 85);
             this.label3.TabIndex = 5;
             this.label3.Text = "Login To Acess";
             // 
@@ -256,9 +268,10 @@
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancel.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_Cancel.Location = new System.Drawing.Point(463, 0);
+            this.btn_Cancel.Location = new System.Drawing.Point(529, 0);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(37, 33);
+            this.btn_Cancel.Size = new System.Drawing.Size(42, 41);
             this.btn_Cancel.TabIndex = 5;
             this.btn_Cancel.Text = "x";
             this.btn_Cancel.UseVisualStyleBackColor = true;
@@ -266,13 +279,14 @@
             // 
             // Login_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ClientSize = new System.Drawing.Size(914, 625);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

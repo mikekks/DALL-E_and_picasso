@@ -1,4 +1,5 @@
 ﻿using Client;
+using Client.Forms;
 using DalleLib.Networks;
 using MetroFramework;
 using System;
@@ -83,6 +84,8 @@ namespace WindowsFormsApp2
         private void btn_Find_Click(object sender, EventArgs e)
         {
             // 아이디, 비밀번호 찾는 버튼, 이후 폼 따로 추가 예정
+            FindMyInfo findMyInfo_Form = new FindMyInfo();
+            DialogResult Result = findMyInfo_Form.ShowDialog();
         }
 
 

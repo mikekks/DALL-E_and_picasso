@@ -45,7 +45,6 @@ namespace WindowsFormsApp2
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.duplicate;
             Program.Send(registerPacket);
-
         }
 
         public void R_Register(Packet packet)
@@ -87,6 +86,45 @@ namespace WindowsFormsApp2
                     else
                     {
                         MetroMessageBox.Show(Owner, "회원가입 실패");
+                    }
+                    this.Close();
+                }
+            }
+            else if (p.registerType == RegisterType.findId)  // 아이디 찾은 경우
+            {
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { R_Register(packet); }));
+                }
+                else
+                {
+                    if (p.findId != null)
+                    {
+                        Console.WriteLine(p.findId);
+                        MetroMessageBox.Show(Owner, "아이디 찾기 성공.");
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(Owner, "아이디 찾기 실패");
+                    }
+                    this.Close();
+                }
+            }
+            else if (p.registerType == RegisterType.findPassword)  // 비밀번호 찾은 경우
+            {
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { R_Register(packet); }));
+                }
+                else
+                {
+                    if (p.findPassword == true)
+                    {
+                        MetroMessageBox.Show(Owner, "비밀번호 찾기 성공");
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(Owner, "비밀번호 찾기 실패");
                     }
                     this.Close();
                 }

@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
 using DalleLib.InGame;
 using Org.BouncyCastle.Security;
+using System.Drawing.Printing;
 
 namespace Server.Classes
 {
@@ -109,6 +110,54 @@ namespace Server.Classes
                 return true;
             }
         }
+
+        // 1-2 아이디 찾기 함수
+        public static string findUserId(string recovery_Q, string recovery_A)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT userId FROM Users WHERE recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}'";
+
+            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+            {
+
+                if (rdr.Read())
+                {
+                    Console.WriteLine("아이디 찾기 성공");
+                    return rdr.GetString("userId");
+                }
+                Console.WriteLine("아이디 찾기 실패");
+                return null;
+            }
+        }
+
+        // 1-3 비밀번호 찾기 함수
+        public static string findPassword(string userid, string recovery_Q, string recovery_A)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT password FROM Users WHERE recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}' && userId = '{userid}'";
+            Console.WriteLine("userid : {0}", userid);
+            Console.WriteLine("recovery_Q : {0}", recovery_Q);
+            Console.WriteLine("recovery_A : {0}", recovery_A);
+
+            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+            {
+
+                if (rdr.Read())
+                {
+                    Console.WriteLine("비밀번호 찾기 성공");
+                    return rdr.GetString("password");
+                }
+                Console.WriteLine("비밀번호 찾기 실패");
+                return null;
+            }
+        }
+
 
         // 2-1. 로그인하는 함수
         public static User login(string userId, string password)

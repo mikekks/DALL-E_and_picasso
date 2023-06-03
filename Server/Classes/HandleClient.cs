@@ -165,7 +165,7 @@ namespace Server.Classes
                     else if(p.registerType == RegisterType.create)
                     {
                         //  db에 해당 유저의 정보 저장
-                        bool suc = Database.signUp(userId: p.id, password: p.password, recovery_Q: p.recovery_A, recovery_A: p.recovery_A, regDate: DateTime.Now);
+                        bool suc = Database.signUp(userId: p.id, password: p.password, recovery_Q: p.recovery_Q, recovery_A: p.recovery_A, regDate: DateTime.Now);
 
                         RegisterPacket sendPacket;
                         if (suc)  // 회원가입 성공
@@ -179,6 +179,51 @@ namespace Server.Classes
 
                         sendPacket.Type = PacketType.Register;
                         sendPacket.registerType = RegisterType.create;
+                        Send(sendPacket);
+                    }
+                    else if (p.registerType == RegisterType.findId)
+                    {
+                        // DB에서 해당 유저의 아이디 찾기
+                        string findedUserId = Database.findUserId(p.recovery_Q, p.recovery_A);
+                        //
+
+                        RegisterPacket sendPacket = new RegisterPacket(p.id);
+
+                        if (findedUserId != null)
+                        {
+                            sendPacket.id = findedUserId;
+
+                        }
+                        else 
+                        {
+                            sendPacket.id = null;
+                        }
+
+                        sendPacket.Type = PacketType.Register;
+                        sendPacket.registerType = RegisterType.findId;
+                        Send(sendPacket);
+                    }
+                    else if(p.registerType == RegisterType.findPassword)
+                    {
+                        // DB에서 해당 유저의 비밀번호 찾기
+                        Console.WriteLine(p.id);
+                        string findedPassword = Database.findPassword(p.id, p.recovery_Q, p.recovery_A);
+                        //
+
+                        RegisterPacket sendPacket = new RegisterPacket(p.password, p.regDate); 
+
+                        if (findedPassword != null)  // 찾은 아이디
+                        {
+                            sendPacket.password = findedPassword;
+
+                        }
+                        else  // 발견된 아이디 없음
+                        {
+                            sendPacket.password = null;
+                        }
+
+                        sendPacket.Type = PacketType.Register;
+                        sendPacket.registerType = RegisterType.findPassword;
                         Send(sendPacket);
 
                     }
