@@ -88,6 +88,28 @@ namespace Server.Classes
             }
         }
 
+        // 1-1 아이디 중복확인하는 함수
+        public static bool checkDuplicateUserId(string userId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"SELECT userId, password FROM Users WHERE userId = '{userId}'";
+
+            using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+            {
+
+                if (rdr.Read() && rdr.GetString("userId") == userId)
+                {
+                    Console.WriteLine("중복검사 미 통과");
+                    return false;
+                }
+                Console.WriteLine("중복검사 통과");
+                return true;
+            }
+        }
+
         // 2-1. 로그인하는 함수
         public static User login(string userId, string password)
         {

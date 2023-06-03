@@ -116,7 +116,7 @@ namespace Server.Classes
                 "application/json"))
             {
                 
-                sharedClient.DefaultRequestHeaders.Add("Authorization", apiKey);
+                // sharedClient.DefaultRequestHeaders.Add("Authorization", apiKey);
 
                 using (HttpResponseMessage response = await sharedClient.PostAsync(
                     "v1/images/generations",

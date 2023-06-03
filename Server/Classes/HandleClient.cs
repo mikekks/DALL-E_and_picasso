@@ -140,13 +140,14 @@ namespace Server.Classes
                     if(p.registerType == RegisterType.duplicate)
                     {
                         // DB에서 해당 아이디(p.id) 중복도 검사
-                        //
+                        Console.WriteLine(p.id);
+                        bool checkDuplicateUserId = Database.checkDuplicateUserId(p.id);
                         //
 
                         bool test = true;  // 테스트 코드
                         RegisterPacket sendPacket = new RegisterPacket(p.id, false);
 
-                        if (test)  // 중복도 검사 통과
+                        if (checkDuplicateUserId)  // 중복도 검사 통과
                         {
                             sendPacket.duplicate = true; 
                             
@@ -383,7 +384,7 @@ namespace Server.Classes
 
                                 // 달리 이미지 생성
                                 Dictionary<int, string> imgList = new Dictionary<int, string>();
-                                imgList = await dall_E.CreateImgList(promptList);
+                                // imgList = await dall_E.CreateImgList(promptList);
 
                                 
 
