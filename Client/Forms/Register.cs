@@ -143,7 +143,7 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            tb = new MetroTextBox[] { tb_id, tb_pwd, tb_pwd_Check, tb_nickName, tb_recovery_A };
+            tb = new MetroTextBox[] { tb_id, tb_pwd, tb_pwd_Check, tb_name, tb_identificationNumber, tb_recovery_A };
             foreach(MetroTextBox _tb in tb)
             {
                 if (string.IsNullOrWhiteSpace(_tb.Text))
@@ -157,10 +157,12 @@ namespace WindowsFormsApp2
             if (recovery_Q.SelectedIndex == -1)
                 recovery_Q.SelectedIndex = 0;
 
+            var pwdHash = SHA256Helper.ComputeSHA256Hash(tb_pwd.Text);
+
             // db에 해당 정보 저장 -> 성공 했는지 안했는지 결과 출력 필요
 
             RegisterPacket registerPacket =
-                new RegisterPacket(true, tb_id.Text, tb_pwd.Text, tb_nickName.Text, recovery_Q.Text, tb_recovery_A.Text);
+                new RegisterPacket(true, tb_id.Text, pwdHash, tb_name.Text, tb_identificationNumber.Text, recovery_Q.Text, tb_recovery_A.Text);
 
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.create;

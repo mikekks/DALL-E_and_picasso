@@ -32,15 +32,17 @@
             this.lab_Answer = new System.Windows.Forms.Label();
             this.lab_Quest = new System.Windows.Forms.Label();
             this.btn_IDcheck = new System.Windows.Forms.Button();
-            this.lab_Mail = new System.Windows.Forms.Label();
+            this.lab_name = new System.Windows.Forms.Label();
             this.lab_RePW = new System.Windows.Forms.Label();
             this.lab_PW = new System.Windows.Forms.Label();
             this.lab_ID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lab_i = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tb_identificationNumber = new MetroFramework.Controls.MetroTextBox();
             this.prompt = new System.Windows.Forms.Label();
             this.tb_recovery_A = new MetroFramework.Controls.MetroTextBox();
-            this.tb_nickName = new MetroFramework.Controls.MetroTextBox();
+            this.tb_name = new MetroFramework.Controls.MetroTextBox();
             this.tb_pwd_Check = new MetroFramework.Controls.MetroTextBox();
             this.tb_pwd = new MetroFramework.Controls.MetroTextBox();
             this.tb_id = new MetroFramework.Controls.MetroTextBox();
@@ -58,7 +60,7 @@
             this.btn_Check.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Check.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_Check.ForeColor = System.Drawing.Color.White;
-            this.btn_Check.Location = new System.Drawing.Point(23, 338);
+            this.btn_Check.Location = new System.Drawing.Point(35, 375);
             this.btn_Check.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_Check.Name = "btn_Check";
             this.btn_Check.Size = new System.Drawing.Size(87, 29);
@@ -73,7 +75,7 @@
             this.lab_Answer.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lab_Answer.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lab_Answer.ForeColor = System.Drawing.Color.White;
-            this.lab_Answer.Location = new System.Drawing.Point(26, 279);
+            this.lab_Answer.Location = new System.Drawing.Point(24, 330);
             this.lab_Answer.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lab_Answer.Name = "lab_Answer";
             this.lab_Answer.Size = new System.Drawing.Size(124, 23);
@@ -86,7 +88,7 @@
             this.lab_Quest.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lab_Quest.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lab_Quest.ForeColor = System.Drawing.Color.White;
-            this.lab_Quest.Location = new System.Drawing.Point(11, 229);
+            this.lab_Quest.Location = new System.Drawing.Point(11, 271);
             this.lab_Quest.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lab_Quest.Name = "lab_Quest";
             this.lab_Quest.Size = new System.Drawing.Size(141, 23);
@@ -110,18 +112,18 @@
             this.btn_IDcheck.UseVisualStyleBackColor = false;
             this.btn_IDcheck.Click += new System.EventHandler(this.btn_IDcheck_Click);
             // 
-            // lab_Mail
+            // lab_name
             // 
-            this.lab_Mail.AutoSize = true;
-            this.lab_Mail.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.lab_Mail.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lab_Mail.ForeColor = System.Drawing.Color.White;
-            this.lab_Mail.Location = new System.Drawing.Point(80, 172);
-            this.lab_Mail.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lab_Mail.Name = "lab_Mail";
-            this.lab_Mail.Size = new System.Drawing.Size(61, 23);
-            this.lab_Mail.TabIndex = 31;
-            this.lab_Mail.Text = "닉네임";
+            this.lab_name.AutoSize = true;
+            this.lab_name.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.lab_name.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lab_name.ForeColor = System.Drawing.Color.White;
+            this.lab_name.Location = new System.Drawing.Point(104, 169);
+            this.lab_name.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lab_name.Name = "lab_name";
+            this.lab_name.Size = new System.Drawing.Size(44, 23);
+            this.lab_name.TabIndex = 31;
+            this.lab_name.Text = "이름";
             // 
             // lab_RePW
             // 
@@ -129,7 +131,7 @@
             this.lab_RePW.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lab_RePW.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lab_RePW.ForeColor = System.Drawing.Color.White;
-            this.lab_RePW.Location = new System.Drawing.Point(31, 122);
+            this.lab_RePW.Location = new System.Drawing.Point(30, 119);
             this.lab_RePW.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lab_RePW.Name = "lab_RePW";
             this.lab_RePW.Size = new System.Drawing.Size(118, 23);
@@ -142,7 +144,7 @@
             this.lab_PW.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lab_PW.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lab_PW.ForeColor = System.Drawing.Color.White;
-            this.lab_PW.Location = new System.Drawing.Point(65, 72);
+            this.lab_PW.Location = new System.Drawing.Point(70, 69);
             this.lab_PW.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lab_PW.Name = "lab_PW";
             this.lab_PW.Size = new System.Drawing.Size(78, 23);
@@ -155,7 +157,7 @@
             this.lab_ID.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lab_ID.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lab_ID.ForeColor = System.Drawing.Color.White;
-            this.lab_ID.Location = new System.Drawing.Point(80, 22);
+            this.lab_ID.Location = new System.Drawing.Point(85, 20);
             this.lab_ID.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lab_ID.Name = "lab_ID";
             this.lab_ID.Size = new System.Drawing.Size(61, 23);
@@ -165,24 +167,39 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.lab_i);
             this.panel1.Controls.Add(this.lab_ID);
             this.panel1.Controls.Add(this.lab_RePW);
             this.panel1.Controls.Add(this.lab_PW);
             this.panel1.Controls.Add(this.lab_Answer);
-            this.panel1.Controls.Add(this.lab_Mail);
+            this.panel1.Controls.Add(this.lab_name);
             this.panel1.Controls.Add(this.lab_Quest);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(23, 75);
             this.panel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 391);
+            this.panel1.Size = new System.Drawing.Size(164, 435);
             this.panel1.TabIndex = 44;
+            // 
+            // lab_i
+            // 
+            this.lab_i.AutoSize = true;
+            this.lab_i.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.lab_i.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lab_i.ForeColor = System.Drawing.Color.White;
+            this.lab_i.Location = new System.Drawing.Point(41, 223);
+            this.lab_i.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lab_i.Name = "lab_i";
+            this.lab_i.Size = new System.Drawing.Size(112, 23);
+            this.lab_i.TabIndex = 40;
+            this.lab_i.Text = "주민등록번호";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.tb_identificationNumber);
             this.panel2.Controls.Add(this.prompt);
             this.panel2.Controls.Add(this.tb_recovery_A);
-            this.panel2.Controls.Add(this.tb_nickName);
+            this.panel2.Controls.Add(this.tb_name);
             this.panel2.Controls.Add(this.tb_pwd_Check);
             this.panel2.Controls.Add(this.tb_pwd);
             this.panel2.Controls.Add(this.tb_id);
@@ -191,12 +208,44 @@
             this.panel2.Controls.Add(this.btn_Check);
             this.panel2.Controls.Add(this.btn_IDcheck);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(168, 75);
+            this.panel2.Location = new System.Drawing.Point(186, 75);
             this.panel2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(248, 391);
+            this.panel2.Size = new System.Drawing.Size(248, 435);
             this.panel2.TabIndex = 45;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // tb_identificationNumber
+            // 
+            // 
+            // 
+            // 
+            this.tb_identificationNumber.CustomButton.Image = null;
+            this.tb_identificationNumber.CustomButton.Location = new System.Drawing.Point(190, 1);
+            this.tb_identificationNumber.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tb_identificationNumber.CustomButton.Name = "";
+            this.tb_identificationNumber.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tb_identificationNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tb_identificationNumber.CustomButton.TabIndex = 1;
+            this.tb_identificationNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tb_identificationNumber.CustomButton.UseSelectable = true;
+            this.tb_identificationNumber.CustomButton.Visible = false;
+            this.tb_identificationNumber.Lines = new string[0];
+            this.tb_identificationNumber.Location = new System.Drawing.Point(12, 217);
+            this.tb_identificationNumber.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tb_identificationNumber.MaxLength = 32767;
+            this.tb_identificationNumber.Name = "tb_identificationNumber";
+            this.tb_identificationNumber.PasswordChar = '\0';
+            this.tb_identificationNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tb_identificationNumber.SelectedText = "";
+            this.tb_identificationNumber.SelectionLength = 0;
+            this.tb_identificationNumber.SelectionStart = 0;
+            this.tb_identificationNumber.ShortcutsEnabled = true;
+            this.tb_identificationNumber.Size = new System.Drawing.Size(218, 29);
+            this.tb_identificationNumber.TabIndex = 49;
+            this.tb_identificationNumber.UseSelectable = true;
+            this.tb_identificationNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tb_identificationNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // prompt
             // 
@@ -213,17 +262,17 @@
             // 
             // 
             this.tb_recovery_A.CustomButton.Image = null;
-            this.tb_recovery_A.CustomButton.Location = new System.Drawing.Point(215, 1);
+            this.tb_recovery_A.CustomButton.Location = new System.Drawing.Point(188, 1);
             this.tb_recovery_A.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tb_recovery_A.CustomButton.Name = "";
-            this.tb_recovery_A.CustomButton.Size = new System.Drawing.Size(31, 34);
+            this.tb_recovery_A.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.tb_recovery_A.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tb_recovery_A.CustomButton.TabIndex = 1;
             this.tb_recovery_A.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tb_recovery_A.CustomButton.UseSelectable = true;
             this.tb_recovery_A.CustomButton.Visible = false;
             this.tb_recovery_A.Lines = new string[0];
-            this.tb_recovery_A.Location = new System.Drawing.Point(11, 275);
+            this.tb_recovery_A.Location = new System.Drawing.Point(12, 324);
             this.tb_recovery_A.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tb_recovery_A.MaxLength = 32767;
             this.tb_recovery_A.Name = "tb_recovery_A";
@@ -239,37 +288,37 @@
             this.tb_recovery_A.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tb_recovery_A.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // tb_nickName
+            // tb_name
             // 
             // 
             // 
             // 
-            this.tb_nickName.CustomButton.Image = null;
-            this.tb_nickName.CustomButton.Location = new System.Drawing.Point(217, 1);
-            this.tb_nickName.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.tb_nickName.CustomButton.Name = "";
-            this.tb_nickName.CustomButton.Size = new System.Drawing.Size(31, 34);
-            this.tb_nickName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tb_nickName.CustomButton.TabIndex = 1;
-            this.tb_nickName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tb_nickName.CustomButton.UseSelectable = true;
-            this.tb_nickName.CustomButton.Visible = false;
-            this.tb_nickName.Lines = new string[0];
-            this.tb_nickName.Location = new System.Drawing.Point(11, 169);
-            this.tb_nickName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.tb_nickName.MaxLength = 32767;
-            this.tb_nickName.Name = "tb_nickName";
-            this.tb_nickName.PasswordChar = '\0';
-            this.tb_nickName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tb_nickName.SelectedText = "";
-            this.tb_nickName.SelectionLength = 0;
-            this.tb_nickName.SelectionStart = 0;
-            this.tb_nickName.ShortcutsEnabled = true;
-            this.tb_nickName.Size = new System.Drawing.Size(218, 29);
-            this.tb_nickName.TabIndex = 46;
-            this.tb_nickName.UseSelectable = true;
-            this.tb_nickName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tb_nickName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tb_name.CustomButton.Image = null;
+            this.tb_name.CustomButton.Location = new System.Drawing.Point(190, 1);
+            this.tb_name.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tb_name.CustomButton.Name = "";
+            this.tb_name.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tb_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tb_name.CustomButton.TabIndex = 1;
+            this.tb_name.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tb_name.CustomButton.UseSelectable = true;
+            this.tb_name.CustomButton.Visible = false;
+            this.tb_name.Lines = new string[0];
+            this.tb_name.Location = new System.Drawing.Point(11, 169);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tb_name.MaxLength = 32767;
+            this.tb_name.Name = "tb_name";
+            this.tb_name.PasswordChar = '\0';
+            this.tb_name.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tb_name.SelectedText = "";
+            this.tb_name.SelectionLength = 0;
+            this.tb_name.SelectionStart = 0;
+            this.tb_name.ShortcutsEnabled = true;
+            this.tb_name.Size = new System.Drawing.Size(218, 29);
+            this.tb_name.TabIndex = 46;
+            this.tb_name.UseSelectable = true;
+            this.tb_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tb_name.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // tb_pwd_Check
             // 
@@ -277,10 +326,10 @@
             // 
             // 
             this.tb_pwd_Check.CustomButton.Image = null;
-            this.tb_pwd_Check.CustomButton.Location = new System.Drawing.Point(217, 1);
+            this.tb_pwd_Check.CustomButton.Location = new System.Drawing.Point(190, 1);
             this.tb_pwd_Check.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tb_pwd_Check.CustomButton.Name = "";
-            this.tb_pwd_Check.CustomButton.Size = new System.Drawing.Size(31, 34);
+            this.tb_pwd_Check.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.tb_pwd_Check.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tb_pwd_Check.CustomButton.TabIndex = 1;
             this.tb_pwd_Check.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -309,10 +358,10 @@
             // 
             // 
             this.tb_pwd.CustomButton.Image = null;
-            this.tb_pwd.CustomButton.Location = new System.Drawing.Point(217, 1);
+            this.tb_pwd.CustomButton.Location = new System.Drawing.Point(190, 1);
             this.tb_pwd.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tb_pwd.CustomButton.Name = "";
-            this.tb_pwd.CustomButton.Size = new System.Drawing.Size(31, 34);
+            this.tb_pwd.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.tb_pwd.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tb_pwd.CustomButton.TabIndex = 1;
             this.tb_pwd.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -341,10 +390,10 @@
             // 
             // 
             this.tb_id.CustomButton.Image = null;
-            this.tb_id.CustomButton.Location = new System.Drawing.Point(123, 1);
+            this.tb_id.CustomButton.Location = new System.Drawing.Point(108, 1);
             this.tb_id.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tb_id.CustomButton.Name = "";
-            this.tb_id.CustomButton.Size = new System.Drawing.Size(31, 34);
+            this.tb_id.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.tb_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tb_id.CustomButton.TabIndex = 1;
             this.tb_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -376,7 +425,7 @@
             "내 친한친구의 이름은?",
             "가장 재밌게 본 영화는?",
             "인상깊은 장소는?"});
-            this.recovery_Q.Location = new System.Drawing.Point(11, 219);
+            this.recovery_Q.Location = new System.Drawing.Point(11, 272);
             this.recovery_Q.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.recovery_Q.Name = "recovery_Q";
             this.recovery_Q.Size = new System.Drawing.Size(217, 30);
@@ -391,7 +440,7 @@
             this.btn_Cancer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancer.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_Cancer.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancer.Location = new System.Drawing.Point(129, 338);
+            this.btn_Cancer.Location = new System.Drawing.Point(141, 375);
             this.btn_Cancer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_Cancer.Name = "btn_Cancer";
             this.btn_Cancer.Size = new System.Drawing.Size(87, 29);
@@ -404,7 +453,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 491);
+            this.ClientSize = new System.Drawing.Size(457, 535);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -427,7 +476,7 @@
         private System.Windows.Forms.Label lab_Answer;
         private System.Windows.Forms.Label lab_Quest;
         private System.Windows.Forms.Button btn_IDcheck;
-        private System.Windows.Forms.Label lab_Mail;
+        private System.Windows.Forms.Label lab_name;
         private System.Windows.Forms.Label lab_RePW;
         private System.Windows.Forms.Label lab_PW;
         private System.Windows.Forms.Label lab_ID;
@@ -439,7 +488,9 @@
         private MetroFramework.Controls.MetroComboBox recovery_Q;
         private MetroFramework.Controls.MetroTextBox tb_pwd_Check;
         private MetroFramework.Controls.MetroTextBox tb_recovery_A;
-        private MetroFramework.Controls.MetroTextBox tb_nickName;
+        private MetroFramework.Controls.MetroTextBox tb_name;
         private System.Windows.Forms.Label prompt;
+        private System.Windows.Forms.Label lab_i;
+        private MetroFramework.Controls.MetroTextBox tb_identificationNumber;
     }
 }

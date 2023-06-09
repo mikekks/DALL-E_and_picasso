@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SHA256.cs" />
     <EmbeddedResource Include="Forms\CreateRoomForm.resx">
       <DependentUpon>CreateRoomForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using DalleLib;
 using DalleLib.InGame;
 using DalleLib.Networks;
@@ -165,7 +166,7 @@ namespace Server.Classes
                     else if(p.registerType == RegisterType.create)
                     {
                         //  db에 해당 유저의 정보 저장
-                        bool suc = Database.signUp(userId: p.id, password: p.password, recovery_Q: p.recovery_Q, recovery_A: p.recovery_A, regDate: DateTime.Now);
+                        bool suc = Database.signUp(userId: p.id, password: p.password, name: p.name, identificationNumber: p.identificationNumber, recovery_Q: p.recovery_Q, recovery_A: p.recovery_A, regDate: DateTime.Now);
 
                         RegisterPacket sendPacket;
                         if (suc)  // 회원가입 성공

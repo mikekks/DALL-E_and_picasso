@@ -21,6 +21,9 @@ namespace DalleLib.Networks
         public bool findId;
         public bool findPassword;
 
+        public string name;
+        public string identificationNumber;
+
         public string id;
         public string password;
         public string nickName;
@@ -33,12 +36,13 @@ namespace DalleLib.Networks
             this.id = id;
         }
 
-        public RegisterPacket(bool regiser_Success, string id, string password, string nickName, string recovery_Q, string recovery_A)
+        public RegisterPacket(bool regiser_Success, string id, string password, string name,string identificationNumber, string recovery_Q, string recovery_A)
         {
             this.regiser_Success = regiser_Success;
             this.id = id;
             this.password = password;
-            this.nickName = nickName;
+            this.name = name;
+            this.identificationNumber = identificationNumber;
             this.recovery_Q = recovery_Q;
             this.recovery_A = recovery_A;
         }

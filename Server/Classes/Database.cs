@@ -16,6 +16,8 @@ using Google.Protobuf.WellKnownTypes;
 using DalleLib.InGame;
 using Org.BouncyCastle.Security;
 using System.Drawing.Printing;
+using System.IO;
+using Client;
 
 namespace Server.Classes
 {
@@ -24,7 +26,7 @@ namespace Server.Classes
        
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test18";
+        public static string _database = "test19";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -55,20 +57,24 @@ namespace Server.Classes
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
         // 1. 회원가입하는 함수
-        public static bool signUp(string userId, string password, string recovery_Q, string recovery_A, DateTime regDate)
+        public static bool signUp(string userId, string password, string name, string identificationNumber, string recovery_Q, string recovery_A, DateTime regDate)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
+
+
             MySqlCommand cmd = new MySqlCommand(
-                "INSERT INTO Users VALUES (@userId, @roomId, @password, @recovery_Q, @recovery_A, @ready, @Tier, @regDate)", mysql);
+                "INSERT INTO Users VALUES (@userId, @roomId, @password, @name, @identificationNumber, @recovery_Q, @recovery_A, @ready, @Tier, @regDate)", mysql);
 
             try
             {
                 cmd.Parameters.AddWithValue("@userId", userId);
                 cmd.Parameters.AddWithValue("@roomId", null);
                 cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@identificationNumber", identificationNumber);
                 cmd.Parameters.AddWithValue("@recovery_Q", recovery_Q);
                 cmd.Parameters.AddWithValue("@recovery_A", recovery_A);
                 cmd.Parameters.AddWithValue("@ready", false);
