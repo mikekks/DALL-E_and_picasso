@@ -294,7 +294,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(17, 376);
+            this.label2.Location = new System.Drawing.Point(19, 315);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(195, 38);
             this.label2.TabIndex = 51;
@@ -309,7 +309,7 @@
             this.panel3.Controls.Add(this.findPw_tb_recovery_A);
             this.panel3.Controls.Add(this.findPw_tb_id);
             this.panel3.Controls.Add(this.findPw_tb_recovery_Q);
-            this.panel3.Location = new System.Drawing.Point(184, 428);
+            this.panel3.Location = new System.Drawing.Point(186, 367);
             this.panel3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(251, 209);
@@ -445,7 +445,7 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(22, 428);
+            this.panel4.Location = new System.Drawing.Point(24, 367);
             this.panel4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(164, 209);
@@ -511,7 +511,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(348, 656);
+            this.button1.Location = new System.Drawing.Point(350, 595);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 29);
@@ -569,7 +569,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 713);
+            this.ClientSize = new System.Drawing.Size(462, 653);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);

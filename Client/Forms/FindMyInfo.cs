@@ -12,6 +12,7 @@ using MetroFramework;
 using MetroFramework.Controls;
 using WindowsFormsApp2;
 using DalleLib.InGame;
+using System.Xml.Linq;
 
 namespace Client.Forms
 {
@@ -93,10 +94,13 @@ namespace Client.Forms
                 }
                 else
                 {
-                    if (p.findPassword != null)
+                    if (p.passwordExist == true)
                     {
-                        MetroMessageBox.Show(Owner, string.Format("귀하의 비밀번호는 {0} 입니다.", p.password));
-                        Console.WriteLine(p.password);
+
+                        UpdatePassword updatePassword_Form = new UpdatePassword(findPw_tb_name.Text, findPw_tb_identificationNumber.Text);
+                        Console.WriteLine("뒤로 전달할 name {0}", findPw_tb_name.Text);
+                        Console.WriteLine("뒤로 전달할 identificationNumber {0}", findPw_tb_identificationNumber.Text);
+                        DialogResult Result = updatePassword_Form.ShowDialog();
                     }
                     else
                     {

@@ -18,6 +18,7 @@ using Org.BouncyCastle.Security;
 using System.Drawing.Printing;
 using System.IO;
 using Client;
+using Org.BouncyCastle.Utilities.Collections;
 
 namespace Server.Classes
 {
@@ -140,7 +141,7 @@ namespace Server.Classes
         }
 
         // 1-3 비밀번호 찾기 함수
-        public static string findPassword(string userId, string name, string identificationNumber, string recovery_Q, string recovery_A)
+        public static bool findPassword(string userId, string name, string identificationNumber, string recovery_Q, string recovery_A)
         {
             if (mysql.State != ConnectionState.Open)
             {
@@ -148,22 +149,42 @@ namespace Server.Classes
             }
             string query = $"SELECT password FROM Users WHERE userId = '{userId}' && name = '{name}' && identificationNumber = '{identificationNumber}' && recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}'";
 
-
-            Console.WriteLine(query);
-
             using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
             {
 
                 if (rdr.Read())
                 {
                     Console.WriteLine("비밀번호 찾기 성공");
-                    return rdr.GetString("password");
+                    return true;
                 }
                 Console.WriteLine("비밀번호 찾기 실패");
-                return null;
+                return false;
             }
         }
 
+        // 1-4 비밀번호 재 설정 함수
+        
+        public static bool updatePassword(string name, string identificationNumber, string password)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"UPDATE Users SET password = '{password}' WHERE name = '{name}' && identificationNumber = '{identificationNumber}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("비밀번호 재 설정 성공 in DB");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         // 2-1. 로그인하는 함수
         public static User login(string userId, string password)

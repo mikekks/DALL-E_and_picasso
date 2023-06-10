@@ -193,7 +193,6 @@ namespace Server.Classes
                         if (findedUserId != null)
                         {
                             sendPacket.id = findedUserId;
-
                         }
                         else 
                         {
@@ -208,25 +207,49 @@ namespace Server.Classes
                     {
                         // DB에서 해당 유저의 비밀번호 찾기
                         Console.WriteLine(p.id);
-                        string findedPassword = Database.findPassword(p.id, p.name,p.identificationNumber, p.recovery_Q, p.recovery_A);
+                        bool findedPassword = Database.findPassword(p.id, p.name,p.identificationNumber, p.recovery_Q, p.recovery_A);
                         //
+                        Console.WriteLine("db에서 findedPassword {0}",findedPassword);
 
                         RegisterPacket sendPacket = new RegisterPacket(p.password, p.regDate); 
 
-                        if (findedPassword != null)  // 찾은 아이디
+                        if (findedPassword == true)  
                         {
-                            sendPacket.password = findedPassword;
-
+                            sendPacket.passwordExist = findedPassword;
                         }
-                        else  // 발견된 아이디 없음
+                        else  
                         {
-                            sendPacket.password = null;
+                            sendPacket.passwordExist = false;
                         }
 
                         sendPacket.Type = PacketType.Register;
                         sendPacket.registerType = RegisterType.findPassword;
                         Send(sendPacket);
+                    }
+                    else if (p.registerType == RegisterType.resetPassword)
+                    {
+                        // 
+                        bool passwordUpdate = Database.updatePassword(p.name, p.identificationNumber, p.password);
+                        //
+                        Console.WriteLine("passwordUpdate : {0}", passwordUpdate);
 
+                        RegisterPacket sendPacket = new RegisterPacket(p.passwordUpdate);
+
+                        Console.WriteLine("sendPacket : {0}", sendPacket);
+
+                        if (passwordUpdate == true)
+                        {
+                            sendPacket.passwordUpdate = true;
+                            Console.WriteLine("sendPacket.passwordUpdate : {0}", sendPacket.passwordUpdate);
+                        }
+                        else
+                        {
+                            sendPacket.passwordUpdate = false;
+                        }
+
+                        sendPacket.Type = PacketType.Register;
+                        sendPacket.registerType = RegisterType.resetPassword;
+                        Send(sendPacket);
                     }
                 }
                 else if (packet.Type == PacketType.RoomCreate)
