@@ -71,7 +71,7 @@
             this.updatePw_check.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.updatePw_check.MaxLength = 32767;
             this.updatePw_check.Name = "updatePw_check";
-            this.updatePw_check.PasswordChar = '\0';
+            this.updatePw_check.PasswordChar = '●';
             this.updatePw_check.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.updatePw_check.SelectedText = "";
             this.updatePw_check.SelectionLength = 0;
@@ -112,7 +112,7 @@
             this.updatePw_newPw.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.updatePw_newPw.MaxLength = 32767;
             this.updatePw_newPw.Name = "updatePw_newPw";
-            this.updatePw_newPw.PasswordChar = '\0';
+            this.updatePw_newPw.PasswordChar = '●';
             this.updatePw_newPw.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.updatePw_newPw.SelectedText = "";
             this.updatePw_newPw.SelectionLength = 0;
