@@ -46,10 +46,11 @@ namespace WindowsFormsApp2
             string id = txt_ID.Text;
             string pw = txt_PW.Text;
 
-
             forTest_Connect();
-            
-            LoginPacket packet = new LoginPacket(id, pw);
+
+            var pwdHash = SHA256Helper.ComputeSHA256Hash(txt_PW.Text);
+
+            LoginPacket packet = new LoginPacket(id, pwdHash);
 
             if(!Program.MethodList.ContainsKey(PacketType.Login))
                 Program.MethodList.Add(PacketType.Login, R_Login);
