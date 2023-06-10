@@ -96,11 +96,12 @@ namespace Client.Forms
                 {
                     if (p.passwordExist == true)
                     {
-
+                        
                         UpdatePassword updatePassword_Form = new UpdatePassword(findPw_tb_name.Text, findPw_tb_identificationNumber.Text);
                         Console.WriteLine("뒤로 전달할 name {0}", findPw_tb_name.Text);
                         Console.WriteLine("뒤로 전달할 identificationNumber {0}", findPw_tb_identificationNumber.Text);
                         DialogResult Result = updatePassword_Form.ShowDialog();
+                        
                     }
                     else
                     {
@@ -135,6 +136,11 @@ namespace Client.Forms
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void updatePw_check_Click(object sender, EventArgs e)
         {
 
         }

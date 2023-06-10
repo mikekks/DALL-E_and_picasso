@@ -43,19 +43,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.findPw_tb_identificationNumber = new MetroFramework.Controls.MetroTextBox();
             this.findPw_tb_name = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.findPw_tb_recovery_A = new MetroFramework.Controls.MetroTextBox();
             this.findPw_tb_id = new MetroFramework.Controls.MetroTextBox();
             this.findPw_tb_recovery_Q = new MetroFramework.Controls.MetroComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.lab_ID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.findPw_tb_identificationNumber = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -315,6 +315,38 @@
             this.panel3.Size = new System.Drawing.Size(251, 209);
             this.panel3.TabIndex = 50;
             // 
+            // findPw_tb_identificationNumber
+            // 
+            // 
+            // 
+            // 
+            this.findPw_tb_identificationNumber.CustomButton.Image = null;
+            this.findPw_tb_identificationNumber.CustomButton.Location = new System.Drawing.Point(190, 1);
+            this.findPw_tb_identificationNumber.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.findPw_tb_identificationNumber.CustomButton.Name = "";
+            this.findPw_tb_identificationNumber.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.findPw_tb_identificationNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.findPw_tb_identificationNumber.CustomButton.TabIndex = 1;
+            this.findPw_tb_identificationNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.findPw_tb_identificationNumber.CustomButton.UseSelectable = true;
+            this.findPw_tb_identificationNumber.CustomButton.Visible = false;
+            this.findPw_tb_identificationNumber.Lines = new string[0];
+            this.findPw_tb_identificationNumber.Location = new System.Drawing.Point(12, 88);
+            this.findPw_tb_identificationNumber.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.findPw_tb_identificationNumber.MaxLength = 32767;
+            this.findPw_tb_identificationNumber.Name = "findPw_tb_identificationNumber";
+            this.findPw_tb_identificationNumber.PasswordChar = '\0';
+            this.findPw_tb_identificationNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.findPw_tb_identificationNumber.SelectedText = "";
+            this.findPw_tb_identificationNumber.SelectionLength = 0;
+            this.findPw_tb_identificationNumber.SelectionStart = 0;
+            this.findPw_tb_identificationNumber.ShortcutsEnabled = true;
+            this.findPw_tb_identificationNumber.Size = new System.Drawing.Size(218, 29);
+            this.findPw_tb_identificationNumber.TabIndex = 50;
+            this.findPw_tb_identificationNumber.UseSelectable = true;
+            this.findPw_tb_identificationNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.findPw_tb_identificationNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // findPw_tb_name
             // 
             // 
@@ -451,6 +483,19 @@
             this.panel4.Size = new System.Drawing.Size(164, 209);
             this.panel4.TabIndex = 49;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(11, 88);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 23);
+            this.label8.TabIndex = 41;
+            this.label8.Text = "주민등록번호";
+            // 
             // lab_ID
             // 
             this.lab_ID.AutoSize = true;
@@ -520,56 +565,11 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(11, 88);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 23);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "주민등록번호";
-            // 
-            // findPw_tb_identificationNumber
-            // 
-            // 
-            // 
-            // 
-            this.findPw_tb_identificationNumber.CustomButton.Image = null;
-            this.findPw_tb_identificationNumber.CustomButton.Location = new System.Drawing.Point(190, 1);
-            this.findPw_tb_identificationNumber.CustomButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.findPw_tb_identificationNumber.CustomButton.Name = "";
-            this.findPw_tb_identificationNumber.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.findPw_tb_identificationNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.findPw_tb_identificationNumber.CustomButton.TabIndex = 1;
-            this.findPw_tb_identificationNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.findPw_tb_identificationNumber.CustomButton.UseSelectable = true;
-            this.findPw_tb_identificationNumber.CustomButton.Visible = false;
-            this.findPw_tb_identificationNumber.Lines = new string[0];
-            this.findPw_tb_identificationNumber.Location = new System.Drawing.Point(12, 88);
-            this.findPw_tb_identificationNumber.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.findPw_tb_identificationNumber.MaxLength = 32767;
-            this.findPw_tb_identificationNumber.Name = "findPw_tb_identificationNumber";
-            this.findPw_tb_identificationNumber.PasswordChar = '\0';
-            this.findPw_tb_identificationNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.findPw_tb_identificationNumber.SelectedText = "";
-            this.findPw_tb_identificationNumber.SelectionLength = 0;
-            this.findPw_tb_identificationNumber.SelectionStart = 0;
-            this.findPw_tb_identificationNumber.ShortcutsEnabled = true;
-            this.findPw_tb_identificationNumber.Size = new System.Drawing.Size(218, 29);
-            this.findPw_tb_identificationNumber.TabIndex = 50;
-            this.findPw_tb_identificationNumber.UseSelectable = true;
-            this.findPw_tb_identificationNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.findPw_tb_identificationNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // FindMyInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 653);
+            this.ClientSize = new System.Drawing.Size(462, 645);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);

@@ -231,25 +231,6 @@ namespace Server.Classes
                         // 
                         bool passwordUpdate = Database.updatePassword(p.name, p.identificationNumber, p.password);
                         //
-                        Console.WriteLine("passwordUpdate : {0}", passwordUpdate);
-
-                        RegisterPacket sendPacket = new RegisterPacket(p.passwordUpdate);
-
-                        Console.WriteLine("sendPacket : {0}", sendPacket);
-
-                        if (passwordUpdate == true)
-                        {
-                            sendPacket.passwordUpdate = true;
-                            Console.WriteLine("sendPacket.passwordUpdate : {0}", sendPacket.passwordUpdate);
-                        }
-                        else
-                        {
-                            sendPacket.passwordUpdate = false;
-                        }
-
-                        sendPacket.Type = PacketType.Register;
-                        sendPacket.registerType = RegisterType.resetPassword;
-                        Send(sendPacket);
                     }
                 }
                 else if (packet.Type == PacketType.RoomCreate)

@@ -66,9 +66,6 @@ namespace Client.Forms
                 MetroMessageBox.Show(Owner, "비밀번호가 일치하지 않습니다.");
             }
 
-            if (!Program.MethodList.ContainsKey(PacketType.Register))
-                Program.MethodList.Add(PacketType.Register, R_Register);
-
             var pwdHash = SHA256Helper.ComputeSHA256Hash(updatePw_newPw.Text);
             var identificationNumberHash = SHA256Helper.ComputeSHA256Hash(identificationNumber);
 
@@ -80,37 +77,9 @@ namespace Client.Forms
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.resetPassword;
             Program.Send(registerPacket);
+
+            MetroMessageBox.Show(Owner, "비밀번호 재 설정 성공");
+            this.Close();
         }
-
-        public void R_Register(Packet packet)
-        {
-            RegisterPacket p = packet as RegisterPacket;
-            Console.WriteLine("리스판스");
-            Console.WriteLine("p.registerType 1 {0} :", p.registerType);
-
-            if (p.registerType == RegisterType.resetPassword)
-            {
-                Console.WriteLine("p.passwordUpdate 1 {0} :", p.passwordUpdate);
-
-                if (InvokeRequired)
-                {
-                    this.Invoke(new Action(() => { R_Register(packet); }));
-                }
-                else
-                {
-                    Console.WriteLine("p.passwordUpdate 2 {0} :", p.passwordUpdate);
-                    if (p.passwordUpdate == true)
-                    {
-                        MetroMessageBox.Show(Owner, "비밀번호 재 설정 성공");
-                    }
-                    else
-                    {
-                        MetroMessageBox.Show(Owner, "재 설정에 실패하였습니다.");
-                    }
-                }
-            }
-        }
-
-
     }
 }
