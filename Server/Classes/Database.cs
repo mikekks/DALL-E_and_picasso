@@ -118,13 +118,13 @@ namespace Server.Classes
         }
 
         // 1-2 아이디 찾기 함수
-        public static string findUserId(string recovery_Q, string recovery_A)
+        public static string findUserId(string name, string identificationNumber, string recovery_Q, string recovery_A)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
-            string query = $"SELECT userId FROM Users WHERE recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}'";
+            string query = $"SELECT userId FROM Users WHERE name = '{name}' && identificationNumber = '{identificationNumber}' && recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}'";
 
             using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
             {

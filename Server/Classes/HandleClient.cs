@@ -185,7 +185,7 @@ namespace Server.Classes
                     else if (p.registerType == RegisterType.findId)
                     {
                         // DB에서 해당 유저의 아이디 찾기
-                        string findedUserId = Database.findUserId(p.recovery_Q, p.recovery_A);
+                        string findedUserId = Database.findUserId(p.name, p.identificationNumber, p.recovery_Q, p.recovery_A);
                         //
 
                         RegisterPacket sendPacket = new RegisterPacket(p.id);

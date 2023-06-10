@@ -54,7 +54,10 @@ namespace Client.Forms
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
-            RegisterPacket registerPacket = new RegisterPacket(findId_tb_recovery_Q.Text, findId_tb_recovery_A.Text);
+            var findId_tb_identificationNumberHash = SHA256Helper.ComputeSHA256Hash(findId_tb_identificationNumber.Text);
+
+
+            RegisterPacket registerPacket = new RegisterPacket(findId_tb_name.Text, findId_tb_identificationNumberHash, findId_tb_recovery_Q.Text, findId_tb_recovery_A.Text);
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.findId;
             Program.Send(registerPacket);
@@ -123,6 +126,11 @@ namespace Client.Forms
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.findPassword;
             Program.Send(registerPacket);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -54,8 +54,10 @@ namespace DalleLib.Networks
         }
 
         // 아이디 찾기를 위함
-        public RegisterPacket(string recovery_Q, string recovery_A)
+        public RegisterPacket(string name, string identificationNumber, string recovery_Q, string recovery_A)
         {
+            this.name = name;
+            this.identificationNumber = identificationNumber;
             this.recovery_Q = recovery_Q;
             this.recovery_A = recovery_A;
         }
