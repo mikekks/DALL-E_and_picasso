@@ -140,16 +140,16 @@ namespace Server.Classes
         }
 
         // 1-3 비밀번호 찾기 함수
-        public static string findPassword(string userid, string recovery_Q, string recovery_A)
+        public static string findPassword(string userId, string name, string identificationNumber, string recovery_Q, string recovery_A)
         {
             if (mysql.State != ConnectionState.Open)
             {
                 mysql.Open();
             }
-            string query = $"SELECT password FROM Users WHERE recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}' && userId = '{userid}'";
-            Console.WriteLine("userid : {0}", userid);
-            Console.WriteLine("recovery_Q : {0}", recovery_Q);
-            Console.WriteLine("recovery_A : {0}", recovery_A);
+            string query = $"SELECT password FROM Users WHERE userId = '{userId}' && name = '{name}' && identificationNumber = '{identificationNumber}' && recovery_Q = '{recovery_Q}' && recovery_A = '{recovery_A}'";
+
+
+            Console.WriteLine(query);
 
             using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
             {

@@ -54,10 +54,9 @@ namespace Client.Forms
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
-            var findId_tb_identificationNumberHash = SHA256Helper.ComputeSHA256Hash(findId_tb_identificationNumber.Text);
+            var identificationNumberHash = SHA256Helper.ComputeSHA256Hash(findId_tb_identificationNumber.Text);
 
-
-            RegisterPacket registerPacket = new RegisterPacket(findId_tb_name.Text, findId_tb_identificationNumberHash, findId_tb_recovery_Q.Text, findId_tb_recovery_A.Text);
+            RegisterPacket registerPacket = new RegisterPacket(findId_tb_name.Text, identificationNumberHash, findId_tb_recovery_Q.Text, findId_tb_recovery_A.Text);
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.findId;
             Program.Send(registerPacket);
@@ -97,6 +96,7 @@ namespace Client.Forms
                     if (p.findPassword != null)
                     {
                         MetroMessageBox.Show(Owner, string.Format("귀하의 비밀번호는 {0} 입니다.", p.password));
+                        Console.WriteLine(p.password);
                     }
                     else
                     {
@@ -122,7 +122,9 @@ namespace Client.Forms
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
-            RegisterPacket registerPacket = new RegisterPacket(findPw_tb_id.Text, findPw_tb_recovery_Q.Text, findPw_tb_recovery_A.Text);
+            var identificationNumberHash = SHA256Helper.ComputeSHA256Hash(findPw_tb_identificationNumber.Text);
+
+            RegisterPacket registerPacket = new RegisterPacket(findPw_tb_name.Text, findPw_tb_id.Text, identificationNumberHash, findPw_tb_recovery_Q.Text, findPw_tb_recovery_A.Text);
             registerPacket.Type = PacketType.Register;
             registerPacket.registerType = RegisterType.findPassword;
             Program.Send(registerPacket);

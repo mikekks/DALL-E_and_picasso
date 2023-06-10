@@ -208,7 +208,7 @@ namespace Server.Classes
                     {
                         // DB에서 해당 유저의 비밀번호 찾기
                         Console.WriteLine(p.id);
-                        string findedPassword = Database.findPassword(p.id, p.recovery_Q, p.recovery_A);
+                        string findedPassword = Database.findPassword(p.id, p.name,p.identificationNumber, p.recovery_Q, p.recovery_A);
                         //
 
                         RegisterPacket sendPacket = new RegisterPacket(p.password, p.regDate); 
