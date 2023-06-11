@@ -47,6 +47,7 @@
             this.btn_reset = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
@@ -204,7 +205,7 @@
             this.metroButton2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.metroButton2.ForeColor = System.Drawing.Color.White;
-            this.metroButton2.Location = new System.Drawing.Point(681, 426);
+            this.metroButton2.Location = new System.Drawing.Point(681, 430);
             this.metroButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(86, 29);
@@ -317,12 +318,29 @@
             this.panel1.Size = new System.Drawing.Size(187, 381);
             this.panel1.TabIndex = 17;
             // 
+            // metroButton1
+            // 
+            this.metroButton1.BackColor = System.Drawing.Color.SteelBlue;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.ForeColor = System.Drawing.Color.White;
+            this.metroButton1.Location = new System.Drawing.Point(209, 430);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(466, 29);
+            this.metroButton1.TabIndex = 18;
+            this.metroButton1.Text = "Team Build 알아보기";
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseCustomForeColor = true;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(793, 484);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btn_Myinfo);
@@ -372,5 +390,6 @@
         private System.Windows.Forms.TabPage Tab4;
         private System.Windows.Forms.TabPage Tab5;
         private System.Windows.Forms.TabPage Tab6;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

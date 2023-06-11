@@ -17,6 +17,8 @@ using MetroFramework.Controls;
 using DalleLib;
 using WindowsFormsApp2;
 using System.Timers;
+using System.Diagnostics;
+using System.Security.Policy;
 
 namespace Client
 {
@@ -373,6 +375,19 @@ namespace Client
                 viewRoomList();
             }
 
+        }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://github.com/mikekks/DALL-E_and_picasso");
+            }
+            catch (Exception ex)
+            {
+                // 오류 처리
+                Console.WriteLine("오류 발생: " + ex.Message);
+            }
         }
     }
 }
