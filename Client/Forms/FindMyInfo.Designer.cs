@@ -299,7 +299,6 @@
             this.label2.Size = new System.Drawing.Size(195, 38);
             this.label2.TabIndex = 51;
             this.label2.Text = "비밀번호 찾기";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel3
             // 

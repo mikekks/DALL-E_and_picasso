@@ -40,16 +40,6 @@ namespace Client.Forms
             forTest_Connect();
         }
 
-        private void metroPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Check_Click(object sender, EventArgs e)
         {
             if (!Program.MethodList.ContainsKey(PacketType.Register))
@@ -100,8 +90,10 @@ namespace Client.Forms
                         UpdatePassword updatePassword_Form = new UpdatePassword(findPw_tb_name.Text, findPw_tb_identificationNumber.Text);
                         Console.WriteLine("뒤로 전달할 name {0}", findPw_tb_name.Text);
                         Console.WriteLine("뒤로 전달할 identificationNumber {0}", findPw_tb_identificationNumber.Text);
+
+                        updatePassword_Form.FormClosing += updatePassword_Form_Closing;
+
                         DialogResult Result = updatePassword_Form.ShowDialog();
-                        
                     }
                     else
                     {
@@ -110,6 +102,11 @@ namespace Client.Forms
                     this.Close();
                 }
             }
+        }
+
+        private void updatePassword_Form_Closing(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void tb_pwd_Click(object sender, EventArgs e)

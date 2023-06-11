@@ -12,7 +12,7 @@ namespace DalleLib.Networks
     {
         Header, Close, Setting,
         Login, DuplicateLogin, Logout, Register,
-        InGame, Chat, Room, RoomCreate, UpdatePassword
+        InGame, Chat, Room, RoomCreate, UpdatePassword, UnRegister
     }
 
     [Serializable]

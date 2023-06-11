@@ -161,8 +161,6 @@ namespace WindowsFormsApp2
             var identificationNumberHash = SHA256Helper.ComputeSHA256Hash(tb_identificationNumber.Text);
 
             // HandleClient.cs, Database.cs 안에서 해싱작업을 하면 패킷길이 오류 발생
-            // nameId도 해싱 필요하면, 테이블 추가 후 여기서 해싱해서 넣기
-
             // db에 해당 정보 저장 -> 성공 했는지 안했는지 결과 출력 필요
 
             RegisterPacket registerPacket =

@@ -23,6 +23,8 @@ namespace Client
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
         MetroTile[] roomTile = new MetroTile[1000];
+        public bool unRegister;
+
         public MainForm()
         {
             InitializeComponent();
@@ -267,10 +269,19 @@ namespace Client
         private void btn_Myinfo_Click(object sender, EventArgs e)
         {
             Opacity = 0.5;
-            //Hide();
             MyInfoForm myInfoForm = new MyInfoForm();
+            myInfoForm.FormClosing += MyInfoForm_FormClosing;
             myInfoForm.ShowDialog();
             Opacity = 100;
+        }
+
+        public void MyInfoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Console.WriteLine(unRegister);
+            if (unRegister == true)
+            {
+                this.Close();
+            }
         }
 
         private void btn_CreateRoom_Click(object sender, EventArgs e)

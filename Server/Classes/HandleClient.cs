@@ -230,7 +230,13 @@ namespace Server.Classes
                     {
                         // 
                         bool passwordUpdate = Database.updatePassword(p.name, p.identificationNumber, p.password);
-                        //
+                        // 
+                    }
+                    else if (p.registerType == RegisterType.unRegister)
+                    {
+                        // 
+                        bool unRegister = Database.unRegister(p.id);
+                        // 
                     }
                 }
                 else if (packet.Type == PacketType.RoomCreate)

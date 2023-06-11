@@ -112,6 +112,12 @@
     <Compile Include="Forms\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UnRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnRegister.Designer.cs">
+      <DependentUpon>UnRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UpdatePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnRegister.resx">
+      <DependentUpon>UnRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UpdatePassword.resx">
       <DependentUpon>UpdatePassword.cs</DependentUpon>

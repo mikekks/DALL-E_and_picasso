@@ -9,12 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2;
 
 
 namespace Client.Forms
 {
     public partial class MyInfoForm : MetroFramework.Forms.MetroForm
     {
+        public bool unRegister;
+
         public MyInfoForm()
         {
             InitializeComponent();
@@ -59,10 +62,19 @@ namespace Client.Forms
             {
                 Tier.Image = Properties.Resources.Tier_Gold;
             }
-
-           
         }
 
-        
+        private void btn_unRegister_Click(object sender, EventArgs e)
+        {
+            UnRegister unRegister_Form = new UnRegister(ID.Text);
+            Console.WriteLine("뒤로 전달할 userId {0}", ID.Text);
+            unRegister_Form.FormClosing += UnRegisterForm_FormClosing;
+            DialogResult Result = unRegister_Form.ShowDialog();
+        }
+
+        public void UnRegisterForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

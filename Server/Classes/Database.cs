@@ -186,6 +186,29 @@ namespace Server.Classes
             }
         }
 
+        // 1-5 회원탈퇴하는 함수
+        public static bool unRegister(string userId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            string query = $"DELETE FROM Users WHERE userId = '{userId}'";
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+                    Console.WriteLine("회원탈퇴 성공 in DB");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         // 2-1. 로그인하는 함수
         public static User login(string userId, string password)
         {

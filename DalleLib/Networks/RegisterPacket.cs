@@ -9,7 +9,7 @@ namespace DalleLib.Networks
 
     public enum RegisterType
     {
-        duplicate, create, findId, findPassword, resetPassword
+        duplicate, create, findId, findPassword, resetPassword, unRegister
     }
     [Serializable]
 
@@ -28,14 +28,14 @@ namespace DalleLib.Networks
         public string password;
 
         public bool passwordExist;
-        public bool passwordUpdate;
+        public bool unRegister;
 
         public string nickName;
         public string recovery_Q;
         public string recovery_A;
         public DateTime regDate;
 
-        public RegisterPacket(string id)  // 중복도 검사 & 아이디 찾기를 위함
+        public RegisterPacket(string id)  // 중복도 검사 & 아이디 찾기 & 회원탈퇴 용도 
         {
             this.id = id;
         }
@@ -83,9 +83,9 @@ namespace DalleLib.Networks
             this.identificationNumber = identificationNumber;
             this.password = password;
         }
-        public RegisterPacket(bool passwordUpdate)
+        public RegisterPacket(bool unRegister)
         {
-            this.passwordUpdate = passwordUpdate;
+            this.unRegister = unRegister;
         }
 
         public RegisterPacket(string password, DateTime regDate)
