@@ -25,6 +25,16 @@
 - [Delete] : 기능 삭제
 
 ## Database
+#### 테이블 생성
+**User Table**
+**Room Table**
+**Dalle Table**
+**Record Table**
+#### MySql 연동 함수
+#### ER-diagram 구조
+![스크린샷 2023-05-29 오후 9 15 49](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17c9da67-203c-4d73-8317-f6e267f9a9d9)
+
+
 ## DALL-E
 ## Database
 ## Getting Started
@@ -36,5 +46,4 @@
 
 ## 
 
-## ER-diagram 구조
-![스크린샷 2023-05-29 오후 9 15 49](https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/a3ffb273-6f8d-450d-ab3d-37f003060e0d)
+
