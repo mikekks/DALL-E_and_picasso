@@ -14,7 +14,7 @@
 ## Overview
 ### Team Build
 - 2023년 1학기 응용소프트웨어실습 (2023-03-12 ~ 2023-06-14)</br>
-- 스피드게임 모티브로 `C# (.Net Core 3.1, .Net Framework 4.7.2)`, `MySQL`,`DALL-E API`를 사용한 
+- 스피드게임 모티브로 `C# (.Net Core 3.1, .Net Framework 4.7.2)`, `MySQL`,`DALL-E API`를 사용한</br>
 **AI가 생성한 이미지 맞추기 게임** 팀프로젝트 입니다.
 
 ### Git Convention 
@@ -86,16 +86,17 @@ ALTER TABLE `Records` ADD FOREIGN KEY (`userId`) REFERENCES `Users` (`userId`);
 ALTER TABLE `Records` ADD FOREIGN KEY (`roomId`) REFERENCES `Rooms` (`roomId`);
 ```
 
-#### User Table
+#### Users Table
 ![user](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/cd6f2559-0158-40a2-9de7-1fb50a5127ea)
 
-#### Room Table
-![room](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/5a8a904c-6721-4367-acb9-a7ff75532541)
+#### Rooms Table
+![room](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/5a8a904c-6721-4367-acb9-a7ff75532541)</br>
+Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해 설정하였습니다.
 
-#### Dealle Table
+#### Dalle Table
 ![dalle](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/dff44860-9c12-429b-b6a4-2bf38c9b0e70)
 
-#### Record Table
+#### Records Table
 ![record](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17b4b697-a257-470b-b011-7ad319454336)
 
 #### MySql 연동 함수
@@ -141,11 +142,18 @@ ALTER TABLE `Records` ADD FOREIGN KEY (`roomId`) REFERENCES `Rooms` (`roomId`);
 
 ## DALL-E
 
-## Database
 ## Getting Started
+
 ## Program
+
 ## Point
+
 ## Contributing
+1. (https://github.com/mikekks/DALL-E_and_picasso/)을 Fork합니다.
+2. (`git checkout -b feature/fooBar`) 명령어로 새 Branch를 만드세요.
+3. (`git commit -am 'Add some fooBar'`) 명령어로 Commit하세요.
+4. (`git push origin feature/fooBar`) 명령어로 Branch에 Push하세요.
+
 ## Reference
 
 
