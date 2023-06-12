@@ -84,21 +84,26 @@ namespace Client
         {
             dataset.Tables["Datatable1"].Rows.Clear();
 
-            rdy_list.Clear();
-            rdy_list.Text += "---------Ready List---------" + Environment.NewLine;
+            //rdy_list.Clear();
+            //rdy_list.Text += "---------Ready List---------" + Environment.NewLine;
             foreach (User player in Program.room.userList)
             {
-                rdy_list.Text += Environment.NewLine + player.userId;
+                //rdy_list.Text += Environment.NewLine + player.userId;
+
+                dataset.Tables["Datatable1"].Rows.Add(new object[]
+                {
+                player.userId,"준비중.."
+                });
+
                 if (player.ready == true)
                 {
+                    /*
                     rdy_list.ForeColor = Color.Red;
                     rdy_list.SelectionColor = Color.Red;
                     rdy_list.Text += "     ready!";
                     rdy_list.SelectionColor = Color.Black;
                     rdy_list.ForeColor = Color.Black;
-
-                    Console.WriteLine("레디 한 플레이어: {0}", player.userId);
-
+                    */
                     foreach (DataRow row in dataset.Tables["Datatable1"].Rows)
                     {
                         Console.WriteLine(row["USERS"]);
@@ -114,13 +119,6 @@ namespace Client
                         }
                     }
                 }
-
-                dataset.Tables["Datatable1"].Rows.Add(new object[]
-                {
-                    player.userId,"준비중.." 
-                });
-
-
             }
         }
 

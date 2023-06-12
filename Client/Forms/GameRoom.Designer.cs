@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.log = new System.Windows.Forms.RichTextBox();
-            this.rdy_list = new System.Windows.Forms.RichTextBox();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.timeLimit = new System.Windows.Forms.Label();
@@ -52,10 +51,10 @@
             this.picBox = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Send = new MetroFramework.Controls.MetroButton();
-            this.btn_Exit = new MetroFramework.Controls.MetroButton();
-            this.btn_Start = new MetroFramework.Controls.MetroButton();
-            this.btn_Ready = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_Ready = new System.Windows.Forms.PictureBox();
+            this.btn_Start = new System.Windows.Forms.PictureBox();
+            this.btn_Exit = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -66,11 +65,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Ready)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Start)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Exit)).BeginInit();
             this.SuspendLayout();
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(6, 524);
+            this.tbAnswer.Location = new System.Drawing.Point(6, 564);
             this.tbAnswer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(253, 25);
@@ -78,22 +80,12 @@
             // 
             // log
             // 
-            this.log.Location = new System.Drawing.Point(6, 16);
+            this.log.Location = new System.Drawing.Point(6, 57);
             this.log.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(284, 499);
+            this.log.Size = new System.Drawing.Size(284, 498);
             this.log.TabIndex = 8;
             this.log.Text = "";
-            // 
-            // rdy_list
-            // 
-            this.rdy_list.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.rdy_list.Location = new System.Drawing.Point(6, 12);
-            this.rdy_list.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rdy_list.Name = "rdy_list";
-            this.rdy_list.Size = new System.Drawing.Size(216, 603);
-            this.rdy_list.TabIndex = 10;
-            this.rdy_list.Text = "";
             // 
             // GameTimer
             // 
@@ -104,7 +96,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(796, 54);
+            this.label1.Location = new System.Drawing.Point(843, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 24);
             this.label1.TabIndex = 18;
@@ -116,7 +108,7 @@
             this.timeLimit.BackColor = System.Drawing.Color.Lavender;
             this.timeLimit.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.timeLimit.ForeColor = System.Drawing.Color.IndianRed;
-            this.timeLimit.Location = new System.Drawing.Point(927, 54);
+            this.timeLimit.Location = new System.Drawing.Point(974, 75);
             this.timeLimit.Name = "timeLimit";
             this.timeLimit.Size = new System.Drawing.Size(38, 24);
             this.timeLimit.TabIndex = 19;
@@ -126,7 +118,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 14.25F);
-            this.label3.Location = new System.Drawing.Point(970, 54);
+            this.label3.Location = new System.Drawing.Point(1017, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 24);
             this.label3.TabIndex = 20;
@@ -140,7 +132,6 @@
             this.groupBox1.Controls.Add(this.pictureBox5);
             this.groupBox1.Controls.Add(this.Answer4);
             this.groupBox1.Controls.Add(this.pictureBox6);
-            this.groupBox1.Controls.Add(this.rdy_list);
             this.groupBox1.Controls.Add(this.Answer3);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.Answer2);
@@ -148,7 +139,7 @@
             this.groupBox1.Controls.Add(this.Answer1);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.picBox);
-            this.groupBox1.Location = new System.Drawing.Point(231, 42);
+            this.groupBox1.Location = new System.Drawing.Point(278, 54);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -353,11 +344,11 @@
             this.groupBox2.Controls.Add(this.log);
             this.groupBox2.Controls.Add(this.tbAnswer);
             this.groupBox2.Controls.Add(this.btn_Send);
-            this.groupBox2.Location = new System.Drawing.Point(781, 82);
+            this.groupBox2.Location = new System.Drawing.Point(828, 54);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(296, 557);
+            this.groupBox2.Size = new System.Drawing.Size(296, 597);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
@@ -365,7 +356,7 @@
             // 
             this.btn_Send.BackgroundImage = global::Client.Properties.Resources.upload_removebg_preview;
             this.btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Send.Location = new System.Drawing.Point(265, 523);
+            this.btn_Send.Location = new System.Drawing.Point(265, 563);
             this.btn_Send.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Send.Name = "btn_Send";
             this.btn_Send.Size = new System.Drawing.Size(25, 25);
@@ -373,64 +364,65 @@
             this.btn_Send.UseSelectable = true;
             this.btn_Send.Click += new System.EventHandler(this.btn_Send_Click);
             // 
-            // btn_Exit
-            // 
-            this.btn_Exit.BackgroundImage = global::Client.Properties.Resources.exit2_removebg_preview;
-            this.btn_Exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Exit.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_Exit.Location = new System.Drawing.Point(962, 647);
-            this.btn_Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(115, 83);
-            this.btn_Exit.TabIndex = 16;
-            this.btn_Exit.UseSelectable = true;
-            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click_1);
-            // 
-            // btn_Start
-            // 
-            this.btn_Start.BackgroundImage = global::Client.Properties.Resources.start_removebg_preview;
-            this.btn_Start.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Start.Location = new System.Drawing.Point(781, 647);
-            this.btn_Start.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(184, 76);
-            this.btn_Start.TabIndex = 17;
-            this.btn_Start.UseSelectable = true;
-            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
-            // 
-            // btn_Ready
-            // 
-            this.btn_Ready.BackgroundImage = global::Client.Properties.Resources.ready_removebg_preview;
-            this.btn_Ready.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Ready.Location = new System.Drawing.Point(9, 659);
-            this.btn_Ready.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Ready.Name = "btn_Ready";
-            this.btn_Ready.Size = new System.Drawing.Size(216, 71);
-            this.btn_Ready.TabIndex = 14;
-            this.btn_Ready.UseSelectable = true;
-            this.btn_Ready.Click += new System.EventHandler(this.btn_Ready_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(26, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(216, 598);
+            this.dataGridView1.Size = new System.Drawing.Size(246, 598);
             this.dataGridView1.TabIndex = 29;
+            // 
+            // btn_Ready
+            // 
+            this.btn_Ready.ErrorImage = null;
+            this.btn_Ready.Image = global::Client.Properties.Resources.ready_removebg_preview;
+            this.btn_Ready.Location = new System.Drawing.Point(26, 659);
+            this.btn_Ready.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Ready.Name = "btn_Ready";
+            this.btn_Ready.Size = new System.Drawing.Size(246, 75);
+            this.btn_Ready.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Ready.TabIndex = 46;
+            this.btn_Ready.TabStop = false;
+            this.btn_Ready.Click += new System.EventHandler(this.btn_Ready_Click);
+            // 
+            // btn_Start
+            // 
+            this.btn_Start.ErrorImage = null;
+            this.btn_Start.Image = global::Client.Properties.Resources.start_removebg_preview;
+            this.btn_Start.Location = new System.Drawing.Point(828, 667);
+            this.btn_Start.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(175, 75);
+            this.btn_Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Start.TabIndex = 47;
+            this.btn_Start.TabStop = false;
+            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
+            // 
+            // btn_Exit
+            // 
+            this.btn_Exit.ErrorImage = null;
+            this.btn_Exit.Image = global::Client.Properties.Resources.exit2_removebg_preview;
+            this.btn_Exit.Location = new System.Drawing.Point(1009, 667);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(109, 75);
+            this.btn_Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Exit.TabIndex = 48;
+            this.btn_Exit.TabStop = false;
             // 
             // GameRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1085, 751);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1150, 758);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Start);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_Ready);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.timeLimit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -454,6 +446,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Ready)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Start)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,9 +459,7 @@
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.TextBox tbAnswer;
         private System.Windows.Forms.RichTextBox log;
-        private System.Windows.Forms.RichTextBox rdy_list;
         private MetroFramework.Controls.MetroButton btn_Send;
-        private MetroFramework.Controls.MetroButton btn_Ready;
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label timeLimit;
@@ -474,8 +467,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private MetroFramework.Controls.MetroButton btn_Exit;
-        private MetroFramework.Controls.MetroButton btn_Start;
         private MetroFramework.Controls.MetroTile Answer6;
         private System.Windows.Forms.PictureBox pictureBox4;
         private MetroFramework.Controls.MetroTile Answer5;
@@ -489,6 +480,9 @@
         private MetroFramework.Controls.MetroTile Answer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.PictureBox btn_Ready;
+        private System.Windows.Forms.PictureBox btn_Start;
+        private System.Windows.Forms.PictureBox btn_Exit;
     }
 }
 
