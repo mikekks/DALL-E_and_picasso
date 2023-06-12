@@ -21,8 +21,11 @@ using Client.Forms;
 
 namespace Client
 {
+
     public partial class GameRoom : MetroFramework.Forms.MetroForm
     {
+        DataSet2 dataset;
+
         //delegate void TimerEventFiredDelegate();
         //delegate void TimerEventFiredDelegate_Ans();
 
@@ -40,6 +43,9 @@ namespace Client
         public GameRoom()
         {
             InitializeComponent();
+            dataset = new DataSet2();
+
+            dataGridView1.DataSource = dataset.Tables["DataTable1"];
          }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -76,6 +82,8 @@ namespace Client
         }
         public void ResetReadyList()
         {
+            dataset.Tables["Datatable1"].Rows.Clear();
+
             rdy_list.Clear();
             rdy_list.Text += "---------Ready List---------" + Environment.NewLine;
             foreach (User player in Program.room.userList)
@@ -88,7 +96,31 @@ namespace Client
                     rdy_list.Text += "     ready!";
                     rdy_list.SelectionColor = Color.Black;
                     rdy_list.ForeColor = Color.Black;
+
+                    Console.WriteLine("레디 한 플레이어: {0}", player.userId);
+
+                    foreach (DataRow row in dataset.Tables["Datatable1"].Rows)
+                    {
+                        Console.WriteLine(row["USERS"]);
+                        Console.WriteLine(row["READY"]);
+
+                        if (row["USERS"].ToString() == player.userId)
+                        {
+                            row["READY"] = "완료";
+
+                            Console.WriteLine(row["USERS"].ToString() == player.userId);
+                            Console.WriteLine(row["USERS"].ToString());
+                            Console.WriteLine(player.userId);
+                        }
+                    }
                 }
+
+                dataset.Tables["Datatable1"].Rows.Add(new object[]
+                {
+                    player.userId,"준비중.." 
+                });
+
+
             }
         }
 
