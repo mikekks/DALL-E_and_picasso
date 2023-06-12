@@ -99,44 +99,6 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 #### Records Table
 ![record](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17b4b697-a257-470b-b011-7ad319454336)
 
-#### MySql 연동 함수
-|Index|Table|Function|Description|
-|------|---|---|---|
-|1|User|signUp|회원가입|
-|1-1||checkDuplicateUserId|아이디 중복확인|
-|1-2||findUserId|아이디 찾기|
-|1-3||findPassword|비밀번호 찾기|
-|1-4||updatePassword|비밀번호 재 설정|
-|1-5||unRegister|회원탈퇴|
-|1-6||ready|레디하기|
-|1-7||readyCancel|레디 취소하기|
-|1-8||checkUsersReady|방 참가자 전체 레디 확인하기|
-|1-9||checkSpecificUserReady|특정 유저의 레디 확인하기|
-|1-10||getReadyList|전체 유저리스트 가져오기|
-|2|Record|getRecords|내 기록 가져오기|
-|2-2||updateTryCount|시도횟수 기록하기|
-|2-2||updateCorrectCount|정답횟수 기록하기|
-|2-3||getTryCount|시도횟수 가져오기|
-|2-4||getCorrectCount|정답횟수 가져오기|
-|2-5||getRecordEveryone|결과 확인하기|
-|3|Room|getRoomsList|방 리스트 가져오기|
-|3-1||makeNewRoom|방 만들기|
-|3-2||EnterOrExit_Room|방 진입하기|
-|3-4||checkEnterRoom|방 진입 여부 확인하기|
-|3-5||getSpecificRooms|방 정보 가져오기|
-|3-6||startGame|게임 실행하기|
-|3-7||checkNowPlaying|게임 실행 여부 확인하기|
-|3-8||registerRecordCheck|해당 방에 등록된 경우 확인하기|
-|3-9||initRound|게임 라운드 생성하기|
-|3-10||getRound|게임 라운드 가져오기|
-|3-11||updateRound|게임 라운드 업데이트하기|
-|3-12||initNowPlaying|실행중인 방 표시하기|
-|4|Dalle|makeQuestion|문제 만들기|
-|4-1||CheckQuestion|문제 번호 가져오기|
-|4-2||getQuestion|문제 사진 url 가져오기|
-|4-3||getKeyword|달리 키워드 가져오기|
-|4-4||checkKeyword|달리 키워드 기입하기|
-
 #### ER-diagram 구조
 ![스크린샷 2023-05-29 오후 9 15 49](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17c9da67-203c-4d73-8317-f6e267f9a9d9)
 
@@ -144,7 +106,7 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 
 ## Getting Started
 
-## Program
+## Program  ++ 홈페이지 진입, 게임 도중, 게임 결과화면 추가하기
 
 #### 1.회원가입</br>
 ![ezgif com-video-to-gif (6)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/6baa46f7-0cc5-46cb-a8e5-a1f1c6b01f00)
@@ -176,7 +138,7 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 ## Point
 
 ## Contributing
-1. (https://github.com/mikekks/DALL-E_and_picasso/)을 Fork합니다.
+1. (https://github.com/mikekks/DALL-E_and_picasso)을 Fork합니다.
 2. (`git checkout -b feature/fooBar`) 명령어로 새 Branch를 만드세요.
 3. (`git commit -am 'Add some fooBar'`) 명령어로 Commit하세요.
 4. (`git push origin feature/fooBar`) 명령어로 Branch에 Push하세요.
