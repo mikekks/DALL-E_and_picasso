@@ -184,6 +184,7 @@
             // Tier
             // 
             this.Tier.BackColor = System.Drawing.Color.White;
+            this.Tier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Tier.Location = new System.Drawing.Point(53, 12);
             this.Tier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tier.Name = "Tier";

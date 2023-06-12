@@ -36,22 +36,21 @@
             this.Tab4 = new System.Windows.Forms.TabPage();
             this.Tab5 = new System.Windows.Forms.TabPage();
             this.Tab6 = new System.Windows.Forms.TabPage();
-            this.btn_CreateRoom = new MetroFramework.Controls.MetroButton();
-            this.btn_Myinfo = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.UserId = new MetroFramework.Controls.MetroLabel();
             this.UserTier = new MetroFramework.Controls.MetroLabel();
-            this.TierPic = new System.Windows.Forms.PictureBox();
-            this.ProfilePic = new System.Windows.Forms.PictureBox();
-            this.btn_reset = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btn_reset = new MetroFramework.Controls.MetroButton();
+            this.btn_Myinfo = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.btn_CreateRoom = new MetroFramework.Controls.MetroButton();
+            this.ProfilePic = new System.Windows.Forms.PictureBox();
+            this.TierPic = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
             this.SuspendLayout();
             // 
             // metroProgressSpinner1
@@ -72,11 +71,11 @@
             this.metroTabControl1.Controls.Add(this.Tab4);
             this.metroTabControl1.Controls.Add(this.Tab5);
             this.metroTabControl1.Controls.Add(this.Tab6);
-            this.metroTabControl1.Location = new System.Drawing.Point(209, 41);
+            this.metroTabControl1.Location = new System.Drawing.Point(239, 31);
             this.metroTabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(566, 328);
+            this.metroTabControl1.Size = new System.Drawing.Size(536, 374);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroTabControl1.TabIndex = 3;
             this.metroTabControl1.UseSelectable = true;
@@ -92,7 +91,7 @@
             this.Tab1.Location = new System.Drawing.Point(4, 38);
             this.Tab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab1.Name = "Tab1";
-            this.Tab1.Size = new System.Drawing.Size(558, 286);
+            this.Tab1.Size = new System.Drawing.Size(528, 332);
             this.Tab1.TabIndex = 0;
             this.Tab1.Text = "★";
             this.Tab1.VerticalScrollbar = true;
@@ -111,7 +110,7 @@
             this.Tab2.Location = new System.Drawing.Point(4, 38);
             this.Tab2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab2.Name = "Tab2";
-            this.Tab2.Size = new System.Drawing.Size(558, 286);
+            this.Tab2.Size = new System.Drawing.Size(528, 332);
             this.Tab2.TabIndex = 1;
             this.Tab2.Text = "★★";
             this.Tab2.VerticalScrollbar = true;
@@ -129,7 +128,7 @@
             this.Tab3.Location = new System.Drawing.Point(4, 38);
             this.Tab3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab3.Name = "Tab3";
-            this.Tab3.Size = new System.Drawing.Size(558, 286);
+            this.Tab3.Size = new System.Drawing.Size(528, 332);
             this.Tab3.TabIndex = 2;
             this.Tab3.Text = "★★★";
             this.Tab3.VerticalScrollbar = true;
@@ -143,7 +142,7 @@
             this.Tab4.Location = new System.Drawing.Point(4, 38);
             this.Tab4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab4.Name = "Tab4";
-            this.Tab4.Size = new System.Drawing.Size(558, 286);
+            this.Tab4.Size = new System.Drawing.Size(528, 332);
             this.Tab4.TabIndex = 3;
             this.Tab4.Text = "★★★★";
             // 
@@ -153,7 +152,7 @@
             this.Tab5.Location = new System.Drawing.Point(4, 38);
             this.Tab5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab5.Name = "Tab5";
-            this.Tab5.Size = new System.Drawing.Size(558, 286);
+            this.Tab5.Size = new System.Drawing.Size(528, 332);
             this.Tab5.TabIndex = 4;
             this.Tab5.Text = "★★★★★";
             // 
@@ -164,57 +163,9 @@
             this.Tab6.Location = new System.Drawing.Point(4, 38);
             this.Tab6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tab6.Name = "Tab6";
-            this.Tab6.Size = new System.Drawing.Size(558, 286);
+            this.Tab6.Size = new System.Drawing.Size(528, 332);
             this.Tab6.TabIndex = 5;
             this.Tab6.Text = "★★★★★★";
-            // 
-            // btn_CreateRoom
-            // 
-            this.btn_CreateRoom.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_CreateRoom.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_CreateRoom.ForeColor = System.Drawing.Color.White;
-            this.btn_CreateRoom.Location = new System.Drawing.Point(310, 376);
-            this.btn_CreateRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_CreateRoom.Name = "btn_CreateRoom";
-            this.btn_CreateRoom.Size = new System.Drawing.Size(86, 29);
-            this.btn_CreateRoom.TabIndex = 4;
-            this.btn_CreateRoom.Text = "방 만들기";
-            this.btn_CreateRoom.UseCustomBackColor = true;
-            this.btn_CreateRoom.UseCustomForeColor = true;
-            this.btn_CreateRoom.UseSelectable = true;
-            this.btn_CreateRoom.Click += new System.EventHandler(this.btn_CreateRoom_Click);
-            // 
-            // btn_Myinfo
-            // 
-            this.btn_Myinfo.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_Myinfo.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_Myinfo.ForeColor = System.Drawing.Color.White;
-            this.btn_Myinfo.Location = new System.Drawing.Point(19, 430);
-            this.btn_Myinfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Myinfo.Name = "btn_Myinfo";
-            this.btn_Myinfo.Size = new System.Drawing.Size(187, 29);
-            this.btn_Myinfo.TabIndex = 5;
-            this.btn_Myinfo.Text = "내 정보";
-            this.btn_Myinfo.UseCustomBackColor = true;
-            this.btn_Myinfo.UseCustomForeColor = true;
-            this.btn_Myinfo.UseSelectable = true;
-            this.btn_Myinfo.Click += new System.EventHandler(this.btn_Myinfo_Click);
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton2.ForeColor = System.Drawing.Color.White;
-            this.metroButton2.Location = new System.Drawing.Point(681, 430);
-            this.metroButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(86, 29);
-            this.metroButton2.TabIndex = 6;
-            this.metroButton2.Text = "로그아웃";
-            this.metroButton2.UseCustomBackColor = true;
-            this.metroButton2.UseCustomForeColor = true;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroLabel1
             // 
@@ -229,7 +180,7 @@
             this.UserId.AutoSize = true;
             this.UserId.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.UserId.ForeColor = System.Drawing.Color.White;
-            this.UserId.Location = new System.Drawing.Point(71, 189);
+            this.UserId.Location = new System.Drawing.Point(86, 178);
             this.UserId.Name = "UserId";
             this.UserId.Size = new System.Drawing.Size(43, 20);
             this.UserId.TabIndex = 9;
@@ -242,52 +193,13 @@
             this.UserTier.AutoSize = true;
             this.UserTier.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.UserTier.ForeColor = System.Drawing.Color.White;
-            this.UserTier.Location = new System.Drawing.Point(67, 356);
+            this.UserTier.Location = new System.Drawing.Point(86, 345);
             this.UserTier.Name = "UserTier";
             this.UserTier.Size = new System.Drawing.Size(53, 20);
             this.UserTier.TabIndex = 12;
             this.UserTier.Text = "Gold 3";
             this.UserTier.UseCustomBackColor = true;
             this.UserTier.UseCustomForeColor = true;
-            // 
-            // TierPic
-            // 
-            this.TierPic.BackColor = System.Drawing.Color.White;
-            this.TierPic.InitialImage = null;
-            this.TierPic.Location = new System.Drawing.Point(7, 216);
-            this.TierPic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TierPic.Name = "TierPic";
-            this.TierPic.Size = new System.Drawing.Size(173, 138);
-            this.TierPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.TierPic.TabIndex = 10;
-            this.TierPic.TabStop = false;
-            // 
-            // ProfilePic
-            // 
-            this.ProfilePic.BackColor = System.Drawing.Color.White;
-            this.ProfilePic.Location = new System.Drawing.Point(7, 51);
-            this.ProfilePic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ProfilePic.Name = "ProfilePic";
-            this.ProfilePic.Size = new System.Drawing.Size(173, 136);
-            this.ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProfilePic.TabIndex = 7;
-            this.ProfilePic.TabStop = false;
-            // 
-            // btn_reset
-            // 
-            this.btn_reset.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_reset.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Location = new System.Drawing.Point(217, 376);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(86, 29);
-            this.btn_reset.TabIndex = 13;
-            this.btn_reset.Text = "새로고침";
-            this.btn_reset.UseCustomBackColor = true;
-            this.btn_reset.UseCustomForeColor = true;
-            this.btn_reset.UseSelectable = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // metroLabel4
             // 
@@ -296,7 +208,7 @@
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.ForeColor = System.Drawing.Color.White;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 4);
+            this.metroLabel4.Location = new System.Drawing.Point(29, 9);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(158, 25);
             this.metroLabel4.TabIndex = 16;
@@ -312,27 +224,106 @@
             this.panel1.Controls.Add(this.TierPic);
             this.panel1.Controls.Add(this.UserTier);
             this.panel1.Controls.Add(this.UserId);
-            this.panel1.Location = new System.Drawing.Point(19, 41);
+            this.panel1.Location = new System.Drawing.Point(19, 31);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(187, 381);
+            this.panel1.Size = new System.Drawing.Size(210, 374);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // metroButton1
+            // btn_reset
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.SteelBlue;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(209, 430);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(466, 29);
-            this.metroButton1.TabIndex = 18;
-            this.metroButton1.Text = "Team Build 알아보기";
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseCustomForeColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
+            this.btn_reset.BackColor = System.Drawing.Color.Transparent;
+            this.btn_reset.BackgroundImage = global::Client.Properties.Resources.reLoad_removebg_preview;
+            this.btn_reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reset.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Location = new System.Drawing.Point(621, 413);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(42, 42);
+            this.btn_reset.TabIndex = 13;
+            this.btn_reset.UseCustomBackColor = true;
+            this.btn_reset.UseCustomForeColor = true;
+            this.btn_reset.UseSelectable = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
+            // btn_Myinfo
+            // 
+            this.btn_Myinfo.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Myinfo.BackgroundImage = global::Client.Properties.Resources.profile_removebg_preview;
+            this.btn_Myinfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Myinfo.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btn_Myinfo.ForeColor = System.Drawing.Color.White;
+            this.btn_Myinfo.Location = new System.Drawing.Point(19, 409);
+            this.btn_Myinfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Myinfo.Name = "btn_Myinfo";
+            this.btn_Myinfo.Size = new System.Drawing.Size(55, 52);
+            this.btn_Myinfo.TabIndex = 5;
+            this.btn_Myinfo.UseCustomBackColor = true;
+            this.btn_Myinfo.UseCustomForeColor = true;
+            this.btn_Myinfo.UseSelectable = true;
+            this.btn_Myinfo.Click += new System.EventHandler(this.btn_Myinfo_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.BackColor = System.Drawing.Color.Transparent;
+            this.metroButton2.BackgroundImage = global::Client.Properties.Resources.logout_removebg_preview;
+            this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton2.ForeColor = System.Drawing.Color.White;
+            this.metroButton2.Location = new System.Drawing.Point(669, 413);
+            this.metroButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(106, 42);
+            this.metroButton2.TabIndex = 6;
+            this.metroButton2.UseCustomBackColor = true;
+            this.metroButton2.UseCustomForeColor = true;
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
+            // btn_CreateRoom
+            // 
+            this.btn_CreateRoom.BackColor = System.Drawing.Color.Transparent;
+            this.btn_CreateRoom.BackgroundImage = global::Client.Properties.Resources.newgame_removebg_preview;
+            this.btn_CreateRoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_CreateRoom.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btn_CreateRoom.ForeColor = System.Drawing.Color.White;
+            this.btn_CreateRoom.Location = new System.Drawing.Point(80, 409);
+            this.btn_CreateRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_CreateRoom.Name = "btn_CreateRoom";
+            this.btn_CreateRoom.Size = new System.Drawing.Size(149, 52);
+            this.btn_CreateRoom.TabIndex = 4;
+            this.btn_CreateRoom.UseCustomBackColor = true;
+            this.btn_CreateRoom.UseCustomForeColor = true;
+            this.btn_CreateRoom.UseSelectable = true;
+            this.btn_CreateRoom.Click += new System.EventHandler(this.btn_CreateRoom_Click);
+            // 
+            // ProfilePic
+            // 
+            this.ProfilePic.BackColor = System.Drawing.Color.White;
+            this.ProfilePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ProfilePic.Location = new System.Drawing.Point(36, 38);
+            this.ProfilePic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProfilePic.Name = "ProfilePic";
+            this.ProfilePic.Size = new System.Drawing.Size(142, 136);
+            this.ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePic.TabIndex = 7;
+            this.ProfilePic.TabStop = false;
+            // 
+            // TierPic
+            // 
+            this.TierPic.BackColor = System.Drawing.Color.White;
+            this.TierPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.TierPic.InitialImage = null;
+            this.TierPic.Location = new System.Drawing.Point(36, 207);
+            this.TierPic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TierPic.Name = "TierPic";
+            this.TierPic.Size = new System.Drawing.Size(142, 131);
+            this.TierPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.TierPic.TabIndex = 10;
+            this.TierPic.TabStop = false;
+            this.TierPic.Click += new System.EventHandler(this.TierPic_Click);
             // 
             // MainForm
             // 
@@ -340,7 +331,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(793, 484);
-            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btn_Myinfo);
@@ -361,10 +351,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.metroTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TierPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,6 +380,5 @@
         private System.Windows.Forms.TabPage Tab4;
         private System.Windows.Forms.TabPage Tab5;
         private System.Windows.Forms.TabPage Tab6;
-        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

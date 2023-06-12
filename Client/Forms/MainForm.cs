@@ -379,15 +379,17 @@ namespace Client
 
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start("https://github.com/mikekks/DALL-E_and_picasso");
-            }
-            catch (Exception ex)
-            {
-                // 오류 처리
-                Console.WriteLine("오류 발생: " + ex.Message);
-            }
+
+        }
+
+        private void TierPic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

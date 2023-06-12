@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
@@ -118,5 +119,25 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://github.com/mikekks/DALL-E_and_picasso");
+            }
+            catch (Exception ex)
+            {
+                // 오류 처리
+                Console.WriteLine("오류 발생: " + ex.Message);
+            }
+        }
+
+
     }
 }

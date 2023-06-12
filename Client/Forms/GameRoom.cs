@@ -40,8 +40,7 @@ namespace Client
         public GameRoom()
         {
             InitializeComponent();
- 
-        }
+         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -332,6 +331,31 @@ namespace Client
                 if(Program.room.userId == Program.user.userId)
                     Program.Send(ingamePacket);
             }
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Answer1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Answer4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Answer1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
