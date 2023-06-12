@@ -146,6 +146,33 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 
 ## Program
 
+#### 1.회원가입</br>
+![ezgif com-video-to-gif (6)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/6baa46f7-0cc5-46cb-a8e5-a1f1c6b01f00)
+
+#### 2. 로그인</br>
+![ezgif com-video-to-gif (8)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/690c8260-5ee0-400c-b4d6-39e2d1be84e0)
+
+#### 3.아이디 찾기</br>
+![ezgif com-video-to-gif (5)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/3412dcbc-f800-479d-ae6f-ade4bd70a1da)
+
+#### 4.비밀번호 재 설정하기</br>
+![ezgif com-video-to-gif (4)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/2004a522-360b-47fd-af5a-7d0da0cd1e21)
+
+#### 5.비밀번호 찾기 실패</br>
+![ezgif com-video-to-gif (3)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/483ba74f-1133-4b5a-b565-00a46c7b272a)
+
+#### 6.내 정보 확인하기</br>
+![ezgif com-video-to-gif](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/60f95f7a-c681-47ec-b302-e8e0f86ff26d)
+
+#### 7.방 선택 후 진입하기</br>
+![ezgif com-video-to-gif (2)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/dbd5e5d1-7cae-497b-a1c4-c2668f398fde)
+
+#### 8.만들어진 방 리스트 불러오기</br>
+![ezgif com-video-to-gif (1)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/f1b5b1e2-9b8e-4951-8350-62bc07a13176)
+
+#### 9.회원탈퇴</br>
+![ezgif com-video-to-gif (7)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/e73ff8fb-64ea-47e7-9005-273f79b3a127)
+
 ## Point
 
 ## Contributing
