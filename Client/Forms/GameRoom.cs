@@ -68,8 +68,17 @@ namespace Client
             
             ResetReadyList();
 
+            metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
+            for (int i = 0; i < 6; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Image = Properties.Resources.whatMark_removebg_preview;
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Dock = DockStyle.Fill;
+                metroTiles[i].Controls.Add(pictureBox);
+            }
 
-             // 필요한 정답 칸 계산해서 생성
+            // 필요한 정답 칸 계산해서 생성
             metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
             for (int i=5; i>=Program.room.level; i--)
             {
