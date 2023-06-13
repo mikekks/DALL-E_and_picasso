@@ -276,6 +276,9 @@
     <None Include="Resources\2tier-removebg-preview.png" />
     <None Include="Resources\1teir-removebg-preview.png" />
     <None Include="Resources\3bar-removebg-preview.png" />
+    <None Include="Resources\what-removebg-preview.png" />
+    <None Include="Resources\xMark-removebg-preview.png" />
+    <None Include="Resources\whatMark-removebg-preview.png" />
     <Content Include="Source\Tier_Bronze.png" />
     <Content Include="Source\Tier_Gold.png" />
     <Content Include="Source\Tier_Silver2.png" />

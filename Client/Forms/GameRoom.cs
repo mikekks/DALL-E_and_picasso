@@ -74,7 +74,14 @@ namespace Client
             for (int i=5; i>=Program.room.level; i--)
             {
                 metroTiles[i].Enabled = false;
-                metroTiles[i].Text = "X";
+                //metroTiles[i].Text = "X";
+
+                metroTiles[i].Text = "";
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Image = Properties.Resources.xMark_removebg_preview; 
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Dock = DockStyle.Fill;
+                metroTiles[i].Controls.Add(pictureBox);
             }
 
             // 레디 타이머 시작
@@ -184,7 +191,18 @@ namespace Client
                     
                     for (int i = 0; i < Program.room.level; i++)
                     {
-                        metroTiles[i].Text = "뭘까요?";
+                        //metroTiles[i].Text = "뭘까요?";
+
+                        metroTiles[i].Text = "";
+
+                        PictureBox pictureBox = new PictureBox();
+                        pictureBox.Image = Properties.Resources.whatMark_removebg_preview;
+                        pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                        pictureBox.Dock = DockStyle.Fill;
+                        metroTiles[i].Controls.Add(pictureBox);
+
+                        // PictureBox를 MetroTile의 Controls 컬렉션에 추가
+                        metroTiles[i].Controls.Add(pictureBox);
                     }
 
                     Console.WriteLine("start 패킷 도착2");
