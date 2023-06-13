@@ -1,5 +1,6 @@
 ﻿using Client;
 using Client.Forms;
+using DalleLib.InGame;
 using DalleLib.Networks;
 using MetroFramework;
 using System;
@@ -24,6 +25,7 @@ namespace WindowsFormsApp2
         public Login_Form()
         {
             InitializeComponent();
+
         }
 
         public void forTest_Connect()
@@ -138,6 +140,10 @@ namespace WindowsFormsApp2
             }
         }
 
-
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            GameResultForm_mock gameResultForm_mock = new GameResultForm_mock();
+            gameResultForm_mock.ShowDialog();
+        }
     }
 }

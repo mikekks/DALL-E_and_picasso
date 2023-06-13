@@ -387,5 +387,10 @@ namespace Client
         {
 
         }
+
+        private void Answer3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

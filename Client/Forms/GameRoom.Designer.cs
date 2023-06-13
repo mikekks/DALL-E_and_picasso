@@ -139,11 +139,11 @@
             this.groupBox1.Controls.Add(this.Answer1);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.picBox);
-            this.groupBox1.Location = new System.Drawing.Point(278, 54);
+            this.groupBox1.Location = new System.Drawing.Point(278, 42);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(541, 692);
+            this.groupBox1.Size = new System.Drawing.Size(541, 704);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
@@ -254,6 +254,7 @@
             this.Answer3.UseCustomBackColor = true;
             this.Answer3.UseCustomForeColor = true;
             this.Answer3.UseSelectable = true;
+            this.Answer3.Click += new System.EventHandler(this.Answer3_Click);
             // 
             // pictureBox3
             // 
@@ -344,11 +345,11 @@
             this.groupBox2.Controls.Add(this.log);
             this.groupBox2.Controls.Add(this.tbAnswer);
             this.groupBox2.Controls.Add(this.btn_Send);
-            this.groupBox2.Location = new System.Drawing.Point(828, 54);
+            this.groupBox2.Location = new System.Drawing.Point(828, 42);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(296, 597);
+            this.groupBox2.Size = new System.Drawing.Size(296, 609);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
