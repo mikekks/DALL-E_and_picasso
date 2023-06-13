@@ -39,6 +39,15 @@ namespace Client.Forms
                 //_roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
                 _userTile.UseCustomBackColor = true;
                 _userTile.UseTileImage = true;
+
+                int borderRadius = 20;
+                System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+                path.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+                path.AddArc(_userTile.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+                path.AddArc(_userTile.Width - borderRadius, _userTile.Height - borderRadius, borderRadius, borderRadius, 0, 90);
+                path.AddArc(0, _userTile.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+                _userTile.Region = new Region(path);
+
                 _userTile.BackColor = Color.Gold;
                 y += 80;
 
@@ -47,9 +56,8 @@ namespace Client.Forms
                 _rank.Size = new Size(95, 70);
                 if (i == 0)
                 {
-                    _userTile.BackColor = Color.Gold;
-                    _rank.Image = Properties.Resources.Tier_Gold;
-                    
+                    _userTile.BackColor = Color.Cornsilk;
+                    _rank.Image = Properties.Resources._1teir_removebg_preview;
                 }
                 else if (i == 1)
                 {
@@ -58,57 +66,69 @@ namespace Client.Forms
                 }
                 else if (i == 2)
                 {
-                    _userTile.BackColor = Color.Brown;
-                    _rank.Image = Properties.Resources.Tier_Bronze;
+                    _userTile.BackColor = Color.Gainsboro;
+                    _rank.Image = Properties.Resources._2tier_removebg_preview;
                 }
                 else
                 {
-                    _userTile.BackColor = Color.Black;
-                    //_rank.Image = Properties.Resources.;
+                    _userTile.BackColor = Color.AntiqueWhite;
+                    _rank.Image = Properties.Resources._3tier_removebg_preview;
                 }
                 _userTile.Controls.Add(_rank);
 
+                _userTile.Left = _rank.Right;
 
                 MetroLabel _userId = new MetroLabel();
                 _userId.Text = Program.records[i].userId;
                 _userId.UseCustomBackColor = true;
                 _userId.Location = new Point(100, 20);
                 _userId.Size = new Size(54, 25);
-                _userId.BackColor = _userTile.BackColor;
+                _userId.UseCustomForeColor = true;
+                _userId.ForeColor = Color.Black;
                 _userTile.Controls.Add(_userId);
 
                 MetroLabel _tryLabel = new MetroLabel();
-                _tryLabel.Text = "시도 횟수 : ";
+                _tryLabel.Text = "시도 횟수 ";
                 _tryLabel.Location = new Point(170, 3);
                 _tryLabel.UseCustomBackColor = true;
                 _tryLabel.BackColor = _userTile.BackColor;
+                _tryLabel.UseCustomForeColor = true;
+                _tryLabel.ForeColor = Color.Black;
                 _tryLabel.Size = new Size(80, 15);
+                _tryLabel.Font = new Font(_tryLabel.Font, FontStyle.Bold);
                 _userTile.Controls.Add(_tryLabel);
 
                 MetroLabel _AnsLabel = new MetroLabel();
-                _AnsLabel.Text = "정답 횟수 : ";
+                _AnsLabel.Text = "정답 횟수 ";
                 _AnsLabel.Location = new Point(170, 25);
                 _AnsLabel.Size = new Size(80, 20);
+                _AnsLabel.UseCustomForeColor = true;
+                _AnsLabel.ForeColor = Color.Black;
                 _AnsLabel.UseCustomBackColor = true;
                 _AnsLabel.BackColor = _userTile.BackColor;
+                _AnsLabel.Font = new Font(_AnsLabel.Font, FontStyle.Bold);
 
                 _userTile.Controls.Add(_AnsLabel);
 
                 MetroLabel _WrgLabel = new MetroLabel();
-                _WrgLabel.Text = "오답 횟수 : ";
+                _WrgLabel.Text = "오답 횟수 ";
                 _WrgLabel.Location = new Point(170, 47);
                 _WrgLabel.Size = new Size(80, 20);
                 _WrgLabel.UseCustomBackColor = true;
                 _WrgLabel.BackColor = _userTile.BackColor;
-
-                _userTile.Controls.Add(_WrgLabel);
+                _WrgLabel.UseCustomForeColor = true;
+                _WrgLabel.ForeColor = Color.Black;
+                _WrgLabel.Font = new Font(_WrgLabel.Font, FontStyle.Bold);
 
                 MetroLabel _RateLabel = new MetroLabel();
-                _RateLabel.Text = "정답률 : ";
+                _RateLabel.Text = "정답률 ";
                 _RateLabel.Location = new Point(338, 27);
                 _RateLabel.Size = new Size(80, 30);
                 _RateLabel.UseCustomBackColor = true;
                 _RateLabel.BackColor = _userTile.BackColor;
+                _RateLabel.UseCustomForeColor = true;
+                _RateLabel.ForeColor = Color.Black;
+                _RateLabel.Font = new Font(_RateLabel.Font, FontStyle.Bold);
 
                 _userTile.Controls.Add(_RateLabel);
 
@@ -119,6 +139,8 @@ namespace Client.Forms
                 _tryCount.Size = new Size(31, 15);
                 _tryCount.UseCustomBackColor = true;
                 _tryCount.BackColor = _userTile.BackColor;
+                _tryCount.UseCustomForeColor = true;
+                _tryCount.ForeColor = Color.Black;
 
                 _userTile.Controls.Add(_tryCount);
 
@@ -128,6 +150,8 @@ namespace Client.Forms
                 _AnsCount.Size = new Size(31, 15);
                 _AnsCount.UseCustomBackColor = true;
                 _AnsCount.BackColor = _userTile.BackColor;
+                _AnsCount.UseCustomForeColor = true;
+                _AnsCount.ForeColor = Color.Black;
 
                 _userTile.Controls.Add(_AnsCount);
 
@@ -137,6 +161,8 @@ namespace Client.Forms
                 _WrgCount.Size = new Size(31, 15);
                 _WrgCount.UseCustomBackColor = true;
                 _WrgCount.BackColor = _userTile.BackColor;
+                _WrgCount.UseCustomForeColor = true;
+                _WrgCount.ForeColor = Color.Black;
                 _userTile.Controls.Add(_WrgCount);
 
                 MetroLabel _Rate = new MetroLabel();
@@ -155,6 +181,8 @@ namespace Client.Forms
                 _Rate.Size = new Size(100, 70);
                 _Rate.UseCustomBackColor = true;
                 _Rate.BackColor = _userTile.BackColor;
+                _Rate.UseCustomForeColor = true;
+                _Rate.ForeColor = Color.Black;
                 _userTile.Controls.Add(_Rate);
 
                 Result[i] = _userTile;

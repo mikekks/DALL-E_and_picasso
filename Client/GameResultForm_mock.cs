@@ -47,6 +47,7 @@ namespace Client
                 path.AddArc(_userTile.Width - borderRadius, _userTile.Height - borderRadius, borderRadius, borderRadius, 0, 90);
                 path.AddArc(0, _userTile.Height - borderRadius, borderRadius, borderRadius, 90, 90);
                 _userTile.Region = new Region(path);
+
                 y += 80;
 
                 PictureBox _rank = new PictureBox();
@@ -70,9 +71,9 @@ namespace Client
                     _rank.Image = Properties.Resources._3tier_removebg_preview;
                 }
                 else
-                {
-                    _userTile.BackColor = Color.Black;
-                    //_rank.Image = Properties.Resources.;
+                { 
+                    _userTile.BackColor = Color.AntiqueWhite;
+                    _rank.Image = Properties.Resources._3tier_removebg_preview;
                 }
                 _userTile.Controls.Add(_rank);
 
