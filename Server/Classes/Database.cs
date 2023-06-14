@@ -27,7 +27,7 @@ namespace Server.Classes
        
         public static string _server = "localhost";
         public static int _port = 3306;
-        public static string _database = "test19";
+        public static string _database = "test22";
         public static string _id = "root";
         public static string _pw = "00000000";
         public static string _connectionAddress = "";
@@ -278,6 +278,11 @@ namespace Server.Classes
             {
                 using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
                 {
+                    if(rdr == null)
+                    {
+                        return null;
+                    }
+
 
                     while (rdr.Read())
                     {
@@ -293,7 +298,7 @@ namespace Server.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("본인기록 가져오기 실패" + ex);
+                Console.WriteLine("아직 레코드는 없음\n");
                 // userId 혹은 password 미일치
                 return null;
             }
@@ -682,6 +687,69 @@ namespace Server.Classes
                                    rdr.GetBoolean("ready")));
                     }
                     return users;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        // 채팅 db에 저장
+        public static bool recordChat(string userId, string roomId, DateTime date, string chat)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand(
+                "INSERT INTO Chat VALUES (@roomId, @userId, @chat_date, @chat, @chat_length)", mysql);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@chat_date", date);
+                cmd.Parameters.AddWithValue("@chat", chat);
+                cmd.Parameters.AddWithValue("@chat_length", chat.Length);
+                
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("채팅 기록");
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        // db에 저장된 채팅 불러오기
+        public static List<Chat> getChatList(string roomId)
+        {
+            if (mysql.State != ConnectionState.Open)
+            {
+                mysql.Open();
+            }
+
+            string query = $"SELECT userId, chat, chat_date FROM Chat WHERE roomId  = '{roomId}' ORDER BY chat_date ASC";
+
+            List<Chat> chatList = new List<Chat>();
+
+            try
+            {
+                using (MySqlDataReader rdr = new MySqlCommand(query, mysql).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        chatList.Add(new Chat(
+                                   rdr.GetString("userId"),
+                                   roomId,
+                                   rdr.GetString("chat")));
+                    }
+                    return chatList;
                 }
             }
             catch (Exception ex)

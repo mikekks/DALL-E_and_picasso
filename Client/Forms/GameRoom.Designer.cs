@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tbAnswer = new System.Windows.Forms.TextBox();
-            this.log = new System.Windows.Forms.RichTextBox();
+            this.chat_List = new System.Windows.Forms.RichTextBox();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.timeLimit = new System.Windows.Forms.Label();
@@ -50,11 +50,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Send = new MetroFramework.Controls.MetroButton();
+            this.btn_ChatSend = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_Ready = new System.Windows.Forms.PictureBox();
             this.btn_Start = new System.Windows.Forms.PictureBox();
             this.btn_Exit = new System.Windows.Forms.PictureBox();
+            this.btn_AnsSend = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -72,20 +73,18 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(6, 564);
-            this.tbAnswer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbAnswer.Location = new System.Drawing.Point(5, 451);
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(253, 25);
+            this.tbAnswer.Size = new System.Drawing.Size(222, 21);
             this.tbAnswer.TabIndex = 1;
             // 
-            // log
+            // chat_List
             // 
-            this.log.Location = new System.Drawing.Point(6, 57);
-            this.log.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(284, 498);
-            this.log.TabIndex = 8;
-            this.log.Text = "";
+            this.chat_List.Location = new System.Drawing.Point(5, 46);
+            this.chat_List.Name = "chat_List";
+            this.chat_List.Size = new System.Drawing.Size(249, 354);
+            this.chat_List.TabIndex = 8;
+            this.chat_List.Text = "";
             // 
             // GameTimer
             // 
@@ -96,9 +95,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(843, 75);
+            this.label1.Location = new System.Drawing.Point(738, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 24);
+            this.label1.Size = new System.Drawing.Size(109, 19);
             this.label1.TabIndex = 18;
             this.label1.Text = "남은 시간 : ";
             // 
@@ -108,9 +107,9 @@
             this.timeLimit.BackColor = System.Drawing.Color.Lavender;
             this.timeLimit.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.timeLimit.ForeColor = System.Drawing.Color.IndianRed;
-            this.timeLimit.Location = new System.Drawing.Point(974, 75);
+            this.timeLimit.Location = new System.Drawing.Point(852, 60);
             this.timeLimit.Name = "timeLimit";
-            this.timeLimit.Size = new System.Drawing.Size(38, 24);
+            this.timeLimit.Size = new System.Drawing.Size(31, 19);
             this.timeLimit.TabIndex = 19;
             this.timeLimit.Text = "10";
             // 
@@ -118,9 +117,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 14.25F);
-            this.label3.Location = new System.Drawing.Point(1017, 75);
+            this.label3.Location = new System.Drawing.Point(890, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 24);
+            this.label3.Size = new System.Drawing.Size(28, 19);
             this.label3.TabIndex = 20;
             this.label3.Text = "초";
             // 
@@ -139,11 +138,9 @@
             this.groupBox1.Controls.Add(this.Answer1);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.picBox);
-            this.groupBox1.Location = new System.Drawing.Point(278, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(243, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(541, 704);
+            this.groupBox1.Size = new System.Drawing.Size(473, 563);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
@@ -152,12 +149,10 @@
             this.Answer6.ActiveControl = null;
             this.Answer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(204)))), ((int)(((byte)(85)))));
             this.Answer6.ForeColor = System.Drawing.Color.Black;
-            this.Answer6.Location = new System.Drawing.Point(395, 592);
-            this.Answer6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer6.Location = new System.Drawing.Point(346, 474);
             this.Answer6.Name = "Answer6";
-            this.Answer6.Size = new System.Drawing.Size(121, 54);
+            this.Answer6.Size = new System.Drawing.Size(106, 43);
             this.Answer6.TabIndex = 44;
-            this.Answer6.Text = "뭘까요?";
             this.Answer6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer6.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer6.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -169,10 +164,9 @@
             // 
             this.pictureBox4.ErrorImage = null;
             this.pictureBox4.Image = global::Client.Properties.Resources.button1_removebg_preview;
-            this.pictureBox4.Location = new System.Drawing.Point(369, 565);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(323, 452);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox4.Size = new System.Drawing.Size(149, 95);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 45;
             this.pictureBox4.TabStop = false;
@@ -182,12 +176,10 @@
             this.Answer5.ActiveControl = null;
             this.Answer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(200)))), ((int)(((byte)(50)))));
             this.Answer5.ForeColor = System.Drawing.Color.Black;
-            this.Answer5.Location = new System.Drawing.Point(217, 592);
-            this.Answer5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer5.Location = new System.Drawing.Point(190, 474);
             this.Answer5.Name = "Answer5";
-            this.Answer5.Size = new System.Drawing.Size(121, 54);
+            this.Answer5.Size = new System.Drawing.Size(106, 43);
             this.Answer5.TabIndex = 42;
-            this.Answer5.Text = "뭘까요?";
             this.Answer5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer5.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -199,10 +191,9 @@
             // 
             this.pictureBox5.ErrorImage = null;
             this.pictureBox5.Image = global::Client.Properties.Resources.button4_removebg_preview;
-            this.pictureBox5.Location = new System.Drawing.Point(191, 565);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox5.Location = new System.Drawing.Point(167, 452);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox5.Size = new System.Drawing.Size(149, 95);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 43;
             this.pictureBox5.TabStop = false;
@@ -212,12 +203,10 @@
             this.Answer4.ActiveControl = null;
             this.Answer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(206)))));
             this.Answer4.ForeColor = System.Drawing.Color.Black;
-            this.Answer4.Location = new System.Drawing.Point(39, 592);
-            this.Answer4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer4.Location = new System.Drawing.Point(34, 474);
             this.Answer4.Name = "Answer4";
-            this.Answer4.Size = new System.Drawing.Size(121, 54);
+            this.Answer4.Size = new System.Drawing.Size(106, 43);
             this.Answer4.TabIndex = 40;
-            this.Answer4.Text = "뭘까요?";
             this.Answer4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer4.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -229,10 +218,9 @@
             // 
             this.pictureBox6.ErrorImage = null;
             this.pictureBox6.Image = global::Client.Properties.Resources.button3_removebg_preview;
-            this.pictureBox6.Location = new System.Drawing.Point(13, 565);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox6.Location = new System.Drawing.Point(11, 452);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox6.Size = new System.Drawing.Size(149, 95);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 41;
             this.pictureBox6.TabStop = false;
@@ -242,12 +230,10 @@
             this.Answer3.ActiveControl = null;
             this.Answer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(206)))));
             this.Answer3.ForeColor = System.Drawing.Color.Black;
-            this.Answer3.Location = new System.Drawing.Point(395, 480);
-            this.Answer3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer3.Location = new System.Drawing.Point(346, 384);
             this.Answer3.Name = "Answer3";
-            this.Answer3.Size = new System.Drawing.Size(121, 54);
+            this.Answer3.Size = new System.Drawing.Size(106, 43);
             this.Answer3.TabIndex = 38;
-            this.Answer3.Text = "뭘까요?";
             this.Answer3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer3.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -260,10 +246,9 @@
             // 
             this.pictureBox3.ErrorImage = null;
             this.pictureBox3.Image = global::Client.Properties.Resources.button3_removebg_preview;
-            this.pictureBox3.Location = new System.Drawing.Point(369, 453);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(323, 362);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox3.Size = new System.Drawing.Size(149, 95);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 39;
             this.pictureBox3.TabStop = false;
@@ -273,12 +258,10 @@
             this.Answer2.ActiveControl = null;
             this.Answer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(216)))), ((int)(((byte)(213)))));
             this.Answer2.ForeColor = System.Drawing.Color.Black;
-            this.Answer2.Location = new System.Drawing.Point(217, 480);
-            this.Answer2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer2.Location = new System.Drawing.Point(190, 384);
             this.Answer2.Name = "Answer2";
-            this.Answer2.Size = new System.Drawing.Size(121, 54);
+            this.Answer2.Size = new System.Drawing.Size(106, 43);
             this.Answer2.TabIndex = 36;
-            this.Answer2.Text = "뭘까요?";
             this.Answer2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer2.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -290,10 +273,9 @@
             // 
             this.pictureBox2.ErrorImage = null;
             this.pictureBox2.Image = global::Client.Properties.Resources.button2_removebg_preview;
-            this.pictureBox2.Location = new System.Drawing.Point(191, 453);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(167, 362);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox2.Size = new System.Drawing.Size(149, 95);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
@@ -303,12 +285,10 @@
             this.Answer1.ActiveControl = null;
             this.Answer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(204)))), ((int)(((byte)(85)))));
             this.Answer1.ForeColor = System.Drawing.Color.Black;
-            this.Answer1.Location = new System.Drawing.Point(39, 480);
-            this.Answer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Answer1.Location = new System.Drawing.Point(34, 384);
             this.Answer1.Name = "Answer1";
-            this.Answer1.Size = new System.Drawing.Size(121, 54);
+            this.Answer1.Size = new System.Drawing.Size(106, 43);
             this.Answer1.TabIndex = 34;
-            this.Answer1.Text = "뭘까요?";
             this.Answer1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Answer1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -321,20 +301,18 @@
             // 
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = global::Client.Properties.Resources.button1_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 453);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 362);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(149, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
             // picBox
             // 
-            this.picBox.Location = new System.Drawing.Point(13, 29);
-            this.picBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.picBox.Location = new System.Drawing.Point(11, 23);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(522, 416);
+            this.picBox.Size = new System.Drawing.Size(457, 333);
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox.TabIndex = 0;
             this.picBox.TabStop = false;
@@ -342,47 +320,45 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.log);
+            this.groupBox2.Controls.Add(this.btn_AnsSend);
+            this.groupBox2.Controls.Add(this.chat_List);
             this.groupBox2.Controls.Add(this.tbAnswer);
-            this.groupBox2.Controls.Add(this.btn_Send);
-            this.groupBox2.Location = new System.Drawing.Point(828, 42);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Controls.Add(this.btn_ChatSend);
+            this.groupBox2.Location = new System.Drawing.Point(724, 34);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(296, 609);
+            this.groupBox2.Size = new System.Drawing.Size(259, 487);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
-            // btn_Send
+            // btn_ChatSend
             // 
-            this.btn_Send.BackgroundImage = global::Client.Properties.Resources.upload_removebg_preview;
-            this.btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Send.Location = new System.Drawing.Point(265, 563);
-            this.btn_Send.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Send.Name = "btn_Send";
-            this.btn_Send.Size = new System.Drawing.Size(25, 25);
-            this.btn_Send.TabIndex = 13;
-            this.btn_Send.UseSelectable = true;
-            this.btn_Send.Click += new System.EventHandler(this.btn_Send_Click);
+            this.btn_ChatSend.BackgroundImage = global::Client.Properties.Resources.upload_removebg_preview;
+            this.btn_ChatSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_ChatSend.Location = new System.Drawing.Point(232, 450);
+            this.btn_ChatSend.Name = "btn_ChatSend";
+            this.btn_ChatSend.Size = new System.Drawing.Size(22, 20);
+            this.btn_ChatSend.TabIndex = 13;
+            this.btn_ChatSend.UseSelectable = true;
+            this.btn_ChatSend.Click += new System.EventHandler(this.btn_Send_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 43);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(246, 598);
+            this.dataGridView1.Size = new System.Drawing.Size(215, 478);
             this.dataGridView1.TabIndex = 29;
             // 
             // btn_Ready
             // 
             this.btn_Ready.ErrorImage = null;
             this.btn_Ready.Image = global::Client.Properties.Resources.ready_removebg_preview;
-            this.btn_Ready.Location = new System.Drawing.Point(26, 659);
-            this.btn_Ready.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Ready.Location = new System.Drawing.Point(23, 527);
             this.btn_Ready.Name = "btn_Ready";
-            this.btn_Ready.Size = new System.Drawing.Size(246, 75);
+            this.btn_Ready.Size = new System.Drawing.Size(215, 60);
             this.btn_Ready.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_Ready.TabIndex = 46;
             this.btn_Ready.TabStop = false;
@@ -392,10 +368,9 @@
             // 
             this.btn_Start.ErrorImage = null;
             this.btn_Start.Image = global::Client.Properties.Resources.start_removebg_preview;
-            this.btn_Start.Location = new System.Drawing.Point(828, 667);
-            this.btn_Start.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Start.Location = new System.Drawing.Point(724, 527);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(175, 75);
+            this.btn_Start.Size = new System.Drawing.Size(153, 60);
             this.btn_Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_Start.TabIndex = 47;
             this.btn_Start.TabStop = false;
@@ -405,20 +380,30 @@
             // 
             this.btn_Exit.ErrorImage = null;
             this.btn_Exit.Image = global::Client.Properties.Resources.exit2_removebg_preview;
-            this.btn_Exit.Location = new System.Drawing.Point(1009, 667);
-            this.btn_Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Exit.Location = new System.Drawing.Point(883, 527);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(109, 75);
+            this.btn_Exit.Size = new System.Drawing.Size(95, 60);
             this.btn_Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_Exit.TabIndex = 48;
             this.btn_Exit.TabStop = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
+            // btn_AnsSend
+            // 
+            this.btn_AnsSend.Location = new System.Drawing.Point(75, 407);
+            this.btn_AnsSend.Name = "btn_AnsSend";
+            this.btn_AnsSend.Size = new System.Drawing.Size(119, 38);
+            this.btn_AnsSend.TabIndex = 14;
+            this.btn_AnsSend.Text = "Check";
+            this.btn_AnsSend.UseVisualStyleBackColor = true;
+            this.btn_AnsSend.Click += new System.EventHandler(this.btn_AnsSend_Click);
             // 
             // GameRoom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1150, 758);
+            this.ClientSize = new System.Drawing.Size(1031, 638);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.btn_Ready);
@@ -429,9 +414,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.DisplayHeader = false;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "GameRoom";
-            this.Padding = new System.Windows.Forms.Padding(23, 38, 23, 25);
+            this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
             this.Style = MetroFramework.MetroColorStyle.White;
             this.TransparencyKey = System.Drawing.SystemColors.InfoText;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameRoom_FormClosing);
@@ -459,8 +443,8 @@
 
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.TextBox tbAnswer;
-        private System.Windows.Forms.RichTextBox log;
-        private MetroFramework.Controls.MetroButton btn_Send;
+        private System.Windows.Forms.RichTextBox chat_List;
+        private MetroFramework.Controls.MetroButton btn_ChatSend;
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label timeLimit;
@@ -484,6 +468,7 @@
         private System.Windows.Forms.PictureBox btn_Ready;
         private System.Windows.Forms.PictureBox btn_Start;
         private System.Windows.Forms.PictureBox btn_Exit;
+        private System.Windows.Forms.Button btn_AnsSend;
     }
 }
 

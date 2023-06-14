@@ -111,7 +111,8 @@ namespace Server.Classes
                         // ! 이미 접속 처리
                         if (!Program.loginClient(this))
                         {
-                            
+                            user.TryCount = 0;
+                            user.AnsCount = 0;
                         }
 
                         p = new LoginPacket(true, user, roomList);
@@ -317,6 +318,7 @@ namespace Server.Classes
                             Room _room = Database.EnterOrExit_Room(roomId: p.room.roomId, userId: p.user.userId, 1);
 
                             _room.userList = Database.getReadyList(roomId: p.room.roomId);
+                            _room.ChatList = Database.getChatList(p.room.roomId);
 
                             RoomPacket sendPacket = new RoomPacket(_room, RoomType.Enter);
                             Send(sendPacket);
@@ -485,6 +487,35 @@ namespace Server.Classes
                                 Send(sendPacket);
                             }
                         }
+                    }
+                    else if (p.respondType == respondType.Chat)
+                    {
+                        // db에 해당 채팅 저장
+                        bool suc = Database.recordChat(p.user.userId, p.room.roomId, p.room.ChatList[0].date, p.room.ChatList[0].chat);
+
+                        // db에서 해당 방에 해당하는 채팅 쿼리, List<Chat>으로 반환
+                        if (suc)
+                        {
+                            List<Chat> chatList = Database.getChatList(p.room.roomId);
+                            p.room.ChatList = chatList;
+
+                            foreach (User user in p.room.userList)
+                            {
+                                InGamePacket sendPacket = new InGamePacket(user, p.room);
+                                sendPacket.respondType = respondType.Chat;
+
+                                Program.clientList[user.userId].Send(sendPacket);
+                            }
+
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("채팅 저장 실패");
+                        }
+
+                        // 해당 방에 있는 사람들에게 for문으로 전달
+
                     }
                     else if (p.respondType == respondType.Answer)
                     {

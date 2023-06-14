@@ -34,6 +34,10 @@ namespace Client
 
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
+            btn_CreateRoom.FlatAppearance.BorderSize = 0;
+            btn_Myinfo.FlatAppearance.BorderSize = 0;
+            btn_reset.FlatAppearance.BorderSize = 0;
+            btn_quit.FlatAppearance.BorderSize = 0;
             // 로그인 하는 과정
             if (!Program.MethodList.ContainsKey(PacketType.Room))
                 Program.MethodList.Add(PacketType.Room, R_EnterRoom);
@@ -58,9 +62,6 @@ namespace Client
                     
                 }
             }
-
-
-            //MainPic.Load("");
 
             viewRoomList();
 
@@ -288,23 +289,7 @@ namespace Client
 
         private void btn_CreateRoom_Click(object sender, EventArgs e)
         {
-            Opacity = 0.5;
-            CreateRoomForm createRoomForm = new CreateRoomForm();
-            createRoomForm.ShowDialog();
-            Opacity = 1;
-
-            if (Program.room == null)  // 나가기 한 경우
-            {
-                // ! 업데이트를 시켜줘야 하나?
-            }
-            else  // 만든 경우
-            {
-
-                GameRoom gameRoom = new GameRoom();
-                Hide();
-                gameRoom.Show();
-               
-            }
+           
 
             
         }
@@ -355,8 +340,7 @@ namespace Client
         private void btn_reset_Click(object sender, EventArgs e)
         {
 
-            SettingPacket packet = new SettingPacket(Program.user.userId, Program.user.password);
-            Program.Send(packet);
+           
         }
 
         public void R_Setting(Packet packet)
@@ -390,6 +374,56 @@ namespace Client
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_CreateRoom_Click_1(object sender, EventArgs e)
+        {
+            //Opacity = 0.5;
+            CreateRoomForm createRoomForm = new CreateRoomForm();
+            createRoomForm.ShowDialog();
+            //Opacity = 1;
+
+            if (Program.room == null)  // 나가기 한 경우
+            {
+                // ! 업데이트를 시켜줘야 하나?
+            }
+            else  // 만든 경우
+            {
+
+                GameRoom gameRoom = new GameRoom();
+                Hide();
+                gameRoom.Show();
+
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Opacity = 0.5;
+            MyInfoForm myInfoForm = new MyInfoForm();
+            myInfoForm.FormClosing += MyInfoForm_FormClosing;
+            myInfoForm.ShowDialog();
+            Opacity = 100;
+        }
+
+        private void btn_Myinfo_Click_1(object sender, EventArgs e)
+        {
+            Opacity = 0.5;
+            MyInfoForm myInfoForm = new MyInfoForm();
+            myInfoForm.FormClosing += MyInfoForm_FormClosing;
+            myInfoForm.ShowDialog();
+            Opacity = 100;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_reset_Click_1(object sender, EventArgs e)
+        {
+            SettingPacket packet = new SettingPacket(Program.user.userId, Program.user.password);
+            Program.Send(packet);
         }
     }
 }

@@ -28,8 +28,9 @@ namespace DalleLib.InGame
 
         public bool nowPlaying;
 
-        public string Chat;
-        
+       
+        public List<Chat> ChatList;
+
 
         public Room(string roomId, int level)
         {

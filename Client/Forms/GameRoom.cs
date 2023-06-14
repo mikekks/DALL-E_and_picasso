@@ -56,17 +56,9 @@ namespace Client
 
             Text = Program.room.roomId;  // 방의 제목
            // picBox.Load("https://static.designboom.com/wp-content/uploads/2022/06/dalle-2-ai-system-designboom-01.jpg");
-            
-            // 레디 타이머 설정
-            //timer.Interval = 500;
-            //timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-
-            //Anstimer.Interval = 500;
-            //Anstimer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed_Ans);
-
-            // 방 들어가기 전에 Room이 갱신됨
-            
+ 
             ResetReadyList();
+            ResetChatList();
 
             metroTiles = new MetroTile[] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
             for (int i = 0; i < 6; i++)
@@ -83,7 +75,6 @@ namespace Client
             for (int i=5; i>=Program.room.level; i--)
             {
                 metroTiles[i].Enabled = false;
-                //metroTiles[i].Text = "X";
 
                 metroTiles[i].Text = "";
                 PictureBox pictureBox = new PictureBox();
@@ -92,8 +83,6 @@ namespace Client
                 pictureBox.Dock = DockStyle.Fill;
                 metroTiles[i].Controls.Add(pictureBox);
             }
-
-            // 레디 타이머 시작
             
         }
         public void ResetReadyList()
@@ -138,15 +127,25 @@ namespace Client
             }
         }
 
-        /*
-        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        public void ResetChatList()
         {
-            // UI Thread 처리
-            BeginInvoke(new TimerEventFiredDelegate(Ready_Check));
+           
+            chat_List.Clear();
+            chat_List.Text += "----------------chatting------------";
+
+            if(Program.room.ChatList == null)
+            {
+                return;
+            }
+
+            foreach (Chat chat in Program.room.ChatList)
+            {
+               chat_List.Text += Environment.NewLine + chat.sender;
+               chat_List.Text += " : " + chat.chat;
+            }
+
         }
-       
-        }
-         */
+
         public void R_PlayGame(Packet packet)
         {
             InGamePacket p = packet as InGamePacket;
@@ -164,6 +163,19 @@ namespace Client
                     ResetReadyList();
                 }
    
+            }
+            else if (p.respondType == respondType.Chat)
+            {
+                Program.room = p.room;
+
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { R_PlayGame(packet); }));
+                }
+                else
+                {
+                    ResetChatList();
+                }
             }
             else if (p.respondType == respondType.Loading)
             {
@@ -295,16 +307,17 @@ namespace Client
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
+            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);
+            ingamePacket.respondType = respondType.Chat;
 
-            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
-            ingamePacket.respondType = respondType.Answer;
-
-            ingamePacket.Answer = tbAnswer.Text;
+            Chat chat = new Chat(Program.user.userId, Program.room.roomId, tbAnswer.Text, DateTime.Now);
+            ingamePacket.room.ChatList = new List<Chat>() { chat };
 
             Program.Send(ingamePacket);
 
             tbAnswer.Text = "";
             tbAnswer.Focus();
+
         }
 
 
@@ -418,6 +431,24 @@ namespace Client
         private void Answer3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_AnsSend_Click(object sender, EventArgs e)
+        {
+            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
+            ingamePacket.respondType = respondType.Answer;
+
+            ingamePacket.Answer = tbAnswer.Text;
+
+            Program.Send(ingamePacket);
+
+            tbAnswer.Text = "";
+            tbAnswer.Focus();
         }
     }
 }
