@@ -31,28 +31,31 @@
             this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Tier = new System.Windows.Forms.Label();
+            this.lbl_Id = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.ProfilePic = new System.Windows.Forms.PictureBox();
             this.TierPic = new System.Windows.Forms.PictureBox();
             this.btn_quit = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
             this.btn_Myinfo = new System.Windows.Forms.Button();
             this.btn_CreateRoom = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbl_Id = new System.Windows.Forms.Label();
-            this.lbl_Tier = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TierPic)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroProgressSpinner1
@@ -86,6 +89,46 @@
             this.panel1.Size = new System.Drawing.Size(184, 288);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lbl_Tier
+            // 
+            this.lbl_Tier.AutoSize = true;
+            this.lbl_Tier.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_Tier.Location = new System.Drawing.Point(89, 262);
+            this.lbl_Tier.Name = "lbl_Tier";
+            this.lbl_Tier.Size = new System.Drawing.Size(46, 12);
+            this.lbl_Tier.TabIndex = 16;
+            this.lbl_Tier.Text = "lbl_Tier";
+            // 
+            // lbl_Id
+            // 
+            this.lbl_Id.AutoSize = true;
+            this.lbl_Id.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_Id.Location = new System.Drawing.Point(81, 126);
+            this.lbl_Id.Name = "lbl_Id";
+            this.lbl_Id.Size = new System.Drawing.Size(34, 12);
+            this.lbl_Id.TabIndex = 15;
+            this.lbl_Id.Text = "lbl_Id";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label3.Location = new System.Drawing.Point(34, 262);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 12);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Tier : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label2.Location = new System.Drawing.Point(45, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 12);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "ID : ";
             // 
             // ProfilePic
             // 
@@ -167,46 +210,6 @@
             this.btn_CreateRoom.UseVisualStyleBackColor = false;
             this.btn_CreateRoom.Click += new System.EventHandler(this.btn_CreateRoom_Click_1);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(45, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 12);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "ID : ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label3.Location = new System.Drawing.Point(34, 262);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 12);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Tier : ";
-            // 
-            // lbl_Id
-            // 
-            this.lbl_Id.AutoSize = true;
-            this.lbl_Id.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_Id.Location = new System.Drawing.Point(81, 126);
-            this.lbl_Id.Name = "lbl_Id";
-            this.lbl_Id.Size = new System.Drawing.Size(34, 12);
-            this.lbl_Id.TabIndex = 15;
-            this.lbl_Id.Text = "lbl_Id";
-            // 
-            // lbl_Tier
-            // 
-            this.lbl_Tier.AutoSize = true;
-            this.lbl_Tier.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_Tier.Location = new System.Drawing.Point(89, 262);
-            this.lbl_Tier.Name = "lbl_Tier";
-            this.lbl_Tier.Size = new System.Drawing.Size(46, 12);
-            this.lbl_Tier.TabIndex = 16;
-            this.lbl_Tier.Text = "lbl_Tier";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -232,45 +235,16 @@
             this.tabControl1.Size = new System.Drawing.Size(468, 273);
             this.tabControl1.TabIndex = 5;
             // 
-            // tabPage6
+            // tabPage1
             // 
-            this.tabPage6.AutoScroll = true;
-            this.tabPage6.Location = new System.Drawing.Point(4, 24);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(460, 245);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Level 6";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.AutoScroll = true;
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(460, 245);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Level 5";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.AutoScroll = true;
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(460, 245);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Level 4";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.AutoScroll = true;
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(460, 245);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Level 3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage1.AutoScroll = true;
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(460, 245);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Level 1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -283,16 +257,56 @@
             this.tabPage2.Text = "Level 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // tabPage3
             // 
-            this.tabPage1.AutoScroll = true;
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(460, 245);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Level 1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.pictureBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(460, 245);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Level 3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.AutoScroll = true;
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(460, 245);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Level 4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.AutoScroll = true;
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(460, 245);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Level 5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.AutoScroll = true;
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(460, 245);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Level 6";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Client.Properties.Resources.그림5;
+            this.pictureBox1.Location = new System.Drawing.Point(79, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -328,6 +342,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TierPic)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +371,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

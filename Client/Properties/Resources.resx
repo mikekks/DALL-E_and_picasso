@@ -265,4 +265,19 @@
   <data name="그림6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\그림6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="realCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\realCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="로딩화면" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\로딩화면.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="로딩화면2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\로딩화면2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="로딩화면3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\로딩화면3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

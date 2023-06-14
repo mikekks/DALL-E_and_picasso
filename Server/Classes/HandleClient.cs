@@ -442,9 +442,7 @@ namespace Server.Classes
 
                                 // 달리 이미지 생성
                                 Dictionary<int, string> imgList = new Dictionary<int, string>();
-                                // imgList = await dall_E.CreateImgList(promptList);
-
-                                
+                                imgList = await dall_E.CreateImgList(promptList);
 
                                 for (int i = 1; i <= 5; i++)
                                 {

@@ -24,11 +24,15 @@ namespace Client
 
     public partial class GameRoom : MetroFramework.Forms.MetroForm
     {
-        DataSet2 dataset;
+        //DataSet2 dataset;
 
         Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        
         Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont1_5 = new Font(FontManager.fontFamilys[0], 18, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
         Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2_5 = new Font(FontManager.fontFamilys[0], 13, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
         Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
         Font mapleFont4 = new Font(FontManager.fontFamilys[0], 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 
@@ -45,9 +49,6 @@ namespace Client
         public GameRoom()
         {
             InitializeComponent();
-            dataset = new DataSet2();
-
-            dataGridView1.DataSource = dataset.Tables["DataTable1"];
          }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -61,6 +62,8 @@ namespace Client
             label1.Font = mapleFont2;
             label3.Font = mapleFont2;
             timeLimit.Font = mapleFont2;
+            label4.Font = mapleFont1_5;
+            label5.Font = mapleFont1_5;
 
             ResetReadyList();
             ResetChatList();
@@ -92,63 +95,99 @@ namespace Client
         }
         public void ResetReadyList()
         {
-            dataset.Tables["Datatable1"].Rows.Clear();
 
-            //rdy_list.Clear();
-            //rdy_list.Text += "---------Ready List---------" + Environment.NewLine;
+            ready_list1.Controls.Clear();
+            ready_list2.Controls.Clear();
+            int i = 0;
+            int y = 0;
             foreach (User player in Program.room.userList)
             {
-                //rdy_list.Text += Environment.NewLine + player.userId;
+                Button _button1 = new Button();
+                Button _button2 = new Button();
+                _button1.Enabled = false;
+                _button2.Enabled = false;
 
-                dataset.Tables["Datatable1"].Rows.Add(new object[]
-                {
-                player.userId,"준비중.."
-                });
+                _button1.Size = new Size(134, 42);
+                _button1.Text = player.userId;
+                _button1.Font = mapleFont2_5;
+                _button1.Location = new Point(0, y);
 
+
+                _button2.Size = new Size(80, 42);
+                _button2.Font = mapleFont2_5;
+                _button2.Location = new Point(3, y);
                 if (player.ready == true)
                 {
-                    /*
-                    rdy_list.ForeColor = Color.Red;
-                    rdy_list.SelectionColor = Color.Red;
-                    rdy_list.Text += "     ready!";
-                    rdy_list.SelectionColor = Color.Black;
-                    rdy_list.ForeColor = Color.Black;
-                    */
-                    foreach (DataRow row in dataset.Tables["Datatable1"].Rows)
-                    {
-                        Console.WriteLine(row["USERS"]);
-                        Console.WriteLine(row["READY"]);
-
-                        if (row["USERS"].ToString() == player.userId)
-                        {
-                            row["READY"] = "완료";
-
-                            Console.WriteLine(row["USERS"].ToString() == player.userId);
-                            Console.WriteLine(row["USERS"].ToString());
-                            Console.WriteLine(player.userId);
-                        }
-                    }
+                    _button2.Text = "Ready!";
                 }
+                else
+                {
+                    _button2.Text = "Wait..";
+                }
+
+                _button1.ForeColor = Color.MidnightBlue;
+                _button2.ForeColor = Color.MidnightBlue;
+                if (i % 2 == 1)
+                {
+                    _button1.BackColor = Color.LemonChiffon;
+                    _button2.BackColor = Color.LemonChiffon;
+                   
+                }
+                else
+                {
+                    _button1.BackColor = Color.LightSkyBlue;
+                    _button2.BackColor = Color.LightSkyBlue;
+             
+                }
+
+                i++;
+                y += 50;
+
+                ready_list1.Controls.Add(_button1);
+                ready_list2.Controls.Add(_button2);
             }
         }
 
         public void ResetChatList()
         {
-           
-            chat_List.Clear();
-            chat_List.Text += "----------------chatting------------";
+            chat_list.Controls.Clear();
 
-            if(Program.room.ChatList == null)
+            if (Program.room.ChatList == null)
             {
                 return;
             }
 
+
+            int i = 0;
+            int y = 5;
             foreach (Chat chat in Program.room.ChatList)
             {
-               chat_List.Text += Environment.NewLine + chat.sender;
-               chat_List.Text += " : " + chat.chat;
-            }
+                Button _button1 = new Button();
+                _button1.Enabled = false;
 
+                _button1.Size = new Size(248, 23);
+                _button1.Text = chat.sender + " : " + chat.chat;
+                _button1.Font = mapleFont4;
+                _button1.Location = new Point(0, y);
+                _button1.FlatAppearance.BorderSize = 0;
+                _button1.FlatStyle = FlatStyle.Flat;
+                _button1.TextAlign = ContentAlignment.MiddleLeft;
+                if (chat.sender != Program.user.userId)
+                {
+                    _button1.BackColor = Color.LemonChiffon;
+                    _button1.ForeColor = Color.MidnightBlue;
+                }
+                else
+                {
+                    _button1.BackColor = Color.LightSkyBlue;
+                    _button1.ForeColor = Color.MidnightBlue;
+                }
+
+                i++;
+                y += 30;
+                chat_list.Controls.Add(_button1);
+            }
+            
         }
 
         public void R_PlayGame(Packet packet)
@@ -184,7 +223,7 @@ namespace Client
             }
             else if (p.respondType == respondType.Loading)
             {
-                LoadingForm loadingForm = new LoadingForm(10);
+                InitLoadingForm loadingForm = new InitLoadingForm();
                 loadingForm.ShowDialog();
             }
             else if(p.respondType == respondType.Start)  // 무조건 게임 시작해도 됨을 의미
@@ -461,9 +500,28 @@ namespace Client
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+
+        private void tbAnswer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);
+                ingamePacket.respondType = respondType.Chat;
+
+                Chat chat = new Chat(Program.user.userId, Program.room.roomId, tbAnswer.Text, DateTime.Now);
+                ingamePacket.room.ChatList = new List<Chat>() { chat };
+
+                Program.Send(ingamePacket);
+
+                tbAnswer.Text = "";
+                tbAnswer.Focus();
+            }
+        }
+
+        private void btn_exit_Click_2(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

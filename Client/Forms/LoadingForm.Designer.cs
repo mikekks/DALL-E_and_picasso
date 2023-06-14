@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
             this.loadingTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.loadingTime = new System.Windows.Forms.Label();
             this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.panel1.SuspendLayout();
-
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +46,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel1.Controls.Add(this.loadingTime);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 150);
@@ -60,16 +58,16 @@
             // 
             this.loadingTime.AutoSize = true;
             this.loadingTime.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.loadingTime.ForeColor = System.Drawing.Color.White;
+            this.loadingTime.ForeColor = System.Drawing.Color.MidnightBlue;
             this.loadingTime.Location = new System.Drawing.Point(8, 15);
             this.loadingTime.Name = "loadingTime";
-            this.loadingTime.Size = new System.Drawing.Size(345, 40);
+            this.loadingTime.Size = new System.Drawing.Size(346, 40);
             this.loadingTime.TabIndex = 17;
-            this.loadingTime.Text = "다음 게임이 시작 됩니다.";
+            this.loadingTime.Text = "다음 게임이 시작 됩니다!";
             // 
             // metroProgressSpinner1
             // 
-            this.metroProgressSpinner1.BackColor = System.Drawing.Color.White;
+            this.metroProgressSpinner1.BackColor = System.Drawing.Color.LemonChiffon;
             this.metroProgressSpinner1.Location = new System.Drawing.Point(121, 30);
             this.metroProgressSpinner1.Maximum = 100;
             this.metroProgressSpinner1.Name = "metroProgressSpinner1";
@@ -81,9 +79,7 @@
             // 
             // metroPanel1
             // 
-
-            this.metroPanel1.BackColor = System.Drawing.Color.White;
-
+            this.metroPanel1.BackColor = System.Drawing.Color.LemonChiffon;
             this.metroPanel1.Controls.Add(this.metroProgressSpinner1);
             this.metroPanel1.Controls.Add(this.panel1);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,7 +97,6 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-
             // LoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -110,20 +105,17 @@
             this.ClientSize = new System.Drawing.Size(402, 275);
             this.ControlBox = false;
             this.Controls.Add(this.metroPanel1);
-
             this.DisplayHeader = false;
             this.Movable = false;
             this.Name = "LoadingForm";
             this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.White;
-
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadingForm_FormClosing);
             this.Load += new System.EventHandler(this.LoadingForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

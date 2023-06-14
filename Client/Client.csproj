@@ -58,14 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet2.cs">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CreateRoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +81,12 @@
     </Compile>
     <Compile Include="Forms\GameRoom.Designer.cs">
       <DependentUpon>GameRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InitLoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InitLoadingForm.Designer.cs">
+      <DependentUpon>InitLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
@@ -154,6 +152,9 @@
     <EmbeddedResource Include="Forms\GameRoom.resx">
       <DependentUpon>GameRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InitLoadingForm.resx">
+      <DependentUpon>InitLoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,17 +184,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DataSet2.xsc">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet2.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet2.xss">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -290,6 +280,11 @@
     <None Include="Resources\그림6.png" />
     <None Include="Resources\그림1.png" />
     <None Include="Resources\그림2.png" />
+    <None Include="Resources\btn_check.png" />
+    <None Include="Resources\realCheck.png" />
+    <None Include="Resources\로딩화면.png" />
+    <None Include="Resources\로딩화면2.png" />
+    <None Include="Resources\로딩화면3.png" />
     <Content Include="Source\Tier_Bronze.png" />
     <Content Include="Source\Tier_Gold.png" />
     <Content Include="Source\Tier_Silver2.png" />

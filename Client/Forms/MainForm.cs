@@ -116,7 +116,6 @@ namespace Client
                 
             }
 
-            //int y = 10;
             int[] y = new int[6] {10,10,10,10,10,10 };
 
             for (int i = 0; i < Program.roomList.Count; i++)
@@ -129,33 +128,41 @@ namespace Client
                 _roomTile.Width = 438;
                 _roomTile.Height = 65;
                 _roomTile.Location = new Point(5, y[_level]);
-                if(i % 5 == 0)
+
+                
+                PictureBox pic = new PictureBox();
+                pic.Size = new Size(100, 65);
+                pic.Location = new Point(0, 0);
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                if (i % 5 == 0)
                 {
-                    _roomTile.TileImage = Properties.Resources.Van;
-                    _roomTile.BackColor = Color.BlueViolet;
+                    pic.Image = Properties.Resources.그림1;
+                   
+                    _roomTile.BackColor = Color.LightSkyBlue;
                 }
                 else if(i % 5 == 1)
                 {
-                    _roomTile.TileImage = Properties.Resources.Van;
+                    pic.Image = Properties.Resources.그림2;
                     _roomTile.BackColor = Color.Black;
                 }
                 else if (i % 5 == 2)
                 {
-                    _roomTile.TileImage = Properties.Resources.Van;
-                    _roomTile.BackColor = Color.Blue;
+                    pic.Image = Properties.Resources.그림3;
+                    _roomTile.BackColor = Color.Lime;
                 }
                 else if (i % 5 == 3)
                 {
-                    _roomTile.TileImage = Properties.Resources.Van;
+                    pic.Image = Properties.Resources.그림4;
                     _roomTile.BackColor = Color.DarkGreen;
                 }
                 else if (i % 5 == 4)
                 {
-                    _roomTile.TileImage = Properties.Resources.Van;
-                    _roomTile.BackColor = Color.Yellow;
+                    pic.Image = Properties.Resources.그림5;
+                    _roomTile.BackColor = Color.MintCream;
                 }
-              
-               
+
+                _roomTile.Controls.Add(pic);
                 _roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
                 _roomTile.UseTileImage = true;
                 y[_level] += 70;

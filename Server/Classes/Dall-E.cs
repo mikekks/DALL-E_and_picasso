@@ -100,9 +100,9 @@ namespace Server.Classes
 
         static async Task CreateImage(HttpClient sharedClient, string _prompt, int idx)
         {
-            string apiKey;
+            string apiKey = "Bearer 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";
 
-           
+
             using (StringContent jsonContent = new StringContent(
                 Newtonsoft.Json.JsonConvert.SerializeObject(new
                 {
@@ -116,7 +116,7 @@ namespace Server.Classes
                 "application/json"))
             {
                 
-                // sharedClient.DefaultRequestHeaders.Add("Authorization", apiKey);
+                sharedClient.DefaultRequestHeaders.Add("Authorization", apiKey);
 
                 using (HttpResponseMessage response = await sharedClient.PostAsync(
                     "v1/images/generations",

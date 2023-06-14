@@ -133,6 +133,16 @@ namespace Client.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        public static System.Drawing.Bitmap btn_check {
+            get {
+                object obj = ResourceManager.GetObject("btn_check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         public static System.Drawing.Bitmap button1_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("button1-removebg-preview", resourceCulture);
@@ -316,6 +326,16 @@ namespace Client.Properties {
         public static System.Drawing.Bitmap ready_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("ready-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap realCheck {
+            get {
+                object obj = ResourceManager.GetObject("realCheck", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -526,6 +546,36 @@ namespace Client.Properties {
         public static System.Drawing.Bitmap 그림6 {
             get {
                 object obj = ResourceManager.GetObject("그림6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 로딩화면 {
+            get {
+                object obj = ResourceManager.GetObject("로딩화면", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 로딩화면2 {
+            get {
+                object obj = ResourceManager.GetObject("로딩화면2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 로딩화면3 {
+            get {
+                object obj = ResourceManager.GetObject("로딩화면3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
