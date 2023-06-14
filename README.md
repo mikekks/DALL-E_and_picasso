@@ -30,6 +30,10 @@
 ### 테이블 생성
 ##### sql
 ``` sql
+use mysql;
+CREATE DATABASE test28;
+use test28;
+
 CREATE TABLE `Users` (
   `userId` VARCHAR(100) PRIMARY KEY NOT NULL,
   `roomId` VARCHAR(100),
@@ -61,16 +65,15 @@ CREATE TABLE `Rooms` (
   `currentNum` INT,
   `totalNum` INT,
   `level` INT,
-  `Round` INT,
-  `Chat` BLOB
+  `Round` INT
 );
 CREATE TABLE `Chat` (
   `roomId` VARCHAR(100) NOT NULL,
   `userId` VARCHAR(100) NOT NULL,
-  `chat_date` DATETIME UNIQUE,
-  `data` BLOB,
+  `chat_date` DATETIME NOT NULL,
+  `chat` VARCHAR(100),
   `data_length` INT,
-  PRIMARY KEY (`roomId`, `userId`)
+  PRIMARY KEY (`roomId`, `userId`, `chat_date`)
 );
 CREATE TABLE `Records` (
   `userId` VARCHAR(100) NOT NULL,
