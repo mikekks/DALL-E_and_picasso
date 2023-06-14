@@ -96,17 +96,21 @@ namespace Client
                 metroTabControl1.TabPages[i].Controls.Clear();
             }
 
-            int y = 10;
+            //int y = 10;
+            int[] y = new int[6] {10,10,10,10,10,10 };
+
             for (int i = 0; i < Program.roomList.Count; i++)
             {
+                int _level = Program.roomList[i].level - 1;
+
                 MetroTile _roomTile = new MetroTile();
                 _roomTile.Width = 438;
                 _roomTile.Height = 65;
-                _roomTile.Location = new Point(5, y);
+                _roomTile.Location = new Point(5, y[_level]);
                 _roomTile.TileImage = Properties.Resources.Van;
                 _roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
                 _roomTile.UseTileImage = true;
-                y += 70;
+                y[_level] += 70;
 
                 MetroLabel _roomName = new MetroLabel();
                 _roomName.Text = Program.roomList[i].roomId;
@@ -123,8 +127,6 @@ namespace Client
                 _roomTile.Click += new EventHandler(Room_Click);
                 _roomTile.Tag = Program.roomList[i];
                 roomTile[i] = _roomTile;
-
-                int _level = Program.roomList[i].level - 1;
 
                 metroTabControl1.TabPages[_level].Controls.Add(roomTile[i]);
                 
