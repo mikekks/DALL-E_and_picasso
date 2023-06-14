@@ -26,9 +26,8 @@
 
 ## Database
 
-#### 사전 준비 사항
 
-#### 테이블 생성
+### 테이블 생성
 ##### sql
 ``` sql
 CREATE TABLE `Users` (
@@ -107,7 +106,7 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 
 ## DALL-E
 
-#### DALL-E API
+#### 달리 API란?
 <div style="display:flex">
     <img src="https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/61c78775-d44c-49c6-977e-140f89488b3f" alt="Image 1" width="400">
     <img src="https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/d0fea333-34bf-484b-844f-2df8e5a8d428" alt="Image 2" width="600">
@@ -116,6 +115,32 @@ DALL-E API는 OpenAI에서 제공하는 인공지능 모델인 DALL-E에 접근�
 이미지 생성과 관련된 기능을 사용할 수 있는 인터페이스입니다.
 
 ## Getting Started
+#### 프로그램 실행을 위한 사전 준비 작업은 다음과 같습니다.
+#### 1. MySql 설치(MacOS)
+#### 기본 설치경로 유무 확인
+```
+cd /usr/local/mysql 
+```
+#### 2. MySql 상태 확인
+```
+netstat -an |grep LISTEN   
+netstat -an |grep 3306     
+netstat -an |grep mysql 
+```
+#### 3. 터미널에서 MySql 상태 확인
+```
+./mysql -u testId -p testPw
+```
+#### 4. MySql 데이터베이스 목록 확인
+```
+mysql> SHOW DATABASES;
+```
+#### 4. Database 생성 및 사용
+```
+use mysql;
+CREATE DATABASE test18;
+use test18;
+```
 
 ## Program  
 ++ 홈페이지 진입, 게임 도중, 게임 결과화면 추가하기
