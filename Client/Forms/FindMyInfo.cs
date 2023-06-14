@@ -19,6 +19,19 @@ namespace Client.Forms
     {
         public MetroTextBox[] tb;
 
+        Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+        Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont1_5 = new Font(FontManager.fontFamilys[0], 18, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2_5 = new Font(FontManager.fontFamilys[0], 13, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+        Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont4 = new Font(FontManager.fontFamilys[0], 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+        List<Label> labels = new List<Label>();
+
+
         public FindMyInfo()
         {
             InitializeComponent();
@@ -36,11 +49,28 @@ namespace Client.Forms
 
         private void FindMyInfo_Load(object sender, EventArgs e)
         {
-            forTest_Connect();
+           
+            label1.Font = mapleFont2;
+            label2.Font = mapleFont2;
+
+            lab_Answer.Font = mapleFont4;
+            lab_ID.Font = mapleFont4;
+            lab_name.Font = mapleFont4;
+            lab_Quest.Font = mapleFont4;
+            label7.Font = mapleFont4;
+            label5.Font = mapleFont4;
+            label6.Font = mapleFont4;
+            label8.Font = mapleFont4;
+            label4.Font = mapleFont4;
+
+            btn_Check.Font = mapleFont4;
+            button1.Font = mapleFont4;
         }
 
         private void btn_Check_Click(object sender, EventArgs e)
         {
+            forTest_Connect();
+
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
@@ -120,6 +150,8 @@ namespace Client.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            forTest_Connect();
+
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 

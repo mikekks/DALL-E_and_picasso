@@ -35,7 +35,7 @@ namespace Client.Forms
 
         private void GameResultForm_Load(object sender, EventArgs e)
         {
-
+            label1.Font = mapleFont;
             Program.records.Sort(new Comparison<Records>((n1, n2) => n2.correctCount.CompareTo(n1.correctCount)));
 
             int y = 60;
@@ -45,9 +45,6 @@ namespace Client.Forms
                 _userTile.Width = 520;
                 _userTile.Height = 70;
                 _userTile.Location = new Point(150, y);
-                //_roomTile.Enabled = false;
-                //_roomTile.TileImage = Properties.Resources.Van;
-                //_roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
                 _userTile.UseCustomBackColor = true;
                 _userTile.UseTileImage = true;
 

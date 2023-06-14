@@ -20,6 +20,18 @@ namespace Client.Forms
         public bool duplicateCheck;
         public MetroTextBox[] tb;
 
+        Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+        Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont1_5 = new Font(FontManager.fontFamilys[0], 18, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2_5 = new Font(FontManager.fontFamilys[0], 13, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+        Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont4 = new Font(FontManager.fontFamilys[0], 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+
+
         public Register_Form()
         {
             InitializeComponent();
@@ -38,7 +50,8 @@ namespace Client.Forms
         private void btn_IDcheck_Click(object sender, EventArgs e)
         {
             // id 중복도 검사
-            if(!Program.MethodList.ContainsKey(PacketType.Register))
+            forTest_Connect();
+            if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
             RegisterPacket registerPacket = new RegisterPacket(tb_id.Text);
@@ -133,6 +146,7 @@ namespace Client.Forms
 
         private void btn_Check_Click(object sender, EventArgs e)
         {
+            forTest_Connect();
             if (!Program.MethodList.ContainsKey(PacketType.Register))
                 Program.MethodList.Add(PacketType.Register, R_Register);
 
@@ -189,7 +203,20 @@ namespace Client.Forms
 
         private void Register_Form_Load(object sender, EventArgs e)
         {
-            forTest_Connect();
+            label1.Font = mapleFont1;
+
+            lab_Answer.Font = mapleFont4;
+            lab_i.Font = mapleFont4;
+            lab_name.Font = mapleFont4;
+            lab_PW.Font = mapleFont4;
+            lab_Quest.Font = mapleFont4;
+            lab_RePW.Font = mapleFont4;
+            lab_RePW.Font = mapleFont4;
+            lab_ID.Font = mapleFont4;
+
+            btn_Cancer.Font = mapleFont4;
+            btn_Check.Font = mapleFont4;
+            btn_IDcheck.Font = mapleFont4;
         }
     }
 

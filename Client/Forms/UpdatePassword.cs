@@ -23,6 +23,9 @@ namespace Client.Forms
         public MetroTextBox[] tb;
         public string name;
         public string identificationNumber; // hash된 값
+         Font mapleFont4 = new Font(FontManager.fontFamilys[0], 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2 = new Font(FontManager.fontFamilys[0], 20, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
 
         public UpdatePassword(string name, string identificationNumber)
         {
@@ -44,11 +47,15 @@ namespace Client.Forms
         }
         private void UpdatePassword_Load(object sender, EventArgs e)
         {
-            forTest_Connect();
+            label1.Font = mapleFont2;
+            label7.Font = mapleFont4;
+            lab_name.Font = mapleFont4;
+            btn_Check.Font = mapleFont4;
         }
 
         private void btn_Check_Click(object sender, EventArgs e)
         {
+            forTest_Connect();
             tb = new MetroTextBox[] { updatePw_newPw, updatePw_check};
             foreach (MetroTextBox _tb in tb)
             {
