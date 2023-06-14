@@ -25,6 +25,9 @@
 - [Delete] : 기능 삭제
 
 ## Database
+
+#### 사전 준비 사항
+
 #### 테이블 생성
 ##### sql
 ``` sql
@@ -104,9 +107,18 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 
 ## DALL-E
 
+#### DALL-E API
+<div style="display:flex">
+    <img src="https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/61c78775-d44c-49c6-977e-140f89488b3f" alt="Image 1" width="400">
+    <img src="https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/d0fea333-34bf-484b-844f-2df8e5a8d428" alt="Image 2" width="600">
+</div>
+DALL-E API는 OpenAI에서 제공하는 인공지능 모델인 DALL-E에 접근하여</br>
+이미지 생성과 관련된 기능을 사용할 수 있는 인터페이스입니다.
+
 ## Getting Started
 
-## Program  ++ 홈페이지 진입, 게임 도중, 게임 결과화면 추가하기
+## Program  
+++ 홈페이지 진입, 게임 도중, 게임 결과화면 추가하기
 
 #### 1.회원가입</br>
 ![ezgif com-video-to-gif (6)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/6baa46f7-0cc5-46cb-a8e5-a1f1c6b01f00)
@@ -136,6 +148,18 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 ![ezgif com-video-to-gif (7)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/e73ff8fb-64ea-47e7-9005-273f79b3a127)
 
 ## Point
+### 1. 외래키 제약 조건 활용
+##### a. 데이터 일관성 유지 - 잘못된 데이터 입력이나 데이터 불일치로 인한 문제를 방지하였습니다.
+##### b. 참조 무결성 보장 - 해당 레코드를 참조하는 다른 테이블의 데이터가 자동으로 일치하도록 하였습니다.
+##### c. 관계 파악과 쿼리 효율성 - 데이터 모델을 간략화 하고, 관련 데이터를 효과적으로 조회할 수 있습니다.
+### 2. SHA-256 알고리즘 적용
+##### a. 안전한 암호화 - 단방향 해시 함수를 적용하여 고정 길이의 해시값으로 변환하였습니다.
+##### b. 보안 강화 - 해시 값은 입력 데이터의 일부가 변경되어도 완전히 다른 값으로 변하기 때문에 데이터의 무결성을 보존합니다.
+##### c. 속도와 효율성 - 개인정보의 암호화와 비교 검증 과정을 빠르고 효율적으로 수행할 수 있습니다.
+### 3. DALL-E API 사용
+##### a. 창의적이고 다양한 이미지 생성 - 다양한 랜덤 이미지를 자동으로 생성하여 게임의 즐거움과 흥미를 높였습니다.
+##### b. 실시간 이미지 생성 - 동적 요소에 반응하고, 사용자에게 다양한 시각적인 경험을 제공합니다.
+
 
 ## Contributing
 1. (https://github.com/mikekks/DALL-E_and_picasso)을 Fork합니다.
@@ -144,5 +168,7 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 4. (`git push origin feature/fooBar`) 명령어로 Branch에 Push하세요.
 
 ## Reference
-
+- [사내 채팅 프로그램 팀프로젝트](https://github.com/KwDrama/OST)
+- [WinForm에 MySQL 연동하기](https://dibrary.tistory.com/86)
+- [MySQL DB 연동을 통해 간단한 로그인 및 회원가입 폼 만들기](https://acredev.tistory.com/21)
 
