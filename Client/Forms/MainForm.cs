@@ -358,34 +358,6 @@ namespace Client
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
- 
-            /*
-            MetroPanel metroPanel = new MetroPanel();
-            metroPanel.BringToFront();
-            metroPanel.Dock = DockStyle.Fill;
-            metroPanel.Parent = this;
-            
-
-            MetroProgressSpinner spinner = new MetroProgressSpinner();
-            spinner.Location = new System.Drawing.Point(150, 150);
-            spinner.Size = new System.Drawing.Size(100, 100);
-            spinner.Value = 100;
-            spinner.Enabled = true;
-            spinner.Maximum = 100;
-            spinner.TabIndex = 20;
-            spinner.EnsureVisible = true;
-            
-
-            spinner.BringToFront();
-            spinner.Visible = true;
-            
-            spinner.Show();
-            spinner.Parent = metroPanel;
-            */
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

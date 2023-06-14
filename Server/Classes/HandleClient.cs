@@ -349,8 +349,8 @@ namespace Server.Classes
                         // 방 나가기
                         Database.MapRoom(null, p.user.userId);
 
-                        
-                        if (Database.getSpecificRooms(p.room.roomId).currentNum == 1)
+                        Room _room = Database.getSpecificRooms(p.room.roomId);
+                        if (_room.currentNum == 1)
                         {
                             // 만약 방에 혼자였다면, 방을 아예 삭제
                             Database.InableRoom(p.room.roomId);
@@ -361,7 +361,14 @@ namespace Server.Classes
                             Database.EnterOrExit_Room(p.room.roomId, p.user.userId, -1);
                         }
 
+                        _room.userList = Database.getReadyList(p.room.roomId);
 
+                        foreach (User user in _room.userList)
+                        {
+                            InGamePacket sendPacket = new InGamePacket(user, _room);
+                            sendPacket.respondType = respondType.Ready;
+                            Program.clientList[user.userId].Send(sendPacket);
+                        }
 
                     }
                 }
@@ -512,7 +519,7 @@ namespace Server.Classes
                             Console.WriteLine("채팅 저장 실패");
                         }
 
-                        // 해당 방에 있는 사람들에게 for문으로 전달
+                        
 
                     }
                     else if (p.respondType == respondType.Answer)
@@ -565,17 +572,22 @@ namespace Server.Classes
                             // DB에서 해당 게임의 결과 가져오기
                             List<Records> records = Database.getRecordEveryone( roomId: p.room.roomId);
                             sendPacket.records = records;
+                            foreach (User curUser in p.room.userList)
+                            {
+                                // 유저 레디 해제
+                                Database.readyCancel(curUser.userId, p.room.roomId);
+                            }
 
-
-                            foreach(User curUser in p.room.userList)
+                            foreach (User curUser in p.room.userList)
                             {
                                 // 유저 정보 업데이트
                                 sendPacket.user = Database.getRecords(curUser.userId);
 
-                                // 유저 레디 해제
-                                Database.readyCancel(curUser.userId, p.room.roomId);
-
+                                Room _room = Database.getSpecificRooms(p.room.roomId);
+                                _room.userList = Database.getReadyList(p.room.roomId);
                                 p.user.ready = false;
+                                sendPacket.user.ready = false;
+                                sendPacket.room = _room;
 
                                 Program.clientList[curUser.userId].Send(sendPacket);
                             }

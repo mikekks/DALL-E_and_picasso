@@ -84,7 +84,7 @@ namespace Client
             {
                 metroTiles[i].Enabled = false;
 
-                metroTiles[i].Text = "";
+                metroTiles[i].Text = "뭘까요?";
                 PictureBox pictureBox = new PictureBox();
                 pictureBox.Image = Properties.Resources.xMark_removebg_preview; 
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -256,7 +256,7 @@ namespace Client
                     
                     for (int i = 0; i < Program.room.level; i++)
                     {
-                        //metroTiles[i].Text = "뭘까요?";
+                      
 
                         metroTiles[i].Text = "";
 
@@ -293,7 +293,9 @@ namespace Client
                     {
                         string tmp = p.user.userId.ToString() + " 가 정답을 맞췄습니다";
                         MetroMessageBox.Show(Owner, tmp);
+                        metroTiles[p.correct - 1].Controls.Clear();
                         metroTiles[p.correct - 1].Text = p.Answer;
+                        metroTiles[p.correct - 1].Font = mapleFont2_5;
                     }
                     else  // 정답 틀린 경우
                     {
@@ -324,16 +326,10 @@ namespace Client
                     // 레디 해제 (의미는 없는듯)
                     Program.user.ready = p.user.ready;
 
-
-
-                    /*
-                    InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
-                    ingamePacket.respondType = respondType.End;
-
-                    Program.Send(ingamePacket);
-                    Program.user = p.user;
-                    */
+                    ResetReadyList();
+                    picBox.Image = Properties.Resources.mainImage;
                     btn_Ready.Enabled = true;
+                    Ready = false;
                 }
             }
             
@@ -341,12 +337,21 @@ namespace Client
 
         private void btn_Ready_Click_1(object sender, EventArgs e)
         {
-            Ready = true;
+            if(Ready == true)
+            {
+                Ready = false;
+            }
+            else
+            {
+                Ready = true;
+                InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 레디 했는지 안했는지를 전달
+                ingamePacket.respondType = respondType.Ready;
+                ingamePacket.ready = Ready;
+                Program.Send(ingamePacket);
+            }
+           
 
-            InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 레디 했는지 안했는지를 전달
-            ingamePacket.respondType = respondType.Ready;
-            ingamePacket.ready = Ready;
-            Program.Send(ingamePacket);
+           
         }
 
         private void btn_Send_Click(object sender, EventArgs e)

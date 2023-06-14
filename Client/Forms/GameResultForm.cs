@@ -36,7 +36,7 @@ namespace Client.Forms
         private void GameResultForm_Load(object sender, EventArgs e)
         {
             label1.Font = mapleFont;
-            Program.records.Sort(new Comparison<Records>((n1, n2) => n2.correctCount.CompareTo(n1.correctCount)));
+            Program.records.Sort(new Comparison<Records>((n1, n2) => (n2.correctCount/n2.tryCount).CompareTo(n1.correctCount / n1.tryCount)));
 
             int y = 60;
             for (int i = 0; i < Program.records.Count; i++)

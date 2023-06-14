@@ -52,6 +52,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.chat_list = new System.Windows.Forms.Panel();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.btn_Start = new System.Windows.Forms.Button();
             this.btn_Ready = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -63,7 +64,6 @@
             this.picBox = new System.Windows.Forms.PictureBox();
             this.btn_AnsSend = new System.Windows.Forms.Button();
             this.btn_ChatSend = new MetroFramework.Controls.MetroButton();
-            this.btn_exit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.ready_list1.SuspendLayout();
@@ -155,7 +155,8 @@
             this.Answer6.TabIndex = 44;
             this.Answer6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer6.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer6.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer6.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer6.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer6.UseCustomBackColor = true;
             this.Answer6.UseCustomForeColor = true;
             this.Answer6.UseSelectable = true;
@@ -171,7 +172,8 @@
             this.Answer5.TabIndex = 42;
             this.Answer5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer5.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer5.UseCustomBackColor = true;
             this.Answer5.UseCustomForeColor = true;
             this.Answer5.UseSelectable = true;
@@ -187,7 +189,8 @@
             this.Answer4.TabIndex = 40;
             this.Answer4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer4.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer4.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer4.UseCustomBackColor = true;
             this.Answer4.UseCustomForeColor = true;
             this.Answer4.UseSelectable = true;
@@ -203,7 +206,8 @@
             this.Answer3.TabIndex = 38;
             this.Answer3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer3.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer3.UseCustomBackColor = true;
             this.Answer3.UseCustomForeColor = true;
             this.Answer3.UseSelectable = true;
@@ -220,7 +224,8 @@
             this.Answer2.TabIndex = 36;
             this.Answer2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer2.UseCustomBackColor = true;
             this.Answer2.UseCustomForeColor = true;
             this.Answer2.UseSelectable = true;
@@ -236,7 +241,8 @@
             this.Answer1.TabIndex = 34;
             this.Answer1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Answer1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Answer1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.Answer1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Answer1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.Answer1.UseCustomBackColor = true;
             this.Answer1.UseCustomForeColor = true;
             this.Answer1.UseSelectable = true;
@@ -367,6 +373,19 @@
             this.chat_list.Size = new System.Drawing.Size(248, 338);
             this.chat_list.TabIndex = 22;
             // 
+            // btn_exit
+            // 
+            this.btn_exit.BackgroundImage = global::Client.Properties.Resources.exit2_removebg_preview;
+            this.btn_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_exit.FlatAppearance.BorderSize = 0;
+            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exit.Location = new System.Drawing.Point(884, 553);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(99, 62);
+            this.btn_exit.TabIndex = 56;
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click_2);
+            // 
             // btn_Start
             // 
             this.btn_Start.BackgroundImage = global::Client.Properties.Resources.start_removebg_preview;
@@ -494,19 +513,6 @@
             this.btn_ChatSend.TabIndex = 13;
             this.btn_ChatSend.UseSelectable = true;
             this.btn_ChatSend.Click += new System.EventHandler(this.btn_Send_Click);
-            // 
-            // btn_exit
-            // 
-            this.btn_exit.BackgroundImage = global::Client.Properties.Resources.exit2_removebg_preview;
-            this.btn_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_exit.FlatAppearance.BorderSize = 0;
-            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_exit.Location = new System.Drawing.Point(884, 553);
-            this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(99, 62);
-            this.btn_exit.TabIndex = 56;
-            this.btn_exit.UseVisualStyleBackColor = true;
-            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click_2);
             // 
             // GameRoom
             // 

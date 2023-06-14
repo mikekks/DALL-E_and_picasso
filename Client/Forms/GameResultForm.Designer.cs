@@ -36,7 +36,7 @@
             // 
             this.metroButton1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(361, 415);
+            this.metroButton1.Location = new System.Drawing.Point(325, 413);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(76, 26);
             this.metroButton1.TabIndex = 2;
@@ -50,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 36F);
-            this.label1.Location = new System.Drawing.Point(266, 7);
+            this.label1.Location = new System.Drawing.Point(238, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 48);
             this.label1.TabIndex = 3;
@@ -61,7 +61,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(723, 451);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroButton1);
             this.Name = "GameResultForm";

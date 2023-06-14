@@ -41,16 +41,19 @@ namespace Server.Classes
 
         public static Dictionary<int, string> imgList;
 
-        public List<string> words = new List<string> { "Selfie", "Influencer", "Vlog", "TikTok", "Cryptocurrency", "Streaming", "Memes", 
-            "Sustainable", "Cancel", "culture", "Eco-friendly", "Virtual", "reality", "Artificial", "intelligence", 
-            "Blockchain", "Cloud", "computing", "Swipe", "YOLO", "Emoji", "Hashtag", "Zoom", "Podcast", "Algorithm", "Biohacking", 
-            "Mindfulness", "Gluten-free", "Vegan", "Keto", "Flexitarian", "Digital", "detox", "Influencer", "marketing", "Deepfake", 
-            "Hackathon", "Augmented", "reality", "Big", "data", "Internet",  "IoT", "Remote", "work", 
-            "Staycation", "Microdosing", "Geofencing", "UX", "VR", "IoT", "NFT", "E-commerce", "Gamification", 
-            "Data", "mining", "Disruptive", "Wellness", "Sustainability", "Mindset", "Resilience", "Biohacking", 
-            "Agility", "Gig", "economy", "Remote", "learning", "Digital", "nomad", "Cybersecurity", "Bioengineering", 
-            "Podcasting", "Machine", "learning", "Crowdfunding", "Freelancing", "Influencer", "economy", "Mental", 
-            "health" };
+        public List<string> words = new List<string> { "Apple", "Ball", "Cat", "Dog", "Egg", "Fish", "Girl", "Hat", "Ice", "Jam", "Key", "Lemon", "Moon", "Nose", "Orange", "Pen", "Queen", "Rabbit", "Sun", "Tree", 
+            "Umbrella", "Van", "Water", "Xylophone", "Yellow", "Zoo", "Ant", "Bear", "Cake", "Duck", "Elephant", "Flower", 
+            "Grape", "Horse", "Insect", "Jacket", "Kite", "Lion", "Monkey", "Nut", "Owl", "Penguin", "Quack", "Rat", 
+            "Snake", "Turtle", "Unicorn", "Violin", "Whale", "Fox", "Boy", "Girl", "Book", "Chair", "Door", "Elephant",
+            "Fan", "Glass", "Hat", "Ice", "Juice", "Key", "Lamp", "Monkey", "Nest", "Orange", "Pear", "Queen", "Rabbit", 
+            "Shirt", "Table", "Umbrella", "Violin", "Water", "Fox", "Zipper", "Bag", "Car", "Dog", "Egg", "Frog", "Guitar", 
+            "House", "Ice", "cream", "Jeans", "Kite", "Lemon", "Mouse", "Nut", "Orange", "Pizza", "Queen", "Rainbow", "Snake",
+            "Turtle", "Umbrella", "Van", "Watch", "Xylophone", "Yo-yo", "Zebra", "Airplane", "Boat", "Cup", "Desk", "Elephant",
+            "Flower", "Giraffe", "Hat", "Ice", "cream", "Jacket", "Kite", "Lion", "Monkey", "Nest", "Owl", "Penguin", "Quack", "Rabbit", 
+            "Sun", "Tree", "Unicorn", "Violin", "Watermelon", "X-ray", "Yo-yo", "Zebra", "Apple", "Ball", "Cat", "Dog",
+            "Egg", "Fish", "Girl", "Hat", "Ice", "Jam", "Key", "Lemon", "Moon", "Nose", "Orange", "Pen", "Queen", "Rabbit",
+            "Sun", "Tree", "Umbrella", "Van", "Water", "Xylophone", "Yellow", "Zoo", "Ant", "Bear", "Cake", "Duck",
+            "Elephant" };
 
         public List<List<string>> CreateWords(int level)
         {
@@ -100,7 +103,7 @@ namespace Server.Classes
 
         static async Task CreateImage(HttpClient sharedClient, string _prompt, int idx)
         {
-            string apiKey = "Bearer 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";
+            string apiKey = "Bearer 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";
 
 
             using (StringContent jsonContent = new StringContent(
