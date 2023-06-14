@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp2
+﻿namespace Client.Forms
 {
     partial class Register_Form
     {

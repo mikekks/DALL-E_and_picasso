@@ -13,7 +13,7 @@ using DalleLib.Networks;
 using MetroFramework;
 using MetroFramework.Controls;
 
-namespace WindowsFormsApp2
+namespace Client.Forms
 {
     public partial class Register_Form : MetroFramework.Forms.MetroForm
     {

@@ -28,187 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_ID = new MetroFramework.Controls.MetroLabel();
-            this.lbl_total = new MetroFramework.Controls.MetroLabel();
-            this.ID = new MetroFramework.Controls.MetroLabel();
-            this.TryCount = new MetroFramework.Controls.MetroLabel();
-            this.Ans = new MetroFramework.Controls.MetroLabel();
-            this.lbl_ans = new MetroFramework.Controls.MetroLabel();
-            this.AnsRate = new MetroFramework.Controls.MetroLabel();
-            this.lbl_Pans = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_unRegister = new MetroFramework.Controls.MetroButton();
             this.Tier = new System.Windows.Forms.PictureBox();
+            this.lbl_ID = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl_ans = new System.Windows.Forms.Label();
+            this.lbl_Pans = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.Label();
+            this.TryCount = new System.Windows.Forms.Label();
+            this.Ans = new System.Windows.Forms.Label();
+            this.AnsRate = new System.Windows.Forms.Label();
+            this.btn_unregister = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tier)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_ID
-            // 
-            this.lbl_ID.AutoSize = true;
-            this.lbl_ID.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_ID.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lbl_ID.ForeColor = System.Drawing.Color.White;
-            this.lbl_ID.Location = new System.Drawing.Point(75, 235);
-            this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(35, 20);
-            this.lbl_ID.TabIndex = 0;
-            this.lbl_ID.Text = "ID : ";
-            this.lbl_ID.UseCustomBackColor = true;
-            this.lbl_ID.UseCustomForeColor = true;
-            // 
-            // lbl_total
-            // 
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_total.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lbl_total.ForeColor = System.Drawing.Color.White;
-            this.lbl_total.Location = new System.Drawing.Point(75, 272);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(65, 20);
-            this.lbl_total.TabIndex = 1;
-            this.lbl_total.Text = "플레이 : ";
-            this.lbl_total.UseCustomBackColor = true;
-            this.lbl_total.UseCustomForeColor = true;
-            // 
-            // ID
-            // 
-            this.ID.AutoSize = true;
-            this.ID.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ID.ForeColor = System.Drawing.Color.White;
-            this.ID.Location = new System.Drawing.Point(93, 160);
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(69, 20);
-            this.ID.TabIndex = 3;
-            this.ID.Text = "Song1234";
-            this.ID.UseCustomBackColor = true;
-            this.ID.UseCustomForeColor = true;
-            // 
-            // TryCount
-            // 
-            this.TryCount.AutoSize = true;
-            this.TryCount.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.TryCount.ForeColor = System.Drawing.Color.White;
-            this.TryCount.Location = new System.Drawing.Point(199, 272);
-            this.TryCount.Name = "TryCount";
-            this.TryCount.Size = new System.Drawing.Size(22, 20);
-            this.TryCount.TabIndex = 4;
-            this.TryCount.Text = "10";
-            this.TryCount.UseCustomBackColor = true;
-            this.TryCount.UseCustomForeColor = true;
-            // 
-            // Ans
-            // 
-            this.Ans.AutoSize = true;
-            this.Ans.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Ans.ForeColor = System.Drawing.Color.White;
-            this.Ans.Location = new System.Drawing.Point(205, 310);
-            this.Ans.Name = "Ans";
-            this.Ans.Size = new System.Drawing.Size(16, 20);
-            this.Ans.TabIndex = 6;
-            this.Ans.Text = "7";
-            this.Ans.UseCustomBackColor = true;
-            this.Ans.UseCustomForeColor = true;
-            // 
-            // lbl_ans
-            // 
-            this.lbl_ans.AutoSize = true;
-            this.lbl_ans.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_ans.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lbl_ans.ForeColor = System.Drawing.Color.White;
-            this.lbl_ans.Location = new System.Drawing.Point(75, 310);
-            this.lbl_ans.Name = "lbl_ans";
-            this.lbl_ans.Size = new System.Drawing.Size(50, 20);
-            this.lbl_ans.TabIndex = 5;
-            this.lbl_ans.Text = "정답 : ";
-            this.lbl_ans.UseCustomBackColor = true;
-            this.lbl_ans.UseCustomForeColor = true;
-            // 
-            // AnsRate
-            // 
-            this.AnsRate.AutoSize = true;
-            this.AnsRate.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AnsRate.ForeColor = System.Drawing.Color.White;
-            this.AnsRate.Location = new System.Drawing.Point(184, 348);
-            this.AnsRate.Name = "AnsRate";
-            this.AnsRate.Size = new System.Drawing.Size(36, 20);
-            this.AnsRate.TabIndex = 8;
-            this.AnsRate.Text = "70%";
-            this.AnsRate.UseCustomBackColor = true;
-            this.AnsRate.UseCustomForeColor = true;
-            // 
-            // lbl_Pans
-            // 
-            this.lbl_Pans.AutoSize = true;
-            this.lbl_Pans.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_Pans.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lbl_Pans.ForeColor = System.Drawing.Color.White;
-            this.lbl_Pans.Location = new System.Drawing.Point(75, 348);
-            this.lbl_Pans.Name = "lbl_Pans";
-            this.lbl_Pans.Size = new System.Drawing.Size(65, 20);
-            this.lbl_Pans.TabIndex = 7;
-            this.lbl_Pans.Text = "정답률 : ";
-            this.lbl_Pans.UseCustomBackColor = true;
-            this.lbl_Pans.UseCustomForeColor = true;
-            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.btn_unRegister);
-            this.panel1.Controls.Add(this.Tier);
+            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.btn_unregister);
+            this.panel1.Controls.Add(this.AnsRate);
+            this.panel1.Controls.Add(this.Ans);
+            this.panel1.Controls.Add(this.TryCount);
             this.panel1.Controls.Add(this.ID);
+            this.panel1.Controls.Add(this.lbl_Pans);
+            this.panel1.Controls.Add(this.lbl_ans);
+            this.panel1.Controls.Add(this.lbl_total);
+            this.panel1.Controls.Add(this.lbl_ID);
+            this.panel1.Controls.Add(this.Tier);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(23, 75);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(20, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 369);
+            this.panel1.Size = new System.Drawing.Size(222, 295);
             this.panel1.TabIndex = 9;
-            // 
-            // btn_unRegister
-            // 
-            this.btn_unRegister.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_unRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_unRegister.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_unRegister.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btn_unRegister.Location = new System.Drawing.Point(161, 326);
-            this.btn_unRegister.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_unRegister.Name = "btn_unRegister";
-            this.btn_unRegister.Size = new System.Drawing.Size(86, 29);
-            this.btn_unRegister.TabIndex = 19;
-            this.btn_unRegister.Text = "회원탈퇴";
-            this.btn_unRegister.UseCustomBackColor = true;
-            this.btn_unRegister.UseCustomForeColor = true;
-            this.btn_unRegister.UseSelectable = true;
-            this.btn_unRegister.Click += new System.EventHandler(this.btn_unRegister_Click);
             // 
             // Tier
             // 
-            this.Tier.BackColor = System.Drawing.Color.White;
+            this.Tier.BackColor = System.Drawing.Color.LightSkyBlue;
             this.Tier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Tier.Location = new System.Drawing.Point(53, 12);
-            this.Tier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Tier.Location = new System.Drawing.Point(46, 10);
             this.Tier.Name = "Tier";
-            this.Tier.Size = new System.Drawing.Size(147, 138);
+            this.Tier.Size = new System.Drawing.Size(129, 110);
             this.Tier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Tier.TabIndex = 2;
             this.Tier.TabStop = false;
             // 
+            // lbl_ID
+            // 
+            this.lbl_ID.AutoSize = true;
+            this.lbl_ID.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_ID.Location = new System.Drawing.Point(44, 135);
+            this.lbl_ID.Name = "lbl_ID";
+            this.lbl_ID.Size = new System.Drawing.Size(28, 12);
+            this.lbl_ID.TabIndex = 20;
+            this.lbl_ID.Text = "ID : ";
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_total.Location = new System.Drawing.Point(44, 165);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(69, 12);
+            this.lbl_total.TabIndex = 21;
+            this.lbl_total.Text = "시도 횟수 : ";
+            // 
+            // lbl_ans
+            // 
+            this.lbl_ans.AutoSize = true;
+            this.lbl_ans.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_ans.Location = new System.Drawing.Point(44, 195);
+            this.lbl_ans.Name = "lbl_ans";
+            this.lbl_ans.Size = new System.Drawing.Size(69, 12);
+            this.lbl_ans.TabIndex = 22;
+            this.lbl_ans.Text = "정답 횟수 : ";
+            // 
+            // lbl_Pans
+            // 
+            this.lbl_Pans.AutoSize = true;
+            this.lbl_Pans.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_Pans.Location = new System.Drawing.Point(44, 225);
+            this.lbl_Pans.Name = "lbl_Pans";
+            this.lbl_Pans.Size = new System.Drawing.Size(53, 12);
+            this.lbl_Pans.TabIndex = 23;
+            this.lbl_Pans.Text = "정답률 : ";
+            // 
+            // ID
+            // 
+            this.ID.AutoSize = true;
+            this.ID.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.ID.Location = new System.Drawing.Point(97, 135);
+            this.ID.Name = "ID";
+            this.ID.Size = new System.Drawing.Size(16, 12);
+            this.ID.TabIndex = 24;
+            this.ID.Text = "ID";
+            // 
+            // TryCount
+            // 
+            this.TryCount.AutoSize = true;
+            this.TryCount.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TryCount.Location = new System.Drawing.Point(119, 165);
+            this.TryCount.Name = "TryCount";
+            this.TryCount.Size = new System.Drawing.Size(19, 12);
+            this.TryCount.TabIndex = 25;
+            this.TryCount.Text = "try";
+            // 
+            // Ans
+            // 
+            this.Ans.AutoSize = true;
+            this.Ans.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.Ans.Location = new System.Drawing.Point(119, 195);
+            this.Ans.Name = "Ans";
+            this.Ans.Size = new System.Drawing.Size(30, 12);
+            this.Ans.TabIndex = 26;
+            this.Ans.Text = "ANS";
+            // 
+            // AnsRate
+            // 
+            this.AnsRate.AutoSize = true;
+            this.AnsRate.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.AnsRate.Location = new System.Drawing.Point(119, 225);
+            this.AnsRate.Name = "AnsRate";
+            this.AnsRate.Size = new System.Drawing.Size(30, 12);
+            this.AnsRate.TabIndex = 27;
+            this.AnsRate.Text = "Rate";
+            // 
+            // btn_unregister
+            // 
+            this.btn_unregister.BackColor = System.Drawing.Color.Yellow;
+            this.btn_unregister.FlatAppearance.BorderSize = 0;
+            this.btn_unregister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_unregister.Location = new System.Drawing.Point(142, 265);
+            this.btn_unregister.Name = "btn_unregister";
+            this.btn_unregister.Size = new System.Drawing.Size(75, 23);
+            this.btn_unregister.TabIndex = 28;
+            this.btn_unregister.Text = "회원탈퇴";
+            this.btn_unregister.UseVisualStyleBackColor = false;
+            this.btn_unregister.Click += new System.EventHandler(this.btn_unregister_Click_1);
+            // 
             // MyInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 469);
-            this.Controls.Add(this.AnsRate);
-            this.Controls.Add(this.lbl_Pans);
-            this.Controls.Add(this.Ans);
-            this.Controls.Add(this.lbl_ans);
-            this.Controls.Add(this.TryCount);
-            this.Controls.Add(this.lbl_total);
-            this.Controls.Add(this.lbl_ID);
+            this.ClientSize = new System.Drawing.Size(262, 375);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MyInfoForm";
-            this.Padding = new System.Windows.Forms.Padding(23, 75, 23, 25);
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Text = "내 정보";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
@@ -217,22 +181,20 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tier)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel lbl_ID;
-        private MetroFramework.Controls.MetroLabel lbl_total;
         private System.Windows.Forms.PictureBox Tier;
-        private MetroFramework.Controls.MetroLabel ID;
-        private MetroFramework.Controls.MetroLabel TryCount;
-        private MetroFramework.Controls.MetroLabel Ans;
-        private MetroFramework.Controls.MetroLabel lbl_ans;
-        private MetroFramework.Controls.MetroLabel AnsRate;
-        private MetroFramework.Controls.MetroLabel lbl_Pans;
         private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroButton btn_unRegister;
+        private System.Windows.Forms.Button btn_unregister;
+        private System.Windows.Forms.Label AnsRate;
+        private System.Windows.Forms.Label Ans;
+        private System.Windows.Forms.Label TryCount;
+        private System.Windows.Forms.Label ID;
+        private System.Windows.Forms.Label lbl_Pans;
+        private System.Windows.Forms.Label lbl_ans;
+        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl_ID;
     }
 }

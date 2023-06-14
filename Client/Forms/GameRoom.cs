@@ -26,8 +26,12 @@ namespace Client
     {
         DataSet2 dataset;
 
-        //delegate void TimerEventFiredDelegate();
-        //delegate void TimerEventFiredDelegate_Ans();
+        Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont4 = new Font(FontManager.fontFamilys[0], 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
 
         TcpClient clientSocket = new TcpClient();
         public bool Ready = false;
@@ -35,8 +39,6 @@ namespace Client
 
         public int forTest = 0;
 
-        //System.Timers.Timer timer = new System.Timers.Timer();
-        //System.Timers.Timer Anstimer = new System.Timers.Timer();
 
         public MetroTile[] metroTiles = null;
         
@@ -54,9 +56,12 @@ namespace Client
             if (!Program.MethodList.ContainsKey(PacketType.InGame))
                 Program.MethodList.Add(PacketType.InGame, R_PlayGame);
 
-            Text = Program.room.roomId;  // 방의 제목
-           // picBox.Load("https://static.designboom.com/wp-content/uploads/2022/06/dalle-2-ai-system-designboom-01.jpg");
- 
+            label2.Text += Program.room.roomId;  // 방의 제목
+            label2.Font = mapleFont1;
+            label1.Font = mapleFont2;
+            label3.Font = mapleFont2;
+            timeLimit.Font = mapleFont2;
+
             ResetReadyList();
             ResetChatList();
 
@@ -295,7 +300,7 @@ namespace Client
             
         }
 
-        private void btn_Ready_Click(object sender, EventArgs e)
+        private void btn_Ready_Click_1(object sender, EventArgs e)
         {
             Ready = true;
 
@@ -349,29 +354,7 @@ namespace Client
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
-            // 모두 레디했는지 확인
-            bool CanStart = true;
-
-            foreach (User player in Program.room.userList)
-            {
-                
-                if (player.ready == false)  // 예외처리
-                {
-                    CanStart = false;
-                    MetroMessageBox.Show(this, "모두 준비가 되지 않았습니다.");
-                    return;
-                }
-            }
-
-            if (CanStart)  // 모두 준비가 돼서 시작 가능
-            {
-                InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
-                ingamePacket.respondType = respondType.Start;
-
-                ingamePacket.ready = Ready;
-
-                Program.Send(ingamePacket);
-            }
+           
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -449,6 +432,38 @@ namespace Client
 
             tbAnswer.Text = "";
             tbAnswer.Focus();
+        }
+
+        private void btn_Start_Click_1(object sender, EventArgs e)
+        {
+            // 모두 레디했는지 확인
+            bool CanStart = true;
+
+            foreach (User player in Program.room.userList)
+            {
+
+                if (player.ready == false)  // 예외처리
+                {
+                    CanStart = false;
+                    MetroMessageBox.Show(this, "모두 준비가 되지 않았습니다.");
+                    return;
+                }
+            }
+
+            if (CanStart)  // 모두 준비가 돼서 시작 가능
+            {
+                InGamePacket ingamePacket = new InGamePacket(Program.user, Program.room);  // 누가, 어디방에서, 시작하려고 하는지 데이터 전달
+                ingamePacket.respondType = respondType.Start;
+
+                ingamePacket.ready = Ready;
+
+                Program.Send(ingamePacket);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

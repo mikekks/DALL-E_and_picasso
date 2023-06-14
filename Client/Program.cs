@@ -43,6 +43,8 @@ namespace Client
         [STAThread]
         static void Main()
         {
+
+
             clientSocket = new TcpClient();
 
             MethodList = new Dictionary<PacketType, Action<Packet>>();
@@ -55,6 +57,7 @@ namespace Client
             Application.Run(new MainForm());
 
             // ! clientSocket.Connected ?
+
 
 
         }

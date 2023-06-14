@@ -138,6 +138,7 @@
     <Compile Include="GameResultForm_mock.Designer.cs">
       <DependentUpon>GameResultForm_mock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maple_Font\MapleFont.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SHA256.cs" />
@@ -213,6 +214,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Maplestory Bold.ttf" />
+    <None Include="Resources\Maplestory Light.ttf" />
     <None Include="Source\dalle.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +282,14 @@
     <None Include="Resources\what-removebg-preview.png" />
     <None Include="Resources\xMark-removebg-preview.png" />
     <None Include="Resources\whatMark-removebg-preview.png" />
+    <None Include="Resources\mainImage.png" />
+    <None Include="Resources\main2.png" />
+    <None Include="Resources\그림3.png" />
+    <None Include="Resources\그림4.png" />
+    <None Include="Resources\그림5.png" />
+    <None Include="Resources\그림6.png" />
+    <None Include="Resources\그림1.png" />
+    <None Include="Resources\그림2.png" />
     <Content Include="Source\Tier_Bronze.png" />
     <Content Include="Source\Tier_Gold.png" />
     <Content Include="Source\Tier_Silver2.png" />

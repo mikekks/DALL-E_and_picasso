@@ -50,12 +50,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_ChatSend = new MetroFramework.Controls.MetroButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_Ready = new System.Windows.Forms.PictureBox();
-            this.btn_Start = new System.Windows.Forms.PictureBox();
-            this.btn_Exit = new System.Windows.Forms.PictureBox();
             this.btn_AnsSend = new System.Windows.Forms.Button();
+            this.btn_ChatSend = new MetroFramework.Controls.MetroButton();
+            this.btn_Exit = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_Ready = new System.Windows.Forms.Button();
+            this.btn_Start = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ready_list1 = new System.Windows.Forms.Panel();
+            this.ready_list2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -65,10 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Ready)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Start)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbAnswer
@@ -95,7 +96,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(738, 60);
+            this.label1.Location = new System.Drawing.Point(11, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 19);
             this.label1.TabIndex = 18;
@@ -107,7 +108,7 @@
             this.timeLimit.BackColor = System.Drawing.Color.Lavender;
             this.timeLimit.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.timeLimit.ForeColor = System.Drawing.Color.IndianRed;
-            this.timeLimit.Location = new System.Drawing.Point(852, 60);
+            this.timeLimit.Location = new System.Drawing.Point(126, 13);
             this.timeLimit.Name = "timeLimit";
             this.timeLimit.Size = new System.Drawing.Size(31, 19);
             this.timeLimit.TabIndex = 19;
@@ -117,7 +118,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 14.25F);
-            this.label3.Location = new System.Drawing.Point(890, 60);
+            this.label3.Location = new System.Drawing.Point(163, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 19);
             this.label3.TabIndex = 20;
@@ -310,10 +311,12 @@
             // 
             // picBox
             // 
+            this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picBox.Image = global::Client.Properties.Resources.mainImage;
             this.picBox.Location = new System.Drawing.Point(11, 23);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(457, 333);
-            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBox.TabIndex = 0;
             this.picBox.TabStop = false;
             this.picBox.WaitOnLoad = true;
@@ -324,11 +327,24 @@
             this.groupBox2.Controls.Add(this.chat_List);
             this.groupBox2.Controls.Add(this.tbAnswer);
             this.groupBox2.Controls.Add(this.btn_ChatSend);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.timeLimit);
             this.groupBox2.Location = new System.Drawing.Point(724, 34);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(259, 487);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            // 
+            // btn_AnsSend
+            // 
+            this.btn_AnsSend.Location = new System.Drawing.Point(75, 407);
+            this.btn_AnsSend.Name = "btn_AnsSend";
+            this.btn_AnsSend.Size = new System.Drawing.Size(119, 38);
+            this.btn_AnsSend.TabIndex = 14;
+            this.btn_AnsSend.Text = "Check";
+            this.btn_AnsSend.UseVisualStyleBackColor = true;
+            this.btn_AnsSend.Click += new System.EventHandler(this.btn_AnsSend_Click);
             // 
             // btn_ChatSend
             // 
@@ -340,41 +356,6 @@
             this.btn_ChatSend.TabIndex = 13;
             this.btn_ChatSend.UseSelectable = true;
             this.btn_ChatSend.Click += new System.EventHandler(this.btn_Send_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 43);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(215, 478);
-            this.dataGridView1.TabIndex = 29;
-            // 
-            // btn_Ready
-            // 
-            this.btn_Ready.ErrorImage = null;
-            this.btn_Ready.Image = global::Client.Properties.Resources.ready_removebg_preview;
-            this.btn_Ready.Location = new System.Drawing.Point(23, 527);
-            this.btn_Ready.Name = "btn_Ready";
-            this.btn_Ready.Size = new System.Drawing.Size(215, 60);
-            this.btn_Ready.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btn_Ready.TabIndex = 46;
-            this.btn_Ready.TabStop = false;
-            this.btn_Ready.Click += new System.EventHandler(this.btn_Ready_Click);
-            // 
-            // btn_Start
-            // 
-            this.btn_Start.ErrorImage = null;
-            this.btn_Start.Image = global::Client.Properties.Resources.start_removebg_preview;
-            this.btn_Start.Location = new System.Drawing.Point(724, 527);
-            this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(153, 60);
-            this.btn_Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btn_Start.TabIndex = 47;
-            this.btn_Start.TabStop = false;
-            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
             // btn_Exit
             // 
@@ -388,15 +369,67 @@
             this.btn_Exit.TabStop = false;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
-            // btn_AnsSend
+            // label2
             // 
-            this.btn_AnsSend.Location = new System.Drawing.Point(75, 407);
-            this.btn_AnsSend.Name = "btn_AnsSend";
-            this.btn_AnsSend.Size = new System.Drawing.Size(119, 38);
-            this.btn_AnsSend.TabIndex = 14;
-            this.btn_AnsSend.Text = "Check";
-            this.btn_AnsSend.UseVisualStyleBackColor = true;
-            this.btn_AnsSend.Click += new System.EventHandler(this.btn_AnsSend_Click);
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label2.Location = new System.Drawing.Point(32, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 12);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "방 제목 : ";
+            // 
+            // btn_Ready
+            // 
+            this.btn_Ready.BackgroundImage = global::Client.Properties.Resources.ready_removebg_preview;
+            this.btn_Ready.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Ready.FlatAppearance.BorderSize = 0;
+            this.btn_Ready.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Ready.Location = new System.Drawing.Point(12, 465);
+            this.btn_Ready.Name = "btn_Ready";
+            this.btn_Ready.Size = new System.Drawing.Size(215, 59);
+            this.btn_Ready.TabIndex = 50;
+            this.btn_Ready.UseVisualStyleBackColor = true;
+            this.btn_Ready.Click += new System.EventHandler(this.btn_Ready_Click_1);
+            // 
+            // btn_Start
+            // 
+            this.btn_Start.BackgroundImage = global::Client.Properties.Resources.start_removebg_preview;
+            this.btn_Start.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Start.FlatAppearance.BorderSize = 0;
+            this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Start.Location = new System.Drawing.Point(724, 528);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(153, 59);
+            this.btn_Start.TabIndex = 51;
+            this.btn_Start.UseVisualStyleBackColor = true;
+            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click_1);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(254, 6);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(49, 23);
+            this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // ready_list1
+            // 
+            this.ready_list1.Location = new System.Drawing.Point(12, 47);
+            this.ready_list1.Name = "ready_list1";
+            this.ready_list1.Size = new System.Drawing.Size(108, 343);
+            this.ready_list1.TabIndex = 52;
+            // 
+            // ready_list2
+            // 
+            this.ready_list2.Location = new System.Drawing.Point(119, 47);
+            this.ready_list2.Name = "ready_list2";
+            this.ready_list2.Size = new System.Drawing.Size(108, 343);
+            this.ready_list2.TabIndex = 53;
             // 
             // GameRoom
             // 
@@ -404,13 +437,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1031, 638);
-            this.Controls.Add(this.btn_Exit);
+            this.Controls.Add(this.ready_list2);
+            this.Controls.Add(this.ready_list1);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.btn_Ready);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.timeLimit);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.DisplayHeader = false;
@@ -430,10 +463,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Ready)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Start)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,11 +495,14 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroTile Answer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.PictureBox btn_Ready;
-        private System.Windows.Forms.PictureBox btn_Start;
         private System.Windows.Forms.PictureBox btn_Exit;
         private System.Windows.Forms.Button btn_AnsSend;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_Ready;
+        private System.Windows.Forms.Button btn_Start;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel ready_list1;
+        private System.Windows.Forms.Panel ready_list2;
     }
 }
 

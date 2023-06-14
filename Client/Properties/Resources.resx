@@ -235,4 +235,34 @@
   <data name="xMark_removebg_preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xMark-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="main2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\main2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mainImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mainImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Maplestory_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Maplestory Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Maplestory_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Maplestory Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="그림1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="그림2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="그림3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="그림4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="그림5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="그림6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그림6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -16,15 +16,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp2
+namespace Client.Forms
 {
-    public partial class Login_Form : Form
+    public partial class Login_Form : MetroFramework.Forms.MetroForm
     {
         public delegate void EndForm();
 
         public Login_Form()
         {
             InitializeComponent();
+            Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font mapleFont2_5 = new Font(FontManager.fontFamilys[0], 13, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+           
+            label6.Font = mapleFont;
+            label2.Font = mapleFont1;
+            label1.Font = mapleFont3;
+            label3.Font = mapleFont;
+            label4.Font = mapleFont3;
+            btn_Find.Font = mapleFont3;
 
         }
 
@@ -48,7 +60,7 @@ namespace WindowsFormsApp2
         {
             string id = txt_ID.Text;
             string pw = txt_PW.Text;
-
+            
             forTest_Connect();
 
             var pwdHash = SHA256Helper.ComputeSHA256Hash(txt_PW.Text);
@@ -144,6 +156,21 @@ namespace WindowsFormsApp2
         {
             GameResultForm_mock gameResultForm_mock = new GameResultForm_mock();
             gameResultForm_mock.ShowDialog();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Login_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

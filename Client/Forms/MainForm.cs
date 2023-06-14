@@ -15,7 +15,6 @@ using System.Threading;
 using System.Net.Sockets;
 using MetroFramework.Controls;
 using DalleLib;
-using WindowsFormsApp2;
 using System.Timers;
 using System.Diagnostics;
 using System.Security.Policy;
@@ -27,6 +26,12 @@ namespace Client
         MetroTile[] roomTile = new MetroTile[1000];
         public bool unRegister;
 
+        Font mapleFont = new Font(FontManager.fontFamilys[0], 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont1 = new Font(FontManager.fontFamilys[0], 22, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont2 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+        Font mapleFont3 = new Font(FontManager.fontFamilys[0], 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -34,6 +39,16 @@ namespace Client
 
         private void MainForm_Load(object sender, EventArgs e)  // 여러 방들을 여기서 불러와야 함
         {
+           
+          
+            lbl_Id.Font = mapleFont3;
+            lbl_Tier.Font = mapleFont3;
+            label2.Font = mapleFont3;
+            label3.Font = mapleFont3;
+            label4.Font = mapleFont2;
+
+            
+
             btn_CreateRoom.FlatAppearance.BorderSize = 0;
             btn_Myinfo.FlatAppearance.BorderSize = 0;
             btn_reset.FlatAppearance.BorderSize = 0;
@@ -58,7 +73,10 @@ namespace Client
                     {
                         this.Invoke(new Action(() => { this.Close(); }));
                     }
-
+                    else
+                    {
+                        this.Invoke(new Action(() => { this.Close(); }));
+                    }
                     
                 }
             }
@@ -66,8 +84,8 @@ namespace Client
             viewRoomList();
 
             // 로그인 후 정보 갱신 필요.
-            UserId.Text = Program.user.userId;
-            UserTier.Text = Program.user.Tier;
+            lbl_Id.Text = Program.user.userId;
+            lbl_Tier.Text = Program.user.Tier;
 
             ProfilePic.Image = Properties.Resources.dalle2;
 
@@ -90,10 +108,12 @@ namespace Client
 
         public void viewRoomList() // 방 리스트 불러오기
         {
-
+            tabControl1.Font = mapleFont3;
             for(int i=0; i<6; i++)
             {
-                metroTabControl1.TabPages[i].Controls.Clear();
+                tabControl1.TabPages[i].Controls.Clear();
+                tabControl1.TabPages[i].Font = mapleFont3;
+                
             }
 
             //int y = 10;
@@ -104,31 +124,66 @@ namespace Client
                 int _level = Program.roomList[i].level - 1;
 
                 MetroTile _roomTile = new MetroTile();
+                _roomTile.UseCustomBackColor = true;
+                _roomTile.UseStyleColors = true;
                 _roomTile.Width = 438;
                 _roomTile.Height = 65;
                 _roomTile.Location = new Point(5, y[_level]);
-                _roomTile.TileImage = Properties.Resources.Van;
+                if(i % 5 == 0)
+                {
+                    _roomTile.TileImage = Properties.Resources.Van;
+                    _roomTile.BackColor = Color.BlueViolet;
+                }
+                else if(i % 5 == 1)
+                {
+                    _roomTile.TileImage = Properties.Resources.Van;
+                    _roomTile.BackColor = Color.Black;
+                }
+                else if (i % 5 == 2)
+                {
+                    _roomTile.TileImage = Properties.Resources.Van;
+                    _roomTile.BackColor = Color.Blue;
+                }
+                else if (i % 5 == 3)
+                {
+                    _roomTile.TileImage = Properties.Resources.Van;
+                    _roomTile.BackColor = Color.DarkGreen;
+                }
+                else if (i % 5 == 4)
+                {
+                    _roomTile.TileImage = Properties.Resources.Van;
+                    _roomTile.BackColor = Color.Yellow;
+                }
+              
+               
                 _roomTile.TileImageAlign = ContentAlignment.MiddleLeft;
                 _roomTile.UseTileImage = true;
                 y[_level] += 70;
 
-                MetroLabel _roomName = new MetroLabel();
+                Label _roomName = new Label();
+                _roomName.BackColor = Color.WhiteSmoke;
+                _roomName.ForeColor = Color.MidnightBlue;
                 _roomName.Text = Program.roomList[i].roomId;
-                _roomName.Location = new Point(105, 20);
-                _roomName.Size = new Size(150, 20);
+                _roomName.Location = new Point(105, 15);
+                _roomName.Size = new Size(150, 35);
+                _roomName.Font = mapleFont1;
                 _roomTile.Controls.Add(_roomName);
 
-                MetroLabel _People = new MetroLabel();
-                _People.Text = "현재 인원 : " + Program.roomList[i].currentNum.ToString() + " / " + Program.roomList[i].totalNum.ToString();
-                _People.Location = new Point(300, 20);
-                _People.Size = new Size(200, 20);
+                Label _People = new Label();
+                _People.BackColor = Color.WhiteSmoke;
+                _People.ForeColor = Color.MidnightBlue;
+                _People.Text = "      현재 인원 : " + Program.roomList[i].currentNum.ToString() + " / " + Program.roomList[i].totalNum.ToString();
+                _People.Location = new Point(255, 15);
+                _People.Size = new Size(200, 35);
+                _People.Font = mapleFont3;
                 _roomTile.Controls.Add(_People);
 
                 _roomTile.Click += new EventHandler(Room_Click);
                 _roomTile.Tag = Program.roomList[i];
+                
                 roomTile[i] = _roomTile;
 
-                metroTabControl1.TabPages[_level].Controls.Add(roomTile[i]);
+                tabControl1.TabPages[_level].Controls.Add(roomTile[i]);
                 
             }
         }

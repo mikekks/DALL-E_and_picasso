@@ -243,6 +243,46 @@ namespace Client.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        public static System.Drawing.Bitmap main2 {
+            get {
+                object obj = ResourceManager.GetObject("main2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap mainImage {
+            get {
+                object obj = ResourceManager.GetObject("mainImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static byte[] Maplestory_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Maplestory_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static byte[] Maplestory_Light {
+            get {
+                object obj = ResourceManager.GetObject("Maplestory_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         public static System.Drawing.Bitmap newgame_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("newgame-removebg-preview", resourceCulture);
@@ -426,6 +466,66 @@ namespace Client.Properties {
         public static System.Drawing.Bitmap xMark_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("xMark_removebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림1 {
+            get {
+                object obj = ResourceManager.GetObject("그림1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림2 {
+            get {
+                object obj = ResourceManager.GetObject("그림2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림3 {
+            get {
+                object obj = ResourceManager.GetObject("그림3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림4 {
+            get {
+                object obj = ResourceManager.GetObject("그림4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림5 {
+            get {
+                object obj = ResourceManager.GetObject("그림5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap 그림6 {
+            get {
+                object obj = ResourceManager.GetObject("그림6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
