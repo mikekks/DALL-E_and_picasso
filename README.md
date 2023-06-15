@@ -105,7 +105,8 @@ Users, Dalle, Records, Chat 테이블과의 관계를 roomId 외래키를 통해
 ![record](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17b4b697-a257-470b-b011-7ad319454336)
 
 #### ER-diagram 구조
-![스크린샷 2023-05-29 오후 9 15 49](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/17c9da67-203c-4d73-8317-f6e267f9a9d9)
+<img width="836" alt="스크린샷 2023-06-15 오전 11 25 45" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/f33e63aa-3aea-4b05-b2fd-8091a2009ae4">
+
 
 ## DALL-E
 
