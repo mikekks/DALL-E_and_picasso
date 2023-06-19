@@ -218,7 +218,5 @@ use test18;
 4. (`git push origin feature/fooBar`) 명령어로 Branch에 Push하세요.
 
 ## Reference
-- [사내 채팅 프로그램 팀프로젝트](https://github.com/KwDrama/OST)
-- [WinForm에 MySQL 연동하기](https://dibrary.tistory.com/86)
-- [MySQL DB 연동을 통해 간단한 로그인 및 회원가입 폼 만들기](https://acredev.tistory.com/21)
+- [WinForm 공식 Docs]([https://dibrary.tistory.com/86](https://learn.microsoft.com/ko-kr/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022)https://learn.microsoft.com/ko-kr/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022)
 
