@@ -186,9 +186,6 @@ use test18;
 ![ezgif com-video-to-gif (2)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/dbd5e5d1-7cae-497b-a1c4-c2668f398fde)
 
 #### 8.만들어진 방 리스트 불러오기</br>
-![ezgif com-video-to-gif (1)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/f1b5b1e2-9b8e-4951-8350-62bc07a13176)
-
-##### 업데이트된 UI 
 <img width="693" alt="스크린샷 2023-06-19 오후 1 47 57" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/b01a6780-4532-4765-b001-7606c263523a">
 
 #### 9.방 만들기</br>
