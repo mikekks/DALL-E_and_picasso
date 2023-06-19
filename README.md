@@ -218,5 +218,5 @@ use test18;
 4. (`git push origin feature/fooBar`) 명령어로 Branch에 Push하세요.
 
 ## Reference
-- [WinForm 공식 Docs]([https://dibrary.tistory.com/86](https://learn.microsoft.com/ko-kr/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022)https://learn.microsoft.com/ko-kr/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022)
+- [WinForm 공식 Docs](https://learn.microsoft.com/ko-kr/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022)
 
