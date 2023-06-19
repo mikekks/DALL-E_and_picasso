@@ -2,7 +2,8 @@
 > AI가 생성한 이미지 맞추기 게임
 
 ## Index
-  - [Overview](#overview) 
+  - [Overview](#overview)
+  - [Architecture](#architecture) 
   - [Database](#database)
   - [DALL-E](#dall-e)
   - [Getting Started](#getting-started)
