@@ -157,11 +157,20 @@ use test18;
 #### 2. 로그인</br>
 ![ezgif com-video-to-gif (8)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/690c8260-5ee0-400c-b4d6-39e2d1be84e0)
 
+##### 업데이트된 UI 
+<img width="704" alt="스크린샷 2023-06-19 오후 1 45 08" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/3016008a-d757-45ab-8b4d-1ff0b1e2792b">
+
 #### 3.아이디 찾기</br>
 ![ezgif com-video-to-gif (5)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/3412dcbc-f800-479d-ae6f-ade4bd70a1da)
 
+##### 업데이트된 UI 
+<img width="408" alt="스크린샷 2023-06-19 오후 1 45 39" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/9bae42a2-d912-4aa7-9045-b03312e39af7">
+
 #### 4.비밀번호 재 설정하기</br>
 ![ezgif com-video-to-gif (4)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/2004a522-360b-47fd-af5a-7d0da0cd1e21)
+
+##### 업데이트된 UI 
+<img width="415" alt="스크린샷 2023-06-19 오후 1 46 03" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/005f18d8-8307-4e02-82d4-8ef76e9a7d96">
 
 #### 5.비밀번호 찾기 실패</br>
 ![ezgif com-video-to-gif (3)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/483ba74f-1133-4b5a-b565-00a46c7b272a)
