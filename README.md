@@ -147,10 +147,10 @@ use test18;
 ```
 
 ## Program  
-++ 홈페이지 진입, 게임 도중, 게임 결과화면 추가하기
 
 #### 1.회원가입</br>
 ![ezgif com-video-to-gif (6)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/6baa46f7-0cc5-46cb-a8e5-a1f1c6b01f00)
+<img width="402" alt="스크린샷 2023-06-19 오후 1 42 31" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/92a5c248-44c2-4f67-8729-d479e980686b">
 
 #### 2. 로그인</br>
 ![ezgif com-video-to-gif (8)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/690c8260-5ee0-400c-b4d6-39e2d1be84e0)
