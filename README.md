@@ -35,9 +35,6 @@
 ### 테이블 생성
 ##### sql
 ``` sql
-use mysql;
-CREATE DATABASE test28;
-use test28;
 
 CREATE TABLE `Users` (
   `userId` VARCHAR(100) PRIMARY KEY NOT NULL,
