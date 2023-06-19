@@ -24,6 +24,10 @@
 - [Update] : 기능 개선
 - [Delete] : 기능 삭제
 
+## Architecture
+<img width="980" alt="스크린샷 2023-06-19 오후 1 52 17" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/79bb8ce8-51ef-41e6-a6a1-e077751d4b81">
+
+
 ## Database
 
 
@@ -184,7 +188,21 @@ use test18;
 #### 8.만들어진 방 리스트 불러오기</br>
 ![ezgif com-video-to-gif (1)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/f1b5b1e2-9b8e-4951-8350-62bc07a13176)
 
-#### 9.회원탈퇴</br>
+##### 업데이트된 UI 
+<img width="693" alt="스크린샷 2023-06-19 오후 1 47 57" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/b01a6780-4532-4765-b001-7606c263523a">
+
+#### 9.방 만들기</br>
+<img width="570" alt="스크린샷 2023-06-19 오후 1 48 32" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/bc553172-8af3-437d-b21d-ef988ed2931f">
+
+#### 10.게임 화면</br>
+<img width="1246" alt="스크린샷 2023-06-19 오후 1 49 25" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/1b8d5033-99d7-4131-a1d7-f471696964a5">
+
+<img width="1251" alt="스크린샷 2023-06-19 오후 1 50 01" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/1e2ea304-cbcf-4425-ab1f-27f33898d0e9">
+
+#### 11.게임 결과 화면</br>
+<img width="1243" alt="스크린샷 2023-06-19 오후 1 50 36" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/ec92c2eb-2dc3-4635-9d42-b80b00d0de97">
+
+#### 12.회원탈퇴</br>
 ![ezgif com-video-to-gif (7)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/e73ff8fb-64ea-47e7-9005-273f79b3a127)
 
 ## Point
