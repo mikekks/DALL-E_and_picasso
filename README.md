@@ -51,7 +51,7 @@ CREATE TABLE `Users` (
 CREATE TABLE `Dalle` (
   `roomId` VARCHAR(100) NOT NULL,
   `QId` INT,
-  `imageUrl` VARCHAR(10000),
+  `imageUrl` BLOB,
   `keyword_1` VARCHAR(100),
   `keyword_2` VARCHAR(100),
   `keyword_3` VARCHAR(100),
@@ -73,7 +73,7 @@ CREATE TABLE `Chat` (
   `roomId` VARCHAR(100) NOT NULL,
   `userId` VARCHAR(100) NOT NULL,
   `chat_date` DATETIME NOT NULL,
-  `chat` VARCHAR(100),
+  `chat` BLOB,
   `data_length` INT,
   PRIMARY KEY (`roomId`, `userId`, `chat_date`)
 );
