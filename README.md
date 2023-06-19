@@ -179,27 +179,21 @@ use test18;
 #### 5.비밀번호 찾기 실패</br>
 ![ezgif com-video-to-gif (3)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/483ba74f-1133-4b5a-b565-00a46c7b272a)
 
-#### 6.내 정보 확인하기</br>
-![ezgif com-video-to-gif](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/60f95f7a-c681-47ec-b302-e8e0f86ff26d)
-
-#### 7.방 선택 후 진입하기</br>
-![ezgif com-video-to-gif (2)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/dbd5e5d1-7cae-497b-a1c4-c2668f398fde)
-
-#### 8.만들어진 방 리스트 불러오기</br>
+#### 6.만들어진 방 리스트 불러오기</br>
 <img width="693" alt="스크린샷 2023-06-19 오후 1 47 57" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/b01a6780-4532-4765-b001-7606c263523a">
 
-#### 9.방 만들기</br>
+#### 7.방 만들기</br>
 <img width="570" alt="스크린샷 2023-06-19 오후 1 48 32" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/bc553172-8af3-437d-b21d-ef988ed2931f">
 
-#### 10.게임 화면</br>
+#### 8.인게임 화면</br>
 <img width="1246" alt="스크린샷 2023-06-19 오후 1 49 25" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/1b8d5033-99d7-4131-a1d7-f471696964a5">
 
 <img width="1251" alt="스크린샷 2023-06-19 오후 1 50 01" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/1e2ea304-cbcf-4425-ab1f-27f33898d0e9">
 
-#### 11.게임 결과 화면</br>
+#### 9.게임 결과 화면</br>
 <img width="1243" alt="스크린샷 2023-06-19 오후 1 50 36" src="https://github.com/mikekks/DALL-E_and_picasso/assets/100754581/ec92c2eb-2dc3-4635-9d42-b80b00d0de97">
 
-#### 12.회원탈퇴</br>
+#### 10.회원탈퇴</br>
 ![ezgif com-video-to-gif (7)](https://github.com/mikekks/DALL-E_and_picasso/assets/74387813/e73ff8fb-64ea-47e7-9005-273f79b3a127)
 
 ## Point
