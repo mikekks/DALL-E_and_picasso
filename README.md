@@ -1,5 +1,5 @@
 # DALL-E And Picasso
-> AI가 생성한 이미지 맞추기 게임
+> AI가 생성한 이미지를 맞추는 스피드 게임
 
 ## Index
   - [Overview](#overview)
@@ -16,7 +16,7 @@
 ### Team Build
 - 2023년 1학기 응용소프트웨어실습 (2023-03-12 ~ 2023-06-14)</br>
 - 스피드게임 모티브로 `C# (.Net Core 3.1, .Net Framework 4.7.2)`, `MySQL`,`DALL-E API`를 사용한</br>
-**AI가 생성한 이미지 맞추기 게임** 팀프로젝트 입니다.
+**AI가 생성한 이미지를 맞추는 스피드 게임** 팀프로젝트 입니다.
 
 ### Git Convention 
 1. 작업 하기 전, push 하기 전 [git pull] 생활화 하기
